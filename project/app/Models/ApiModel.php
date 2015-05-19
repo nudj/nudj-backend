@@ -1,0 +1,49 @@
+<?php namespace App\Models;
+
+use App\Utility\Util;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Database\Eloquent\Model;
+
+class ApiModel extends Model
+{
+
+    public $selection;
+    protected $dependencies = [];
+
+    public function scopeApi($query)
+    {
+        $columns = Util::extractParams(Input::get('params'), $this->prefix);
+
+        if (empty($columns))
+            $columns = $this->defaultFields;
+
+        array_unshift($columns, $this->primaryKey);
+
+        $columns = array_replace($columns, $this->dependencies);
+        $columns = array_intersect($columns, $this->visible);
+
+        return $query->select($columns);
+    }
+
+    public function scopeMin($query)
+    {
+        return $query->select($this->primaryKey);
+    }
+
+    public function getFields()
+    {
+        return $this->gettableFields;
+    }
+
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+    public function getDefaultFields()
+    {
+        return $this->defaultFields;
+    }
+
+
+}
