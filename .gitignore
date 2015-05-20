@@ -1,10 +1,10 @@
 /kibana
 
-/project/.idea
-/project/vendor
-/project/storage
-/project/public/img/UserImage
+.idea/*
+vendor/*
+storage/*
+public/img/UserImage/*
 
-/bootstrap/compiled.php
+bootstrap/compiled.php
 .env.*.php
 .env.php
