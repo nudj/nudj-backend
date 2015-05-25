@@ -86,7 +86,7 @@ class UsersController extends ApiController
         $user = User::verify($request->all());
 
         if (!$user)
-            throw new ApiException(ApiExceptionType::$NOT_FOUND);
+            throw new ApiException(ApiExceptionType::$VERIFICATION_ERROR);
 
         return $this->respondWithStatus(true, [
             'id' => $user->id,

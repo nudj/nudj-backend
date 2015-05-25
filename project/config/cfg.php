@@ -7,7 +7,7 @@ return [
     'request_timestamp' => true,
 
 
-    'verification_code_length' => 5,
+    'verification_code_length' => 4,
 
 
     'elastic_index' => 'nudge',

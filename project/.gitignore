@@ -1,3 +1,11 @@
+/.idea
+
 /vendor
-/node_modules
+/storage
+/bootstrap/compiled.php
+
 .env
+
+/public/img/UserImage
+
+

@@ -23,6 +23,7 @@ class JobsController extends ApiController {
 
 	public function show($id)
 	{
+
 		$item = Job::api()->find($id);
 
 		if(!$item)

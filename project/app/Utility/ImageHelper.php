@@ -21,15 +21,18 @@ class ImageHelper {
 
     public function saveSizes($source, $sizes = null)
     {
-        // Image::configure(array('driver' => 'imagick'));
+         Image::configure(array('driver' => 'imagick'));
 
         $this->filename = str_random(10);
 
+        try {
         $this->image = Image::make($source);
-
+        } catch (\Exception $e) {
+            throw new ApiException(ApiExceptionType::$IMAGE_ERROR);
+        }
         $images = [];
         foreach ($sizes as $size) {
-            $images[$size['name']] = call_user_func([$this, $size['transform']], $size);
+           $images[$size['name']] = call_user_func([$this, $size['transform']], $size);
         }
 
         return $images;
@@ -73,7 +76,7 @@ class ImageHelper {
 
     protected function createDir($path)
     {
-        is_dir($path) ?: mkdir($path, '0777', true);
+        is_dir($path) ?: mkdir($path, 0777, true);
 
         return rtrim($path, '/') . '/';
     }

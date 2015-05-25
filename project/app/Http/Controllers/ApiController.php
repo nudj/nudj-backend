@@ -63,7 +63,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 
 	public function getPreparedId($id)
 	{
-		return (!$id || $id == 'me') ? $this->authenticator->getUserId() : null;
+		return (!$id || $id == 'me') ? $this->authenticator->getUserId() : $id;
 	}
 
 	/* Responses
@@ -73,6 +73,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 	{
 		if(Config::get('cfg.request_timestamp'))
 			$data['timestamp'] = Request::server('REQUEST_TIME_FLOAT');
+
 
 		return Response::json($data, $this->getStatusCode(), $headers);
 	}

@@ -43,40 +43,6 @@ class Job extends ApiModel
 
     /* CRUD
    ----------------------------------------------------- */
-    public static function add($userId, $input)
-    {
-
-        $job = new Job;
-        $job->user_id = $userId;
-        $job->title = (string)$input['title'];
-        $job->description = (string)$input['description'];
-
-        if (isset($input['salary']))
-            $job->salary = (string)$input['salary'];
-
-        if (isset($input['status']))
-            $job->status = (string)$input['status'];
-
-        if (isset($input['bonus']))
-            $job->bonus = (string)$input['bonus'];
-
-        $saved = $job->save();
-
-        if (isset($input['skills']))
-            $job->syncSkills($input['skills']);
-
-        if ($saved) {
-            $job->addToIndex('job', $job->id, [
-                'title' => $job->title,
-                'description' => $job->description,
-                'bonus' => $job->bonus,
-                'skills' => array_column($job->skills->toArray(), 'name'),
-                'user_id' => $job->user_id
-            ]);
-        }
-
-        return $job;
-    }
 
     public function edit($input)
     {
@@ -119,6 +85,49 @@ class Job extends ApiModel
         return $saved;
     }
 
+    private function syncSkills($skillList)
+    {
+        $ids = Skill::addMissing($skillList);
+        $this->skills()->sync($ids);
+
+        return $ids;
+    }
+
+    public static function add($userId, $input)
+    {
+
+        $job = new Job;
+        $job->user_id = $userId;
+        $job->title = (string)$input['title'];
+        $job->description = (string)$input['description'];
+
+        if (isset($input['salary']))
+            $job->salary = (string)$input['salary'];
+
+        if (isset($input['status']))
+            $job->status = (string)$input['status'];
+
+        if (isset($input['bonus']))
+            $job->bonus = (string)$input['bonus'];
+
+        $saved = $job->save();
+
+        if (isset($input['skills']))
+            $job->syncSkills($input['skills']);
+
+        if ($saved) {
+            $job->addToIndex('job', $job->id, [
+                'title' => $job->title,
+                'description' => $job->description,
+                'bonus' => $job->bonus,
+                'skills' => array_column($job->skills->toArray(), 'name'),
+                'user_id' => $job->user_id
+            ]);
+        }
+
+        return $job;
+    }
+
     public static function like($id, $userId, $remove = false)
     {
 
@@ -133,14 +142,6 @@ class Job extends ApiModel
             $job->favourites()->detach($id);
 
         return true;
-    }
-
-    private function syncSkills($skillList)
-    {
-        $ids = Skill::addMissing($skillList);
-        $this->skills()->sync($ids);
-
-        return $ids;
     }
 
     public static function findIfOwnedBy($jobId, $ownerId)

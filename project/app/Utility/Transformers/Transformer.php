@@ -17,6 +17,7 @@ abstract class Transformer
 
     public function transform($item) {
 
+
         $columns = Util::extractParams(Input::get('params'), $item->getPrefix());
         $columns = array_intersect($columns, $item->getFields());
 
@@ -27,6 +28,7 @@ abstract class Transformer
 
         if(Input::has('sizes'))
             $this->sizes = Util::extractParams(Input::get('sizes'), $item->getPrefix());
+
 
         $response = [];
         foreach ($columns as $column) {

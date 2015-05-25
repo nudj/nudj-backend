@@ -63,12 +63,9 @@ class User extends ApiModel
             $user = new User;
             $user->phone = (string)$input['phone'];
             $user->token = (string)str_random(60);
-            $user->verification = (string)str_random(Config::get('cfg.verification_code_length'));
+            $user->verification = (int) mt_rand(1000, 9999);
             $user->save();
         }
-
-        $user->verification = (string)str_random(5);
-        $user->save();
 
         return $user;
     }
@@ -81,7 +78,6 @@ class User extends ApiModel
 
         if ($user) {
             $user->verified = true;
-            $user->verification = null;
             $user->save();
 
             return $user;
@@ -92,6 +88,7 @@ class User extends ApiModel
 
     public function edit($input)
     {
+
 
         if (isset($input['email']))
             $this->email = (string)$input['email'];

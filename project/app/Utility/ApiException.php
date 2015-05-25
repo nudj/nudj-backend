@@ -10,6 +10,10 @@ class ApiExceptionType {
     public static $NO_TOKEN         = ['errorCode' => 10004, 'code' => 400];
     public static $VALIDATION_ERROR = ['errorCode' => 10005, 'code' => 400];
     public static $INVALID_INPUT    = ['errorCode' => 10006, 'code' => 400];
+    public static $IMAGE_ERROR      = ['errorCode' => 10007, 'code' => 400];
+
+
+    public static $VERIFICATION_ERROR    = ['errorCode' => 11000, 'code' => 400];
 }
 
 class ApiException extends \Exception

@@ -40,7 +40,7 @@ class ContactTransformer extends Transformer {
 
         $groups = array();
         foreach ($items as $item) {
-            $letter = strtoupper($item->alias[0]);
+            $letter = mb_substr(mb_strtoupper($item->alias), 0 ,1);
             $groups[$letter][] = $this->transform($item);
         }
 

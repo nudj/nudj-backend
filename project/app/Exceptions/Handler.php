@@ -52,8 +52,9 @@ class Handler extends ExceptionHandler {
                 "error_code" => $e->getErrorCode()
             ];
 
-            if(!empty($e->getErrorInfo()))
-                $response['error']['info'] = json_decode($e->getErrorInfo());
+            $errors = $e->getErrorInfo();
+            if(!empty($errors))
+                $response['error']['info'] = json_decode($errors);
 
             return response($response, $e->getCode());
         }

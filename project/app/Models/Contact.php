@@ -49,9 +49,16 @@ class Contact extends ApiModel
     {
         foreach($list as $phone => $alias) {
 
-            $contact = self::firstOrCreate(['contact_of' => $userId, 'phone' => $phone]);
-            $contact->alias = $alias;
-            $contact->save();
+            $contact = Contact::where(['contact_of' => $userId, 'phone' => $phone])->first();
+
+            if (!$contact) {
+                $contact = new Contact;
+                $contact->phone = $phone;
+                $contact->contact_of = $userId;
+                $contact->alias = $alias;
+                $contact->save();
+            }
+
         }
     }
 
