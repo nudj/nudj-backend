@@ -12,8 +12,8 @@ return [
 
     'elastic_index' => 'nudge',
     'elastic_port' => '9200',
-    'elastic_ip' => '192.168.3.45',
-    'elastic_hosts' => ['192.168.3.45:9200'],
+    'elastic_ip' => '134.213.153.40',
+    'elastic_hosts' => ['134.213.153.40:9200'],
 
 
     'user_default_settings' => [
