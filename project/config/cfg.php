@@ -9,13 +9,13 @@ return [
 
     'verification_code_length' => 4,
 
-
+    // Elastic
     'elastic_index' => 'nudge',
     'elastic_port' => '9200',
     'elastic_ip' => '134.213.153.40',
     'elastic_hosts' => ['134.213.153.40:9200'],
 
-
+    // User default settings
     'user_default_settings' => [
         'notifications' => [
             'receive_nudge'     => true,
@@ -26,7 +26,7 @@ return [
         ]
     ],
 
-
+    // Notification types
     'notifications' => [
         0 => 'receive_nudge',
         1 => 'asked_referral',
