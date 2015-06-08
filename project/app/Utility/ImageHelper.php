@@ -26,7 +26,7 @@ class ImageHelper {
         $this->filename = str_random(10);
 
         try {
-        $this->image = Image::make($source);
+            $this->image = Image::make($source);
         } catch (\Exception $e) {
             throw new ApiException(ApiExceptionType::$IMAGE_ERROR);
         }

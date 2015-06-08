@@ -20,7 +20,6 @@ class UsersController extends ApiController
 
     public function index()
     {
-
         $items = User::api()->paginate($this->limit);
 
         return $this->respondWithPagination($items, new UserTransformer());

@@ -59,7 +59,6 @@ class Handler extends ExceptionHandler {
             return response($response, $e->getCode());
         }
 
-
         // handle all other thrown exception
         if (!env('APP_DEBUG')) {
 

@@ -3,6 +3,20 @@
 $router->pattern('id', '([0-9]+)|(me)');
 
 
+
+Route::group(['prefix' => 'admin'], function() {
+
+
+    Route::get('/', 'Admin\AuthController@getLogin');
+    Route::get('auth/login', 'Admin\AuthController@getLogin');
+    Route::get('auth/logout', 'Admin\AuthController@getLogout');
+    Route::post('auth/login', 'Admin\AuthController@postLogin');
+
+
+    Route::get('/dashboard', 'Admin\DashboardController@index');
+
+});
+
 Route::group(['prefix' => 'api/v1'], function() {
 
     Route::put('elastic/repair', 'SearchEngineController@repair');

@@ -60,7 +60,6 @@ class ApiController extends \Illuminate\Routing\Controller {
 
 	/* Helpers
 	 * --------------------------------------------------------------------------- */
-
 	public function getPreparedId($id)
 	{
 		return (!$id || $id == 'me') ? $this->authenticator->getUserId() : $id;
