@@ -16,7 +16,11 @@ class TokenAuthenticator extends Authenticator
     public function validate()
     {
 
-        $this->token = Request::header('token');
+        if($_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR']) {
+            $this->token = Request::input('token');
+        } else {
+            $this->token = Request::header('token');
+        }
 
         if (!$this->token)
             throw new ApiException(ApiExceptionType::$NO_TOKEN);

@@ -23,6 +23,8 @@
 		<!-- Custom CSS -->
 		<link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
 
+		<link href="{{ asset('assets/admin/css/additional.css') }}" rel="stylesheet">
+
 	@show
 
 </head>

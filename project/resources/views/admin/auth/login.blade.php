@@ -42,7 +42,7 @@
 
                 <!-- Login form -->
 
-                <form role="form" method="POST" action="{{ url('admin/auth/login') }}">
+                <form role="form" method="POST" action="{{ admin_url('auth/login') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="form-group">

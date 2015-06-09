@@ -1,9 +1,13 @@
 <?php
 
+// Define patterns for expected parameters
 $router->pattern('id', '([0-9]+)|(me)');
 
 
+// Default view
+Route::get('/', 'HomeController@index');
 
+// Admin panel routes
 Route::group(['prefix' => 'admin'], function() {
 
 
@@ -14,12 +18,15 @@ Route::group(['prefix' => 'admin'], function() {
 
 
     Route::get('/dashboard', 'Admin\DashboardController@index');
+    Route::get('/repair', 'Admin\RepairController@index');
+    Route::get('/logs', 'Admin\LogsController@index');
 
 });
 
+// API v1 routes
 Route::group(['prefix' => 'api/v1'], function() {
 
-    Route::put('elastic/repair', 'SearchEngineController@repair');
+    Route::get('elastic/repair', 'SearchEngineController@repair');
 
     Route::get('config', 'ConfigController@index');
     Route::get('config/{key}', 'ConfigController@show');
@@ -52,7 +59,7 @@ Route::group(['prefix' => 'api/v1'], function() {
 });
 
 
-
+// Listen for some stuff
 Event::listen('illuminate.query', function($query)
 {
     if(env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {

@@ -9,22 +9,14 @@ use Illuminate\Http\Request;
 
 class AuthController extends AdminController {
 
-	private $loginPath = '/';
-	private $redirectPath = '/dashboard';
+	private $loginPath = '/admin';
+	private $redirectPath = '/admin/dashboard';
 
 	public function __construct(Guard $auth)
 	{
 		$this->auth = $auth;
 	}
 
-//	public function getRegister() {
-//
-//		$admin = new Admin();
-//		$admin->name = 'Eli';
-//		$admin->email = 'eli@doppels.com';
-//		$admin->password = \Illuminate\Support\Facades\Hash::make('doppels2015');
-//		$admin->save();
-//	}
 
 	public function getLogin()
 	{
@@ -57,6 +49,6 @@ class AuthController extends AdminController {
 	{
 		$this->auth->logout();
 
-		return redirect('/');
+		return redirect('admin/');
 	}
 }

@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
 
-class DashboardController extends AdminController {
+class LogsController extends AdminController {
 
 
 	public function __construct()

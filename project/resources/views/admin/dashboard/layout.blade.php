@@ -1,11 +1,11 @@
-@extends('app')
+@extends('admin.app')
 
 
 @section('page')
 
     <div class="outer">
 
-        @include('dashboard.partial.sidebar')
+        @include('admin.partial.sidebar')
 
         <!-- Mainbar starts -->
         <div class="mainbar">
@@ -13,7 +13,7 @@
             <!-- Mainbar head starts -->
             <div class="main-head">
 
-                @include('dashboard.partial.head')
+                @include('admin.partial.head')
 
             </div>
 
@@ -21,8 +21,9 @@
             <!-- Mainbar head ends -->
             <div class="main-content">
 
-                @yield('content')
-
+                <div class="container">
+                    @yield('content')
+                </div>
             </div>
 
         </div>

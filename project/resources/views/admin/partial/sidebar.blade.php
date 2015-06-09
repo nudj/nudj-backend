@@ -5,7 +5,7 @@
 
         <!-- Logo -->
         <div class="logo">
-            <h1><a href="#"><i class="fa fa-star br-lblue"></i> doppels <span>A Legendary App!</span></a></h1>
+            <h1><a href="#"><i class="fa fa-star br-green"></i> Nudj<span>Control panel</span></a></h1>
         </div>
 
         <!-- Sidebar navigation starts -->
@@ -20,8 +20,10 @@
                 <h4>Menu</h4>
                 <!-- Sidebar links -->
                 <ul class="list-unstyled">
-                    <li><a href="{{ URL::to('dashboard') }}" class="active"><i class="fa fa-desktop"></i> Dashboard</a></li>
-                    <li><a href="{{ URL::to('subscribers') }}"><i class="fa fa-user"></i> Subscribers</a></li>
+                    <li><a href="{{ admin_url('dashboard') }}"><i class="fa fa-desktop"></i> Dashboard</a></li>
+                    <li><a href="{{ admin_url('repair') }}"><i class="fa fa-cog"></i> Repair</a></li>
+                    <li><a href="{{ admin_url('logs') }}"><i class="fa fa-list"></i> Logs</a></li>
+
                 </ul>
             </div>
         </div>

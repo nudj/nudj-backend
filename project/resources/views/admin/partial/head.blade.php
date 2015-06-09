@@ -23,7 +23,7 @@
                 <!-- Dropdown -->
                 <ul class="dropdown-menu" aria-labelledby="profile">
                     <li><a href="#">View/Edit Profile</a></li>
-                    <li><a href="{{ URL::to('auth/logout') }}">Sign Out</a></li>
+                    <li><a href="{{ admin_url('auth/logout') }}">Sign Out</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
