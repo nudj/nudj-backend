@@ -6,8 +6,6 @@ use App\Utility\ApiExceptionType;
 use Illuminate\Support\Facades\Request;
 
 
-
-
 class TokenAuthenticator extends Authenticator
 {
 
@@ -15,13 +13,8 @@ class TokenAuthenticator extends Authenticator
 
     public function validate()
     {
-        echo $_SERVER['REMOTE_ADDR'] . '-' . $_SERVER['SERVER_ADDR'];
-        
-        if($_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR']) {
-            $this->token = Request::input('token');
-        } else {
-            $this->token = Request::header('token');
-        }
+
+        $this->token = Request::header('token');
 
         if (!$this->token)
             throw new ApiException(ApiExceptionType::$NO_TOKEN);
@@ -38,14 +31,15 @@ class TokenAuthenticator extends Authenticator
 
     public function hasRole($role)
     {
-        return (bool) in_array($role, $this->userRoles);
+        return (bool)in_array($role, $this->userRoles);
     }
 
-    public function getDigest() {
+    public function getDigest()
+    {
         return [
-          'token' => $this->token,
-          'user' => $this->userId,
-          'roles' => $this->userRoles
+            'token' => $this->token,
+            'user' => $this->userId,
+            'roles' => $this->userRoles
         ];
     }
 }
