@@ -33,7 +33,7 @@
                         <td>Deletes everything from Search Engine and recreates it from the database</td>
                         <td><span class="label label-success">Safe</span></td>
                         <td>
-                            <a href="{{ api_url('elastic/repair?' . http_build_query(['token' => $token ])) }}"  class="btn btn-xs btn-success action-repair"><i class="fa fa-check"></i> </a>
+                            <a href="{{ api_url('elastic/repair') }}"  data-type="GET" class="btn btn-xs btn-success action-repair"><i class="fa fa-check"></i> </a>
                         </td>
                     </tr>
                     </tbody>
@@ -63,7 +63,20 @@
                 e.preventDefault();
 
                 var url = $(this).attr('href');
-                $('#iframe').prop('src', url);
+                var type = $(this).data('type');
+
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    contentType: "application/json",
+                    beforeSend: function(xhr, settings){
+                        xhr.setRequestHeader("token", "{{{ $token }}}");},
+                    success: function(data){
+                        $("#iframe").attr('src',"/")
+                        $("#iframe").contents().find('html').html(data);
+                    }
+                });
+
             });
 
         });
