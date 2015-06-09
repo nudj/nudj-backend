@@ -15,7 +15,8 @@ class TokenAuthenticator extends Authenticator
 
     public function validate()
     {
-
+        echo $_SERVER['REMOTE_ADDR'] . '-' . $_SERVER['SERVER_ADDR'];
+        
         if($_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR']) {
             $this->token = Request::input('token');
         } else {
