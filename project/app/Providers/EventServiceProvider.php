@@ -14,6 +14,9 @@ class EventServiceProvider extends ServiceProvider {
 		'App\Events\IncomingRequestEvent' => [
 			'App\Handlers\Events\LogRequest',
 		],
+		'App\Events\ReturnResponseEvent' => [
+			'App\Handlers\Events\LogResponse',
+		],
 		'App\Events\LoginUserEvent' => [
 			'App\Handlers\Events\SendSms',
 		],

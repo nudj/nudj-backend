@@ -1,22 +1,34 @@
 <?php namespace App\Handlers\Events;
 
 use App\Events\IncomingRequestEvent;
+use App\Utility\Logger\ApiFormatter;
 
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
+use Illuminate\Support\Facades\Request;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 
 class LogRequest
 {
 
+    public $authenticator;
+
     public function handle(IncomingRequestEvent $event)
     {
 
-        $log = new Logger('requests');
-        $log->pushHandler(new RotatingFileHandler(storage_path() . '/logs/requests.log', Logger::INFO));
+        $handler = new RotatingFileHandler(storage_path().'/logs/requests.log', 0, Logger::INFO);
+        $handler->setFormatter(new ApiFormatter());
 
-        $log->addInfo($event->name, $event->data);
+        $logger = new Logger('requests');
+        $logger->pushHandler($handler);
+        $logger->addInfo('Incomming request', [
+            'id' => Request::server('REQUEST_TIME_FLOAT'),
+            'timestamp' => Request::server('REQUEST_TIME_FLOAT'),
+            'type' =>  Request::server('REQUEST_METHOD'),
+            'endpoint' =>  Request::path(),
+            'get' =>  $_GET,
+            'post' =>  Request::except(array_keys($_GET)),
+            'user' => $event->authenticator
+        ]);
 
     }
 

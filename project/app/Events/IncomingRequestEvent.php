@@ -8,13 +8,10 @@ class IncomingRequestEvent extends Event {
 
 	use SerializesModels;
 
-	public $name;
-	public $data;
+	public $authenticator;
 
-	public function __construct($name, $data = [])
-	{
-		$this->name = $name;
-		$this->data = $data;
+	public function __construct($authenticator) {
+		$this->authenticator = $authenticator;
 	}
 
 }

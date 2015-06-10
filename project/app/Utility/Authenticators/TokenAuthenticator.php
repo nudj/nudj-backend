@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Request;
 
 class TokenAuthenticator extends Authenticator
 {
-
+    protected $validated = false;
     protected $token;
 
     public function validate()
@@ -24,6 +24,7 @@ class TokenAuthenticator extends Authenticator
         if (!$user)
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
+        $this->validated = true;
         $this->userId = $user->id;
         $this->userRoles = json_decode($user->roles);
 
@@ -36,6 +37,10 @@ class TokenAuthenticator extends Authenticator
 
     public function getDigest()
     {
+
+        if(!$this->validated)
+            return null;
+
         return [
             'token' => $this->token,
             'user' => $this->userId,

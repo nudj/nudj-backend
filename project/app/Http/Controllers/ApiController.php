@@ -2,6 +2,7 @@
 
 
 use App\Events\IncomingRequestEvent;
+use App\Events\ReturnResponseEvent;
 use App\Utility\Authenticators\TokenAuthenticator;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Config;
@@ -25,22 +26,19 @@ class ApiController extends \Illuminate\Routing\Controller {
 
 	protected $authenticator = null;
 
-	function __construct(TokenAuthenticator $authenticator)
+	function __construct()
 	{
 
-		if(Config::get('cfg.request_log')) {
-			Event::fire(new IncomingRequestEvent('Incoming Request', [
-				'timestamp' => Request::server('REQUEST_TIME_FLOAT'),
-				'endpoint' => Request::server('REQUEST_METHOD') . ':' . Request::route()->getPath(),
-				'body' => Request::all(),
-				'user' => $this->authenticator ? $this->authenticator->getDigest() : null,
-			]));
-		}
+		$this->authenticator = new TokenAuthenticator();
 
 		if(!in_array(Request::route()->getActionName(), $this->nonTokenMethods)) {
-			$this->authenticator = $authenticator;
 			$this->authenticator->validate();
 		}
+
+		if(Config::get('cfg.request_log')) {
+			Event::fire(new IncomingRequestEvent($this->authenticator->getDigest()));
+		}
+
 
 		$this->limit = Request::get('limit') ?: $this->defaults['limit'];
 
@@ -73,6 +71,9 @@ class ApiController extends \Illuminate\Routing\Controller {
 		if(Config::get('cfg.request_timestamp'))
 			$data['timestamp'] = Request::server('REQUEST_TIME_FLOAT');
 
+		if(Config::get('cfg.response_log')) {
+			Event::fire(new ReturnResponseEvent($data));
+		}
 
 		return Response::json($data, $this->getStatusCode(), $headers);
 	}
