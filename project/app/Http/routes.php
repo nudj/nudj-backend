@@ -21,6 +21,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/repair', 'Admin\RepairController@index');
     Route::get('/logs', 'Admin\LogsController@index');
 
+    Route::get('/logs/line', 'Admin\LogsController@getLines');
+
 });
 
 // API v1 routes
