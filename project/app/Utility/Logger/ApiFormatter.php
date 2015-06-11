@@ -37,8 +37,8 @@ class ApiFormatter implements FormatterInterface
             $formatted['post'] = $record['context']['post'];
         }
 
-        if (isset($record['context']['user'])) {
-            $formatted['user'] = $record['context']['user'];
+        if (isset($record['context']['token'])) {
+            $formatted['token'] = $record['context']['token'];
         }
 
         if (isset($record['context']['response'])) {

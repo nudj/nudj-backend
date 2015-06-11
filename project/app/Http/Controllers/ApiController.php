@@ -30,7 +30,6 @@ class ApiController extends \Illuminate\Routing\Controller {
 	function __construct()
 	{
 
-
 		if(Config::get('cfg.request_log')) {
 			Event::fire(new IncomingRequestEvent());
 		}

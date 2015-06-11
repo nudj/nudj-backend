@@ -27,7 +27,7 @@ class LogRequest
             'endpoint' =>  Request::path(),
             'get' =>  $_GET,
             'post' =>  Request::except(array_keys($_GET)),
-            'user' => $event->authenticator
+            'token' => Request::header('token')
         ]);
 
     }

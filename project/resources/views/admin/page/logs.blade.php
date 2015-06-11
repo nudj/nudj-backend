@@ -24,6 +24,7 @@
                         <th width="10%">ID</th>
                         <th width="10%">Type</th>
                         <th>Endpoint</th>
+                        <th>Token</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,13 +47,15 @@
     @parent
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="{{ asset('assets/thirdparty/moment/moment.min.js') }}"></script>
 
     <script id="tpl-line" type="text/html">
         <tr>
             <td><%= id %></td>
+            <td><%= moment(id).format('MM dd h:mm') %></td>
             <td><%= type %></td>
             <td><%= endpoint %></td>
-            <td></td>
+            <td><%= token ?></td>
         </tr>
     </script>
 
