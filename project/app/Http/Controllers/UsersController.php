@@ -95,6 +95,7 @@ class UsersController extends ApiController
 
     }
 
+
     public function exists($id = null)
     {
 

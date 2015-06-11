@@ -30,14 +30,16 @@ class ApiController extends \Illuminate\Routing\Controller {
 	function __construct()
 	{
 
+
+		if(Config::get('cfg.request_log')) {
+			Event::fire(new IncomingRequestEvent());
+		}
+
+
 		$this->authenticator = new TokenAuthenticator();
 
 		if(!in_array(Request::route()->getActionName(), $this->nonTokenMethods)) {
 			$this->authenticator->validate();
-		}
-
-		if(Config::get('cfg.request_log')) {
-			Event::fire(new IncomingRequestEvent($this->authenticator->getDigest()));
 		}
 
 

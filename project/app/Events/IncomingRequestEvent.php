@@ -10,7 +10,7 @@ class IncomingRequestEvent extends Event {
 
 	public $authenticator;
 
-	public function __construct($authenticator) {
+	public function __construct($authenticator = null) {
 		$this->authenticator = $authenticator;
 	}
 
