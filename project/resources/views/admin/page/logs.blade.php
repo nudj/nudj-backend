@@ -70,7 +70,8 @@
         function readLogFile() {
             $.get('{{admin_url('logs/line')}}', {'type': 'requests', 'lines': 20}, function (data) {
                 _.each(data, function (line) {
-                    $('#log tbody').append(template(line));
+                    if(line)
+                        $('#log tbody').append(template(line));
                 })
             });
         }

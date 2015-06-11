@@ -28,6 +28,7 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     <tr>
                         <td>Repair Elastic Index</td>
                         <td>Deletes everything from Search Engine and recreates it from the database</td>
@@ -36,13 +37,21 @@
                             <a href="{{ api_url('elastic/repair') }}"  data-type="GET" class="btn btn-xs btn-success action-repair"><i class="fa fa-check"></i> </a>
                         </td>
                     </tr>
+
+                    <tr>
+                        <td>Composer Update</td>
+                        <td>Executes "composer update --no-dev" on the server to update project dependencies</td>
+                        <td><span class="label label-warning">Be careful</span></td>
+                        <td>
+                            <a href="{{ admin_url('command/composer/update') }}"  data-type="GET" class="btn btn-xs btn-success action-repair"><i class="fa fa-check"></i> </a>
+                        </td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>
 
-            <iframe id="iframe">
-
-            </iframe>
+            <div id="console"></div>
 
         </div>
 
@@ -72,10 +81,10 @@
                     beforeSend: function(xhr, settings){
                         xhr.setRequestHeader("token", "{{{ $token }}}");},
                     success: function(data){
-                        $("#iframe").attr('src',"/")
-                        $("#iframe").contents().find('html').html(data);
+                        $("#console").html(data);
                     }
                 });
+
 
             });
 

@@ -21,7 +21,8 @@ class ApiController extends \Illuminate\Routing\Controller {
 
 	protected $nonTokenMethods = [
 		'App\Http\Controllers\UsersController@store',
-		'App\Http\Controllers\UsersController@verify'
+		'App\Http\Controllers\UsersController@verify',
+		'App\Http\Controllers\UsersController@exists',
 	];
 
 	protected $authenticator = null;

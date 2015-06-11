@@ -95,6 +95,14 @@ class UsersController extends ApiController
 
     }
 
+    public function exists($id = null)
+    {
+
+        $item = User::min()->find($id);
+
+        return $this->respondWithStatus($item);
+    }
+
 
     public function contacts($id = null)
     {

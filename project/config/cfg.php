@@ -7,6 +7,9 @@ return [
     'response_log' => true,
     'request_timestamp' => true,
 
+    //Chat Server
+    'chat_server_ip' => '162.13.187.75:4560',
+    'chat_server_host' => 'chat.nudj.co',
 
     'verification_code_length' => 4,
 
