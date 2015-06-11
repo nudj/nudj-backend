@@ -22,6 +22,7 @@
                     <thead>
                     <tr>
                         <th width="10%">ID</th>
+                        <th width="10%">Date</th>
                         <th width="10%">Type</th>
                         <th>Endpoint</th>
                         <th>Token</th>
@@ -52,10 +53,10 @@
     <script id="tpl-line" type="text/html">
         <tr>
             <td><%= id %></td>
-            <td><%= moment(id).format('MM dd h:mm') %></td>
+            <td><%= moment(id * 1000).format('D-MM-YY H:mm:ss') %></td>
             <td><%= type %></td>
             <td><%= endpoint %></td>
-            <td><%= token ?></td>
+            <td><% if(typeof token != 'undefined') print(token) %></td>
         </tr>
     </script>
 
