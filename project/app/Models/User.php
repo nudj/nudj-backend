@@ -12,9 +12,9 @@ class User extends ApiModel
     use SoftDeletes, Imageable;
 
     protected $table = 'users';
-    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status'];
+    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'findme'];
 
-    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'skills', 'contacts'];
+    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'findme', 'status', 'skills', 'contacts'];
     protected $defaultFields = ['name'];
 
     protected $prefix = 'user.';
@@ -104,6 +104,9 @@ class User extends ApiModel
 
         if (isset($input['address']))
             $this->address = (string)$input['address'];
+
+        if (isset($input['findme']))
+            $this->findme = (string) json_encode($input['findme']);
 
         if (isset($input['completed']))
             $this->completed = (string)$input['completed'];
