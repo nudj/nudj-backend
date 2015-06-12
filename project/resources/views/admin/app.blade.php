@@ -3,7 +3,7 @@
 <html>
 <head>
 	<!-- Title -->
-	<title>Login - Doppels Admin Panel</title>
+	<title>Nudge API Monitoring</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">

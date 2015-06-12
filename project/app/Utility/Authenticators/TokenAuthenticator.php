@@ -32,7 +32,10 @@ class TokenAuthenticator extends Authenticator
 
     public function hasRole($role)
     {
-        return (bool)in_array($role, $this->userRoles);
+        if(!$this->userRoles)
+            return false;
+
+        return (bool) in_array($role, $this->userRoles);
     }
 
     public function getDigest()
