@@ -28,6 +28,9 @@ class UserTransformer extends Transformer
             case 'address':
                 return (string)$item->address;
 
+            case 'findme':
+                return json_decode($item->findme);
+
             case 'status':
                 return (int) $item->status;
 
