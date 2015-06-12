@@ -51,7 +51,8 @@ class UsersController extends ApiController
 
     public function update($id = null)
     {
-        if ($id && !$this->authenticator->hasRole('admin'))
+
+        if (is_int($id) && !$this->authenticator->hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
@@ -69,7 +70,7 @@ class UsersController extends ApiController
 
     public function destroy($id = null)
     {
-        if ($id && !$this->authenticator->hasRole('admin'))
+        if (is_int($id) && !$this->authenticator->hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
@@ -107,7 +108,7 @@ class UsersController extends ApiController
 
     public function contacts($id = null)
     {
-        if ($id && !$this->authenticator->hasRole('admin'))
+        if (is_int($id) && !$this->authenticator->hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
@@ -124,7 +125,7 @@ class UsersController extends ApiController
 
     public function favourites($id = null)
     {
-        if ($id && !$this->authenticator->hasRole('admin'))
+        if (is_int($id) && !$this->authenticator->hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
