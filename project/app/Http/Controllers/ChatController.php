@@ -24,11 +24,11 @@ class ChatController extends ApiController
 
 
         $client = new Rackspace(Rackspace::UK_IDENTITY_ENDPOINT, array(
-            'username' => $this->config->item('rackspace_username'),
-            'apiKey'   => $this->config->item('rackspace_api_key')
+            'username' =>   Config::get('cfg.rackspace_username'),
+            'apiKey'   => Config::get('cfg.rackspace_apikey')
         ));
 
-        $this->cdn = $client->objectStoreService('cloudFiles', $this->config->item('rackspace_location'), 'publicURL');
+        $this->cdn = $client->objectStoreService('cloudFiles', Config::get('cfg.rackspace_apikey'), 'publicURL');
 
     }
 

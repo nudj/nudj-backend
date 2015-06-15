@@ -10,8 +10,6 @@ use Monolog\Logger;
 class LogRequest
 {
 
-    public $authenticator;
-
     public function handle(IncomingRequestEvent $event)
     {
 
@@ -28,7 +26,7 @@ class LogRequest
             'get' =>  $_GET,
             'post' =>  Request::except(array_keys($_GET)),
             'token' => Request::header('token'),
-            'headers' => Request::getallheaders()
+            'headers' => getallheaders()
         ]);
 
     }
