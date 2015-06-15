@@ -132,7 +132,9 @@ class User extends ApiModel
             $this->image = json_encode($images);
         }
 
-        return $this->save();
+        $this->save();
+
+        return $this;
     }
 
     private function syncSkills($skillList)

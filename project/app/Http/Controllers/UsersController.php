@@ -62,9 +62,9 @@ class UsersController extends ApiController
         if (!$user)
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
 
-        $status = $user->edit(Input::all());
+        $info = $user->edit(Input::all());
 
-        return $this->respondWithStatus($status);
+        return $this->respondWithItem($info, new UserTransformer());
     }
 
 
