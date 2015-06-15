@@ -54,7 +54,7 @@
             <td><%= id %></td>
             <td><%= moment(id * 1000).format('D-MM-YY H:mm:ss') %></td>
             <td><%= type %></td>
-            <td><%= if(typeof from != 'undefined') print(from) %></td>
+            <td><% if(typeof from != 'undefined') print(from) %></td>
             <td><%= endpoint %></td>
             <td><% if(typeof token != 'undefined') print(token) %></td>
         </tr>
