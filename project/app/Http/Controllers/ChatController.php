@@ -26,12 +26,14 @@ class ChatController extends ApiController
 //            '4@chat.nudj.co'
 //        ]);
 
-        $rpc->setRoomAffiliation('test', '3@chat.nudj.co' ,'member');
-        $rpc->setRoomAffiliation('test', '4@chat.nudj.co' ,'member');
+//        $rpc->setRoomAffiliation('test', '3@chat.nudj.co' ,'member');
+//        $rpc->setRoomAffiliation('test', '4@chat.nudj.co' ,'member');
+//
+//        $rooms = $rpc->getOnlineRooms();
 
-        $rooms = $rpc->getOnlineRooms();
 
-        print_r($rooms);
+        $result = $rpc->getRoster('3@chat.nudj.co');
+        print_r($result);
     }
 
 
