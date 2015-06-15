@@ -27,7 +27,8 @@ class LogRequest
             'endpoint' =>  Request::path(),
             'get' =>  $_GET,
             'post' =>  Request::except(array_keys($_GET)),
-            'token' => Request::header('token')
+            'token' => Request::header('token'),
+            'headers' => Request::getallheaders()
         ]);
 
     }

@@ -45,6 +45,10 @@ class ApiFormatter implements FormatterInterface
             $formatted['response'] = $record['context']['response'];
         }
 
+        if (isset($record['context']['headers'])) {
+            $formatted['headers'] = $record['context']['headers'];
+        }
+
         return json_encode($formatted) .  "\n";
     }
 
