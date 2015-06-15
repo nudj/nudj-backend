@@ -32,7 +32,7 @@ class ChatController extends ApiController
 //        $rooms = $rpc->getOnlineRooms();
 
 
-        $result = $rpc->getRoster('3@chat.nudj.co');
+        $result = $rpc->sendMessageChat('3@chat.nudj.co', 'test@conference.chat.nudj.co', 'adasd');
         print_r($result);
     }
 
