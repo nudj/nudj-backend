@@ -15,20 +15,18 @@ class ChatController extends ApiController
     public function index()
     {
 
-//        $rpc = new RpcClient([
-//            'server' => Config::get('cfg.chat_server_ip'),
-//            'host' => Config::get('cfg.chat_server_host'),
-//            'debug' => false,
-//        ]);
+        $rpc = new RpcClient([
+            'server' => Config::get('cfg.chat_server_ip'),
+            'host' => Config::get('cfg.chat_server_host'),
+            'debug' => false,
+        ]);
 
 
-
-        $client = new Rackspace(Rackspace::UK_IDENTITY_ENDPOINT, array(
-            'username' =>   Config::get('cfg.rackspace_username'),
-            'apiKey'   => Config::get('cfg.rackspace_apikey')
-        ));
-
-        $this->cdn = $client->objectStoreService('cloudFiles', Config::get('cfg.rackspace_apikey'), 'publicURL');
+        $rpc->createRoom('test');
+        $rpc->inviteToRoom('test', null, null,[
+            '3@chat.nudj.co',
+            '4@chat.nudj.co'
+        ]);
 
     }
 

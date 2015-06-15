@@ -3,24 +3,26 @@
 return [
 
     // API Logging
-    'request_log'           => true,
-    'response_log'          => true,
-    'request_timestamp'      => true,
+    'request_log' => true,
+    'response_log' => true,
+    'request_timestamp' => true,
 
     //Chat Server
-    'chat_server_ip'        => '162.13.187.75:4560',
-    'chat_server_host'      => 'chat.nudj.co',
+    'chat_server_ip' => '162.13.187.75:4560',
+    'chat_server_host' => 'chat.nudj.co',
 
     //Rackspace
-    'rackspace_username'    => 'nudge2015',
-    'rackspace_apikey'      => '4bf56f4a6bb94562b9f1bcd2d0a2e919',
-    'rackspace_location'    => 'LON',
+    'rackspace' => [
+        'apikey' => '4bf56f4a6bb94562b9f1bcd2d0a2e919',
+        'username' => 'nudge2015',
+        'location' => 'LON',
+    ],
 
     // Elastic
-    'elastic_index'         => 'nudge',
-    'elastic_port'          => '9200',
-    'elastic_ip'            => '134.213.153.40',
-    'elastic_hosts'         => ['134.213.153.40:9200'],
+    'elastic_index' => 'nudge',
+    'elastic_port' => '9200',
+    'elastic_ip' => '134.213.153.40',
+    'elastic_hosts' => ['134.213.153.40:9200'],
 
     // Random settings
     'verification_code_length' => 4,
@@ -28,11 +30,11 @@ return [
     // User default settings
     'user_default_settings' => [
         'notifications' => [
-            'receive_nudge'     => true,
-            'asked_referral'    => true,
-            'matching_job'      => true,
-            'message'           => true,
-            'matching_contact'  => true,
+            'receive_nudge' => true,
+            'asked_referral' => true,
+            'matching_job' => true,
+            'message' => true,
+            'matching_contact' => true,
         ]
     ],
 
