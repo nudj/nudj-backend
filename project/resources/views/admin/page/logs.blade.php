@@ -25,6 +25,7 @@
                         <th width="10%">Date</th>
                         <th width="10%">Type</th>
                         <th>Endpoint</th>
+                        <th>From</th>
                         <th>Token</th>
                     </tr>
                     </thead>
@@ -53,6 +54,7 @@
             <td><%= id %></td>
             <td><%= moment(id * 1000).format('D-MM-YY H:mm:ss') %></td>
             <td><%= type %></td>
+            <td><%= if(typeof from != 'undefined') print(from) %></td>
             <td><%= endpoint %></td>
             <td><% if(typeof token != 'undefined') print(token) %></td>
         </tr>

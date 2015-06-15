@@ -20,20 +20,27 @@ class ChatController extends ApiController
         ]);
 
 
-//        $rpc->createRoom('test');
-//        $rpc->inviteToRoom('test', null, null,[
-//            '3@chat.nudj.co',
-//            '4@chat.nudj.co'
-//        ]);
+        $rooms = $rpc->getOnlineRooms();
 
-//        $rpc->setRoomAffiliation('test', '3@chat.nudj.co' ,'member');
-//        $rpc->setRoomAffiliation('test', '4@chat.nudj.co' ,'member');
+        print_r($rooms);
+
+
+
+//        $rpc->createRoom('test');
+        $rpc->inviteToRoom('test', null, null,[
+            '2@chat.nudj.co',
+            '4@chat.nudj.co',
+            '3@chat.nudj.co'
+        ]);
+
+
 //
 //        $rooms = $rpc->getOnlineRooms();
 
 
-        $result = $rpc->sendMessageChat('3@chat.nudj.co', 'test@conference.chat.nudj.co', 'adasd');
-        print_r($result);
+//        $result = $rpc->sendMessageChat('3@chat.nudj.co', 'test@conference.chat.nudj.co', 'adasd');
+
+//        print_r($result);
     }
 
 

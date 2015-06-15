@@ -22,6 +22,7 @@ class LogRequest
             'id' => Request::server('REQUEST_TIME_FLOAT'),
             'timestamp' => Request::server('REQUEST_TIME_FLOAT'),
             'type' =>  Request::server('REQUEST_METHOD'),
+            'from' => Request::server('REMOTE_ADDR'),
             'endpoint' =>  Request::path(),
             'get' =>  $_GET,
             'post' =>  Request::except(array_keys($_GET)),
