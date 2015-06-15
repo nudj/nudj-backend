@@ -13,7 +13,7 @@ class CommandsController extends AdminController {
     public function composerUpdate()
     {
         set_time_limit(600);
-        return $this->execAndReturn("composer  --working-dir=../ update --no-dev");
+        return $this->execAndReturn("sudo composer  --working-dir=../ update --no-dev");
     }
 
     private function execAndReturn($command)

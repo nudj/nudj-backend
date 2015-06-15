@@ -6,8 +6,6 @@ use App\Http\Requests;
 use GameNet\Jabber\RpcClient;
 use Illuminate\Support\Facades\Config;
 
-use OpenCloud\Rackspace;
-
 
 class ChatController extends ApiController
 {
