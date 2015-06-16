@@ -21,6 +21,7 @@ class User extends ApiModel
     protected $prefix = 'user.';
 
     protected $imageDir = 'UserImage';
+    protected $imageUrl = 'http://usr-img.nudj.co/';
     protected $imageSizes = [
         'profile' => ['name' => 'profile', 'width' => 160, 'height' => 160, 'transform' => 'circle'],
         'cover' => ['name' => 'cover', 'width' => 960, 'height' => 320, 'transform' => 'crop'],

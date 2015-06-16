@@ -37,7 +37,7 @@ trait Imageable {
         foreach ($images as $size => $image) {
 
             if(!$sizes || in_array($size, $sizes))
-                $result[$size] = asset('/') .  $this->getImageDir([$id, $size, $image]);
+                $result[$size] = asset('/') .  $this->getImagePath([$id, $size, $image]);
         }
         return $result;
     }
