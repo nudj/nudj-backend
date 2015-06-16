@@ -32,7 +32,7 @@ class ChatController extends ApiController
         }
 
 
-        $newRoomName = str_random(6);;
+        $newRoomName = str_random(6);
         $rpc->createRoom($newRoomName);
         $rpc->setRoomOption($newRoomName, 'persistent', true);
         $rpc->setRoomOption($newRoomName, 'members_by_default', true);
