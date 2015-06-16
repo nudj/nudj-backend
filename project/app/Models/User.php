@@ -54,6 +54,11 @@ class User extends ApiModel
         return $this->hasMany('App\Models\Notification', 'recipient_id');
     }
 
+    public function devices()
+    {
+        return $this->hasMany('App\Models\Device', 'user_id');
+    }
+
     /* CRUD
     ----------------------------------------------------- */
     public static function login($input)
@@ -133,16 +138,16 @@ class User extends ApiModel
             $images = $imageHelper->saveSizes($input['image'], $this->imageSizes);
 
             $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
-            foreach($images as $image) {
-                $cloudHelper->save($image, $this->getImageUrl($image), [$this->id, $this->imageDir]);
+            foreach($images as $size => $image) {
+                $cloudHelper->save([$this->id, $size, $image], $this->getImageUrl($image), $this->imageDir);
             }
 
            $this->image = json_encode($images);
         }
 
-        return $this->save();
+        $this->save();
 
-
+        return $this;
     }
 
     private function syncSkills($skillList)

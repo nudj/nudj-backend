@@ -14,9 +14,8 @@ abstract class Transformer
         return array_map([$this, 'transform'], $items->all());
     }
 
-
+    
     public function transform($item) {
-
 
         $columns = Util::extractParams(Input::get('params'), $item->getPrefix());
         $columns = array_intersect($columns, $item->getFields());

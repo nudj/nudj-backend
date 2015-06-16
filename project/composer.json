@@ -11,7 +11,8 @@
 	  	"elasticsearch/elasticsearch": "1.3.3",
 	  	"gamenet/php-jabber-rpc": "1.1.2",
 	  	"rackspace/php-opencloud": "1.14.2",
-	  	"twilio/sdk": "4.2.1"
+	  	"twilio/sdk": "4.2.1",
+	  	"davibennun/laravel-push-notification": "dev-laravel5"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

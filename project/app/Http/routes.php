@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin'], function() {
 Route::group(['prefix' => 'api/v1'], function() {
 
     Route::get('elastic/repair', 'SearchEngineController@repair');
+    Route::get('cloud/empty', 'CloudController@emptyAllContainers');
 
     Route::get('config', 'ConfigController@index');
     Route::get('config/{key}', 'ConfigController@show');

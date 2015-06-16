@@ -1,0 +1,22 @@
+<?php namespace App\Http\Requests;
+
+
+
+class RegisterDeviceRequest extends Request {
+
+
+	public function authorize()
+	{
+		return true;
+	}
+
+
+	public function rules()
+	{
+		return [
+			'token' => 'required'
+		];
+	}
+
+
+}

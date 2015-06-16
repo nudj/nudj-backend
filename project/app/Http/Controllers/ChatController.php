@@ -20,21 +20,24 @@ class ChatController extends ApiController
         ]);
 
 
+//        $rpc->addRosterItem('5', '3', 'someone', 'Nudge');
+//        print_r($rpc->getRoster('5'));
+
         $rooms = $rpc->getOnlineRooms();
         print_r($rooms);
 
-//        foreach ($rooms as $room) {
-//            list($roomName) = explode('@', $room);
-//            $rpc->deleteRoom($roomName);
-//        }
+        foreach ($rooms as $room) {
+            list($roomName) = explode('@', $room);
+            $rpc->deleteRoom($roomName);
+        }
+        print_r($rooms);
 
-        $newRoomName = 'lacho';
+        $newRoomName = 'testing4';
         $rpc->createRoom($newRoomName);
         $rpc->setRoomOption($newRoomName, 'persistent', true);
-        $rpc->setRoomOption($newRoomName, 'logging', false);
         $rpc->setRoomOption($newRoomName, 'members_by_default', true);
         $rpc->inviteToRoom($newRoomName, null, null,[
-            '2@chat.nudj.co',
+            '5@chat.nudj.co',
             '3@chat.nudj.co'
         ]);
 

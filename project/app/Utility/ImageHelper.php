@@ -21,7 +21,7 @@ class ImageHelper {
 
     public function saveSizes($source, $sizes = null)
     {
-         Image::configure(array('driver' => 'gd'));
+        Image::configure(array('driver' => 'gd'));
 
         $this->filename = str_random(10);
 
