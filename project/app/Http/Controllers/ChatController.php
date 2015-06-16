@@ -30,7 +30,7 @@ class ChatController extends ApiController
             list($roomName) = explode('@', $room);
             $rpc->deleteRoom($roomName);
         }
-       
+
 
         $newRoomName = str_random(6);;
         $rpc->createRoom($newRoomName);

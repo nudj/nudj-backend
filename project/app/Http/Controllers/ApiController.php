@@ -23,6 +23,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 		'App\Http\Controllers\UsersController@store',
 		'App\Http\Controllers\UsersController@verify',
 		'App\Http\Controllers\UsersController@exists',
+		'App\Http\Controllers\ChatController@index',
 	];
 
 	protected $authenticator = null;
