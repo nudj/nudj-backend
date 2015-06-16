@@ -21,14 +21,14 @@ class ImageHelper {
 
     public function saveSizes($source, $sizes = null)
     {
-         Image::configure(array('driver' => 'imagick'));
+         Image::configure(array('driver' => 'gd'));
 
         $this->filename = str_random(10);
 
         try {
             $this->image = Image::make($source);
         } catch (\Exception $e) {
-            throw new ApiException(ApiExceptionType::$IMAGE_ERROR);
+            throw new ApiException(ApiExceptionType::$IMAGE_ERROR, $e->getMessage());
         }
         $images = [];
         foreach ($sizes as $size) {

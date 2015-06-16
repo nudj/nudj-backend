@@ -47,14 +47,14 @@ class Handler extends ExceptionHandler {
             if(Config::get('cfg.request_timestamp'))
                 $response['timestamp'] = Request::server('REQUEST_TIME_FLOAT');
 
+
             $response['error'] = [
                 "message" => $e->getMessage(),
                 "error_code" => $e->getErrorCode()
             ];
 
-            $errors = $e->getErrorInfo();
-            if(!empty($errors))
-                $response['error']['info'] = json_decode($errors);
+            if($e->getErrorInfo())
+                $response['error']['message'] = $response['error']['message'] . ' :: ' . $e->getErrorInfo();
 
             return response($response, $e->getCode());
         }

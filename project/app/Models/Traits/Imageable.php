@@ -1,20 +1,29 @@
 <?php namespace App\Models\Traits;
 
-use Illuminate\Support\Facades\URL;
-
 trait Imageable {
 
-    public $path;
+    protected $filesDir = 'upload';
 
-    public function getImageDir($path = '')
+
+    public function getImagePath($path = '')
+    {
+        if(is_array($path))
+            $path = implode(DIRECTORY_SEPARATOR, $path);
+
+        if(isset($this->imageDir))
+            return $this->filesDir . DIRECTORY_SEPARATOR . $this->imageDir . DIRECTORY_SEPARATOR . $path;
+
+        return $path;
+    }
+
+    public function getImageUrl($path = '')
     {
         if(is_array($path))
             $path = implode('/', $path);
 
-        if(isset($this->imageDir))
-            return $this->imageDir . $path;
+        $imageDir = isset($this->imageDir) ? $this->imageDir : '';
 
-        return $path;
+        return asset('/') .  $this->filesDir . '/' . $imageDir . '/' . $path;
     }
 
 
@@ -26,6 +35,7 @@ trait Imageable {
             return $result;
 
         foreach ($images as $size => $image) {
+
             if(!$sizes || in_array($size, $sizes))
                 $result[$size] = asset('/') .  $this->getImageDir([$id, $size, $image]);
         }

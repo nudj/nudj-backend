@@ -24,8 +24,11 @@ class CloudHelper
         }
     }
 
-    public function save($filename, $path, $container)
+    public function save($filename, $source, $container)
     {
+
+        if(is_array($container))
+            $container = implode('/', $container);
 
         try {
             $container = $this->client->getContainer($container);
@@ -34,9 +37,8 @@ class CloudHelper
         }
 
         try {
-            $file = $container->uploadObject($filename, file_get_contents($path));
-        } catch
-        (Exception $e) {
+            $file = $container->uploadObject($filename, file_get_contents($source));
+        } catch (Exception $e) {
             throw new ApiException(new ApiExceptionType::$RACKSPACE_ERROR);
         }
 

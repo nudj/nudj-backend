@@ -13,7 +13,7 @@ return [
 
     //Rackspace
     'rackspace' => [
-        'apikey' => '4bf56f4a6bb94562b9f1bcd2d0a2e919',
+        'apiKey' => '4bf56f4a6bb94562b9f1bcd2d0a2e919',
         'username' => 'nudge2015',
         'location' => 'LON',
     ],

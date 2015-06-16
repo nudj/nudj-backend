@@ -2,6 +2,7 @@
 
 
 use App\Models\Traits\Imageable;
+use App\Utility\CloudHelper;
 use App\Utility\ImageHelper;
 use App\Utility\Transformers\UserTransformer;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,7 +20,7 @@ class User extends ApiModel
 
     protected $prefix = 'user.';
 
-    protected $imageDir = 'img/UserImage/';
+    protected $imageDir = 'UserImage';
     protected $imageSizes = [
         'profile' => ['name' => 'profile', 'width' => 160, 'height' => 160, 'transform' => 'circle'],
         'cover' => ['name' => 'cover', 'width' => 960, 'height' => 320, 'transform' => 'crop'],
@@ -63,7 +64,7 @@ class User extends ApiModel
             $user = new User;
             $user->phone = (string)$input['phone'];
             $user->token = (string)str_random(60);
-            $user->verification = (int) mt_rand(1000, 9999);
+            $user->verification = (int)mt_rand(1000, 9999);
             $user->save();
         }
 
@@ -89,7 +90,6 @@ class User extends ApiModel
     public function edit($input)
     {
 
-
         if (isset($input['email']))
             $this->email = (string)$input['email'];
 
@@ -106,16 +106,16 @@ class User extends ApiModel
             $this->address = (string)$input['address'];
 
         if (isset($input['findme']))
-            $this->findme = (string) json_encode($input['findme']);
+            $this->findme = (string)json_encode($input['findme']);
 
         if (isset($input['about']))
-            $this->about = (string) json_encode($input['about']);
+            $this->about = (string)json_encode($input['about']);
 
         if (isset($input['completed']))
             $this->completed = (string)$input['completed'];
 
         if (isset($input['status']))
-            $this->status = (int) $input['status'];
+            $this->status = (int)$input['status'];
 
         if (isset($input['skills']))
             $this->syncSkills($input['skills']);
@@ -127,14 +127,22 @@ class User extends ApiModel
             $this->settings = $this->syncSettings($input['settings']);
 
         if (isset($input['image'])) {
-            $imageHelper = new ImageHelper($this->getImageDir($this->id));
+
+
+            $imageHelper = new ImageHelper($this->getImagePath($this->id));
             $images = $imageHelper->saveSizes($input['image'], $this->imageSizes);
-            $this->image = json_encode($images);
+
+            $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
+            foreach($images as $image) {
+                $cloudHelper->save($image, $this->getImageUrl($image), [$this->id, $this->imageDir]);
+            }
+
+           $this->image = json_encode($images);
         }
 
-        $this->save();
+        return $this->save();
 
-        return $this;
+
     }
 
     private function syncSkills($skillList)
@@ -156,7 +164,6 @@ class User extends ApiModel
 
         return $settings;
     }
-
 
 
 }

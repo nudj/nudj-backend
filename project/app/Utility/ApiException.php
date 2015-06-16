@@ -27,8 +27,8 @@ class ApiExceptionType {
 class ApiException extends \Exception
 {
 
-    protected $errorCode = null;
-    protected $errorInfo = null;
+    private $errorCode = null;
+    private $errorInfo = null;
 
     public function __construct($type = null, $errors = null)
     {
@@ -36,9 +36,8 @@ class ApiException extends \Exception
         $this->errorInfo = $errors;
 
         $message = Lang::get('exceptions.' . $this->errorCode);
-        $code = ApiExceptionType::$GENERAL_ERROR['code'];
 
-        parent::__construct($message, $code);
+        parent::__construct($message, $type['code']);
     }
 
     public  function getErrorCode() {
