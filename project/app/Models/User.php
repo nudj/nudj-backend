@@ -133,13 +133,13 @@ class User extends ApiModel
 
         if (isset($input['image'])) {
 
-
             $imageHelper = new ImageHelper($this->getImagePath($this->id));
             $images = $imageHelper->saveSizes($input['image'], $this->imageSizes);
 
             $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
             foreach($images as $size => $image) {
-                $cloudHelper->save([$this->id, $size, $image], $this->getImageUrl($image), $this->imageDir);
+                $imageParts = [$this->id, $size, $image];
+                $cloudHelper->save($imageParts, $this->getImageUrl($imageParts), $this->imageDir);
             }
 
            $this->image = json_encode($images);
