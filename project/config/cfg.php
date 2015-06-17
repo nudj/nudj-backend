@@ -7,11 +7,15 @@ return [
     'response_log' => true,
     'request_timestamp' => true,
 
-    //Chat Server
+    // Chat Server
     'chat_server_ip' => '162.13.187.75:4560',
     'chat_server_host' => 'chat.nudj.co',
 
-    //Rackspace
+    // Exceptions
+    'email_system' => 'no-reply@nudj.co',
+    'email_notifications' => 'ivan@e-man.co.uk',
+
+    // Rackspace
     'rackspace' => [
         'apiKey' => '4bf56f4a6bb94562b9f1bcd2d0a2e919',
         'username' => 'nudge2015',

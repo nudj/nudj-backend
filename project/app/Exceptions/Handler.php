@@ -60,7 +60,9 @@ class Handler extends ExceptionHandler {
             if($e->shouldNotify()) {
                 $sent = Mail::send('emails.errors.exception', array('error' => $response), function($message)
                 {
-                    $message->to('iivannov@gmail.com')->subject('New Exception!');
+                    $message->from(Config::get('cfg.email_system'));
+                    $message->to(Config::get('cfg.email_notifications'));
+                    $message->subject('New Exception!');
                 });
 
                 var_dump($sent);
