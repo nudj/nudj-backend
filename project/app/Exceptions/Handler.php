@@ -4,6 +4,7 @@ use App\Utility\ApiException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
@@ -55,6 +56,13 @@ class Handler extends ExceptionHandler {
 
             if($e->getErrorInfo())
                 $response['error']['message'] = $response['error']['message'] . ' :: ' . $e->getErrorInfo();
+
+            if($e->shouldNotify()) {
+                Mail::send('emails.errors.exception', array('error' => $response), function($message)
+                {
+                    $message->to('iivannov@gmail.com')->subject('New Exception!');
+                });
+            }
 
             return response($response, $e->getCode());
         }

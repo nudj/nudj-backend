@@ -21,7 +21,7 @@ class ImageHelper {
 
     public function saveSizes($source, $sizes = null)
     {
-        Image::configure(array('driver' => 'imagick'));
+        Image::configure(array('driver' => 'gd'));
 
         $this->filename = str_random(10);
 
@@ -74,11 +74,25 @@ class ImageHelper {
         return $filename;
     }
 
-    protected function createDir($path)
+    public function createDir($path)
     {
         is_dir($path) ?: mkdir($path, 0777, true);
 
         return rtrim($path, '/') . '/';
+    }
+
+    public function emptyDir($path, $removeDir = false)
+    {
+        $files = glob($path . '/*');
+
+        foreach ($files as $file) {
+            is_dir($file) ? $this->emptyDir($file, true) : unlink($file);
+        }
+
+        if($removeDir)
+            rmdir($path);
+
+        return true;
     }
 
     public static function getExtensionFromMime($mime)
