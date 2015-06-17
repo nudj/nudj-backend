@@ -58,10 +58,12 @@ class Handler extends ExceptionHandler {
                 $response['error']['message'] = $response['error']['message'] . ' :: ' . $e->getErrorInfo();
 
             if($e->shouldNotify()) {
-                Mail::send('emails.errors.exception', array('error' => $response), function($message)
+                $sent = Mail::send('emails.errors.exception', array('error' => $response), function($message)
                 {
                     $message->to('iivannov@gmail.com')->subject('New Exception!');
                 });
+
+                var_dump($sent);
             }
 
             return response($response, $e->getCode());
