@@ -1,8 +1,12 @@
 <?php namespace App\Models\Traits;
 
+
+use App\Utility\CloudHelper;
+use App\Utility\ImageHelper;
+use Illuminate\Support\Facades\Config;
+
 trait Imageable {
 
-    protected $filesDir = 'upload';
 
 
     public function getImagePath($path = '')
@@ -10,10 +14,8 @@ trait Imageable {
         if(is_array($path))
             $path = implode(DIRECTORY_SEPARATOR, $path);
 
-        if(isset($this->imageDir))
-            return $this->filesDir . DIRECTORY_SEPARATOR . $this->imageDir . DIRECTORY_SEPARATOR . $path;
+        return Config::get('cfg.dir_upload') . DIRECTORY_SEPARATOR . $this->getConfigItem('imageDir') . DIRECTORY_SEPARATOR . $path;
 
-        return $path;
     }
 
     public function getImageUrl($path = '')
@@ -21,9 +23,7 @@ trait Imageable {
         if(is_array($path))
             $path = implode('/', $path);
 
-        $imageDir = isset($this->imageDir) ? $this->imageDir : '';
-
-        return asset('/') .  $this->filesDir . '/' . $imageDir . '/' . $path;
+        return asset('/') .  Config::get('cfg.dir_upload') . '/' . $this->getConfigItem('imageDir') . '/' . $path;
     }
 
 
@@ -40,6 +40,25 @@ trait Imageable {
                 $result[$size] = asset('/') .  $this->getImagePath([$id, $size, $image]);
         }
         return $result;
+    }
+
+
+    public function updateImage($imageSource = null)
+    {
+
+        $imageHelper = new ImageHelper($this->getImagePath($this->id));
+        $images = $imageHelper->saveSizes($imageSource, $this->getConfigItem('imageSizes'));
+
+        $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
+        foreach($images as $size => $image) {
+            $imageParts = [$this->id, $size, $image];
+            $cloudHelper->emptyContainer($this->imageDir);
+            $cloudHelper->save($imageParts, $this->getImageUrl($imageParts), $this->getConfigItem('imageDir'));
+        }
+
+        $imageHelper->emptyDir($this->getImagePath($this->id));
+
+        return $images;
     }
 
 

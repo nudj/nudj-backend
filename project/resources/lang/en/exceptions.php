@@ -11,6 +11,9 @@ return [
     ApiExceptionType::$UNAUTHORIZED['errorCode'] => "Unauthorized",
     ApiExceptionType::$NOT_FOUND['errorCode'] => "Not Found",
 
+    //Development Errors
+    ApiExceptionType::$MISSING_PROPERTY['errorCode'] => "Development Error :: Missing Property",
+
     // API Errors
     ApiExceptionType::$NO_TOKEN['errorCode'] => "No valid token supplied",
     ApiExceptionType::$VALIDATION_ERROR['errorCode'] => "Validation Error :: One or more fields does not meet the requirements",

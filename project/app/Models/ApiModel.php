@@ -1,6 +1,9 @@
 <?php namespace App\Models;
 
+use App\Utility\ApiException;
+use App\Utility\ApiExceptionType;
 use App\Utility\Util;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Model;
 
@@ -43,6 +46,14 @@ class ApiModel extends Model
     public function getDefaultFields()
     {
         return $this->defaultFields;
+    }
+
+    public function getConfigItem($item) {
+
+        if(!isset($this->table))
+            throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
+
+        return Config::get("models.{$this->table}.{$item}");
     }
 
 

@@ -41,6 +41,7 @@ class UsersController extends ApiController
 
     public function store(CreateUserRequest $request)
     {
+
         $user = User::login($request->all());
 
         Event::fire(new LoginUserEvent($user->phone, $user->verification));

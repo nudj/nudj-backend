@@ -10,7 +10,6 @@ class NotificationTransformer extends Transformer {
 
     public function transformMap($item, $column) {
 
-
         switch($column) {
 
             case 'id':
@@ -20,7 +19,7 @@ class NotificationTransformer extends Transformer {
                 return (int) $item->type_id;
 
             case 'message':
-                return 'Some generated message';
+                return $item->getMessage();
 
             case 'read':
                 return (bool) $item->read;

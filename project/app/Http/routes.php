@@ -37,6 +37,7 @@ Route::group(['prefix' => 'api/v1'], function() {
     Route::get('config/{key}', 'ConfigController@show');
 
     Route::get('notifications', 'NotificationsController@index');
+    Route::get('notifications/test', 'NotificationsController@test');
     Route::get('skills/suggest/{term?}', 'SkillsController@suggest');
 
     Route::get('users', 'UsersController@index');

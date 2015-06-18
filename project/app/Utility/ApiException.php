@@ -7,9 +7,12 @@ class ApiExceptionType {
     //General Errors
     public static $GENERAL_ERROR    = ['errorCode' => 10000, 'code' => 400, 'notify' => false];
 
+    //Development Errors
+    public static $MISSING_PROPERTY = ['errorCode' => 10100, 'code' => 400, 'notify' => false];
+
     public static $BAD_REQUEST      = ['errorCode' => 10400, 'code' => 400, 'notify' => false];
     public static $UNAUTHORIZED     = ['errorCode' => 10401, 'code' => 401, 'notify' => false];
-    public static $NOT_FOUND        = ['errorCode' => 10404, 'code' => 404, 'notify' => true];
+    public static $NOT_FOUND        = ['errorCode' => 10404, 'code' => 404, 'notify' => false];
 
     //API Errors
     public static $NO_TOKEN         = ['errorCode' => 11101, 'code' => 400, 'notify' => false];

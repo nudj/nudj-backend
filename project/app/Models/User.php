@@ -2,11 +2,7 @@
 
 
 use App\Models\Traits\Imageable;
-use App\Utility\CloudHelper;
-use App\Utility\ImageHelper;
-use App\Utility\Transformers\UserTransformer;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Config;
 
 class User extends ApiModel
 {
@@ -19,13 +15,6 @@ class User extends ApiModel
     protected $defaultFields = ['name'];
 
     protected $prefix = 'user.';
-
-    protected $imageDir = 'UserImage';
-    protected $imageUrl = 'http://usr-img.nudj.co/';
-    protected $imageSizes = [
-        'profile' => ['name' => 'profile', 'width' => 160, 'height' => 160, 'transform' => 'circle'],
-        'cover' => ['name' => 'cover', 'width' => 960, 'height' => 320, 'transform' => 'crop'],
-    ];
 
 
     /* Relations
@@ -133,16 +122,7 @@ class User extends ApiModel
             $this->settings = $this->syncSettings($input['settings']);
 
         if (isset($input['image'])) {
-
-            $imageHelper = new ImageHelper($this->getImagePath($this->id));
-            $images = $imageHelper->saveSizes($input['image'], $this->imageSizes);
-
-            $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
-            foreach($images as $size => $image) {
-                $imageParts = [$this->id, $size, $image];
-                $cloudHelper->save($imageParts, $this->getImageUrl($imageParts), $this->imageDir);
-            }
-
+           $images = $this->updateImage($input['image']);
            $this->image = json_encode($images);
         }
 
@@ -150,6 +130,7 @@ class User extends ApiModel
 
         return $this;
     }
+
 
     private function syncSkills($skillList)
     {
