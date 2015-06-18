@@ -11,12 +11,6 @@ use Illuminate\Support\Facades\Mail;
 class SendSms implements ShouldBeQueued
 {
 
-    use InteractsWithQueue;
-
-    public function __construct()
-    {
-        //
-    }
 
 
     public function handle(LoginUserEvent $event)

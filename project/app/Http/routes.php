@@ -7,6 +7,15 @@ $router->pattern('id', '([0-9]+)|(me)');
 // Default view
 Route::get('/', 'HomeController@index');
 
+
+// Web view
+Route::group(['prefix' => '/'], function() {
+
+    Route::get('login', 'Web\WebController@login');
+
+});
+
+
 // Admin panel routes
 Route::group(['prefix' => 'admin'], function() {
 

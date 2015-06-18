@@ -1,7 +1,9 @@
 <?php namespace App\Models;
 
+use App\Events\NotifyUserEvent;
 use App\Utility\Transformers\NotificationTransformer;
 use Davibennun\LaravelPushNotification\PushNotification;
+use Illuminate\Support\Facades\Event;
 
 
 class NotificationType
@@ -62,7 +64,7 @@ class Notification extends ApiModel
 
         $notification->save();
 
-        Notification::sendApnNotifications($notification->recipient_id);
+        Event::fire(new NotifyUserEvent($recipientId, $message));
 
         return $notification;
     }
@@ -91,23 +93,25 @@ class Notification extends ApiModel
 
 
     /* APN
-    ----------------------------------------------------- */
+   ----------------------------------------------------- */
 
     private static function sendApnNotifications($recipientId, $message = '')
     {
 
+
         $devices = User::min()->find($recipientId)->devices()->get();
 
-       foreach($devices as $device) {
+        foreach($devices as $device) {
 
-           $notifier = new PushNotification();
-           $notifier->app('NudgeIOS')
-               ->to($device->token)
-               ->send($message);
+            $notifier = new PushNotification();
+            $notifier->app('NudgeIOS')
+                ->to($device->token)
+                ->send($message);
 
-       }
+        }
 
         return true;
 
     }
+
 }
