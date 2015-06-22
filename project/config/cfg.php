@@ -30,6 +30,7 @@ return [
     // SMS Messaging
     'twilio_sid' => 'AC5417072b3b78fe9375f2f8f795a26e74',
     'twilio_token' => '3170bb423fd0155a274ddf2a9f1dd9b4',
+    'twilio_number' => '+44 20 3322 3966',
 
 
     // Elastic
