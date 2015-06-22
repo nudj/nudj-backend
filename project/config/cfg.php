@@ -26,6 +26,12 @@ return [
         'location' => 'LON',
     ],
 
+
+    // SMS Messaging
+    'twilio_sid' => 'AC5417072b3b78fe9375f2f8f795a26e74',
+    'twilio_token' => '3170bb423fd0155a274ddf2a9f1dd9b4',
+
+
     // Elastic
     'elastic_index' => 'nudge',
     'elastic_port' => '9200',
@@ -46,7 +52,7 @@ return [
         ]
     ],
 
-    // Notification types
+// Notification types
     'notifications' => [
         0 => 'receive_nudge',
         1 => 'asked_referral',
