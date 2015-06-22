@@ -12,9 +12,9 @@ class ConfigController extends ApiController {
 		$client = new Services_Twilio(Config::get('cfg.twilio_sid'), Config::get('cfg.twilio_token'));
 
 		$client->account->messages->create(array(
-			'To' => "+359 88 467 6575",
+			'To' => "+44 75 3590 0952",
 			'From' => "+44 20 3322 3966",
-			'Body' => "testing message"
+			'Body' => "1234"
 		));
 
 		return $this->returnResponse(['data' => Config::get('public')]);
