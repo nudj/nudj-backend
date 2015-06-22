@@ -18,6 +18,7 @@ return [
     // Exceptions
     'email_system' => 'no-reply@nudj.co',
     'email_notifications' => 'ivan@e-man.co.uk',
+    'email_feedback' => 'ivan@e-man.co.uk',
 
     // Rackspace
     'rackspace' => [

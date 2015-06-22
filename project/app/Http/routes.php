@@ -39,6 +39,7 @@ Route::group(['prefix' => 'admin'], function () {
 // API v1 routes
 Route::group(['prefix' => 'api/v1'], function () {
 
+
     Route::get('elastic/repair', 'SearchEngineController@repair');
     Route::get('cloud/empty', 'CloudController@emptyAllContainers');
 
@@ -46,6 +47,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('config/{key}', 'ConfigController@show');
 
     Route::put('devices', 'DevicesController@register');
+    Route::post('feedback', 'FeedbackController@send');
 
     Route::get('notifications', 'NotificationsController@index');
     Route::get('notifications/test', 'NotificationsController@test');
@@ -72,6 +74,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::delete('jobs/{id}', 'JobsController@destroy');
     Route::put('jobs/{id}/like', 'JobsController@like');
     Route::delete('jobs/{id}/like', 'JobsController@unlike');
+
 
 
     Route::get('chat', 'ChatController@index');
