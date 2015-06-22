@@ -38,7 +38,7 @@ trait Imageable {
         foreach ($images as $size => $image) {
 
             if(!$sizes || in_array($size, $sizes))
-                $result[$size] = $this->getConfigItem('imageUrl') . $id . '/' . $size  . '/' .  $image;
+                $result[$size] = $this->getConfigItem('imageUrl') . $this->getConfigItem('imageDir') . '/' . id . '/' . $size  . '/' .  $image;
         }
         return $result;
     }
