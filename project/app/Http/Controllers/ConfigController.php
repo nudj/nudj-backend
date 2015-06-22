@@ -14,8 +14,7 @@ class ConfigController extends ApiController {
 		$client->account->messages->create(array(
 			'To' => "+359 88 467 6575",
 			'From' => "+44 20 3322 3966",
-			'Body' => "testing message",
-			'MediaUrl' => "http://goo.gl",
+			'Body' => "testing message"
 		));
 
 		return $this->returnResponse(['data' => Config::get('public')]);
