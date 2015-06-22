@@ -38,8 +38,9 @@ trait Imageable {
         foreach ($images as $size => $image) {
 
             if(!$sizes || in_array($size, $sizes))
-                $result[$size] = $this->getConfigItem('imageUrl') . $this->getConfigItem('imageDir') . '/' . $id . '/' . $size  . '/' .  $image;
+                $result[$size] = $this->getConfigItem('imageUrl') . $id . '/' . $size  . '/' .  $image;
         }
+
         return $result;
     }
 
@@ -50,10 +51,12 @@ trait Imageable {
         $imageHelper = new ImageHelper($this->getImagePath($this->id));
         $images = $imageHelper->saveSizes($imageSource, $this->getConfigItem('imageSizes'));
 
+
         $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
+        $cloudHelper->emptyContainer($this->getConfigItem('imageDir'));
+
         foreach($images as $size => $image) {
             $imageParts = [$this->id, $size, $image];
-            $cloudHelper->emptyContainer($this->getConfigItem('imageDir'));
             $cloudHelper->save($imageParts, $this->getLocalImageUrl($imageParts), $this->getConfigItem('imageDir'));
         }
 
