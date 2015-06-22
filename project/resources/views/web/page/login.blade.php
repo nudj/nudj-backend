@@ -4,7 +4,7 @@
 
     <nav class="navbar navbar-inverse navbar-fixed-top coloredhead">
         <div class="container">
-            <img src="{{ asset('assets/web/img/nudj_logo.png') }}"/>
+            <img class="logo" src="{{ asset('assets/web/img/nudj_logo.png') }}"/>
         </div>
     </nav>
 

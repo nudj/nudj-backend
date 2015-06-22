@@ -1,3 +1,10 @@
 .coloredhead {
- background-color: #00A187;
+    background-color: #00A187;
+    border-color:transparent ;
+}
+.logo{
+    padding: 20px;
+    display: inherit;
+    margin: 0 auto;
+    width: 50%;
 }
