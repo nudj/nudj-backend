@@ -1,3 +1,11 @@
+body {
+    padding-top: 100px;
+}
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
 .coloredhead {
     background-color: #00A187;
     border-color:transparent ;
@@ -7,4 +15,31 @@
     display: inherit;
     margin: 0 auto;
     width: 50%;
+    max-width: 145px;
+    height: 100%;
+}
+
+#name,#paragraph{
+    text-align: center;
+    padding: 10px;
+}
+
+.btnsubmit{
+    background-image: url("../img/submit_btn.png");
+    background-position: center;
+}
+
+.copy{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: smaller;
+    font-weight: lighter;
 }

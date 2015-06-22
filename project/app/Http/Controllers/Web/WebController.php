@@ -9,4 +9,9 @@ class WebController extends \Illuminate\Routing\Controller {
 		return view('web/page/login');
 	}
 
+	public function submit()
+	{
+		return view('web/page/submit');
+	}
+
 }
