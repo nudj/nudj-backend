@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Config;
 trait Imageable {
 
     public abstract function getConfigItem($item);
-    
+
 
     public function getImagePath($path = '', $separator = DIRECTORY_SEPARATOR)
     {

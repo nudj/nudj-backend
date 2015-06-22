@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Lang;
 class ApiExceptionType {
 
     //General Errors
-    public static $GENERAL_ERROR    = ['errorCode' => 10000, 'code' => 400, 'notify' => false];
+    public static $GENERAL_ERROR    = ['errorCode' => 10001, 'code' => 400, 'notify' => false];
 
     //Development Errors
-    public static $MISSING_PROPERTY = ['errorCode' => 10100, 'code' => 400, 'notify' => false];
+    public static $MISSING_PROPERTY = ['errorCode' => 10101, 'code' => 400, 'notify' => false];
 
     public static $BAD_REQUEST      = ['errorCode' => 10400, 'code' => 400, 'notify' => false];
     public static $UNAUTHORIZED     = ['errorCode' => 10401, 'code' => 401, 'notify' => false];
@@ -20,11 +20,14 @@ class ApiExceptionType {
     public static $INVALID_INPUT    = ['errorCode' => 11103, 'code' => 400, 'notify' => false];
 
     // File Errors
-    public static $IMAGE_ERROR      = ['errorCode' => 12100, 'code' => 400, 'notify' => false];
-    public static $RACKSPACE_ERROR  = ['errorCode' => 12200, 'code' => 400, 'notify' => false];
+    public static $IMAGE_ERROR      = ['errorCode' => 12101, 'code' => 400, 'notify' => false];
+    public static $RACKSPACE_ERROR  = ['errorCode' => 12201, 'code' => 400, 'notify' => false];
+
+    // Third Party Errors
+    public static $TWILIO_ERROR     = ['errorCode' => 13101, 'code' => 400, 'notify' => false];
 
     // Nudge Errors
-    public static $VERIFICATION_ERROR    = ['errorCode' => 13101, 'code' => 400, 'notify' => false];
+    public static $VERIFICATION_ERROR    = ['errorCode' => 14101, 'code' => 400, 'notify' => false];
 }
 
 class ApiException extends \Exception
