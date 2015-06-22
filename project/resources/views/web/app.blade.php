@@ -14,7 +14,7 @@
 	<!-- Styles -->
 	@section('styles')
 		<!-- Just an example -->
-		<link href="{{ asset('assets/web/css/some.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/web/css/bootstrap.css') }}" rel="stylesheet">
 	@show
 
 </head>
@@ -28,7 +28,9 @@
 <!-- JS -->
 @section('scripts')
 	<!-- Just an example -->
-	<script src="{{ asset('assets/web/js/some.js') }}"></script>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
 @show
 
 @section('runnable')
