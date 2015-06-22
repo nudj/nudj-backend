@@ -27,7 +27,8 @@ class ApiExceptionType {
     public static $TWILIO_ERROR     = ['errorCode' => 13101, 'code' => 400, 'notify' => false];
 
     // Nudge Errors
-    public static $VERIFICATION_ERROR    = ['errorCode' => 14101, 'code' => 400, 'notify' => false];
+    public static $VERIFICATION_ERROR   = ['errorCode' => 14101, 'code' => 400, 'notify' => false];
+    public static $USER_MISSING         = ['errorCode' => 14201, 'code' => 404, 'notify' => false];
 }
 
 class ApiException extends \Exception

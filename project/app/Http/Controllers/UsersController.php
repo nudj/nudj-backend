@@ -33,7 +33,7 @@ class UsersController extends ApiController
         $item = User::api()->find($id);
 
         if (!$item)
-            throw new ApiException(ApiExceptionType::$NOT_FOUND);
+            throw new ApiException(ApiExceptionType::$USER_MISSING);
 
         return $this->respondWithItem($item, new UserTransformer());
     }
@@ -61,7 +61,7 @@ class UsersController extends ApiController
         $user = User::find($id);
 
         if (!$user)
-            throw new ApiException(ApiExceptionType::$NOT_FOUND);
+            throw new ApiException(ApiExceptionType::$USER_MISSING);
 
         $info = $user->edit(Input::all());
 
@@ -92,7 +92,7 @@ class UsersController extends ApiController
         return $this->respondWithStatus(true, [
             'id' => $user->id,
             'token' => $user->token,
-            'completed' => (bool) $user->completed
+            'completed' => (bool)$user->completed
         ]);
 
     }
@@ -116,8 +116,8 @@ class UsersController extends ApiController
 
         $user = User::min()->find($id);
 
-        if(!$user)
-            throw new ApiException(ApiExceptionType::$NOT_FOUND);
+        if (!$user)
+            throw new ApiException(ApiExceptionType::$USER_MISSING);
 
         $items = $user->contacts()->api()->paginate($this->limit);
         return $this->respondWithPagination($items, new ContactTransformer());
@@ -133,8 +133,8 @@ class UsersController extends ApiController
 
         $user = User::min()->find($id);
 
-        if(!$user)
-            throw new ApiException(ApiExceptionType::$NOT_FOUND);
+        if (!$user)
+            throw new ApiException(ApiExceptionType::$USER_MISSING);
 
         $items = $user->favourites()->api()->paginate($this->limit);
         return $this->respondWithPagination($items, new JobTransformer());

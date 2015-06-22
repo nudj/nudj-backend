@@ -1,6 +1,8 @@
 <?php namespace App\Models;
 
 use App\Events\NotifyUserEvent;
+use App\Utility\ApiException;
+use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\NotificationTransformer;
 use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Support\Facades\Event;
@@ -9,7 +11,11 @@ use Illuminate\Support\Facades\Event;
 class NotificationType
 {
 
-    public static $NUDGE = 1;
+    public static $RECEIVE_NUDGE = 1;
+    public static $ASKED_REFERRAL = 2;
+    public static $RECEIVE_MESSAGE = 3;
+    public static $MATCHING_JOB = 4;
+    public static $MATCHING_CONTACT = 5;
 
 }
 
@@ -47,11 +53,18 @@ class Notification extends ApiModel
     /* CRUD
     ----------------------------------------------------- */
 
+
     public static function add($recipientId, $senderId, $typeId, $meta = null)
     {
 
-        Notification::sendApnNotifications($recipientId);
-        die();
+        $recipient = User::find($recipientId);
+
+        if (!$recipient)
+            throw new ApiException(ApiExceptionType::$USER_MISSING);
+
+        if (!$recipient->isNotificationAllowed($typeId))
+            return false;
+
 
         $notification = new Notification;
 
@@ -64,14 +77,14 @@ class Notification extends ApiModel
 
         $notification->save();
 
-        Event::fire(new NotifyUserEvent($recipientId, $message));
+        Event::fire(new NotifyUserEvent($recipientId, $notification->getMessage()));
 
         return $notification;
     }
 
     public function getMessage()
     {
-        switch ($this->type_id) {
+        switch ($this->typeId) {
             case NotificationType::$NUDGE :
                 return 'Somebody nudged you';
                 break;
@@ -79,7 +92,6 @@ class Notification extends ApiModel
                 return null;
 
         }
-
     }
 
 
@@ -91,27 +103,5 @@ class Notification extends ApiModel
         return Notification::add($recipientId, $senderId, NotificationType::$NUDGE, $meta);
     }
 
-
-    /* APN
-   ----------------------------------------------------- */
-
-    private static function sendApnNotifications($recipientId, $message = '')
-    {
-
-
-        $devices = User::min()->find($recipientId)->devices()->get();
-
-        foreach($devices as $device) {
-
-            $notifier = new PushNotification();
-            $notifier->app('NudgeIOS')
-                ->to($device->token)
-                ->send($message);
-
-        }
-
-        return true;
-
-    }
 
 }

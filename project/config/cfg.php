@@ -45,21 +45,13 @@ return [
     // User default settings
     'user_default_settings' => [
         'notifications' => [
-            'receive_nudge' => true,
-            'asked_referral' => true,
-            'matching_job' => true,
-            'message' => true,
-            'matching_contact' => true,
+            '1' => true,
+            '2' => true,
+            '3' => true,
+            '4' => true,
+            '5' => true,
         ]
     ],
 
-// Notification types
-    'notifications' => [
-        0 => 'receive_nudge',
-        1 => 'asked_referral',
-        2 => 'matching_job',
-        3 => 'message',
-        4 => 'matching_contact'
-    ]
 
 ];
