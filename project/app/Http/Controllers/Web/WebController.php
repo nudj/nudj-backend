@@ -4,12 +4,9 @@
 class WebController extends \Illuminate\Routing\Controller {
 
 
-
-
 	public function login()
 	{
 		return view('web/page/login');
 	}
-
 
 }

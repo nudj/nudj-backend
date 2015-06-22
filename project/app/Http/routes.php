@@ -1,5 +1,6 @@
 <?php
 
+
 // Define patterns for expected parameters
 $router->pattern('id', '([0-9]+)|(me)');
 
@@ -9,7 +10,7 @@ Route::get('/', 'HomeController@index');
 
 
 // Web view
-Route::group(['prefix' => '/'], function() {
+Route::group(['prefix' => '/'], function () {
 
     Route::get('login', 'Web\WebController@login');
 
@@ -17,14 +18,13 @@ Route::group(['prefix' => '/'], function() {
 
 
 // Admin panel routes
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin'], function () {
 
 
     Route::get('/', 'Admin\AuthController@getLogin');
     Route::get('auth/login', 'Admin\AuthController@getLogin');
     Route::get('auth/logout', 'Admin\AuthController@getLogout');
     Route::post('auth/login', 'Admin\AuthController@postLogin');
-
 
     Route::get('/dashboard', 'Admin\DashboardController@index');
     Route::get('/repair', 'Admin\RepairController@index');
@@ -37,7 +37,7 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 // API v1 routes
-Route::group(['prefix' => 'api/v1'], function() {
+Route::group(['prefix' => 'api/v1'], function () {
 
     Route::get('elastic/repair', 'SearchEngineController@repair');
     Route::get('cloud/empty', 'CloudController@emptyAllContainers');
@@ -45,7 +45,7 @@ Route::group(['prefix' => 'api/v1'], function() {
     Route::get('config', 'ConfigController@index');
     Route::get('config/{key}', 'ConfigController@show');
 
-    Route::put('devices}', 'DevicesController@register');
+    Route::put('devices', 'DevicesController@register');
 
     Route::get('notifications', 'NotificationsController@index');
     Route::get('notifications/test', 'NotificationsController@test');
@@ -80,9 +80,8 @@ Route::group(['prefix' => 'api/v1'], function() {
 
 
 // Listen for some stuff
-Event::listen('illuminate.query', function($query)
-{
-    if(env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {
+if (env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {
+    Event::listen('illuminate.query', function ($query) {
         echo($query . "\r\n");
-    }
-});
+    });
+}

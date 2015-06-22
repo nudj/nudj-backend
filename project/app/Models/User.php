@@ -123,6 +123,7 @@ class User extends ApiModel
 
         if (isset($input['image'])) {
            $images = $this->updateImage($input['image']);
+
            $this->image = json_encode($images);
         }
 
