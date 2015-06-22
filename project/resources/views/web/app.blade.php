@@ -15,6 +15,7 @@
 	@section('styles')
 		<!-- Just an example -->
 		<link href="{{ asset('assets/web/css/bootstrap.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/web/css/theme.css') }}" rel="stylesheet">
 	@show
 
 </head>
