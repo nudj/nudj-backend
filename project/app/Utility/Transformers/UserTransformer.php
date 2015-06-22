@@ -40,7 +40,7 @@ class UserTransformer extends Transformer
                 return (bool)$item->completed;
 
             case 'image':
-                $images = $item->getImageUrls($item->id, json_decode($item->image), $this->sizes);
+                $images = $item->getCloudImageUrls($item->id, json_decode($item->image), $this->sizes);
                 return $images;
 
             case 'skills':

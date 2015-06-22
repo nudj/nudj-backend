@@ -7,18 +7,19 @@ use Illuminate\Support\Facades\Config;
 
 trait Imageable {
 
+    public abstract function getConfigItem($item);
+    
 
-
-    public function getImagePath($path = '')
+    public function getImagePath($path = '', $separator = DIRECTORY_SEPARATOR)
     {
         if(is_array($path))
-            $path = implode(DIRECTORY_SEPARATOR, $path);
+            $path = implode($separator, $path);
 
-        return Config::get('cfg.dir_upload') . DIRECTORY_SEPARATOR . $this->getConfigItem('imageDir') . DIRECTORY_SEPARATOR . $path;
+        return Config::get('cfg.dir_upload') . $separator . $this->getConfigItem('imageDir') . $separator . $path;
 
     }
 
-    public function getImageUrl($path = '')
+    public function getLocalImageUrl($path = '')
     {
         if(is_array($path))
             $path = implode('/', $path);
@@ -27,7 +28,7 @@ trait Imageable {
     }
 
 
-    public function getImageUrls($id, $images, $sizes = null)
+    public function getCloudImageUrls($id, $images, $sizes = null)
     {
         $result = [];
 
@@ -37,7 +38,7 @@ trait Imageable {
         foreach ($images as $size => $image) {
 
             if(!$sizes || in_array($size, $sizes))
-                $result[$size] = asset('/') .  $this->getImagePath([$id, $size, $image]);
+                $result[$size] = $this->getConfigItem('imageUrl') . $this->getImagePath([$id, $size, $image], '/');
         }
         return $result;
     }
@@ -53,7 +54,7 @@ trait Imageable {
         foreach($images as $size => $image) {
             $imageParts = [$this->id, $size, $image];
             $cloudHelper->emptyContainer($this->imageDir);
-            $cloudHelper->save($imageParts, $this->getImageUrl($imageParts), $this->getConfigItem('imageDir'));
+            $cloudHelper->save($imageParts, $this->getLocalImageUrl($imageParts), $this->getConfigItem('imageDir'));
         }
 
         $imageHelper->emptyDir($this->getImagePath($this->id));
