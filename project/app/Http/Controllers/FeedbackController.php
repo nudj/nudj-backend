@@ -19,7 +19,6 @@ class FeedbackController extends ApiController
             'feedback' => (string) Input::get('feedback')
         ];
 
-
         Mail::queue('emails.feedback', $data, function($message)
         {
             $message->from(Config::get('cfg.email_system'));
@@ -27,6 +26,7 @@ class FeedbackController extends ApiController
             $message->subject('New Feedback!');
         });
 
+        return $this->respondWithStatus(true);
     }
 
 }
