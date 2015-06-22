@@ -10,12 +10,12 @@ trait Imageable {
     public abstract function getConfigItem($item);
 
 
-    public function getImagePath($path = '', $separator = DIRECTORY_SEPARATOR)
+    public function getImagePath($path = '')
     {
         if(is_array($path))
-            $path = implode($separator, $path);
+            $path = implode(DIRECTORY_SEPARATOR, $path);
 
-        return Config::get('cfg.dir_upload') . $separator . $this->getConfigItem('imageDir') . $separator . $path;
+        return Config::get('cfg.dir_upload') . DIRECTORY_SEPARATOR . $this->getConfigItem('imageDir') . DIRECTORY_SEPARATOR . $path;
 
     }
 
@@ -38,7 +38,7 @@ trait Imageable {
         foreach ($images as $size => $image) {
 
             if(!$sizes || in_array($size, $sizes))
-                $result[$size] = $this->getConfigItem('imageUrl') . $this->getImagePath([$id, $size, $image], '/');
+                $result[$size] = $this->getConfigItem('imageUrl') . $id . '/' . $size  . '/' .  $image;
         }
         return $result;
     }
