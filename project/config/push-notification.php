@@ -3,8 +3,8 @@
 return [
     'NudgeIOS'    =>  [
         'environment' => 'development',
-        'certificate' => '/path/to/certificate.pem',
-        'passPhrase'  => 'password',
+        'certificate' => '../../certificates/ck.pem',
+        'passPhrase'  => 'nudj2015',
         'service'     => 'apns'
     ]
 ];

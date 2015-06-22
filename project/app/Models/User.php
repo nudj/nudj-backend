@@ -3,15 +3,16 @@
 
 use App\Models\Traits\Imageable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Config;
 
 class User extends ApiModel
 {
     use SoftDeletes, Imageable;
 
     protected $table = 'users';
-    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'findme'];
+    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'findme', 'settings'];
 
-    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'findme', 'status', 'skills', 'contacts'];
+    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'findme', 'settings', 'status', 'skills', 'contacts'];
     protected $defaultFields = ['name'];
 
     protected $prefix = 'user.';
@@ -60,6 +61,7 @@ class User extends ApiModel
             $user->phone = (string)$input['phone'];
             $user->token = (string)str_random(60);
             $user->verification = (int)mt_rand(1000, 9999);
+            $user->settings = json_encode(Config::get('cfg.user_default_settings'));
             $user->save();
         }
 
@@ -148,9 +150,21 @@ class User extends ApiModel
 
     private function syncSettings($settingsList)
     {
-        $settings = json_encode($settingsList);
 
-        return $settings;
+        if($this->settings)
+            $settingsList = array_replace(json_decode($this->settings, true), $settingsList);
+
+        return json_encode($settingsList);
+    }
+
+    public function isNotificationAllowed($notificationTypeId = null)
+    {
+        $settings = json_decode($this->settings);
+
+        if(isset($settings->notifications[$notificationTypeId]))
+            return $settings->notifications[$notificationTypeId];
+
+        return false;
     }
 
 

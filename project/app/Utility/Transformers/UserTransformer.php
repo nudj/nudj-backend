@@ -30,8 +30,7 @@ class UserTransformer extends Transformer
             case 'address':
                 return (string)$item->address;
 
-            case 'findme':
-                return json_decode($item->findme);
+
 
             case 'status':
                 return (int) $item->status;
@@ -39,9 +38,16 @@ class UserTransformer extends Transformer
             case 'completed':
                 return (bool)$item->completed;
 
+            case 'findme':
+                return json_decode($item->findme);
+
+            case 'settings':
+                return json_decode($item->settings);
+
             case 'image':
                 $images = $item->getCloudImageUrls($item->id, json_decode($item->image), $this->sizes);
                 return $images;
+
 
             case 'skills':
                 $tranform = new SkillTransformer();

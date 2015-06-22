@@ -51,7 +51,6 @@ trait Imageable {
         $imageHelper = new ImageHelper($this->getImagePath($this->id));
         $images = $imageHelper->saveSizes($imageSource, $this->getConfigItem('imageSizes'));
 
-
         $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
         $cloudHelper->emptyContainer($this->getConfigItem('imageDir'));
 
