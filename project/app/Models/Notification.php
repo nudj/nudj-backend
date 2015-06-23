@@ -72,10 +72,10 @@ class Notification extends ApiModel
         $notification->sender_id = (int)$senderId;
         $notification->type_id = (int)$typeId;
         $notification->meta = json_encode($meta);
-
         $notification->read = false;
 
         $notification->save();
+
 
         Event::fire(new NotifyUserEvent($recipientId, $notification->getMessage()));
 
@@ -84,7 +84,7 @@ class Notification extends ApiModel
 
     public function getMessage()
     {
-        switch ($this->typeId) {
+        switch ($this->type_id) {
             case NotificationType::$RECEIVE_NUDGE :
                 return 'Somebody nudged you';
                 break;
