@@ -1,7 +1,7 @@
 <?php namespace App\Handlers\Events;
 
 
-use App\Events\LoginUserEvent;
+use App\Events\NotifyUserEvent;
 use App\Models\User;
 use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldBeQueued;
 class SendApn implements ShouldBeQueued
 {
 
-    public function handle(LoginUserEvent $event)
+    public function handle(NotifyUserEvent $event)
     {
 
         $devices = User::min()->find($event->recipientId)->devices()->get();
