@@ -2,6 +2,8 @@
 
 
 use App\Models\User;
+use App\Utility\ApiException;
+use App\Utility\ApiExceptionType;
 use Davibennun\LaravelPushNotification\Facades\PushNotification;
 use Illuminate\Support\Facades\Config;
 
@@ -11,10 +13,14 @@ class ConfigController extends ApiController {
 	public function index()
 	{
 
+		$user = User::min()->find(6);
 
-		$recipientId = 6;
-		$devices = User::min()->find($recipientId)->devices()->get();
+		if (!$user)
+			throw new ApiException(ApiExceptionType::$USER_MISSING);
 
+		$devices = $user->devices()->get();
+
+		print_r($devices);
 		foreach ($devices as $device) {
 
 			$notifier = new PushNotification();
