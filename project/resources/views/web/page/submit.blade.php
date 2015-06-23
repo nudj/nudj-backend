@@ -1,10 +1,6 @@
 @extends('web.app')
 
 @section('page')
-    @if (count($user) === 1)
-        @foreach ($user as $current)
-        @endforeach
-    @endif
 
     <nav class="navbar navbar-inverse navbar-fixed-top coloredhead">
         <div class="container">
@@ -22,7 +18,11 @@
 
     <div id="paragraph" class="container">
         <div class="col-lg-1 col-centered" style="max-width: 330px;">
-            <p class="lead">A 4 digit verification code has been sent to +44 546546546</p>
+            @if (count($user) === 1)
+                @foreach ($user as $current)
+                    <p class="lead">A 4 digit verification code has been sent to<span class="tel-span">{{$current}}</span></p>
+                @endforeach
+            @endif
         </div>
     </div>
 

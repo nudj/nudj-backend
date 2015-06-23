@@ -19,7 +19,7 @@
     @endif
     <div id="paragraph" class="container">
         <div class="col-lg-1 col-centered">
-            <p class="lead newp">We need to verify your mobile number before you can see the job details.</p>
+            <p class="lead newp">We need to verify your mobile number before you can see the <span class="bolder">job details</span>.</p>
         </div>
     </div>
 

@@ -27,7 +27,7 @@ class WebController extends \Illuminate\Routing\Controller
 
         $data = [
             'user' => [
-                'name' => 'Simo'
+                'phone' => ' +44 546546546'
             ],
             'local_css' => $public.'/assets/web/css/theme_submit.css',
             'title' => 'Submit'
