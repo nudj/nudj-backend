@@ -3,7 +3,7 @@
 <html>
 <head>
 	<!-- Title -->
-	<title>Title</title>
+	<title>{{ $title }}</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -16,7 +16,7 @@
 		<!-- Just an example -->
 		<link href="{{ asset('assets/web/css/bootstrap.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/web/css/select/bootstrap-select.css') }}" rel="stylesheet">
-		<link href="{{ asset('assets/web/css/theme.css') }}" rel="stylesheet">
+		<link href="{{ $local_css }}" rel="stylesheet">
 	@show
 
 </head>

@@ -14,6 +14,7 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('login', 'Web\WebController@login');
     Route::get('submit', 'Web\WebController@submit');
+    Route::get('job', 'Web\WebController@job');
 
 });
 

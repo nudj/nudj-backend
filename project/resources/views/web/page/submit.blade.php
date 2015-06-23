@@ -1,6 +1,10 @@
 @extends('web.app')
 
 @section('page')
+    @if (count($user) === 1)
+        @foreach ($user as $current)
+        @endforeach
+    @endif
 
     <nav class="navbar navbar-inverse navbar-fixed-top coloredhead">
         <div class="container">
@@ -53,4 +57,3 @@
         <span>Copyright Nudj 2015</span>
     </div>
 @endsection
-
