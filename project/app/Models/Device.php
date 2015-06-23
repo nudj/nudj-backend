@@ -21,10 +21,16 @@ class Device extends ApiModel
     public static function add($userId, $input)
     {
 
+        $device = Device::where('user_id', '=', $userId)
+                ->where('token', '=', $input['token'])
+                ->first();
+
+        if($device)
+            return $device;
+
         $device = new Device;
         $device->user_id = $userId;
         $device->token = (string) $input['token'];
-
         $device->save();
 
         return $device;
