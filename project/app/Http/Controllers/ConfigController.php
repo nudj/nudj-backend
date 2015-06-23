@@ -4,7 +4,7 @@
 use App\Models\User;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
-use Davibennun\LaravelPushNotification\Facades\PushNotification;
+use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Support\Facades\Config;
 
 class ConfigController extends ApiController {
@@ -20,7 +20,7 @@ class ConfigController extends ApiController {
 
 		$devices = $user->devices()->get();
 
-		print_r($devices);
+
 		foreach ($devices as $device) {
 
 			$notifier = new PushNotification();
