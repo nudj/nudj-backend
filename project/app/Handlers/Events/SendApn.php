@@ -3,12 +3,9 @@
 
 use App\Events\LoginUserEvent;
 use App\Models\User;
-use Davibennun\LaravelPushNotification\Facades\PushNotification;
+use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Mail;
 
 class SendApn implements ShouldBeQueued
 {

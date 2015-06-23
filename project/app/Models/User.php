@@ -159,10 +159,11 @@ class User extends ApiModel
 
     public function isNotificationAllowed($notificationTypeId = null)
     {
-        $settings = json_decode($this->settings);
+        $settings = (object) json_decode($this->settings);
 
-        if(isset($settings->notifications[$notificationTypeId]))
-            return $settings->notifications[$notificationTypeId];
+
+        if(isset($settings->notifications->$notificationTypeId))
+            return $settings->notifications->$notificationTypeId;
 
         return false;
     }

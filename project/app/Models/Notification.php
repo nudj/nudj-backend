@@ -85,7 +85,7 @@ class Notification extends ApiModel
     public function getMessage()
     {
         switch ($this->typeId) {
-            case NotificationType::$NUDGE :
+            case NotificationType::$RECEIVE_NUDGE :
                 return 'Somebody nudged you';
                 break;
             default :

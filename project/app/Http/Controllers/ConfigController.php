@@ -1,10 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 
-use App\Models\User;
-use App\Utility\ApiException;
-use App\Utility\ApiExceptionType;
-use Davibennun\LaravelPushNotification\PushNotification;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Config;
 
 class ConfigController extends ApiController {
@@ -12,24 +9,7 @@ class ConfigController extends ApiController {
 
 	public function index()
 	{
-
-		$user = User::min()->find(6);
-
-		if (!$user)
-			throw new ApiException(ApiExceptionType::$USER_MISSING);
-
-		$devices = $user->devices()->get();
-
-
-		foreach ($devices as $device) {
-
-			$notifier = new PushNotification();
-			$notifier->app('NudgeIOS')
-				->to($device->token)
-				->send('Hi Ant');
-
-		}
-		die('sent');
+		$res = Notification::add(6, 1, 1);
 
 		return $this->returnResponse(['data' => Config::get('public')]);
 	}
