@@ -10,7 +10,7 @@
 
     <div id="name" class="container">
         <div class="col-lg-1 col-centered">
-            <p class="lead newp">Hi <span id="user-name" >{{ $name }}</span><img class="btn-edit" src="{{ asset('assets/web/img/edit_btn.png') }}"/></p>
+            <p class="lead newp">Hi <span id="user-name" >{{ $user['name'] }}</span><img class="btn-edit" src="{{ asset('assets/web/img/edit_btn.png') }}"/></p>
 
         </div>
     </div>
