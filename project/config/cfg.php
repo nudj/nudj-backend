@@ -27,6 +27,9 @@ return [
         'location' => 'LON',
     ],
 
+    //Facebook
+    'facebook_app_id' => '686227091453627',
+    'facebook_app_secret' => '7f267e6caa3ffa63ff478b2cf822084a',
 
     // SMS Messaging
     'twilio_sid' => 'AC5417072b3b78fe9375f2f8f795a26e74',

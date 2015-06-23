@@ -12,7 +12,7 @@ class ConfigController extends ApiController {
 	{
 
 
-		$recipientId = 1;
+		$recipientId = 6;
 		$devices = User::min()->find($recipientId)->devices()->get();
 
 		foreach ($devices as $device) {
@@ -20,7 +20,7 @@ class ConfigController extends ApiController {
 			$notifier = new PushNotification();
 			$notifier->app('NudgeIOS')
 				->to($device->token)
-				->send('asdasd');
+				->send('Hi Ant');
 
 		}
 		die('sent');
