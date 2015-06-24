@@ -30,7 +30,7 @@ class LinkedInHelper
     public function getUser()
     {
         $data = $this->request('/people/~:(id,first-name,last-name,skills)');
-
+        print_r($data);
         return $this->response($data);
     }
 
@@ -44,7 +44,7 @@ class LinkedInHelper
 
         }
     }
-    
+
     private function request($query = null)
     {
 
@@ -54,7 +54,7 @@ class LinkedInHelper
         ]);
 
         $request = self::API_URL . $query . '?' . $params;
-
+        echo $request;
         $response = $this->client->get($request);
 
         return $response;
