@@ -1,10 +1,11 @@
 <?php namespace App\Utility;
 
 
+use App\Utility\Contracts\SocialInterface;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
 
-class LinkedInHelper
+class LinkedInHelper implements SocialInterface
 {
 
     const API_URL = 'https://api.linkedin.com/v1';

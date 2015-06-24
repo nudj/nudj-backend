@@ -1,13 +1,14 @@
 <?php namespace App\Utility;
 
 
+use App\Utility\Contracts\SocialInterface;
 use Facebook\FacebookRequest;
 use Facebook\FacebookRequestException;
 use Facebook\FacebookSession;
 use Facebook\GraphUser;
 use Illuminate\Support\Facades\Config;
 
-class FacebookHelper
+class FacebookHelper implements SocialInterface
 {
 
     private $appId;
