@@ -3,12 +3,12 @@
 
 
 @section('title')
-    <title>Login title</title>
+    <title>Submit</title>
 @endsection
 
 @section('styles')
     @parent
-    <link href="{{ asset('assets/web/css/theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/web/css/theme_submit.css') }}" rel="stylesheet">
 @endsection
 
 @section('page')
@@ -20,7 +20,7 @@
     </nav>
 
     <div id="name" class="container">
-        <div class="col-lg-1 col-centered">
+        <div class="col-xs-12 col-centered col-max">
             <p class="lead newp boldest">Phone Number Verification</p>
 
         </div>
@@ -28,32 +28,29 @@
 
 
     <div id="paragraph" class="container">
-        <div class="col-lg-1 col-centered" style="max-width: 330px;">
-            @if (count($user) === 1)
-                @foreach ($user as $current)
-                    <p class="lead">A 4 digit verification code has been sent to<span class="tel-span">{{$current}}</span></p>
-                @endforeach
-            @endif
+        <div class="col-xs-12 col-centered col-max" style="max-width: 330px;">
+
+                    <p class="lead">A 4 digit verification code has been sent to<span class="tel-span">{{$user->phone}}</span></p>
         </div>
     </div>
 
 
 
     <div id="phone" class="container">
-        <div class="col-lg-1 col-centered">
-            <label for="mobile" class="labels">Please this code below</label>
+        <div class="col-xs-12 col-centered col-max">
+            <div class="col-xs-12 col-centered col-max">Please this code below</div>
             <div id="mobile-holder">
                 <div class="mobile-box mobile-border-left">
-                    <input id="mobile-one" name="mobile-one" class="mobile" type="password" value="">
+                    <input id="mobile-one" name="mobile-one" class="mobile" type="password" value="" maxlength="1">
                 </div>
                 <div class="mobile-box mobile-border-left">
-                    <input id="mobile-two" name="mobile-two" class="mobile" type="password" value="">
+                    <input id="mobile-two" name="mobile-two" class="mobile" type="password" value="" maxlength="1">
                 </div>
                 <div class="mobile-box mobile-border-left">
-                    <input id="mobile-three" name="mobile-three" class="mobile" type="password" value="">
+                    <input id="mobile-three" name="mobile-three" class="mobile" type="password" value="" maxlength="1">
                 </div>
                 <div class="mobile-box mobile-border-left">
-                    <input id="mobile-four" name="mobile-four" class="mobile" type="password" value="">
+                    <input id="mobile-four" name="mobile-four" class="mobile" type="password" value="" maxlength="1">
                 </div>
             </div>
         </div>
@@ -61,7 +58,7 @@
 
 
     <div id="push" class="container">
-        <div class="col-lg-1 col-centered">
+        <div class="col-xs-12 col-centered col-max">
             <div id="submit" class="btnsubmit">
                 <div id="btn-submit">
                     Confirm
@@ -71,7 +68,7 @@
     </div>
 
     <div id="resend" class="container">
-        <div class="col-lg-1 col-centered">
+        <div class="col-xs-12 col-centered col-max">
             <p class="lead newp green boldest">Resend Code</p>
 
         </div>

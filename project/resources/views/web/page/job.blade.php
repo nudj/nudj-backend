@@ -7,7 +7,7 @@
 
 @section('styles')
     @parent
-    <link href="{{ asset('assets/web/css/theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/web/css/theme_job.css') }}" rel="stylesheet">
 @endsection
 
 
@@ -15,14 +15,14 @@
 
     <nav class="navbar navbar-inverse navbar-fixed-top coloredhead">
         <div class="container head-container">
-            <div class="head-text">
+            <div class="col-xs-12 col-centered col-max head-text">
                 Job Details
             </div>
         </div>
     </nav>
 
     <div id="name" class="container">
-        <div class="col-lg-1 col-centered">
+        <div class="col-xs-12 col-centered col-max">
             <p class="lead newp">
 
             </p>
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div id="status" class="container no-padding">
+    <div id="status" class="container-fluid no-padding">
         <div class="in-status">
             <div id="left-cell">
                 Job Status
@@ -42,7 +42,7 @@
     </div>
 
     <div id="push" class="container from-top">
-        <div class="col-lg-1 col-centered">
+        <div class="col-xs-12 col-centered col-max">
             <div id="submit" class="btn-apply">
                 <div id="btn-submit">
                     APPLY

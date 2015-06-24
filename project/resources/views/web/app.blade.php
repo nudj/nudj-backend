@@ -5,7 +5,7 @@
 	<!-- Title -->
 	@section('title')
 		<title>Default Title</title>
-	@endsection
+	@show
 
 	<!-- Meta -->
 	<meta charset="utf-8">

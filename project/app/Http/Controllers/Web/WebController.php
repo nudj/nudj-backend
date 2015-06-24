@@ -33,7 +33,6 @@ class WebController extends \Illuminate\Routing\Controller
     public function job()
     {
 
-
         $data = [
             'user' => [
                 'name' => 'Simo'

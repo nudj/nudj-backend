@@ -1,7 +1,7 @@
 @extends('web.app')
 
 @section('title')
-    <title>Login title</title>
+    <title>Login</title>
 @endsection
 
 @section('styles')
@@ -19,14 +19,14 @@
     </nav>
 
     <div id="name" class="container">
-        <div class="col-lg-1 col-centered">
-            <p class="lead newp">Hi <span id="user-name">{{ $user->name }}</span><img class="btn-edit"
+        <div class="col-xs-12 col-centered col-max">
+            <p class="lead newp">Hi <span id="user-name">{{ $user->name }}</span><img src="{{ asset('assets/web/img/edit_btn.png') }}" class="btn-edit"/>
             </p>
         </div>
     </div>
 
     <div id="paragraph" class="container">
-        <div class="col-lg-1 col-centered">
+        <div class="col-xs-12 col-centered col-max">
             <p class="lead newp">We need to verify your mobile number before you can see the <span class="bolder">job details</span>.
             </p>
         </div>
@@ -34,8 +34,8 @@
 
 
     <div id="country" class="container">
-        <div class="col-lg-1 col-centered">
-            <label for="countries" class="labels">Choose your country</label>
+        <div class="col-xs-12 col-centered col-max">
+            <div class="col-xs-12 col-centered col-max" >Choose your country</div>
 
             <select id="countries" class="selectpicker">
                 @foreach ($countries as $country)
@@ -47,11 +47,10 @@
 
 
     <div id="phone" class="container">
-        <div class="col-lg-1 col-centered">
-            <label for="mobile" class="labels">Enter your phone number</label>
-
+        <div class="col-xs-12 col-centered col-max">
+            <div class="col-xs-12 col-centered col-max" >Enter your phone number</div>
             <div id="mobile-holder">
-                <input id="code" name="code" class="code mobile-borderless-right" type="text" value="">
+                <input id="code" name="code" class="code mobile-borderless-right" type="text" value="" maxlength="5">
                 <input id="mobile" name="mobile" class="mobile input-text-centered" type="text" value="">
             </div>
         </div>
@@ -59,7 +58,7 @@
 
 
     <div id="push" class="container">
-        <div class="col-lg-1 col-centered">
+        <div class="col-xs-12 col-centered col-max">
             <div id="submit" class="btnsubmit">
                 <div id="btn-submit">
                     Submit
