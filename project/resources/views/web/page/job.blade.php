@@ -14,6 +14,7 @@
 @section('page')
 
     <nav class="navbar navbar-inverse coloredhead">
+        <img class="head-logo" src="{{ asset('assets/web/img/nudj_logo_small.png') }}"/>
         <div class="container head-container">
             <div class="col-xs-12 col-centered col-max head-text">
                 Job Details

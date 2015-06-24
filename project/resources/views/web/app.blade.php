@@ -33,7 +33,6 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
 	<script src="{{ asset('assets/web/js/select/bootstrap-select.min.js') }}"></script>
-	<script src="{{ asset('assets/web/js/custom.js') }}"></script>
 @show
 
 @section('runnable')

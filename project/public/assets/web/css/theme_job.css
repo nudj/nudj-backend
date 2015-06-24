@@ -18,6 +18,14 @@ body {
     padding-right: 10px;
 }
 
+.head-logo{
+    position: absolute;
+    display: inline;
+    width: 47px;
+    top: 12px;
+    left: 10px;
+}
+
 .newp{
     font-size: 18px;
     margin: 0;

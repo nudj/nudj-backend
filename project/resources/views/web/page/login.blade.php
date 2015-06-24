@@ -20,7 +20,7 @@
 
     <div id="name" class="container">
         <div class="col-xs-12 col-centered col-max">
-            <p class="lead newp">Hi <span id="user-name">{{ $user->name }}</span><img src="{{ asset('assets/web/img/edit_btn.png') }}" class="btn-edit"/>
+            <p class="lead newp">Hi, <input id="user-name" value="{{ $user->name }}" />
             </p>
         </div>
     </div>
@@ -70,4 +70,9 @@
     <div id="copyright" class="container copy">
         <span>Copyright Nudj 2015</span>
     </div>
+@endsection
+
+@section('scripts')
+    @parent
+    <script src="{{ asset('assets/web/js/login_script.js') }}"></script>
 @endsection
