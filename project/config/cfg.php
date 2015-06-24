@@ -31,6 +31,10 @@ return [
     'facebook_app_id' => '686227091453627',
     'facebook_app_secret' => '7f267e6caa3ffa63ff478b2cf822084a',
 
+    //LinkedIn
+    'linkedin_app_id' => '77l67v0flc6leq',
+    'linkedin_app_secret' => 'PLOAmXuwsl1sSooc',
+
     // SMS Messaging
     'twilio_sid' => 'AC5417072b3b78fe9375f2f8f795a26e74',
     'twilio_token' => '3170bb423fd0155a274ddf2a9f1dd9b4',

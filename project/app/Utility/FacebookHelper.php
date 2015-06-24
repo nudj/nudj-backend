@@ -22,11 +22,15 @@ class FacebookHelper
         $this->userToken = $token;
     }
 
+    public function getUser()
+    {
+        return (object) $this->request('/me');
+    }
 
-    public function request($query = null, $type = 'GET')
+    private function request($query = null, $type = 'GET')
     {
 
-        if(!$query)
+        if (!$query)
             return false;
 
         FacebookSession::setDefaultApplication($this->appId, $this->appSecret);
@@ -36,7 +40,8 @@ class FacebookHelper
         try {
             $result = (new FacebookRequest($session, $type, $query))
                 ->execute()
-                ->getGraphObject(GraphUser::className());
+                ->getGraphObject(GraphUser::className())
+                ->asArray();
 
         } catch (FacebookRequestException $e) {
             throw new ApiException(ApiExceptionType::$FACEBOOK_ERROR, $e->getMessage());
