@@ -41,8 +41,8 @@ Route::group(['prefix' => 'admin'], function () {
 // API v1 routes
 Route::group(['prefix' => 'api/v1'], function () {
 
-    Route::get('social/facebook', 'SocialController@facebook');
-    Route::get('social/linkedin', 'SocialController@linkedin');
+    Route::get('connect/facebook', 'SocialController@facebook');
+    Route::get('connect/linkedin', 'SocialController@linkedin');
 
     Route::get('elastic/repair', 'SearchEngineController@repair');
     Route::get('cloud/empty', 'CloudController@emptyAllContainers');
