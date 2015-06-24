@@ -19,14 +19,7 @@ class ChatController extends ApiController
             'debug' => false,
         ]);
 
-
-//        $rpc->addRosterItem('6', '3', 'someoneelse', 'Nudge');
-
-//        $rpc->addRosterItem('3', '6', 'someone', 'Nudge');
-//        print_r($rpc->getRoster('6'));
-
         $rooms = $rpc->getOnlineRooms();
-        print_r($rooms);
 
         foreach ($rooms as $room) {
             list($roomName) = explode('@', $room);
@@ -36,6 +29,8 @@ class ChatController extends ApiController
 
         $newRoomName = strtolower(str_random(6));
         $rpc->createRoom($newRoomName);
+        $rpc->setRoomAffiliation($newRoomName, '6@chat.nudj.co', 'owner');
+        $rpc->setRoomAffiliation($newRoomName, '3@chat.nudj.co', 'owner');
         $rpc->inviteToRoom($newRoomName, null, null,[
             '6@chat.nudj.co',
             '3@chat.nudj.co'
