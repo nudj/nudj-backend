@@ -7,9 +7,9 @@ use App\Models\User;
 use App\Http\Requests;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
+use App\Utility\FacebookHelper;
 use App\Utility\Transformers\ContactTransformer;
 use App\Utility\Transformers\JobTransformer;
-use App\Utility\Transformers\SkillTransformer;
 use App\Utility\Transformers\UserTransformer;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
@@ -17,6 +17,14 @@ use Illuminate\Support\Facades\Input;
 
 class UsersController extends ApiController
 {
+
+    public function social()
+    {
+        $facebook = new FacebookHelper('CAAJwHrIFdrsBAJszlMZCkyJOr0SJ1sHpxGRZBcMVjGqMhaltPZABDQCnYLFdJvv2KMBQWupSZCi5hQg6GyELsnvyikH81y5gG5vpAJPMFFTfvRUNIFWkG8p34PzTQvvCZAAuOZAZAGbdubmL9Wp5oirX2KxlQQXyb69QmEnCCjlrUrh17qT1swexGrtmIKygQ6CzZCiax7yDb4BF2UHF8ItAeUkM44ZBt3kxfHYLbSxPZCngZDZD');
+        $facebook->debug();
+        die('end.');
+    }
+
 
     public function index()
     {

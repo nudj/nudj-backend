@@ -25,6 +25,7 @@ class ApiExceptionType {
 
     // Third Party Errors
     public static $TWILIO_ERROR     = ['errorCode' => 13101, 'code' => 400, 'notify' => false];
+    public static $FACEBOOK_ERROR   = ['errorCode' => 13201, 'code' => 400, 'notify' => false];
 
     // Nudge Errors
     public static $VERIFICATION_ERROR   = ['errorCode' => 14101, 'code' => 400, 'notify' => false];

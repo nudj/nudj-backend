@@ -37,7 +37,7 @@ class ChatController extends ApiController
         $rpc->setRoomOption($newRoomName, 'persistent', true);
         $rpc->setRoomOption($newRoomName, 'members_by_default', true);
         $rpc->inviteToRoom($newRoomName, null, null,[
-            '5@chat.nudj.co',
+            '6@chat.nudj.co',
             '3@chat.nudj.co'
         ]);
 
