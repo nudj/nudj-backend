@@ -1,5 +1,16 @@
 @extends('web.app')
 
+
+
+@section('title')
+    <title>Login title</title>
+@endsection
+
+@section('styles')
+    @parent
+    <link href="{{ asset('assets/web/css/theme.css') }}" rel="stylesheet">
+@endsection
+
 @section('page')
 
     <nav class="navbar navbar-inverse navbar-fixed-top coloredhead">

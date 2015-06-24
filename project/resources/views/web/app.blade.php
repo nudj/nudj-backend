@@ -3,7 +3,9 @@
 <html>
 <head>
 	<!-- Title -->
-	<title>{{ $title }}</title>
+	@section('title')
+		<title>Default Title</title>
+	@endsection
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -13,10 +15,8 @@
 
 	<!-- Styles -->
 	@section('styles')
-		<!-- Just an example -->
 		<link href="{{ asset('assets/web/css/bootstrap.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/web/css/select/bootstrap-select.css') }}" rel="stylesheet">
-		<link href="{{ $local_css }}" rel="stylesheet">
 	@show
 
 </head>
@@ -29,7 +29,6 @@
 
 <!-- JS -->
 @section('scripts')
-	<!-- Just an example -->
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="{{ asset('assets/web/js/bootstrap.js') }}"></script>

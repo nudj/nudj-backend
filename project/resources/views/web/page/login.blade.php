@@ -1,5 +1,15 @@
 @extends('web.app')
 
+@section('title')
+    <title>Login title</title>
+@endsection
+
+@section('styles')
+    @parent
+    <link href="{{ asset('assets/web/css/theme.css') }}" rel="stylesheet">
+@endsection
+
+
 @section('page')
 
     <nav class="navbar navbar-inverse navbar-fixed-top coloredhead">
@@ -7,40 +17,39 @@
             <img class="logo" src="{{ asset('assets/web/img/nudj_logo.png') }}"/>
         </div>
     </nav>
-    @if (count($user) === 1)
-        @foreach ($user as $current)
-            <div id="name" class="container">
-                <div class="col-lg-1 col-centered">
-                    <p class="lead newp">Hi <span id="user-name" >{{ $current }}</span><img class="btn-edit" src="{{ asset('assets/web/img/edit_btn.png') }}"/></p>
 
-                </div>
-            </div>
-        @endforeach
-    @endif
-    <div id="paragraph" class="container">
+    <div id="name" class="container">
         <div class="col-lg-1 col-centered">
-            <p class="lead newp">We need to verify your mobile number before you can see the <span class="bolder">job details</span>.</p>
+            <p class="lead newp">Hi <span id="user-name">{{ $user->name }}</span><img class="btn-edit"
+            </p>
         </div>
     </div>
 
-    @if (isset($countries))
-        <div id="country" class="container">
-            <div class="col-lg-1 col-centered">
-                <label for="countries" class="labels">Choose your country</label>
-
-                <select id="countries" class="selectpicker">
-                    @foreach ($countries as $country)
-                        <option value="{{$country->code}}">{{$country->name}} (+ {{$country->code}} )</option>
-                    @endforeach
-                </select>
-            </div>
+    <div id="paragraph" class="container">
+        <div class="col-lg-1 col-centered">
+            <p class="lead newp">We need to verify your mobile number before you can see the <span class="bolder">job details</span>.
+            </p>
         </div>
-    @endif
+    </div>
+
+
+    <div id="country" class="container">
+        <div class="col-lg-1 col-centered">
+            <label for="countries" class="labels">Choose your country</label>
+
+            <select id="countries" class="selectpicker">
+                @foreach ($countries as $country)
+                    <option value="{{$country->code}}">{{$country->name}} (+ {{$country->code}} )</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
 
 
     <div id="phone" class="container">
         <div class="col-lg-1 col-centered">
             <label for="mobile" class="labels">Enter your phone number</label>
+
             <div id="mobile-holder">
                 <input id="code" name="code" class="code mobile-borderless-right" type="text" value="">
                 <input id="mobile" name="mobile" class="mobile input-text-centered" type="text" value="">
