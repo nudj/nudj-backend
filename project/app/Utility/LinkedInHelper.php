@@ -29,21 +29,9 @@ class LinkedInHelper
 
     public function getUser()
     {
-        $data = $this->request('/people/~:(id,first-name,last-name,skills)');
-        print_r($data);
-        return $this->response($data);
+        return $this->request('/people/~:(id,first-name,last-name,skills)');
     }
 
-    private function response($data = null)
-    {
-        switch($this->format) {
-            case 'json' :
-                return json_decode($data);
-            default :
-                return $data;
-
-        }
-    }
 
     private function request($query = null)
     {
@@ -53,11 +41,18 @@ class LinkedInHelper
             'format' => $this->format,
         ]);
 
-        $request = self::API_URL . $query . '?' . $params;
-        echo $request;
-        $response = $this->client->get($request)->getBody();
+        $url = self::API_URL . $query . '?' . $params;
+        $request = $this->client->get($url);
 
-        return $response;
+        switch($this->format) {
+            case 'json' :
+                return $request->json();
+            case 'xml' :
+                return $request->xml();
+            default :
+                return $request;
+        }
+
     }
 
 }
