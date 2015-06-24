@@ -29,9 +29,22 @@ class LinkedInHelper
 
     public function getUser()
     {
-        return (object) json_decode($this->request('/people/~:(id,first-name,last-name,skills)'));
+        $data = $this->request('/people/~:(id,first-name,last-name,skills)');
+
+        return $this->response($data);
     }
 
+    private function response($data = null)
+    {
+        switch($this->format) {
+            case 'json' :
+                return json_decode($data);
+            default :
+                return $data;
+
+        }
+    }
+    
     private function request($query = null)
     {
 
