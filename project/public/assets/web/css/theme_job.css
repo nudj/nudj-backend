@@ -2,6 +2,13 @@ body {
     padding-top: 60px;
 }
 
+.container-fluids{
+    padding-right: 15px;
+    padding-left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .no-padding{
     padding-left: 0;
     padding-right: 0;
@@ -22,6 +29,10 @@ body {
 
 .coloredhead {
     background-color: #F4F4F4;
+    border-color: transparent;
+    position: absolute;
+    top: 0;
+    width: 100%;
     border-bottom: thin solid #EBEBEB;
 }
 
@@ -120,6 +131,55 @@ body {
     padding-left: 18px;
 }
 
+.margins-top{
+    margin-top: 15px;
+}
+.margins-top-small{
+    margin-top: 5px;
+}
+
+#job-description{
+    font-size: 12px;
+    white-space: normal;
+}
+
+.job-tags{
+    display: table-cell;
+    text-align: center;
+    color:#00A187;
+    border: thin solid #00A187;
+    border-radius: 30px;
+    vertical-align: middle;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.span-title{
+    font-size: 18px;
+    font-weight: 300;
+    color:#00A187;
+}
+
+#job-from{
+    color:#606060;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.span-green{
+    color:#00A187;
+}
+.span-grey{
+    color:#606060;
+}
+.span-green-map{
+    color:#00A187;
+    font-size: 12px;
+    font-weight: 100;
+    display: inline-block;
+    line-height: 16px;
+    margin-left: 5px;
+}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {

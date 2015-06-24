@@ -13,7 +13,7 @@
 
 @section('page')
 
-    <nav class="navbar navbar-inverse navbar-fixed-top coloredhead">
+    <nav class="navbar navbar-inverse coloredhead">
         <div class="container head-container">
             <div class="col-xs-12 col-centered col-max head-text">
                 Job Details
@@ -21,31 +21,50 @@
         </div>
     </nav>
 
-    <div id="name" class="container-fluid no-padding">
-        <div class="col-xs-12 col-centered col-max">
-            <div id="job-title" class="container-fluid">
-                {{$job->title}}
+    <div id="name" class="container-fluid no-padding" style="text-align: left;">
+        <div class="row-fluid no-padding" style="text-align: left;">
+            <div id="job-title" class="container-fluids">
+                <span class="span-title">{{$job->title}}</span>
             </div>
-            <div id="job-from" class="container-fluid">
-                Posted from: {{$job->from}}
+            <div id="job-from" class="container-fluids margins-top-small span-grey">
+                Posted from: <span class="span-green">{{$job->from}}</span>
             </div>
-            <div id="job-description">
+            <div id="job-description" class="container-fluids margins-top">
                 {{$job->description}}
             </div>
-            <div id="job-tags" class="container-fluid">
-                @foreach ($job->tags as $tag)
-                    <div>{{ $tag }}</div>
-                @endforeach
+            <div id="job-tags" class="container-fluids margins-top">
+                <div style="display:table;">
+                    @foreach ($job->tags as $tag)
+                        <div class="job-tags">{{ $tag }}</div>
+                    @endforeach
+                </div>
             </div>
-            <div id="job-employer" class="container-fluid">
-                <img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/> Employer: {{$job->employer}}
+            <div id="job-employer" class="container-fluids margins-top">
+                <img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/>
+                <span class="span-grey">
+                    Employer:
+                </span>
+                <span>
+                    <span class="span-green">{{$job->employer}}</span>
+                </span>
             </div>
-            <div id="job-location" class="container-fluid">
-                        <div><img class="status-check" src="{{ asset('assets/web/img/pin.png') }}"/> Location: {{$job->location->name}}</div>
-                        <div data-lat ="{{$job->location->lat}}" data-lon="{{$job->location->lon}}">View map</div>
+            <div id="job-location" class="container-fluids margins-top">
+                <div style="float: left;">
+                    <img class="status-check" src="{{ asset('assets/web/img/pin.png') }}"/>
+                <span class="span-grey">
+                    Location:
+                </span>
+                <span>
+                    <span class="span-green">{{$job->location->name}}</span>
+                </span>
+                </div>
+                <div class="span-green-map" data-lat ="{{$job->location->lat}}" data-lon="{{$job->location->lon}}">View map</div>
             </div>
-            <div id="job-salary" class="container-fluid">
-                <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Salary: &pound; {{$job->salary}}
+            <div id="job-salary" class="container-fluids margins-top span-grey">
+                <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Salary:
+                   <span class="span-green">
+                        &pound; {{$job->salary}}
+                    </span>
             </div>
         </div>
     </div>
@@ -57,7 +76,7 @@
             </div>
             <div id="right-cell">
                 @if ($job->status === 1)
-                <img class="status-check" src="{{ asset('assets/web/img/check.png') }}"/><span style="color: #00A187;">Active</span>
+                    <img class="status-check" src="{{ asset('assets/web/img/check.png') }}"/><span style="color: #00A187;">Active</span>
                 @else
                     <span>Inactive</span>
                 @endif
