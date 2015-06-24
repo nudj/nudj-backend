@@ -16,3 +16,8 @@ $(window).load(function(){
     }
 
 });
+
+$("#countries").on("change",function(){
+   var newCode = '+' + $(this).val();
+   $("#code").val(newCode);
+});

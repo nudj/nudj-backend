@@ -1,5 +1,11 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext,cyrillic);
+
+
+
 body {
     padding-top: 100px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .newp{
@@ -84,12 +90,34 @@ body {
     padding: 10px;
 }
 
-.mobile{
-    border: thin solid #EBEBEB;
-    border-radius: 3px;
-    height: 35px;
+#mobile-holder{
+    display: table;
     max-width: 330px;
     width: 100%;
+    overflow: hidden;
+    height: 35px;
+}
+
+.mobile{
+    border: thin solid #EBEBEB;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    height: 35px;
+    min-width: 220px;
+    width: auto;
+}
+.code{
+    border: thin solid #EBEBEB;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: 35px;
+    max-width: 50px;
+    width: 100%;
+    text-align: center;
 }
 
 .hit{

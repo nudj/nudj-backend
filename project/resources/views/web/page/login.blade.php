@@ -41,7 +41,10 @@
     <div id="phone" class="container">
         <div class="col-lg-1 col-centered">
             <label for="mobile" class="labels">Enter your phone number</label>
-            <input id="mobile" name="mobile" class="mobile" type="text" value="">
+            <div id="mobile-holder">
+                <input id="code" name="code" class="code" type="text" value="">
+                <input id="mobile" name="mobile" class="mobile" type="text" value="">
+            </div>
         </div>
     </div>
 
