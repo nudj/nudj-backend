@@ -46,7 +46,7 @@ class LinkedInHelper
 
         switch($this->format) {
             case 'json' :
-                return $request->json();
+                return $request->json(['object' => true]);
             case 'xml' :
                 return $request->xml();
             default :
