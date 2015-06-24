@@ -33,9 +33,9 @@
                 {{$job->description}}
             </div>
             <div id="job-tags" class="container-fluids margins-top">
-                <div style="display:table;">
-                    @foreach ($job->tags as $tag)
-                        <div class="job-tags">{{ $tag }}</div>
+                <div style="display:table;border-spacing: 5px;">
+                    @foreach ($job->skills as $skill)
+                        <div class="job-tags">{{ $skill }}</div>
                     @endforeach
                 </div>
             </div>

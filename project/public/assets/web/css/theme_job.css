@@ -28,12 +28,13 @@ body {
 }
 
 .coloredhead {
-    background-color: #F4F4F4;
+    background-color: #00A187;
     border-color: transparent;
     position: absolute;
     top: 0;
     width: 100%;
-    border-bottom: thin solid #EBEBEB;
+    color: #FFFFFF;
+    border-radius: 0px;
 }
 
 .head-container{
@@ -150,7 +151,7 @@ body {
     border: thin solid #00A187;
     border-radius: 30px;
     vertical-align: middle;
-    padding: 5px;
+    padding: 2px;
     font-size: 12px;
 }
 
