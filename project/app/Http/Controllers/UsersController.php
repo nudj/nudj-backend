@@ -29,7 +29,7 @@ class UsersController extends ApiController
         $token = 'AQVZewKxPseuIgqU3l6_ivB1mPrM38ecQr_YlJ7o35lNNMKqeWZsIWEfltY-U9M8vjhuf_8K0Jc8dTkqBEMbd9_hpVZBubmqfTbHxuIxTVzCIAtDmYS4W8c1pLCc-zTwk3IT12McBtKPYPpO8ZtXPIcka4_VcOyXOIEJ414OwauEfZ4-siY';
         $linkedin = new LinkedInHelper($token);
         $user = $linkedin->getUser();
-        $user->name;
+        print_r($user);
 
         die('end.');
     }

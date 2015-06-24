@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Config;
 class LinkedInHelper
 {
 
-    const API_URL = 'https://api.linkedin.com/v1';
+    const API_URL = 'http://api.linkedin.com/v1';
 
     private $client;
     private $appId;
@@ -29,7 +29,7 @@ class LinkedInHelper
 
     public function getUser()
     {
-        return (object) json_decode($this->request('/people/~'));
+        return (object) json_decode($this->request('/people/~:(id,first-name,last-name,skills)'));
     }
 
     private function request($query = null)
