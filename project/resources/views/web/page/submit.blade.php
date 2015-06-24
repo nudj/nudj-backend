@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div id="name" class="container">
+    <div id="resend" class="container">
         <div class="col-lg-1 col-centered">
             <p class="lead newp green boldest">Resend Code</p>
 
