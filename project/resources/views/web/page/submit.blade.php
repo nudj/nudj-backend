@@ -10,7 +10,7 @@
 
     <div id="name" class="container">
         <div class="col-lg-1 col-centered">
-            <p class="lead newp">Phone Number Verification</p>
+            <p class="lead newp boldest">Phone Number Verification</p>
 
         </div>
     </div>
@@ -31,7 +31,20 @@
     <div id="phone" class="container">
         <div class="col-lg-1 col-centered">
             <label for="mobile" class="labels">Please this code below</label>
-            <input id="mobile" name="mobile" class="mobile" type="text" value="">
+            <div id="mobile-holder">
+                <div class="mobile-box mobile-border-left">
+                    <input id="mobile-one" name="mobile-one" class="mobile" type="password" value="">
+                </div>
+                <div class="mobile-box mobile-border-left">
+                    <input id="mobile-two" name="mobile-two" class="mobile" type="password" value="">
+                </div>
+                <div class="mobile-box mobile-border-left">
+                    <input id="mobile-three" name="mobile-three" class="mobile" type="password" value="">
+                </div>
+                <div class="mobile-box mobile-border-left">
+                    <input id="mobile-four" name="mobile-four" class="mobile" type="password" value="">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -48,7 +61,7 @@
 
     <div id="name" class="container">
         <div class="col-lg-1 col-centered">
-            <p class="lead newp">Resend Code</p>
+            <p class="lead newp green boldest">Resend Code</p>
 
         </div>
     </div>

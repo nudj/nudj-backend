@@ -42,8 +42,8 @@
         <div class="col-lg-1 col-centered">
             <label for="mobile" class="labels">Enter your phone number</label>
             <div id="mobile-holder">
-                <input id="code" name="code" class="code" type="text" value="">
-                <input id="mobile" name="mobile" class="mobile" type="text" value="">
+                <input id="code" name="code" class="code mobile-borderless-right" type="text" value="">
+                <input id="mobile" name="mobile" class="mobile input-text-centered" type="text" value="">
             </div>
         </div>
     </div>
