@@ -55,7 +55,7 @@ class LinkedInHelper
 
         $request = self::API_URL . $query . '?' . $params;
         echo $request;
-        $response = $this->client->get($request);
+        $response = $this->client->get($request)->getBody();
 
         return $response;
     }
