@@ -49,6 +49,7 @@ return [
 
     // Random settings
     'verification_code_length' => 4,
+    'default_hash_length' => 4,
 
     // User default settings
     'user_default_settings' => [

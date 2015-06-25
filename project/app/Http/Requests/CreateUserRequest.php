@@ -2,7 +2,7 @@
 
 
 
-class CreateUserRequest extends Request {
+class CreateUserRequest extends ApiRequest {
 
 
 	public function authorize()

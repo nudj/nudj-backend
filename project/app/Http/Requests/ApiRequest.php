@@ -4,7 +4,7 @@ use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use Illuminate\Foundation\Http\FormRequest;
 
-abstract class Request extends FormRequest {
+abstract class ApiRequest extends FormRequest {
 
     public function response(array $errors)
     {

@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers\Admin;
 
 
-use App\Http\Controllers\Admin\AdminController;
 use App\Models\Admin;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;

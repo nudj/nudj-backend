@@ -2,7 +2,7 @@
 
 
 
-class CreateJobRequest extends Request {
+class CreateJobRequest extends ApiRequest {
 
 
 	public function authorize()

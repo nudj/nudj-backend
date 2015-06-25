@@ -2,12 +2,15 @@
 
 
 use App\Models\Traits\Imageable;
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
 
 class User extends ApiModel
 {
-    use SoftDeletes, Imageable;
+    use SoftDeletes;
+    use Imageable;
+    use Authenticatable;
 
     protected $table = 'users';
     protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'findme', 'settings'];
@@ -52,7 +55,7 @@ class User extends ApiModel
 
     /* CRUD
     ----------------------------------------------------- */
-    public static function login($input)
+    public static function login($input, $mobile = true)
     {
         $user = User::where('phone', '=', $input['phone'])->first();
 
@@ -61,6 +64,7 @@ class User extends ApiModel
             $user->phone = (string)$input['phone'];
             $user->token = (string)str_random(60);
             $user->verification = (int)mt_rand(1000, 9999);
+            $user->mobile = (bool) $mobile;
             $user->settings = json_encode(Config::get('cfg.user_default_settings'));
             $user->save();
         }

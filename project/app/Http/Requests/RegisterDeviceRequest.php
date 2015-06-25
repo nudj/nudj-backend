@@ -2,7 +2,7 @@
 
 
 
-class RegisterDeviceRequest extends Request {
+class RegisterDeviceRequest extends ApiRequest {
 
 
 	public function authorize()

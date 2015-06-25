@@ -3,7 +3,7 @@
 
 use Illuminate\Support\Facades\Config;
 
-class VerifyUserRequest extends Request {
+class VerifyUserRequest extends ApiRequest {
 
 
 	public function authorize()

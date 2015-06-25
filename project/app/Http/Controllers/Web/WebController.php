@@ -1,76 +1,90 @@
 <?php namespace App\Http\Controllers\Web;
 
+
+use App\Events\Event;
+use App\Events\LoginUserEvent;
+use App\Http\Requests\Web\CreateUserRequest;
+use App\Http\Requests\Web\VerifyUserRequest;
 use App\Models\Country;
-use App\Models\User;
 use App\Models\Job;
+use App\Models\Nudge;
+use App\Models\Referral;
+use App\Models\User;
 use Illuminate\Support\Facades\Request;
 
 class WebController extends \Illuminate\Routing\Controller
 {
 
-    public function login()
+
+    public function register($type = null, $hash = null)
     {
 
-        $parameters = (object)[
-            'name' => 'Simo',
-            'job'  => 2
-        ];
+        switch ($type) {
+            case 'nudge' :
+                $action = Nudge::findByHash($hash);
+                break;
+            case 'refer' :
+                $action = Referral::findByHash($hash);
+                break;
+            default :
+                $action = false;
+        }
 
-        $data = [
+        if (!$action)
+            return redirect('/');
+
+        return view('web/page/register', [
+            'type' => $type,
+            'job' => $action->job,
+            'user' => $action->referrer,
             'countries' => Country::web()->get(),
-            'user' => (object) [
-                'name' => $parameters->name
-            ],
-            'job' => (object)[
-                'id' => $parameters->job
-            ]
-        ];
-
-        return view('web/page/login', $data);
+        ]);
     }
 
-    public function submit()
+    public function validate(CreateUserRequest $request)
     {
-        $from_login = (object)Request::all();
+        $user = User::login(['phone' => $request->phone], false);
 
-        $searchUser = $from_login->code . $from_login->mobile;
+        Event::fire(new LoginUserEvent($user->phone, $user->verification));
 
-        $this_user = User::login(array('phone' =>   $searchUser));
-
-        $data = [
-            'user' => (object) [
-                'phone' => $this_user->phone,
-            ],
-        ];
-
-        return view('web/page/submit',$data);
+        return view('web/page/validate', [
+            'user' => $user
+        ]);
     }
 
-    public function job()
+    public function verify(VerifyUserRequest $request)
     {
+        if (!Request::ajax())
+            redirect('/');
 
-        $data = [
-            'user' => [
-                'name' => 'Simo'
-            ],
-            'job'  => (object) [
-                'title' => 'UX Designer (Permanent)',
-                'from'  => 'Jeremy Garza',
-                'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-                'skills' => (object)[
-                    'Photoshop','Corel Draw'
-                ],
-                'employer' => 'Digitalz',
-                'location' =>(object)[
-                    'name' => 'London',
-                    'lat'  => '51.508742',
-                    'lon'  => '-0.11055'
-                ],
-                'salary' => '25K - 35K',
-                'status' => 1
-            ]
-        ];
-        return view('web/page/job',$data);
+        $user = User::verify($request->all());
+
+        if($user)
+            //@TODO: create user session
+
+        return response()->json([
+            'success' => (bool)$user
+        ]);
+    }
+
+    public function job($jobId = null)
+    {
+        // @TODO: get logged in user
+        // for the moment just use the first one
+        $user = User::first();
+
+        // @TODO: check if job is visible for this user
+        // ...
+
+        
+        $job = Job::find($jobId);
+
+        return view('web/page/job', [
+            'user' => $user,
+            'job' => $job,
+            'employer' => $job->employer,
+            'skills' => $job->skills,
+        ]);
     }
 
 }
