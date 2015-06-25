@@ -23,7 +23,6 @@ class ApiController extends \Illuminate\Routing\Controller {
 		'App\Http\Controllers\UsersController@store',
 		'App\Http\Controllers\UsersController@verify',
 		'App\Http\Controllers\UsersController@exists',
-		'App\Http\Controllers\ChatController@index',
 	];
 
 	protected $authenticator = null;
@@ -35,13 +34,11 @@ class ApiController extends \Illuminate\Routing\Controller {
 			Event::fire(new IncomingRequestEvent());
 		}
 
-
 		$this->authenticator = new TokenAuthenticator();
 
 		if(!in_array(Request::route()->getActionName(), $this->nonTokenMethods)) {
 			$this->authenticator->validate();
 		}
-
 
 		$this->limit = Request::get('limit') ?: $this->defaults['limit'];
 
