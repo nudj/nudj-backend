@@ -15,7 +15,7 @@ class Chat extends ApiModel
 
     protected $visible = ['id', 'job_id'];
 
-    protected $gettableFields = ['id', 'job'];
+    protected $gettableFields = ['id', 'job', 'participants'];
     protected $defaultFields = [];
 
 
@@ -33,7 +33,7 @@ class Chat extends ApiModel
 
     public function participants()
     {
-        return $this->belongsToMany('App\Models\Participant', 'chat_participants');
+        return $this->belongsToMany('App\Models\User', 'chat_participants');
     }
 
     /* CRUD
@@ -47,6 +47,8 @@ class Chat extends ApiModel
         $chat->job_id = $chatId;
 
         $chat->save();
+
+        $chat->participants()->sync($participants);
 
         return $chat;
     }

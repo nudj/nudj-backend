@@ -26,6 +26,7 @@ return [
     // Third Party Errors
     ApiExceptionType::$TWILIO_ERROR['errorCode'] => "Twilio Error",
     ApiExceptionType::$FACEBOOK_ERROR['errorCode'] => "Facebook Error",
+    ApiExceptionType::$CHAT_ERROR['errorCode'] => "Chat Error",
 
     // Nudge Errors
     ApiExceptionType::$VERIFICATION_ERROR['errorCode'] => "Wrong Verification Code",

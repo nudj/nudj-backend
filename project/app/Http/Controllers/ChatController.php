@@ -14,6 +14,7 @@ class ChatController extends ApiController
 
     public function index()
     {
+
         $items = Chat::api()->paginate($this->limit);
 
         return $this->respondWithPagination($items, new ChatTransformer());
@@ -22,7 +23,7 @@ class ChatController extends ApiController
     public function spawn()
     {
 
-        $chat = Chat::add(1, [1,2]);
+        $chat = Chat::add(1, [3,$this->authenticator->getUserId()]);
 
         $roomName = (string) 1;
         $creator = $this->getChatName($this->authenticator->getUserId());
