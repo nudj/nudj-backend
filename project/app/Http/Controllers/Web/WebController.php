@@ -11,13 +11,18 @@ class WebController extends \Illuminate\Routing\Controller
     public function login()
     {
 
+        $parameters = (object)[
+            'name' => 'Simo',
+            'job'  => 2
+        ];
+
         $data = [
             'countries' => Country::web()->get(),
             'user' => (object) [
-                'name' => 'Simo'
+                'name' => $parameters->name
             ],
             'job' => (object)[
-                'id' => ''
+                'id' => $parameters->job
             ]
         ];
 

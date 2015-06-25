@@ -29,6 +29,7 @@
     <div id="paragraph" class="container">
         <div class="col-xs-12 col-centered col-max">
                     <p class="lead">A 4 digit verification code has been sent to <span class="tel-span">{{$user->phone}}</span></p>
+                    <input type="hidden" name="job-id" id="job-id" value="">
         </div>
     </div>
 
