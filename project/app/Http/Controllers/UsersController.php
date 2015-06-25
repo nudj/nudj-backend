@@ -7,8 +7,6 @@ use App\Models\User;
 use App\Http\Requests;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
-use App\Utility\FacebookHelper;
-use App\Utility\LinkedInHelper;
 use App\Utility\Transformers\ContactTransformer;
 use App\Utility\Transformers\JobTransformer;
 use App\Utility\Transformers\UserTransformer;

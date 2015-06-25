@@ -79,9 +79,9 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('jobs/{id}/like', 'JobsController@like');
     Route::delete('jobs/{id}/like', 'JobsController@unlike');
 
-
-
     Route::get('chat', 'ChatController@index');
+    Route::put('chat', 'ChatController@spawn');
+    Route::delete('chat/all', 'ChatController@deleteAllRooms');
 
 });
 
