@@ -21,3 +21,15 @@ $("#countries").on("change",function(){
    var newCode = '+' + $(this).val();
    $("#code").val(newCode);
 });
+
+$("#user-name").focusin(function(){
+   $(this).css('background-image','none');
+});
+
+$("#user-name").focusout(function(){
+   $(this).css('background-image','url("../assets/web/img/edit_icon.png")');
+});
+
+$("#submit").click(function(){
+    window.location.href = pubUrl + "/submit";
+});

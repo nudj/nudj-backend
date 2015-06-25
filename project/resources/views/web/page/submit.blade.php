@@ -22,14 +22,12 @@
     <div id="name" class="container">
         <div class="col-xs-12 col-centered col-max">
             <p class="lead newp boldest">Phone Number Verification</p>
-
         </div>
     </div>
 
 
     <div id="paragraph" class="container">
-        <div class="col-xs-12 col-centered col-max" style="max-width: 330px;">
-
+        <div class="col-xs-12 col-centered col-max">
                     <p class="lead">A 4 digit verification code has been sent to<span class="tel-span">{{$user->phone}}</span></p>
         </div>
     </div>
@@ -37,8 +35,8 @@
 
 
     <div id="phone" class="container">
+        <div class="col-xs-12 col-centered col-max" >Please this code below</div>
         <div class="col-xs-12 col-centered col-max">
-            <div class="col-xs-12 col-centered col-max">Please this code below</div>
             <div id="mobile-holder">
                 <div class="mobile-box mobile-border-left">
                     <input id="mobile-one" name="mobile-one" class="mobile" type="password" value="" maxlength="1">
@@ -77,4 +75,9 @@
     <div id="copyright" class="container copy">
         <span>Copyright Nudj 2015</span>
     </div>
+@endsection
+
+@section('scripts')
+    @parent
+    <script src="{{ asset('assets/web/js/submit_script.js') }}"></script>
 @endsection

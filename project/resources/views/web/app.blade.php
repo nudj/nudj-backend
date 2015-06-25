@@ -17,6 +17,7 @@
 	@section('styles')
 		<link href="{{ asset('assets/web/css/bootstrap.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/web/css/select/bootstrap-select.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/web/css/tiny-modal/tiny_style.css') }}" rel="stylesheet">
 	@show
 
 </head>
@@ -33,6 +34,7 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
 	<script src="{{ asset('assets/web/js/select/bootstrap-select.min.js') }}"></script>
+	<script src="{{ asset('assets/web/js/tiny-modal/tinybox.js') }}"></script>
 @show
 
 @section('runnable')

@@ -160,8 +160,7 @@ body {
 }
 
 .labels{
-    float: left;
-    padding-left: 18px;
+    display: table;margin: 0 auto;max-width: 330px;width: 100%;text-align: left;
 }
 
 .bolder{

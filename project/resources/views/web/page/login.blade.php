@@ -34,9 +34,8 @@
 
 
     <div id="country" class="container">
+        <div class="col-xs-12 col-centered col-max" ><div class="labels">Choose your country</div></div>
         <div class="col-xs-12 col-centered col-max">
-            <div class="col-xs-12 col-centered col-max" >Choose your country</div>
-
             <select id="countries" class="selectpicker">
                 @foreach ($countries as $country)
                     <option value="{{$country->code}}">{{$country->name}} (+ {{$country->code}} )</option>
@@ -47,8 +46,9 @@
 
 
     <div id="phone" class="container">
-        <div class="col-xs-12 col-centered col-max">
-            <div class="col-xs-12 col-centered col-max" >Enter your phone number</div>
+        <div class="col-xs-12 col-centered col-max" ><div class="labels">Enter your phone number</div></div>
+        <div class="col-xs-12 col-centered col-max" style=" max-width: 350px;">
+
             <div id="mobile-holder">
                 <input id="code" name="code" class="code mobile-borderless-right" type="text" value="" maxlength="5">
                 <input id="mobile" name="mobile" class="mobile input-text-centered" type="text" value="">

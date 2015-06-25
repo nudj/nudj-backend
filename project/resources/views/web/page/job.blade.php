@@ -2,7 +2,7 @@
 
 
 @section('title')
-    <title>Job title</title>
+    <title>Job</title>
 @endsection
 
 @section('styles')
@@ -94,4 +94,10 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+@section('scripts')
+    @parent
+    <script src="{{ asset('assets/web/js/job_script.js') }}"></script>
 @endsection
