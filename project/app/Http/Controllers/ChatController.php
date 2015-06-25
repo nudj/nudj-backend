@@ -22,7 +22,7 @@ class ChatController extends ApiController
     public function spawn()
     {
 
-        $chat = Chat::add(1, []);
+        $chat = Chat::add(1, [1,2]);
 
         $roomName = (string) 1;
         $creator = $this->getChatName($this->authenticator->getUserId());
