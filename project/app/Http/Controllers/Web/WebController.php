@@ -4,7 +4,6 @@ use App\Models\Country;
 use App\Models\User;
 use App\Models\Job;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Response;
 
 class WebController extends \Illuminate\Routing\Controller
 {
@@ -16,6 +15,9 @@ class WebController extends \Illuminate\Routing\Controller
             'countries' => Country::web()->get(),
             'user' => (object) [
                 'name' => 'Simo'
+            ],
+            'job' => (object)[
+                'id' => ''
             ]
         ];
 
@@ -33,7 +35,6 @@ class WebController extends \Illuminate\Routing\Controller
         $data = [
             'user' => (object) [
                 'phone' => $this_user->phone,
-                'id' => $this_user->id
             ],
         ];
 
