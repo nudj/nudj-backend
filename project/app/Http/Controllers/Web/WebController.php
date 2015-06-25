@@ -76,7 +76,7 @@ class WebController extends \Illuminate\Routing\Controller
         // @TODO: check if job is visible for this user
         // ...
 
-        
+
         $job = Job::find($jobId);
 
         return view('web/page/job', [
