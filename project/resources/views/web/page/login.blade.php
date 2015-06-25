@@ -18,44 +18,48 @@
         </div>
     </nav>
 
-    <div id="name" class="container">
-        <div class="col-xs-12 col-centered col-max">
-            <p class="lead newp">Hi, <input id="user-name" value="{{ $user->name }}" />
-            </p>
-        </div>
-    </div>
+    <form id="login" method="post" action="/submit" >
 
-    <div id="paragraph" class="container">
-        <div class="col-xs-12 col-centered col-max">
-            <p class="lead newp">We need to verify your mobile number before you can see the <span class="bolder">job details</span>.
-            </p>
-        </div>
-    </div>
-
-
-    <div id="country" class="container">
-        <div class="col-xs-12 col-centered col-max" ><div class="labels">Choose your country</div></div>
-        <div class="col-xs-12 col-centered col-max">
-            <select id="countries" class="selectpicker">
-                @foreach ($countries as $country)
-                    <option value="{{$country->code}}">{{$country->name}} (+ {{$country->code}} )</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-
-
-    <div id="phone" class="container">
-        <div class="col-xs-12 col-centered col-max" ><div class="labels">Enter your phone number</div></div>
-        <div class="col-xs-12 col-centered col-max" style=" max-width: 350px;">
-
-            <div id="mobile-holder">
-                <input id="code" name="code" class="code mobile-borderless-right" type="text" value="" maxlength="5">
-                <input id="mobile" name="mobile" class="mobile input-text-centered" type="text" value="">
+        <div id="name" class="container">
+            <div class="col-xs-12 col-centered col-max">
+                <p class="lead newp">Hi, <input id="user-name" name="user-name" value="{{ $user->name }}" />
+                </p>
             </div>
         </div>
-    </div>
 
+        <div id="paragraph" class="container">
+            <div class="col-xs-12 col-centered col-max">
+                <p class="lead newp">We need to verify your mobile number before you can see the <span class="bolder">job details</span>.
+                </p>
+            </div>
+        </div>
+
+
+        <div id="country" class="container">
+            <div class="col-xs-12 col-centered col-max" ><div class="labels">Choose your country</div></div>
+            <div class="col-xs-12 col-centered col-max">
+                <select id="countries" class="selectpicker">
+                    @foreach ($countries as $country)
+                        <option value="{{$country->code}}">{{$country->name}} (+ {{$country->code}} )</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+
+        <div id="phone" class="container">
+            <div class="col-xs-12 col-centered col-max" ><div class="labels">Enter your phone number</div></div>
+            <div class="col-xs-12 col-centered col-max" style=" max-width: 350px;">
+
+                <div id="mobile-holder">
+                    <input id="code" name="code" class="code mobile-borderless-right" type="text" value="" maxlength="5">
+                    <input id="clean-code" name="clean-code" type="hidden" value="" maxlength="5">
+                    <input id="mobile" name="mobile" class="mobile input-text-centered" type="text" value="">
+                </div>
+            </div>
+        </div>
+
+    </form>
 
     <div id="push" class="container">
         <div class="col-xs-12 col-centered col-max">

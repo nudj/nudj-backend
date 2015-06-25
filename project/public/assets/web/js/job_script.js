@@ -3,7 +3,9 @@
  */
 var pubUrl = window.location.protocol + '//' + window.location.host;
 
-function down_modal(){parent.TINY.box.hide();}
+function down_modal(){
+    parent.TINY.box.hide();
+}
 
 var msgSuccess =
     '<div id="success-head">Success !</div>' +

@@ -1,6 +1,10 @@
 <?php namespace App\Http\Controllers\Web;
 
 use App\Models\Country;
+use App\Models\User;
+use App\Models\Job;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Response;
 
 class WebController extends \Illuminate\Routing\Controller
 {
@@ -20,10 +24,16 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function submit()
     {
+        $from_login = (object)Request::all();
+
+        $searchUser = $from_login->code . $from_login->mobile;
+
+        $this_user = User::login(array('phone' =>   $searchUser));
 
         $data = [
             'user' => (object) [
-                'phone' => ' +44 546546546'
+                'phone' => $this_user->phone,
+                'id' => $this_user->id
             ],
         ];
 
