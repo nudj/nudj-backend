@@ -35,9 +35,9 @@ class Job extends ApiModel
         return $this->belongsToMany('App\Models\Skill', 'job_skill');
     }
 
-    public function favourites()
+    public function likes()
     {
-        return $this->belongsToMany('App\Models\User', 'job_favourites');
+        return $this->belongsToMany('App\Models\User', 'job_likes');
     }
 
 
@@ -137,9 +137,9 @@ class Job extends ApiModel
             return false;
 
         if (!$remove)
-            $job->favourites()->sync([$userId], false);
+            $job->likes()->sync([$userId], false);
         else
-            $job->favourites()->detach($id);
+            $job->likes()->detach($userId);
 
         return true;
     }

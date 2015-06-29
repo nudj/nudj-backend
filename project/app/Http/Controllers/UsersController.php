@@ -36,7 +36,7 @@ class UsersController extends ApiController
         if (!$item)
             throw new ApiException(ApiExceptionType::$USER_MISSING);
 
-        return $this->respondWithItem($item, new UserTransformer($this->authenticator->returnUser()));
+        return $this->respondWithItem($item, new UserTransformer());
     }
 
 
@@ -139,6 +139,18 @@ class UsersController extends ApiController
 
         $items = $user->favourites()->api()->paginate($this->limit);
         return $this->respondWithPagination($items, new JobTransformer());
+    }
+
+
+
+    public function favourite($id)
+    {
+        return $this->respondWithStatus(User::favourite($id, $this->authenticator->getUserId()));
+    }
+
+    public function unfavourite($id)
+    {
+        return $this->respondWithStatus(User::favourite($id, $this->authenticator->getUserId(), true));
     }
 
 }

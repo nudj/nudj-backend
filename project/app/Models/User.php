@@ -38,12 +38,12 @@ class User extends ApiModel
         return $this->hasMany('App\Models\Job', 'user_id');
     }
 
-    public function favouriteJobs()
+    public function likes()
     {
-        return $this->belongsToMany('App\Models\Job', 'job_favourites');
+        return $this->belongsToMany('App\Models\Job', 'job_likes');
     }
 
-    public function favouriteUsers()
+    public function favourites()
     {
         return $this->belongsToMany('App\Models\User', 'user_favourites');
     }
@@ -192,6 +192,21 @@ class User extends ApiModel
         return false;
     }
 
+    public static function favourite($id, $userId, $remove = false)
+    {
+
+        $user = self::find($id);
+
+        if (!$user)
+            return false;
+
+        if (!$remove)
+            $user->favourites()->sync([$userId], false);
+        else
+            $user->favourites()->detach($id);
+
+        return true;
+    }
 
 
 }

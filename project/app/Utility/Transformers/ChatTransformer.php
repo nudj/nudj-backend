@@ -1,7 +1,7 @@
 <?php namespace App\Utility\Transformers;
 
 
-class ChatTransformer extends UserDependantTransformer
+class ChatTransformer extends Transformer
 {
 
 
@@ -24,7 +24,7 @@ class ChatTransformer extends UserDependantTransformer
 
             case 'participants':
                 if ($item->participants) {
-                    $tranform = new UserTransformer($this->user);
+                    $tranform = new UserTransformer();
                     return $tranform->transformCollection($item->participants);
                 }
                 return null;

@@ -42,6 +42,29 @@ Route::group(['prefix' => 'admin'], function () {
 // API v1 routes
 Route::group(['prefix' => 'api/v1'], function () {
 
+
+    Route::get('jobs', 'JobsController@index');
+    Route::get('jobs/{id}', 'JobsController@show');
+    Route::post('jobs', 'JobsController@store');
+    Route::put('jobs/{id}', 'JobsController@update');
+    Route::delete('jobs/{id}', 'JobsController@destroy');
+    Route::put('jobs/{id}/like', 'JobsController@like');
+    Route::delete('jobs/{id}/like', 'JobsController@unlike');
+
+
+    Route::get('users', 'UsersController@index');
+    Route::get('users/{id}', 'UsersController@show');
+    Route::post('users', 'UsersController@store');
+    Route::put('users/{id?}', 'UsersController@update');
+    Route::delete('users/{id}', 'UsersController@destroy');
+    Route::put('users/verify', 'UsersController@verify');
+    Route::get('users/exists/{id}', 'UsersController@exists');
+    Route::get('users/{id}/contacts', 'UsersController@contacts');
+    Route::get('users/{id}/favourites', 'UsersController@favourites');
+    Route::put('users/{id}/favourite', 'UsersController@favourite');
+    Route::delete('users/{id}/favourite', 'UsersController@unfavourite');
+
+
     Route::get('connect/facebook', 'SocialController@facebook');
     Route::get('connect/linkedin', 'SocialController@linkedin');
 
@@ -58,29 +81,15 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('notifications/test', 'NotificationsController@test');
     Route::get('skills/suggest/{term?}', 'SkillsController@suggest');
 
-    Route::get('users', 'UsersController@index');
-    Route::get('users/{id}', 'UsersController@show');
-    Route::post('users', 'UsersController@store');
-    Route::put('users/{id?}', 'UsersController@update');
-    Route::delete('users/{id}', 'UsersController@destroy');
-    Route::put('users/verify', 'UsersController@verify');
-    Route::get('users/exists/{id}', 'UsersController@exists');
-    Route::get('users/{id}/contacts', 'UsersController@contacts');
-    Route::get('users/{id}/favourites', 'UsersController@favourites');
-    Route::put('users/{id}/favourite', 'UsersController@like');
-    Route::delete('users/{id}/favourite', 'UsersController@unlike');
+
+
+
 
     Route::get('contacts', 'ContactsController@index');
     Route::put('contacts/{id}', 'ContactsController@update');
     Route::delete('contacts/{id}', 'ContactsController@destroy');
 
-    Route::get('jobs', 'JobsController@index');
-    Route::get('jobs/{id}', 'JobsController@show');
-    Route::post('jobs', 'JobsController@store');
-    Route::put('jobs/{id}', 'JobsController@update');
-    Route::delete('jobs/{id}', 'JobsController@destroy');
-    Route::put('jobs/{id}/like', 'JobsController@like');
-    Route::delete('jobs/{id}/like', 'JobsController@unlike');
+
 
 
     Route::get('chat', 'ChatController@index');

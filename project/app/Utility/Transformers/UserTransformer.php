@@ -1,7 +1,7 @@
 <?php namespace App\Utility\Transformers;
 
 
-class UserTransformer extends UserDependantTransformer
+class UserTransformer extends Transformer
 {
 
 
