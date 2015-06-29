@@ -38,10 +38,17 @@ class User extends ApiModel
         return $this->hasMany('App\Models\Job', 'user_id');
     }
 
-    public function favourites()
+    public function favouriteJobs()
     {
         return $this->belongsToMany('App\Models\Job', 'job_favourites');
     }
+
+    public function favouriteUsers()
+    {
+        return $this->belongsToMany('App\Models\User', 'user_favourites');
+    }
+
+
 
     public function notifications()
     {
