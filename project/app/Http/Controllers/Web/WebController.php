@@ -30,19 +30,22 @@ class WebController extends \Illuminate\Routing\Controller
                 $action = false;
         }
 
+
         if (!$action)
             return redirect('/');
 
         return view('web/page/register', [
-            'type' => $type,
+            'type' => $hash,
             'job' => $action->job,
             'user' => $action->referrer,
             'countries' => Country::web()->get(),
         ]);
     }
 
-    public function validate(CreateUserRequest $request)
+    public function validate()
     {
+        $request=(object)Request::all();
+
         $user = User::login(['phone' => $request->phone], false);
 
         Event::fire(new LoginUserEvent($user->phone, $user->verification));
@@ -79,10 +82,22 @@ class WebController extends \Illuminate\Routing\Controller
 
         $job = Job::find($jobId);
 
+
+        // This check has made just for the tests
+        if($job->employer)
+             $hasEmploy = $job->employer;
+        else
+            $hasEmploy = (object)[
+                'name' => 'No information'
+            ];
+
+        /*var_dump($user);die();*/
+
         return view('web/page/job', [
             'user' => $user,
+            'type' => 'nudge',
             'job' => $job,
-            'employer' => $job->employer,
+            'employer' => $hasEmploy,
             'skills' => $job->skills,
         ]);
     }

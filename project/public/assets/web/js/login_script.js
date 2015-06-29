@@ -35,6 +35,7 @@ $("#countries").on("change",function(){
    var newCode = '+' + $(this).val();
    $("#code").val(newCode);
    $("#clean-code").val($(this).val().trim());
+   $("#country_id").val($(this).val().trim());
 });
 
 $("#user-name").focusin(function(){
@@ -42,7 +43,8 @@ $("#user-name").focusin(function(){
 });
 
 $("#user-name").focusout(function(){
-   $(this).css('background-image','url("../assets/web/img/edit_icon.png")');
+    console.log("OUT");
+   $(this).css('background-image','url("../../assets/web/img/edit_icon.png")');
 });
 
 $("#code").focusout(function(){

@@ -28,17 +28,17 @@
                 <span class="span-title">{{$job->title}}</span>
             </div>
             <div id="job-from" class="container-fluids margins-top-small span-grey">
-                Posted from: <span class="span-green">{{$job->from}}</span>
+                Posted from: {{--<span class="span-green">{{$job->from}}</span>--}}
             </div>
             <div id="job-description" class="container-fluids margins-top">
                 {{$job->description}}
             </div>
             <div id="job-tags" class="container-fluids margins-top">
-                <div style="display:table;border-spacing: 5px;">
+{{--                <div style="display:table;border-spacing: 5px;">
                     @foreach ($job->skills as $skill)
                         <div class="job-tags">{{ $skill }}</div>
                     @endforeach
-                </div>
+                </div>--}}
             </div>
             <div id="job-employer" class="container-fluids margins-top">
                 <img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/>
@@ -46,7 +46,7 @@
                     Employer:
                 </span>
                 <span>
-                    <span class="span-green">{{$job->employer}}</span>
+                    <span class="span-green">{{$employer->name}}</span>
                 </span>
             </div>
             <div id="job-location" class="container-fluids margins-top">
@@ -56,10 +56,11 @@
                     Location:
                 </span>
                 <span>
-                    <span class="span-green">{{$job->location->name}}</span>
+                    <span class="span-green">London{{--{{$employer->location}}--}}</span>
                 </span>
                 </div>
-                <div class="span-green-map" data-lat ="{{$job->location->lat}}" data-lon="{{$job->location->lon}}">View map</div>
+                {{--<div class="span-green-map" data-lat ="{{$job->location->lat}}" data-lon="{{$job->location->lon}}">View map</div>--}}
+                <div class="span-green-map">View map</div>
             </div>
             <div id="job-salary" class="container-fluids margins-top span-grey">
                 <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Salary:
@@ -88,7 +89,7 @@
     <div id="push" class="container from-top">
         <div class="col-xs-12 col-centered col-max">
             <div id="submit" class="btn-apply">
-                <div id="btn-submit">
+                <div id="btn-submit" data-type="{{}}">
                     APPLY
                 </div>
             </div>
