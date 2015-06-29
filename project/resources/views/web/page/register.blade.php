@@ -53,9 +53,9 @@
 
                 <div id="mobile-holder">
                     <input id="code" name="code" class="code mobile-borderless-right" type="text" value="" maxlength="5">
-                    <input id="country_id" name="code" class="code mobile-borderless-right" type="hidden" value="" maxlength="5">
+                    <input id="country_id" name="country_id" class="code mobile-borderless-right" type="hidden" value="" maxlength="5">
                     <input id="clean-code" name="clean-code" type="hidden" value="" maxlength="5">
-                    <input id="mobile" name="mobile" class="mobile input-text-centered" type="text" value="">
+                    <input id="mobile" name="mobile" class="mobile input-text-centered" type="number" value="">
                     <input id="phone" name="phone" value="+447507767574" type="hidden">
                     <input id="verification" name="verification" value="{{ $type }}" type="hidden">
                 </div>

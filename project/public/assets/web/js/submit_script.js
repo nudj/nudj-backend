@@ -3,5 +3,5 @@
  */
 var pubUrl = window.location.protocol + '//' + window.location.host;
 $("#submit").click(function(){
-    window.location.href = pubUrl + "/job";
+    window.location.href = "/job";
 });
