@@ -247,6 +247,10 @@ body {
     overflow: hidden;
     max-width: 220px;
 }
+
+.padless{
+    padding: 0;
+}
 /*Modal css*/
 
 /* Smartphones (portrait and landscape) ----------- */

@@ -36,7 +36,7 @@
 
 
         <div id="country" class="container">
-            <div class="col-xs-12 col-centered col-max" ><div class="labels">Choose your country</div></div>
+            <div class="col-xs-12 col-centered col-max padless" ><div class="labels">Choose your country</div></div>
             <div class="col-xs-12 col-centered col-max">
                 <select id="countries" class="selectpicker">
                     @foreach ($countries as $country)
@@ -48,7 +48,7 @@
 
 
         <div id="phone" class="container">
-            <div class="col-xs-12 col-centered col-max" ><div class="labels">Enter your phone number</div></div>
+            <div class="col-xs-12 col-centered col-max padless" ><div class="labels">Enter your phone number</div></div>
             <div class="col-xs-12 col-centered col-max" style=" max-width: 350px;">
 
                 <div id="mobile-holder">
