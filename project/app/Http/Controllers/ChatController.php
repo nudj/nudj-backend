@@ -20,7 +20,7 @@ class ChatController extends ApiController
 
         $items = Chat::api()->mine($userId)->live()->paginate($this->limit);
 
-        return $this->respondWithPagination($items, new ChatTransformer());
+        return $this->respondWithPagination($items, new ChatTransformer($this->authenticator->returnUser()));
     }
 
     public function archived()
@@ -29,7 +29,7 @@ class ChatController extends ApiController
 
         $items = Chat::api()->mine($userId)->archive()->paginate($this->limit);
 
-        return $this->respondWithPagination($items, new ChatTransformer());
+        return $this->respondWithPagination($items, new ChatTransformer($this->authenticator->returnUser()));
     }
 
     public function archive($id = null)

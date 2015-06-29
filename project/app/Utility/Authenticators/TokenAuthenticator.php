@@ -30,6 +30,11 @@ class TokenAuthenticator extends Authenticator
 
     }
 
+    public function returnUser()
+    {
+        return User::find($this->getUserId());
+    }
+
     public function hasRole($role)
     {
         if(!$this->userRoles)

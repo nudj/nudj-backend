@@ -1,7 +1,7 @@
 <?php namespace App\Utility\Transformers;
 
 
-class UserTransformer extends Transformer
+class UserTransformer extends UserDependantTransformer
 {
 
 
@@ -31,7 +31,7 @@ class UserTransformer extends Transformer
                 return (string)$item->address;
 
             case 'status':
-                return (int) $item->status;
+                return (int)$item->status;
 
             case 'completed':
                 return (bool)$item->completed;
@@ -54,6 +54,14 @@ class UserTransformer extends Transformer
                 $tranform = new ContactTransformer();
                 return $tranform->transformCollection($item->contacts);
 
+            case 'contact':
+                $contact = $item->getBelongingContact($this->user->id);
+
+                if (!$contact)
+                    return null;
+
+                $tranform = new ContactTransformer();
+                return $tranform->transform($contact);
 
         }
 

@@ -53,6 +53,7 @@ class User extends ApiModel
         return $this->hasMany('App\Models\Device', 'user_id');
     }
 
+
     /* CRUD
     ----------------------------------------------------- */
     public static function login($input, $mobile = true)
@@ -139,6 +140,18 @@ class User extends ApiModel
     }
 
 
+    /* GET
+    ----------------------------------------------------- */
+    public function getBelongingContact($belongsTo = null)
+    {
+        return Contact::where('user_id', $this->id)
+            ->where('contact_of', $belongsTo)
+            ->first();
+    }
+
+
+    /* Sync
+    ----------------------------------------------------- */
     private function syncSkills($skillList)
     {
         $ids = Skill::addMissing($skillList);
@@ -171,6 +184,7 @@ class User extends ApiModel
 
         return false;
     }
+
 
 
 }

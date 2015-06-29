@@ -43,7 +43,7 @@ class Chat extends ApiModel
     {
         return $query->whereHas('participants', function($q) use ($userId)
         {
-          $q->where('user_id', '=', $userId);
+          $q->where('chat_participants.user_id', '=', $userId);
         });
     }
 

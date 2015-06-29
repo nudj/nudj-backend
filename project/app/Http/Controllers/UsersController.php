@@ -36,7 +36,7 @@ class UsersController extends ApiController
         if (!$item)
             throw new ApiException(ApiExceptionType::$USER_MISSING);
 
-        return $this->respondWithItem($item, new UserTransformer());
+        return $this->respondWithItem($item, new UserTransformer($this->authenticator->returnUser()));
     }
 
 
