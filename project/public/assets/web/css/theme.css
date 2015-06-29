@@ -55,7 +55,7 @@ body {
 }
 
 .copy{
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
@@ -250,6 +250,9 @@ body {
 
 .padless{
     padding: 0;
+}
+.pad-5{
+    padding: 5px;
 }
 /*Modal css*/
 

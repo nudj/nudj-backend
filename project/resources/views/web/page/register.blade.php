@@ -28,7 +28,7 @@
         </div>
 
         <div id="paragraph" class="container">
-            <div class="col-xs-12 col-centered col-max">
+            <div class="col-xs-12 col-centered col-max pad-5">
                 <p class="lead newp">We need to verify your mobile number before you can see the <span class="bolder">job details</span>.
                 </p>
             </div>
