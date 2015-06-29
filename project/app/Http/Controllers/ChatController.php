@@ -4,6 +4,8 @@
 use App\Http\Requests;
 
 use App\Models\Chat;
+use App\Utility\ApiException;
+use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\ChatTransformer;
 use GameNet\Jabber\RpcClient;
 use Illuminate\Support\Facades\Config;
@@ -14,12 +16,40 @@ class ChatController extends ApiController
 
     public function index()
     {
+        $userId = $this->authenticator->getUserId();
 
-        $items = Chat::api()->paginate($this->limit);
+        $items = Chat::api()->mine($userId)->paginate($this->limit);
 
         return $this->respondWithPagination($items, new ChatTransformer());
     }
 
+    public function archive($id = null)
+    {
+        $chat = Chat::find($id);
+
+        if (!$chat)
+            throw new ApiException(ApiExceptionType::$CHAT_MISSING);
+
+        $status = $chat->archive($id);
+
+        return $this->respondWithStatus($status);
+    }
+
+    public function restore($id = null)
+    {
+
+        $chat = Chat::find($id);
+
+        if (!$chat)
+            throw new ApiException(ApiExceptionType::$CHAT_MISSING);
+
+        $status = $chat->restore($id);
+
+        return $this->respondWithStatus($status);
+    }
+
+    /* Test Purposes
+    --------------------------------------------- */
     public function spawn()
     {
 

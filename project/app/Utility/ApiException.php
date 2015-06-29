@@ -31,6 +31,7 @@ class ApiExceptionType {
     // Nudge Errors
     public static $VERIFICATION_ERROR   = ['errorCode' => 14101, 'code' => 400, 'notify' => false];
     public static $USER_MISSING         = ['errorCode' => 14201, 'code' => 404, 'notify' => false];
+    public static $CHAT_MISSING         = ['errorCode' => 14301, 'code' => 404, 'notify' => false];
 }
 
 class ApiException extends \Exception

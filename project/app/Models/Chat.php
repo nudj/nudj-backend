@@ -3,6 +3,7 @@
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\ChatTransformer;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Chat extends ApiModel
@@ -36,11 +37,27 @@ class Chat extends ApiModel
         return $this->belongsToMany('App\Models\User', 'chat_participants');
     }
 
+    /* Scopes
+    ----------------------------------------------------- */
+    public function scopeMine($query, $userId = null)
+    {
+        return $query->whereHas('participants', function($q) use ($userId)
+        {
+          $q->where('user_id', '=', $userId);
+        });
+    }
+
+    public function scopeArchive($query)
+    {
+        return $query->whereNotNull('archived_at');
+    }
+
+
     /* CRUD
    ----------------------------------------------------- */
     public static function add($chatId, $participants = [])
     {
-        if(empty($participants))
+        if (empty($participants))
             throw new ApiException(ApiExceptionType::$CHAT_ERROR);
 
         $chat = new Chat;
@@ -53,6 +70,22 @@ class Chat extends ApiModel
         return $chat;
     }
 
+
+    public function restore()
+    {
+        $this->archived_at = null;
+
+        return $this->save();
+
+    }
+
+    public function archive()
+    {
+        $this->archived_at = Carbon::now();
+
+        return $this->save();
+
+    }
 
 }
 
