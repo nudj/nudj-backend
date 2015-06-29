@@ -18,7 +18,16 @@ class ChatController extends ApiController
     {
         $userId = $this->authenticator->getUserId();
 
-        $items = Chat::api()->mine($userId)->paginate($this->limit);
+        $items = Chat::api()->mine($userId)->live()->paginate($this->limit);
+
+        return $this->respondWithPagination($items, new ChatTransformer());
+    }
+
+    public function archived()
+    {
+        $userId = $this->authenticator->getUserId();
+
+        $items = Chat::api()->mine($userId)->archive()->paginate($this->limit);
 
         return $this->respondWithPagination($items, new ChatTransformer());
     }

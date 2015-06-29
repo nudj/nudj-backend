@@ -23,6 +23,9 @@ class ContactTransformer extends Transformer {
             case 'favourite':
                 return (bool) $item->favourite;
 
+            case 'mute':
+                return (bool) $item->mute;
+
             case 'user':
                 if($item->user) {
                     $tranform = new UserTransformer();

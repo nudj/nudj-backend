@@ -41,6 +41,9 @@ class Contact extends ApiModel
         if (isset($input['favourite']))
             $this->favourite = (string)$input['favourite'];
 
+        if (isset($input['mute']))
+            $this->mute = (string)$input['mute'];
+
         return $this->save();
     }
 

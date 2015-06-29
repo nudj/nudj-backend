@@ -30,8 +30,6 @@ class UserTransformer extends Transformer
             case 'address':
                 return (string)$item->address;
 
-
-
             case 'status':
                 return (int) $item->status;
 
@@ -48,7 +46,6 @@ class UserTransformer extends Transformer
                 $images = $item->getCloudImageUrls($item->id, json_decode($item->image), $this->sizes);
                 return $images;
 
-
             case 'skills':
                 $tranform = new SkillTransformer();
                 return $tranform->transformCollection($item->skills);
@@ -56,6 +53,7 @@ class UserTransformer extends Transformer
             case 'contacts':
                 $tranform = new ContactTransformer();
                 return $tranform->transformCollection($item->contacts);
+
 
         }
 

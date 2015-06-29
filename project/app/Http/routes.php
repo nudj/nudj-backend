@@ -81,6 +81,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::delete('jobs/{id}/like', 'JobsController@unlike');
 
     Route::get('chat', 'ChatController@index');
+    Route::get('chat/archive', 'ChatController@archived');
     Route::put('chat/archive/{id}', 'ChatController@archive');
     Route::delete('chat/archive/{id}', 'ChatController@restore');
 

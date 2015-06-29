@@ -11,11 +11,9 @@ use Illuminate\Support\Facades\Event;
 class NotificationType
 {
 
-    public static $RECEIVE_NUDGE = 1;
-    public static $ASKED_REFERRAL = 2;
-    public static $RECEIVE_MESSAGE = 3;
-    public static $MATCHING_JOB = 4;
-    public static $MATCHING_CONTACT = 5;
+    public static $ASK_TO_REFER = 1;
+    public static $RECEIVE_NUDGE = 2;
+    public static $MATCHING_CONTACT = 3;
 
 }
 

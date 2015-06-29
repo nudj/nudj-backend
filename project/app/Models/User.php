@@ -15,7 +15,7 @@ class User extends ApiModel
     protected $table = 'users';
     protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'findme', 'settings'];
 
-    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'findme', 'settings', 'status', 'skills', 'contacts'];
+    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'findme', 'settings', 'status', 'skills', 'contact', 'contacts'];
     protected $defaultFields = ['name'];
 
     protected $prefix = 'user.';

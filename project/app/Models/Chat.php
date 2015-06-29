@@ -47,6 +47,11 @@ class Chat extends ApiModel
         });
     }
 
+    public function scopeLive($query)
+    {
+        return $query->whereNull('archived_at');
+    }
+
     public function scopeArchive($query)
     {
         return $query->whereNotNull('archived_at');

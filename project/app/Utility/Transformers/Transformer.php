@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Input;
 
 abstract class Transformer
 {
+
     protected $sizes;
 
     public abstract function transformMap($item, $column);
