@@ -207,7 +207,7 @@ body {
 #failed-head{
     color:red;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 600;
     position: absolute;
     top:30px;
     right: 0;
@@ -319,7 +319,7 @@ iPad 3
     }
 
     #name{
-        margin-top: 35px;
+        margin-top: 15px;
     }
 
 }
