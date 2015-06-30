@@ -3,9 +3,17 @@
  */
 var pubUrl = window.location.protocol + '//' + window.location.host;
 
-var msgReminder =
+var msgReminderOne =
     '<div id="failed-head">Reminder</div>' +
-    '<div id="failed-content">Please input your name, code and phone number.</div>' +
+    '<div id="failed-content">Please input your name.</div>' +
+    '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
+var msgReminderTwo =
+    '<div id="failed-head">Reminder</div>' +
+    '<div id="failed-content">Please input your phone number.</div>' +
+    '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
+var msgReminderThree =
+    '<div id="failed-head">Reminder</div>' +
+    '<div id="failed-content">Please input your phone number and name.</div>' +
     '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
 function down_modal(){
@@ -14,7 +22,6 @@ function down_modal(){
 
 
 $(window).load(function(){
-
 
     $('.selectpicker').selectpicker('val', 'United Kingdom-44');
 
@@ -30,14 +37,23 @@ $(window).load(function(){
 
 });
 
-function remainderResult(){
-    TINY.box.show({html:msgReminder,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+function remainderResult(message){
+    switch (message){
+        case "msgReminderOne":
+            TINY.box.show({html:msgReminderOne,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}});
+            break;
+        case "msgReminderTwo":
+            TINY.box.show({html:msgReminderTwo,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}});
+            break;
+        case "msgReminderThree":
+            TINY.box.show({html:msgReminderThree,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}});
+            break;
+    }
+
 }
 
 $("#countries").on("change",function(){
-    var origVal = $(this).val().trim().split("-");
-
-
+   var origVal = $(this).val().trim().split("-");
    var newCode = '+' + origVal[1];
    $("#code").val(newCode);
    $("#clean-code").val($(this).val().trim());
@@ -63,8 +79,35 @@ $("#code").focusout(function(){
 
 
 $("#submit").click(function(){
-    if(($("#code").val().trim().length > 0)&&($("#mobile").val().trim().length > 0)&&($("#user-name").val().trim().length > 0))
-          $("#login").submit();
-    else
-        remainderResult();
+    var msg = '';
+    var check = 0;
+
+    if($("#user-name").val().trim().length <= 0){
+        check = check+1;
+        msg = 'msgReminderOne';
+    }
+    if($("#mobile").val().trim().length <= 0){
+        check = check+1;
+        msg = 'msgReminderTwo';
+    }
+/*    console.log("length: "+$("#user-name").val().trim().length);
+    console.log("length: "+$("#mobile").val().trim().length);
+    console.log("length: "+check);*/
+
+    switch (parseInt(check)){
+        case 0:
+            $("#login").submit();
+            break;
+        case 1 :
+            remainderResult(msg);
+            break;
+        case 2 :
+            msg = 'msgReminderThree';
+            remainderResult(msg);
+            break;
+    }
+
+
+
+
 });
