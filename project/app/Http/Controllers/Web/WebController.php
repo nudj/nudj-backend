@@ -10,6 +10,7 @@ use App\Models\Job;
 use App\Models\Nudge;
 use App\Models\Referral;
 use App\Models\User;
+use App\Utility\ApiException;
 use App\Utility\Facades\Shield;
 use Illuminate\Support\Facades\Request;
 
@@ -30,7 +31,6 @@ class WebController extends \Illuminate\Routing\Controller
                 $action = false;
         }
 
-        /*var_dump($action->referrer);die();*/
         if (!$action)
             return redirect('/');
 
@@ -71,21 +71,26 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function job($jobId = null)
     {
-        if(!Shield::validate('session'))
+        try {
+            Shield::validate('session');
+        } catch (ApiException $e) {
             redirect('/');
+        }
+
+
 
         $user = User::find(Shield::getUserId());
 
+        $job = Job::find($jobId);
+
+        $user->isAskedToRefer($job->id);
+
+
         // @TODO: check if job is visible for this user
         // ...
-        
+
         // @TODO: determine type dynamically
         $type = 'refer';
-
-
-
-
-        $job = Job::find($jobId);
 
 
         return view('web/page/job', [
