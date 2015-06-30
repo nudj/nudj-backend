@@ -30,7 +30,7 @@ class WebController extends \Illuminate\Routing\Controller
                 $action = false;
         }
 
-
+/*var_dump($action->referrer);die();*/
         if (!$action)
             return redirect('/');
 
@@ -38,7 +38,7 @@ class WebController extends \Illuminate\Routing\Controller
             'type' => $hash,
             'job' => $action->job,
             'user' => $action->referrer,
-            'countries' => Country::web()->get(),
+            'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
 
@@ -48,10 +48,11 @@ class WebController extends \Illuminate\Routing\Controller
 
         $user = User::login(['phone' => $request->phone], false);
 
-        Event::fire(new LoginUserEvent($user->phone, $user->verification));
+        /*Event::fire(new LoginUserEvent($user->phone, $user->verification));*/
 
         return view('web/page/validate', [
-            'user' => $user
+            'user' => $user,
+            'job' => $request->jobid
         ]);
     }
 
@@ -90,8 +91,6 @@ class WebController extends \Illuminate\Routing\Controller
             $hasEmploy = (object)[
                 'name' => 'No information'
             ];
-
-        /*var_dump($user);die();*/
 
         return view('web/page/job', [
             'user' => $user,

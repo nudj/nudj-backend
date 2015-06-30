@@ -24,6 +24,7 @@
             <div class="col-xs-12 col-centered col-max">
                 <p class="lead newp">Hi, <input id="user-name" name="user-name" value="{{ $user->alias }}" />
                 </p>
+                <input type="hidden" name="jobid" id="jobid" value="{{$job->id}}" />
             </div>
         </div>
 
@@ -38,7 +39,7 @@
         <div id="country" class="container">
             <div class="col-xs-12 col-centered col-max padless" ><div class="labels">Choose your country</div></div>
             <div class="col-xs-12 col-centered col-max">
-                <select id="countries" class="selectpicker">
+                <select id="countries" class="selectpicker" data-live-search="true">
                     @foreach ($countries as $country)
                         <option value="{{$country->code}}">{{$country->name}} (+ {{$country->code}} )</option>
                     @endforeach
@@ -50,9 +51,8 @@
         <div id="phone" class="container">
             <div class="col-xs-12 col-centered col-max padless" ><div class="labels">Enter your phone number</div></div>
             <div class="col-xs-12 col-centered col-max" style=" max-width: 350px;">
-
                 <div id="mobile-holder">
-                    <input id="code" name="code" class="code mobile-borderless-right" type="text" value="" maxlength="5">
+                    <input id="code" name="code" class="code mobile-borderless-right" type="text" readonly value="" maxlength="5">
                     <input id="country_id" name="country_id" class="code mobile-borderless-right" type="hidden" value="" maxlength="5">
                     <input id="clean-code" name="clean-code" type="hidden" value="" maxlength="5">
                     <input id="mobile" name="mobile" class="mobile input-text-centered" type="tel" value="">

@@ -28,14 +28,14 @@
 
     <div id="paragraph" class="container">
         <div class="col-xs-12 col-centered col-max">
-                    <p class="lead">A 4 digit verification code has been sent to <span class="tel-span">{{$user->phone}}</span></p>
-                    <input type="hidden" name="job-id" id="job-id" value="">
+                    <p class="lead">A 4 digit verification code has been sent to <span class="tel-span" id="phone">{{$user->phone}}</span></p>
+                    <input type="hidden" name="jobid" id="jobid" value="{{$job}}">
         </div>
     </div>
 
 
 
-    <div id="phone" class="container">
+    <div id="phone-code" class="container">
         <div class="col-xs-12 col-centered col-max" >Please this code below</div>
         <div class="col-xs-12 col-centered col-max">
             <div id="mobile-holder">

@@ -38,14 +38,18 @@ $("#countries").on("change",function(){
    $("#country_id").val($(this).val().trim());
 });
 
-$("#user-name").focusin(function(){
-   $(this).css('background-image','none');
+
+$("#user-name").on({
+    focusin:function(){
+        $(this).css('background-image','none');
+        },
+    focusout:function(){
+        $(this).css('background-image','url("../../assets/web/img/edit_icon.png")');
+    }
 });
 
-$("#user-name").focusout(function(){
-    console.log("OUT");
-   $(this).css('background-image','url("../../assets/web/img/edit_icon.png")');
-});
+
+
 
 $("#code").focusout(function(){
    $("#clean-code").val($(this).val().trim());

@@ -41,6 +41,9 @@
                 </div>--}}
             </div>
             <div id="job-employer" class="container-fluids margins-top">
+
+                    <div style="display: table-cell;"><img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/></div>
+                </div>
                 <img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/>
                 <span class="span-grey">
                     Employer:
@@ -59,7 +62,6 @@
                     <span class="span-green">London{{--{{$employer->location}}--}}</span>
                 </span>
                 </div>
-                {{--<div class="span-green-map" data-lat ="{{$job->location->lat}}" data-lon="{{$job->location->lon}}">View map</div>--}}
                 <div class="span-green-map">View map</div>
             </div>
             <div id="job-salary" class="container-fluids margins-top span-grey">

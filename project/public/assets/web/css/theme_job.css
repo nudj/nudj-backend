@@ -190,6 +190,7 @@ body {
     margin-left: 5px;
     border: thin solid #00A187;
     padding: 2px;
+    visibility: hidden;
 }
 
 
