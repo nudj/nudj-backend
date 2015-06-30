@@ -73,9 +73,11 @@
         </div>
     </div>
 
-    <div id="copyright" class="container copy">
-        <span>Copyright Nudj 2015</span>
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">Copyright Nudj 2015</p>
+        </div>
+    </footer>
 @endsection
 
 @section('scripts')
