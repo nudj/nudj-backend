@@ -26,11 +26,11 @@ $("#btn-submit").click(function(e){
         var put_data = {phone:phone,verification:verific};
         $.post( "/verify", put_data,function(data) {})
             .done(function( data ) {
-                console.log(data);
+                /*console.log(data.success);*/
                 isVerifyet = JSON.stringify(data);
                 var obj_verifyet = eval('('+isVerifyet+')');
-                if(obj_verifyet){
-                    console.log("result"+obj_verifyet);
+                if(data.success){
+                   /* console.log("result"+obj_verifyet);*/
                     window.location.href = "/job/"+$("#jobid").val();
                 }
                 else{
