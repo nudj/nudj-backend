@@ -17,8 +17,12 @@ var msgFailed =
     '<div id="failed-content">Something went wrong.Please try again.</div>' +
     '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
+var msgRefer =
+    '<div id="failed-content"><input id="refname" name="refname" value="" /><br><input id="refphone" name="refphone" value=""/> </div>' +
+    '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
+
 function successResult(){
-    TINY.box.show({html:msgSuccess,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
+    TINY.box.show({html:msgRefer,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
 }
 function failedResult(){
     TINY.box.show({html:msgFailed,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})

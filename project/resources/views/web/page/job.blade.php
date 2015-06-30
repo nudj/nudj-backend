@@ -26,6 +26,7 @@
         <div class="row-fluid no-padding" style="text-align: left;">
             <div id="job-title" class="container-fluids">
                 <span class="span-title">{{$job->title}}</span>
+                <input type="hidden" id="refer" name="refer" value="{{$type}}" />
             </div>
             <div id="job-from" class="container-fluids margins-top-small span-grey">
                 Posted from: {{$employer}}
@@ -86,7 +87,7 @@
         <div class="col-xs-12 col-centered col-max">
             <div id="submit" class="btn-apply">
                 <div id="btn-submit" data-type="{{$type}}">
-                    APPLY
+                    {{$button}}
                 </div>
             </div>
         </div>
