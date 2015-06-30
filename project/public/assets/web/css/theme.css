@@ -12,6 +12,10 @@ body {
     outline: 0;
 }
 
+input{
+    -webkit-appearance: none;
+}
+
 .newp{
     font-size: 18px;
     margin: 0;
@@ -122,6 +126,7 @@ body {
     width: -o-calc(100% - 50px);
     width: calc(100% - 50px);
     border-left-color: transparent;
+    -webkit-appearance: none;
 }
 
 .mobile-borderless-right{
@@ -337,6 +342,10 @@ iPad 3
         font-size: 16px;
     }
 
+    body {
+        padding-top: 95px;
+    }
+
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
@@ -355,6 +364,9 @@ iPad 3
     #paragraph {
         padding: 5px;
         margin-top: -18px;
+    }
+    body {
+        padding-top: 95px;
     }
 }
 

@@ -3,8 +3,8 @@
  */
 
 var msgFail =
-    '<div id="failed-head">Fail</div>' +
-    '<div id="failed-content">The code did not match.</div>' +
+    '<div id="failed-head">Incorrect Code</div>' +
+    '<div id="failed-content">Please check and <br>try again.</div>' +
     '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
 function down_modal(){
