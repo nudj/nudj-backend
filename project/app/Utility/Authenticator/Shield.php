@@ -94,7 +94,8 @@ class Shield implements ApiAuthenticable
         if (!$user)
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
-        if(!isset($user->id) || !isset($user->roles))
+
+        if(!isset($user->id))
             throw new \UnexpectedValueException();
 
         $this->userId = $user->id;

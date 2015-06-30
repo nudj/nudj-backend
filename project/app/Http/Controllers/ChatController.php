@@ -28,6 +28,18 @@ class ChatController extends ApiController
         return $this->respondWithPagination($items, new ChatTransformer());
     }
 
+    public function show($id = null)
+    {
+        $id = $this->getPreparedId($id);
+
+        $item = Chat::api()->find($id);
+
+        if (!$item)
+            throw new ApiException(ApiExceptionType::$CHAT_MISSING);
+
+        return $this->respondWithItem($item, new ChatTransformer());
+    }
+
     public function archived()
     {
         $userId = Shield::getUserId();
@@ -61,6 +73,19 @@ class ChatController extends ApiController
 
         return $this->respondWithStatus($status);
     }
+
+
+    public function mute($id = null)
+    {
+        return $this->respondWithStatus(Chat::mute($id, Shield::getUserId()));
+    }
+
+    public function unmute($id = null)
+    {
+        return $this->respondWithStatus(Chat::mute($id, Shield::getUserId()));
+    }
+
+
 
     /* Test Purposes
     --------------------------------------------- */

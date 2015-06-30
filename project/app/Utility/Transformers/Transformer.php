@@ -20,7 +20,6 @@ abstract class Transformer
 
         $columns = Util::extractParams(Input::get('params'), $item->getPrefix());
         $columns = array_intersect($columns, $item->getFields());
-
         if(empty($columns))
             $columns = $item->getDefaultFields();
 

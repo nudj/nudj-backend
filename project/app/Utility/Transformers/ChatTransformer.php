@@ -1,6 +1,8 @@
 <?php namespace App\Utility\Transformers;
 
 
+use App\Utility\Facades\Shield;
+
 class ChatTransformer extends Transformer
 {
 
@@ -29,6 +31,16 @@ class ChatTransformer extends Transformer
                 }
                 return null;
 
+            case 'muted':
+                $me = null;
+
+                foreach($item->participants as $participant) {
+                    if($participant->id == Shield::getUserId()) {
+                        $me = $participant;
+                    }
+                }
+
+                return  isset($me->pivot->mute) ? (bool) $me->pivot->mute : (bool) false;
         }
 
     }

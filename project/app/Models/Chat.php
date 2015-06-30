@@ -16,7 +16,7 @@ class Chat extends ApiModel
 
     protected $visible = ['id', 'job_id'];
 
-    protected $gettableFields = ['id', 'job', 'participants'];
+    protected $gettableFields = ['id', 'job', 'participants', 'muted'];
     protected $defaultFields = [];
 
 
@@ -34,7 +34,7 @@ class Chat extends ApiModel
 
     public function participants()
     {
-        return $this->belongsToMany('App\Models\User', 'chat_participants');
+        return $this->belongsToMany('App\Models\User', 'chat_participants')->withPivot('mute');
     }
 
     /* Scopes
@@ -76,19 +76,29 @@ class Chat extends ApiModel
     }
 
 
-    public function restore()
+
+    public function archive($remove = false)
     {
-        $this->archived_at = null;
+        if($remove)
+            $this->archived_at = null;
+        else
+            $this->archived_at = Carbon::now();
 
         return $this->save();
 
     }
 
-    public function archive()
+    public static function mute($id, $userId, $remove = false)
     {
-        $this->archived_at = Carbon::now();
+        $chat = self::find($id);
 
-        return $this->save();
+        if (!$chat)
+            return false;
+
+        if (!$remove)
+            $chat->participants()->updateExistingPivot($userId, ['mute' => !$remove]);
+
+        return true;
 
     }
 
