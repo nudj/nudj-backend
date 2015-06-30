@@ -12,7 +12,7 @@ function down_modal(){
 }
 
 $("#btn-submit").click(function(e){
-    e.preventDefault();
+    /*e.preventDefault();*/
     var verific = $("#mobile-one").val() +$("#mobile-two").val() + $("#mobile-three").val() + $("#mobile-four").val();
 
     var chkCode = verific.length;
