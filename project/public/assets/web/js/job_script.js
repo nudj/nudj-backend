@@ -18,7 +18,9 @@ var msgFailed =
     '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
 var msgRefer =
-    '<div style="position: relative;width: 235px;height:190px;"><div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name" /><br/><br/><input class="refMsg" id="refphone" name="refphone" value="" placeholder="Phone Number"/> </div>' +
+    '<div style="position: relative;width: 235px;height:190px;">'+
+    '<div id="success-content">Refer Someone</div>' +
+    '<div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name" /><br/><br/><input class="refMsg" id="refphone" name="refphone" value="" placeholder="Phone Number"/> </div>' +
     '<div id="refs-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div></div>';
 
 function successResult(){
