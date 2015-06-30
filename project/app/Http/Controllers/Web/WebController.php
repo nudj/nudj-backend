@@ -10,6 +10,7 @@ use App\Models\Job;
 use App\Models\Nudge;
 use App\Models\Referral;
 use App\Models\User;
+use App\Utility\Facades\Shield;
 use Illuminate\Support\Facades\Request;
 
 class WebController extends \Illuminate\Routing\Controller
@@ -61,50 +62,37 @@ class WebController extends \Illuminate\Routing\Controller
         $user = User::verify($request->all());
 
         if ($user)
-            //@TODO: create user session
+            Shield::createSession($user->token);
 
-            return response()->json([
-                'success' => (bool)$user
-            ]);
+        return response()->json([
+            'success' => (bool)$user
+        ]);
     }
 
     public function job($jobId = null)
     {
-        // @TODO: get logged in user
-        // for the moment just use the first one
-        $user = User::first();
+        if(!Shield::validate('session'))
+            redirect('/');
+
+        $user = User::find(Shield::getUserId());
 
         // @TODO: check if job is visible for this user
         // ...
+        
+        // @TODO: determine type dynamically
+        $type = 'refer';
+
+
 
 
         $job = Job::find($jobId);
 
-        // This check has made just for the tests
-        $incoming_type = 'refer';
-
-        switch ($incoming_type){
-            case "refer":
-                $text_btn = "REFER";
-                break;
-            case "nudge":
-                $text_btn = "APPLY";
-                break;
-        }
-
-        if($job->user->name)
-             $hasEmploy = $job->user->name;
-        else
-            $hasEmploy = (object)[
-                'name' => 'No information'
-            ];
 
         return view('web/page/job', [
             'user' => $user,
-            'type' => $incoming_type,
-            'button' => $text_btn,
+            'type' => $type,
             'job' => $job,
-            'employer' => $hasEmploy,
+            'employer' => $job->user->name,
             'skills' => $job->skills,
         ]);
     }
