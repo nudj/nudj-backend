@@ -1,9 +1,6 @@
 <?php namespace App\Http\Controllers\Web;
 
 
-use App\Events\Event;
-use App\Events\LoginUserEvent;
-use App\Http\Requests\Web\CreateUserRequest;
 use App\Http\Requests\Web\VerifyUserRequest;
 use App\Models\Country;
 use App\Models\Job;
