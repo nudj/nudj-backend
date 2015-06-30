@@ -352,6 +352,9 @@ iPad 3
     .newp{
         font-size: 16px;
     }
+    #paragraph {
+        padding: 5px;
+    }
 }
 
 /* iPhone 6 ----------- */
