@@ -14,26 +14,37 @@ function down_modal(){
 $("#btn-submit").click(function(e){
     e.preventDefault();
     var verific = $("#mobile-one").val() +$("#mobile-two").val() + $("#mobile-three").val() + $("#mobile-four").val();
-    var phone = $("#phone").html().trim();
 
-    var put_data = {phone:phone,verification:verific};
-    $.post( "/verify", put_data,function(data) {})
-        .done(function( data ) {
-            isVerifyet = JSON.stringify(data);
-            var obj_verifyet = eval('('+isVerifyet+')');
-            if(obj_verifyet){
-                console.log("result"+obj_verifyet);
-                window.location.href = "/job/"+$("#jobid").val();
-            }
-        })
-    .fail(function(){
-            TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
-    })
+    var chkCode = verific.length;
+
+    if(chkCode <4){
+        TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+    }
+    else{
+        var phone = $("#phone").html().trim();
+
+        var put_data = {phone:phone,verification:verific};
+        $.post( "/verify", put_data,function(data) {})
+            .done(function( data ) {
+                isVerifyet = JSON.stringify(data);
+                var obj_verifyet = eval('('+isVerifyet+')');
+                if(obj_verifyet){
+                    console.log("result"+obj_verifyet);
+                    window.location.href = "/job/"+$("#jobid").val();
+                }
+            })
+            .fail(function(){
+                TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+            })
+    }
 
 });
 
 function closeFailed(){
-    $(":input").val("");
+    $("input[name=mobile-one]").val("");
+    $("input[name=mobile-two]").val("");
+    $("input[name=mobile-three]").val("");
+    $("input[name=mobile-four]").val("");
     $("#mobile-one").focus();
 }
 
@@ -58,9 +69,18 @@ $("#mobile-three").keypress(function(e){
 $("#mobile-four").keypress(function(e){
 
     if (e.keyCode == 13) {
-        if($("#mobile-four").length > 0){
+
+        var verific = $("#mobile-one").val() +$("#mobile-two").val() + $("#mobile-three").val() + $(this).val();
+
+        var chkCode = verific.length;
+
+        if(chkCode <4){
+            TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+        }
+        else{
             $("#btn-submit").click();
         }
+
     }
 
 });

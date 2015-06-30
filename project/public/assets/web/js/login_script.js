@@ -52,12 +52,20 @@ function remainderResult(message){
 
 }
 
+function closeFailed(){
+}
+
 $("#countries").on("change",function(){
    var origVal = $(this).val().trim().split("-");
    var newCode = '+' + origVal[1];
    $("#code").val(newCode);
    $("#clean-code").val($(this).val().trim());
    $("#country_id").val($(this).val().trim());
+});
+
+$("#mobile").on("change",function(){
+
+    $("#phone").val($("#code").val() + $("#mobile").val());
 });
 
 
@@ -90,12 +98,11 @@ $("#submit").click(function(){
         check = check+1;
         msg = 'msgReminderTwo';
     }
-/*    console.log("length: "+$("#user-name").val().trim().length);
-    console.log("length: "+$("#mobile").val().trim().length);
-    console.log("length: "+check);*/
 
     switch (parseInt(check)){
         case 0:
+            var inPhone = $("#code").val() + $("#mobile").val();
+            $("input[name=phone]").val(inPhone);
             $("#login").submit();
             break;
         case 1 :
