@@ -15,6 +15,9 @@ function down_modal(){
 
 $(window).load(function(){
 
+
+    $('.selectpicker').selectpicker('val', 'United Kingdom-44');
+
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
         $('.selectpicker').selectpicker('mobile');
     }
@@ -32,7 +35,10 @@ function remainderResult(){
 }
 
 $("#countries").on("change",function(){
-   var newCode = '+' + $(this).val();
+    var origVal = $(this).val().trim().split("-");
+
+
+   var newCode = '+' + origVal[1];
    $("#code").val(newCode);
    $("#clean-code").val($(this).val().trim());
    $("#country_id").val($(this).val().trim());
