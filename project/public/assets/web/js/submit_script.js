@@ -33,6 +33,9 @@ $("#btn-submit").click(function(e){
                     console.log("result"+obj_verifyet);
                     window.location.href = "/job/"+$("#jobid").val();
                 }
+                else{
+                    TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+                }
             })
             .fail(function(){
                 TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
