@@ -81,7 +81,7 @@ class WebController extends \Illuminate\Routing\Controller
         $job = Job::find($jobId);
 
         // This check has made just for the tests
-        $incoming_type = 'nudge';
+        $incoming_type = 'refer';
 
         switch ($incoming_type){
             case "refer":

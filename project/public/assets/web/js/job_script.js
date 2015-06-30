@@ -18,14 +18,14 @@ var msgFailed =
     '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
 var msgRefer =
-    '<div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name" /><br/><br/><input class="refMsg" id="refphone" name="refphone" value="" placeholder="Phone Number"/> </div>' +
-    '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
+    '<div style="position: relative;width: 235px;height:190px;"><div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name" /><br/><br/><input class="refMsg" id="refphone" name="refphone" value="" placeholder="Phone Number"/> </div>' +
+    '<div id="refs-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div></div>';
 
 function successResult(){
     TINY.box.show({html:msgSuccess,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
 }
 function refResult(){
-    TINY.box.show({html:msgRefer,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
+    TINY.box.show({html:msgRefer,width:240,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
 }
 function failedResult(){
     TINY.box.show({html:msgFailed,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
