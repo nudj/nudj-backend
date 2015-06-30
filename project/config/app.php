@@ -148,7 +148,8 @@ return [
 		/*
 		 * External Service Providers...
 		 */
-		'Intervention\Image\ImageServiceProvider'
+		'Intervention\Image\ImageServiceProvider',
+		'App\Utility\Providers\AuthenticateServiceProvider'
 
 
 	],
@@ -200,7 +201,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 
-		'Image' => 'Intervention\Image\Facades\Image'
+		'Image' => 'Intervention\Image\Facades\Image',
+		'Authenticate' => 'App\Utility\Facades\Authenticate'
 	],
 
 ];

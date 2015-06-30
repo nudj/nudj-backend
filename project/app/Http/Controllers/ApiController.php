@@ -3,7 +3,7 @@
 
 use App\Events\IncomingRequestEvent;
 use App\Events\ReturnResponseEvent;
-use App\Utility\Authenticators\TokenAuthenticator;
+use App\Utility\Facades\Authenticate;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
@@ -34,10 +34,9 @@ class ApiController extends \Illuminate\Routing\Controller {
 			Event::fire(new IncomingRequestEvent());
 		}
 
-		$this->authenticator = new TokenAuthenticator();
 
 		if(!in_array(Request::route()->getActionName(), $this->nonTokenMethods)) {
-			$this->authenticator->validate();
+			Authenticate::validate();
 		}
 
 		$this->limit = Request::get('limit') ?: $this->defaults['limit'];
@@ -60,7 +59,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 	 * --------------------------------------------------------------------------- */
 	public function getPreparedId($id)
 	{
-		return (!$id || $id == 'me') ? $this->authenticator->getUserId() : $id;
+		return (!$id || $id == 'me') ? Authenticate::getUserId() : $id;
 	}
 
 	/* Responses

@@ -2,11 +2,12 @@
 
 
 use App\Models\Traits\Imageable;
+use App\Utility\Contracts\ApiUserRepositoryInterface;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
 
-class User extends ApiModel
+class User extends ApiModel implements ApiUserRepositoryInterface
 {
     use SoftDeletes;
     use Imageable;
@@ -15,7 +16,7 @@ class User extends ApiModel
     protected $table = 'users';
     protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'findme', 'settings'];
 
-    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'findme', 'settings', 'status', 'skills', 'contact', 'contacts'];
+    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'findme', 'settings', 'status', 'skills', 'contacts', 'favourite'];
     protected $defaultFields = ['name'];
 
     protected $prefix = 'user.';
@@ -48,8 +49,6 @@ class User extends ApiModel
         return $this->belongsToMany('App\Models\User', 'user_favourites');
     }
 
-
-
     public function notifications()
     {
         return $this->hasMany('App\Models\Notification', 'recipient_id');
@@ -72,7 +71,7 @@ class User extends ApiModel
             $user->phone = (string)$input['phone'];
             $user->token = (string)str_random(60);
             $user->verification = (int)mt_rand(1000, 9999);
-            $user->mobile = (bool) $mobile;
+            $user->mobile = (bool)$mobile;
             $user->settings = json_encode(Config::get('cfg.user_default_settings'));
             $user->save();
         }
@@ -136,9 +135,9 @@ class User extends ApiModel
             $this->settings = $this->syncSettings($input['settings']);
 
         if (isset($input['image'])) {
-           $images = $this->updateImage($input['image']);
+            $images = $this->updateImage($input['image']);
 
-           $this->image = json_encode($images);
+            $this->image = json_encode($images);
         }
 
         $this->save();
@@ -175,23 +174,15 @@ class User extends ApiModel
     private function syncSettings($settingsList)
     {
 
-        if($this->settings)
+        if ($this->settings)
             $settingsList = array_replace(json_decode($this->settings, true), $settingsList);
 
         return json_encode($settingsList);
     }
 
-    public function isNotificationAllowed($notificationTypeId = null)
-    {
-        $settings = (object) json_decode($this->settings);
 
-
-        if(isset($settings->notifications->$notificationTypeId))
-            return $settings->notifications->$notificationTypeId;
-
-        return false;
-    }
-
+    /* Modify actions
+    ----------------------------------------------------- */
     public static function favourite($id, $userId, $remove = false)
     {
 
@@ -208,5 +199,26 @@ class User extends ApiModel
         return true;
     }
 
+    /* Checks
+    ----------------------------------------------------- */
+    public function isNotificationAllowed($notificationTypeId = null)
+    {
+        $settings = (object)json_decode($this->settings);
+
+
+        if (isset($settings->notifications->$notificationTypeId))
+            return $settings->notifications->$notificationTypeId;
+
+        return false;
+    }
+
+
+
+    /* Imposed by Contract in ApiUserRepository
+    ----------------------------------------------------- */
+    public function findByToken($token = null)
+    {
+        return $this->select(['id', 'roles'])->where('token', '=', $token)->first();
+    }
 
 }

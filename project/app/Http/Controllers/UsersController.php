@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Requests;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
+use App\Utility\Facades\Authenticate;
 use App\Utility\Transformers\ContactTransformer;
 use App\Utility\Transformers\JobTransformer;
 use App\Utility\Transformers\UserTransformer;
@@ -54,7 +55,7 @@ class UsersController extends ApiController
     public function update($id = null)
     {
 
-        if (is_int($id) && !$this->authenticator->hasRole('admin'))
+        if (is_int($id) && !Authenticate::hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
@@ -72,7 +73,7 @@ class UsersController extends ApiController
 
     public function destroy($id = null)
     {
-        if (is_int($id) && !$this->authenticator->hasRole('admin'))
+        if (is_int($id) && !Authenticate::hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
@@ -110,7 +111,7 @@ class UsersController extends ApiController
 
     public function contacts($id = null)
     {
-        if (is_int($id) && !$this->authenticator->hasRole('admin'))
+        if (is_int($id) && !Authenticate::hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
@@ -127,7 +128,7 @@ class UsersController extends ApiController
 
     public function favourites($id = null)
     {
-        if (is_int($id) && !$this->authenticator->hasRole('admin'))
+        if (is_int($id) && !Authenticate::hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);

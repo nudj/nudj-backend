@@ -1,6 +1,8 @@
 <?php namespace App\Utility\Transformers;
 
 
+use App\Utility\Facades\Authenticate;
+
 class JobTransformer extends Transformer {
 
     public static $dependencies = [
@@ -28,6 +30,9 @@ class JobTransformer extends Transformer {
             case 'bonus':
                 return (double) $item->bonus;
 
+            case 'liked':
+                return  (bool) $item->likes->contains(Authenticate::getUserId());
+
             case 'user':
                 $tranform = new UserTransformer();
                 return $tranform->transform($item->user);
@@ -35,6 +40,8 @@ class JobTransformer extends Transformer {
             case 'skills':
                 $tranform = new SkillTransformer();
                 return $tranform->transformCollection($item->skills);
+
+
 
         }
 

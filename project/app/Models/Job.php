@@ -13,7 +13,7 @@ class Job extends ApiModel
     protected $table = 'jobs';
     protected $visible = ['id', 'title', 'description', 'salary', 'status', 'bonus', 'user_id'];
 
-    protected $gettableFields = ['title', 'description', 'salary', 'status', 'bonus', 'skills', 'user'];
+    protected $gettableFields = ['title', 'description', 'salary', 'status', 'bonus', 'skills', 'user', 'liked'];
     protected $defaultFields = ['title', 'user'];
 
     protected $prefix = 'job.';
@@ -43,7 +43,6 @@ class Job extends ApiModel
 
     /* CRUD
    ----------------------------------------------------- */
-
     public function edit($input)
     {
         $searchEngineUpdate = [];
@@ -144,6 +143,10 @@ class Job extends ApiModel
         return true;
     }
 
+
+    /* Checks
+   ----------------------------------------------------- */
+
     public static function findIfOwnedBy($jobId, $ownerId)
     {
         $job = Job::with('user')->find($jobId);
@@ -152,6 +155,11 @@ class Job extends ApiModel
             return $job;
 
         return null;
+    }
+
+    public function isLikedBy()
+    {
+        return true;
     }
 
 

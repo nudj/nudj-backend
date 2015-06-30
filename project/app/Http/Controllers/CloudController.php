@@ -5,6 +5,7 @@ use App\Models\Skill;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\CloudHelper;
+use App\Utility\Facades\Authenticate;
 use Elasticsearch\Client;
 use Illuminate\Support\Facades\Config;
 
@@ -17,7 +18,7 @@ class CloudController extends ApiController
     public function emptyAllContainers()
     {
 
-        if (!$this->authenticator->hasRole('admin'))
+        if (!Authenticate::hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));

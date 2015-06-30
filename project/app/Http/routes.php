@@ -81,15 +81,9 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('notifications/test', 'NotificationsController@test');
     Route::get('skills/suggest/{term?}', 'SkillsController@suggest');
 
-
-
-
-
     Route::get('contacts', 'ContactsController@index');
     Route::put('contacts/{id}', 'ContactsController@update');
     Route::delete('contacts/{id}', 'ContactsController@destroy');
-
-
 
 
     Route::get('chat', 'ChatController@index');

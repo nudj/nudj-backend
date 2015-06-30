@@ -1,6 +1,6 @@
 <?php namespace App\Utility\Authenticators;
 
-use App\Models\User;
+
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use Illuminate\Support\Facades\Request;
@@ -8,40 +8,32 @@ use Illuminate\Support\Facades\Request;
 
 class TokenAuthenticator extends Authenticator
 {
-    protected $validated = false;
     protected $token;
+    protected $validated = false;
+
+
 
     public function validate()
     {
 
-        $this->token = Request::header('token');
 
+        $this->token = Request::header('token');
         if (!$this->token)
             throw new ApiException(ApiExceptionType::$NO_TOKEN);
 
-        $user = User::select(['id', 'roles'])->where('token', '=', $this->token)->first();
 
+        $user = $this->user->findByToken($this->token);
         if (!$user)
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $this->validated = true;
         $this->userId = $user->id;
+
         $this->userRoles = json_decode($user->roles);
 
+        return true;
     }
 
-    public function returnUser()
-    {
-        return User::find($this->getUserId());
-    }
-
-    public function hasRole($role)
-    {
-        if(!$this->userRoles)
-            return false;
-
-        return (bool) in_array($role, $this->userRoles);
-    }
 
     public function getDigest()
     {
