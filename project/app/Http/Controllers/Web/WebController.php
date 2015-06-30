@@ -83,9 +83,10 @@ class WebController extends \Illuminate\Routing\Controller
 
         $job = Job::find($jobId);
 
-        $user->isAskedToRefer($job->id);
 
+        /*$fer = $user->isAskedToRefer($job->id);*/
 
+        /*die('sjhdfkjsdfhks');*/
         // @TODO: check if job is visible for this user
         // ...
 
