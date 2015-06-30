@@ -17,14 +17,17 @@ use Illuminate\Support\Facades\Request;
 class WebController extends \Illuminate\Routing\Controller
 {
 
+    const TYPE_NUDGE = 'nudge';
+    const TYPE_REFER = 'refer';
+
     public function register($type = null, $hash = null)
     {
 
         switch ($type) {
-            case 'nudge' :
+            case self::TYPE_NUDGE :
                 $action = Nudge::findByHash($hash);
                 break;
-            case 'refer' :
+            case self::TYPE_REFER :
                 $action = Referral::findByHash($hash);
                 break;
             default :
@@ -77,21 +80,20 @@ class WebController extends \Illuminate\Routing\Controller
             redirect('/');
         }
 
-
-
         $user = User::find(Shield::getUserId());
 
         $job = Job::find($jobId);
 
-        $user->isAskedToRefer($job->id);
+        $type = false;
 
+        if ($user->isAskedToRefer($job->id))
+            $type = self::TYPE_REFER;
 
-        // @TODO: check if job is visible for this user
-        // ...
+        if ($user->isNudged($job->id))
+            $type = self::TYPE_NUDGE;
 
-        // @TODO: determine type dynamically
-        $type = 'refer';
-
+        if(!$type)
+            redirect('/');
 
         return view('web/page/job', [
             'user' => $user,

@@ -6,6 +6,7 @@ use App\Utility\Authenticator\Contracts\ShieldAuthServiceContract;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class User extends ApiModel implements ShieldAuthServiceContract
 {
@@ -214,8 +215,21 @@ class User extends ApiModel implements ShieldAuthServiceContract
     public function isAskedToRefer($jobId)
     {
 
+        return DB::table('job_referrer')
+            ->where('referrer_id', $this->id)
+            ->where('job_id', $jobId)
+            ->count();
 
-     return true;
+    }
+
+    public function isNudged($jobId)
+    {
+
+        return DB::table('nudges')
+            ->where('candidate_id', $this->id)
+            ->where('job_id', $jobId)
+            ->count();
+
     }
 
 
