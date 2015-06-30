@@ -74,11 +74,7 @@
                 <img class="status-check" src="{{ asset('assets/web/img/suitcase.png') }}"/>Job Status
             </div>
             <div id="right-cell">
-                @if ($job->status === 1)
                     <img class="status-check" src="{{ asset('assets/web/img/check.png') }}"/><span style="color: #00A187;">Active</span>
-                @else
-                    <span>Inactive</span>
-                @endif
             </div>
         </div>
     </div>

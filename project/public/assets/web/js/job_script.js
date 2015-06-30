@@ -18,10 +18,13 @@ var msgFailed =
     '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
 var msgRefer =
-    '<div id="failed-content"><input id="refname" name="refname" value="" /><br><input id="refphone" name="refphone" value=""/> </div>' +
+    '<div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name" /><br/><br/><input class="refMsg" id="refphone" name="refphone" value="" placeholder="Phone Number"/> </div>' +
     '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
 function successResult(){
+    TINY.box.show({html:msgSuccess,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
+}
+function refResult(){
     TINY.box.show({html:msgRefer,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
 }
 function failedResult(){
@@ -32,7 +35,16 @@ $("#submit").click(function(){
     var ch = 1;
 
     if(ch > 0){
-        successResult();
+        var getType = $("input[name=refer]").val();
+        switch (getType){
+            case "refer":
+                refResult();
+                break;
+            case "nudge":
+                successResult();
+                break;
+        }
+
     }
     else{
         failedResult();

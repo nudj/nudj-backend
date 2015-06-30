@@ -149,7 +149,7 @@ return [
 		 * External Service Providers...
 		 */
 		'Intervention\Image\ImageServiceProvider',
-		'App\Utility\Providers\AuthenticateServiceProvider'
+		'App\Utility\Providers\ShieldServiceProvider'
 
 
 	],
@@ -202,7 +202,7 @@ return [
 
 
 		'Image' => 'Intervention\Image\Facades\Image',
-		'Authenticate' => 'App\Utility\Facades\Authenticate'
+		'Shield' => 'App\Utility\Authenticate\ShieldFacade'
 	],
 
 ];

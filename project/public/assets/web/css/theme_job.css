@@ -2,6 +2,15 @@ body {
     padding-top: 60px;
 }
 
+*:focus {
+    outline: 0;
+}
+
+input{
+    -webkit-appearance: none;
+}
+
+
 .container-fluids{
     padding-right: 15px;
     padding-left: 0;
@@ -272,6 +281,26 @@ body {
     padding: 5px;
     overflow: hidden;
     max-width: 220px;
+}
+#ref-content{
+    color: #000;
+    font-size: 16px;
+    font-weight: 100;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    left: 8px;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+    max-width: 220px;
+}
+
+.refMsg{
+    border-radius: 5px;
+    border: thin solid #EBEBEB;
+
 }
 /*Modal css*/
 

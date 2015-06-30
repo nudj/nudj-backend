@@ -2,12 +2,12 @@
 
 
 use App\Models\Traits\Imageable;
-use App\Utility\Contracts\ApiUserRepositoryInterface;
+use App\Utility\Authenticator\Contracts\ShieldAuthServiceContract;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
 
-class User extends ApiModel implements ApiUserRepositoryInterface
+class User extends ApiModel implements ShieldAuthServiceContract
 {
     use SoftDeletes;
     use Imageable;

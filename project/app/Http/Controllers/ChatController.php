@@ -6,7 +6,7 @@ use App\Http\Requests;
 use App\Models\Chat;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
-use App\Utility\Facades\Authenticate;
+use App\Utility\Facades\Shield;
 use App\Utility\Transformers\ChatTransformer;
 use Fabiang\Xmpp\Client;
 use Fabiang\Xmpp\Options;
@@ -21,20 +21,20 @@ class ChatController extends ApiController
 
     public function index()
     {
-        $userId = Authenticate::getUserId();
+        $userId = Shield::getUserId();
 
         $items = Chat::api()->mine($userId)->live()->paginate($this->limit);
 
-        return $this->respondWithPagination($items, new ChatTransformer($this->authenticator->returnUser()));
+        return $this->respondWithPagination($items, new ChatTransformer());
     }
 
     public function archived()
     {
-        $userId = Authenticate::getUserId();
+        $userId = Shield::getUserId();
 
         $items = Chat::api()->mine($userId)->archive()->paginate($this->limit);
 
-        return $this->respondWithPagination($items, new ChatTransformer($this->authenticator->returnUser()));
+        return $this->respondWithPagination($items, new ChatTransformer());
     }
 
     public function archive($id = null)

@@ -1,4 +1,4 @@
-<?php namespace App\Utility\Contracts;
+<?php namespace App\Utility\Authenticator\Contracts;
 
 interface ApiAuthenticable {
 
@@ -8,7 +8,7 @@ interface ApiAuthenticable {
      *
      * @return bool
      */
-    public function validate();
+    public function validate($driverType);
 
 
     /*
