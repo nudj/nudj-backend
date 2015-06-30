@@ -4,7 +4,7 @@ use App\Models\Job;
 use App\Models\Skill;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
-use App\Utility\Facades\Authenticate;
+use App\Utility\Facades\Shield;
 use Elasticsearch\Client;
 use Illuminate\Support\Facades\Config;
 
@@ -15,7 +15,7 @@ class SearchEngineController extends ApiController
 
     public function repair()
     {
-        if (!Authenticate::hasRole('admin'))
+        if (!Shield::hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         echo "Connectiong to Search Engine server ... <br/>";

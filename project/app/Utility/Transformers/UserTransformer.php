@@ -1,7 +1,7 @@
 <?php namespace App\Utility\Transformers;
 
 
-use App\Utility\Facades\Authenticate;
+use App\Utility\Facades\Shield;
 
 class UserTransformer extends Transformer
 {
@@ -39,7 +39,7 @@ class UserTransformer extends Transformer
                 return (bool)$item->completed;
 
             case 'favourite':
-                return (bool) $item->favourites->contains(Authenticate::getUserId());
+                return (bool) $item->favourites->contains(Shield::getUserId());
 
             case 'findme':
                 return json_decode($item->findme);

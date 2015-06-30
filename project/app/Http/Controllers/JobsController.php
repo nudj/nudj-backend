@@ -5,8 +5,7 @@ use App\Models\Job;
 use App\Http\Requests;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
-use App\Utility\Facades\Authenticate;
-use App\Utility\Facades\Token;
+use App\Utility\Facades\Shield;
 use App\Utility\Transformers\JobTransformer;
 use Illuminate\Support\Facades\Input;
 
@@ -70,12 +69,12 @@ class JobsController extends ApiController {
 
 	public function like($id)
 	{
-		return $this->respondWithStatus(Job::like($id, Authenticate::getUserId()));
+		return $this->respondWithStatus(Job::like($id, Shield::getUserId()));
 	}
 
 	public function unlike($id)
 	{
-		return $this->respondWithStatus(Job::like($id, Authenticate::getUserId(), true));
+		return $this->respondWithStatus(Job::like($id, Shield::getUserId(), true));
 	}
 
 }

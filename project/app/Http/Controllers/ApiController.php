@@ -3,7 +3,7 @@
 
 use App\Events\IncomingRequestEvent;
 use App\Events\ReturnResponseEvent;
-use App\Utility\Facades\Authenticate;
+use App\Utility\Facades\Shield;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
@@ -36,7 +36,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 
 
 		if(!in_array(Request::route()->getActionName(), $this->nonTokenMethods)) {
-			Authenticate::validate();
+			Shield::validate();
 		}
 
 		$this->limit = Request::get('limit') ?: $this->defaults['limit'];
@@ -59,7 +59,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 	 * --------------------------------------------------------------------------- */
 	public function getPreparedId($id)
 	{
-		return (!$id || $id == 'me') ? Authenticate::getUserId() : $id;
+		return (!$id || $id == 'me') ? Shield::getUserId() : $id;
 	}
 
 	/* Responses

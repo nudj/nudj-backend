@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Request;
 class WebController extends \Illuminate\Routing\Controller
 {
 
-
     public function register($type = null, $hash = null)
     {
 
@@ -30,7 +29,7 @@ class WebController extends \Illuminate\Routing\Controller
                 $action = false;
         }
 
-/*var_dump($action->referrer);die();*/
+        /*var_dump($action->referrer);die();*/
         if (!$action)
             return redirect('/');
 
@@ -44,15 +43,13 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function validate()
     {
-        $request=(object)Request::all();
-
-        $user = User::login(['phone' => $request->phone], false);
+        $user = User::login(['phone' => Request::get('phone')], false);
 
         /*Event::fire(new LoginUserEvent($user->phone, $user->verification));*/
 
         return view('web/page/validate', [
             'user' => $user,
-            'job' => $request->jobid
+            'job' => Request::get('jobid')
         ]);
     }
 
@@ -63,12 +60,12 @@ class WebController extends \Illuminate\Routing\Controller
 
         $user = User::verify($request->all());
 
-        if($user)
+        if ($user)
             //@TODO: create user session
 
-        return response()->json([
-            'success' => (bool)$user
-        ]);
+            return response()->json([
+                'success' => (bool)$user
+            ]);
     }
 
     public function job($jobId = null)
@@ -83,14 +80,14 @@ class WebController extends \Illuminate\Routing\Controller
 
         $job = Job::find($jobId);
 
-/*var_dump($job->user->name);die();*/
+        /*var_dump($job->user->name);die();*/
         // This check has made just for the tests
-/*        if($job->user->name)
-             $hasEmploy = $job->user->name;
-        else
-            $hasEmploy = (object)[
-                'name' => 'No information'
-            ];*/
+        /*        if($job->user->name)
+                     $hasEmploy = $job->user->name;
+                else
+                    $hasEmploy = (object)[
+                        'name' => 'No information'
+                    ];*/
 
         return view('web/page/job', [
             'user' => $user,

@@ -1,7 +1,7 @@
 <?php namespace App\Utility\Transformers;
 
 
-use App\Utility\Facades\Authenticate;
+use App\Utility\Facades\Shield;
 
 class JobTransformer extends Transformer {
 
@@ -31,7 +31,7 @@ class JobTransformer extends Transformer {
                 return (double) $item->bonus;
 
             case 'liked':
-                return  (bool) $item->likes->contains(Authenticate::getUserId());
+                return  (bool) $item->likes->contains(Shield::getUserId());
 
             case 'user':
                 $tranform = new UserTransformer();
