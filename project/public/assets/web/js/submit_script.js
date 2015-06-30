@@ -26,6 +26,7 @@ $("#btn-submit").click(function(e){
         var put_data = {phone:phone,verification:verific};
         $.post( "/verify", put_data,function(data) {})
             .done(function( data ) {
+                console.log(data);
                 isVerifyet = JSON.stringify(data);
                 var obj_verifyet = eval('('+isVerifyet+')');
                 if(obj_verifyet){
