@@ -354,6 +354,7 @@ iPad 3
     }
     #paragraph {
         padding: 5px;
+        margin-top: -6px;
     }
 }
 
