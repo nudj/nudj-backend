@@ -28,28 +28,22 @@
                 <span class="span-title">{{$job->title}}</span>
             </div>
             <div id="job-from" class="container-fluids margins-top-small span-grey">
-                Posted from: {{--<span class="span-green">{{$job->from}}</span>--}}
+                Posted from: {{$employer}}
             </div>
             <div id="job-description" class="container-fluids margins-top">
-                {{$job->description}}
+
             </div>
             <div id="job-tags" class="container-fluids margins-top">
-{{--                <div style="display:table;border-spacing: 5px;">
-                    @foreach ($job->skills as $skill)
-                        <div class="job-tags">{{ $skill }}</div>
-                    @endforeach
-                </div>--}}
+                {{$job->description}}
             </div>
             <div id="job-employer" class="container-fluids margins-top">
-
-                    <div style="display: table-cell;"><img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/></div>
                 </div>
                 <img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/>
                 <span class="span-grey">
                     Employer:
                 </span>
                 <span>
-                    <span class="span-green">{{$employer->name}}</span>
+                    <span class="span-green">{{$employer}}</span>
                 </span>
             </div>
             <div id="job-location" class="container-fluids margins-top">
@@ -59,7 +53,7 @@
                     Location:
                 </span>
                 <span>
-                    <span class="span-green">London{{--{{$employer->location}}--}}</span>
+                    <span class="span-green">London</span>
                 </span>
                 </div>
                 <div class="span-green-map">View map</div>

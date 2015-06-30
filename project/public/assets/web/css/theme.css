@@ -121,10 +121,10 @@ input{
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     height: 35px;
-    width: -moz-calc(100% - 50px);
+    width: -moz-calc(98% - 50px);
     width: -webkit-calc(100% - 50px);
     width: -o-calc(100% - 50px);
-    width: calc(100% - 50px);
+    width: calc(98% - 50px);
     border-left-color: transparent;
     -webkit-appearance: none;
 }

@@ -83,20 +83,20 @@ class WebController extends \Illuminate\Routing\Controller
 
         $job = Job::find($jobId);
 
-
+/*var_dump($job->user->name);die();*/
         // This check has made just for the tests
-        if($job->employer)
-             $hasEmploy = $job->employer;
+/*        if($job->user->name)
+             $hasEmploy = $job->user->name;
         else
             $hasEmploy = (object)[
                 'name' => 'No information'
-            ];
+            ];*/
 
         return view('web/page/job', [
             'user' => $user,
-            'type' => 'nudge',
+            'type' => 'refer',
             'job' => $job,
-            'employer' => $hasEmploy,
+            'employer' => $job->user->name,
             'skills' => $job->skills,
         ]);
     }
