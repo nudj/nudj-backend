@@ -17,6 +17,11 @@ class WebController extends \Illuminate\Routing\Controller
     const TYPE_NUDGE = 'nudge';
     const TYPE_REFER = 'refer';
 
+
+    public function countries(){
+        return Country::web()->orderBy('name', 'asc')->get();
+    }
+
     public function register($type = null, $hash = null)
     {
 
@@ -93,8 +98,7 @@ class WebController extends \Illuminate\Routing\Controller
 
         if(!$type)
             redirect('/');
-
-        /*var_dump($type);die("error");*/
+//        $type = 1;
 
         return view('web/page/job', [
             'user' => $user,

@@ -82,13 +82,14 @@
     <div id="push" class="container from-top">
         <div class="col-xs-12 col-centered col-max">
             <div id="submit" class="btn-apply">
-                <div id="btn-submit" data-type="{{$type}}">
-                   @if($type === "refer")
-                        REFER
-                   @else
-                        APPLY
-                   @endif
+                <div id="btn-submit" data-type="2">
+                    APPLY
                 </div>
+                @if($type === 1)
+                    &nbsp;&nbsp;<div id="btn-refer" data-type="{{$type}}">
+                        REFER
+                    </div>
+                @endif
             </div>
         </div>
     </div>

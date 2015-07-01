@@ -110,7 +110,7 @@ input{
     margin: auto;
     text-align: center;
     overflow: hidden;
-    background-color: #00A187;
+    /*background-color: #00A187;*/
     color:#FFFFFF;
     display: table;
     border-radius: 3px;
@@ -134,6 +134,18 @@ input{
     font-size: 18px;
     font-weight: 300;
     cursor: pointer;
+    background-color: #00A187;
+    border-radius: 5px;
+}
+
+#btn-refer{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    background-color: #1293BD;
+    border-radius: 5px;
 }
 
 .col-centered{
@@ -268,6 +280,33 @@ input{
     padding: 5px;
     overflow: hidden;
 }
+#refera-content{
+    color:#1293BD;
+    font-size: 16px;
+    font-weight: 100;
+    position: absolute;
+    top:10px;
+    right: 0;
+    left:0;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+}
+
+#refer-content{
+    color:#1293BD;
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    top:10px;
+    right: 0;
+    left:0;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+}
 
 #failed-content{
     color: #000;
@@ -284,13 +323,13 @@ input{
     max-width: 220px;
 }
 #ref-content{
-    color: #000;
+    color: #1293BD;
     font-size: 16px;
-    font-weight: 100;
+    font-weight: 300;
     position: absolute;
-    top: 20px;
+    top: 120px;
     right: 0;
-    left: 8px;
+    left: 17px;
     width: 100%;
     text-align: center;
     padding: 5px;
@@ -301,30 +340,57 @@ input{
 .refMsg{
     border-radius: 5px;
     border: thin solid #EBEBEB;
-    width: 215px;
-    padding: 3px;
+    width: 212px;
+    padding: 7px;
 
+}
+
+.refcoda{
+    border-radius: 5px;
+    border: thin solid #EBEBEB;
+    width: 52px;
+    padding: 7px;
+    float: left;
 }
 
 #refs-btn{
     width: 100%;
     height: 45px;
-    max-width: 212px;
+    max-width: 213px;
     background-size: contain;
     background-repeat: no-repeat;
     margin: auto;text-align: center;
     overflow: hidden;
-    background-color: #00A187;
+    background-color: #1293BD;
     color:#FFFFFF;
     font-size: 16px;
     font-weight: 100;
     display: table;
     border-radius: 3px;
     position: absolute;
-    bottom:10px;
+    bottom:-40px;
     right: 0;
     left:0;
     cursor: pointer;
+}
+
+#inn{
+    position: relative;
+    height: 301px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+#themsg{
+    outline: none;
+    resize: none;
+    border-color: #EBEBEB;
+    border-radius: 5px;
+    max-width: 210px;
+    position: absolute;
+    top: 45px;
+    left: 23px;
+    font-weight: 100;
 }
 /*Modal css*/
 

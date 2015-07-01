@@ -16,6 +16,7 @@ Route::group(['prefix' => '/'], function () {
     Route::post('validate', 'Web\WebController@validate');
     Route::post('verify', 'Web\WebController@verify');
     Route::get('job/{jobId}', 'Web\WebController@job');
+    Route::get('countries', 'Web\WebController@countries');
 
 });
 
