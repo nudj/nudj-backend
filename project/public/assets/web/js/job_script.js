@@ -51,7 +51,7 @@ var msgSuccess =
     '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
 var msgSpoter =
-    '<div id="success-head">SMS sent!</div>';
+    '<div id="sms-head" class="sms-sent">SMS sent!</div>';
 
 var msgFailed =
     '<div id="failed-head">Failed !</div>' +

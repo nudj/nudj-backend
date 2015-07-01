@@ -88,6 +88,8 @@ class WebController extends \Illuminate\Routing\Controller
 
         $type = false;
 
+//
+//        var_dump($job);die();
 //        if ($user->isAskedToRefer($job->id))
 //            $type = self::TYPE_REFER;
 //
@@ -96,7 +98,7 @@ class WebController extends \Illuminate\Routing\Controller
 //
 //        if(!$type)
 //            redirect('/');
-        $type = 1;
+        $type = 2;
 
         return view('web/page/job', [
             'user' => $user,

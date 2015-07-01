@@ -409,6 +409,19 @@ input{
     left: 23px;
     font-weight: 100;
 }
+
+.sms-sent{
+    color: #606060;
+    font-size: 20px;
+    font-weight: 100;
+    position: absolute;
+    top: 25px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
 /*Modal css*/
 
 /* Smartphones (portrait and landscape) ----------- */
