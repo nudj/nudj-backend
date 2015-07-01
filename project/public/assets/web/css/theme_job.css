@@ -352,18 +352,22 @@ input{
     padding: 7px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    color: #000000;
 }
 
 .refcoda{
     border-radius: 5px;
     border: thin solid #EBEBEB;
     width: 52px;
-    padding: 7px;
+    padding: 4px;
     float: left;
     color: #000000;
     border-right-color: transparent;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+    font-size: 14px;
+    height: 38px;
+    text-align: center;
 }
 
 #refs-btn{

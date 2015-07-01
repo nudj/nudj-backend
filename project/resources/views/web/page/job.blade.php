@@ -13,14 +13,6 @@
 @section('scriptses')
     @parent
     <script>
-
-        $("#countr").on("change",function(){
-            //var origVal = $(this).val().trim().split("-");
-            //var newCode = '+' + origVal[1];
-            //$("input [name=refcode]").val(newCode);
-            console.log("TTTTTTTTT");
-        });
-
         $.get( "/countries", function() {})
                 .done(function(data) {
                     isVerifyet = JSON.stringify(data);
@@ -36,11 +28,11 @@
                     msgRefer =
                             '<div id="inn">'+
                             '<div id="refera-content">Refer Someone</div>' +
-                            '<div ><textarea id="themsg" placeholder="Write your referral message" cols="30" rows="4"></textarea></div>' +
-                            '<div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name" />'+
-                            '<select id="countr" class="form-control" style="margin-top: 14px;">'+goCountr+'</select>'+
-                            '<input style="  margin-top: 14px;" class="refcoda" id="refcode" name="refcode" value="+44" placeholder=""/><input class="refMsg-phone" id="refphone" name="refphone" style="  float: left;width: 158px;  margin-top: 14px;" value="" placeholder="Phone Number"/> </div>' +
-                            '<div id="refs-btn" onclick="down_modal();"><div id="btn-ok" style="" >SEND SMS</div></div></div>';
+                            '<div ><textarea id="themsg" placeholder="Write your referral message" cols="30" rows="4" onfocus="runFocus(this.id);"></textarea></div>' +
+                            '<div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name"  onfocus="runFocus(this.id);"/>'+
+                            '<select id="countr" class="form-control" style="margin-top: 14px;" onchange="myFunction();">'+goCountr+'</select>'+
+                            '<input style="margin-top: 14px;" class="refcoda" id="refcode" name="refcode" value="+44" placeholder=""/><input class="refMsg-phone" id="refphone" name="refphone" style="  float: left;width: 158px;  margin-top: 14px;" value="" placeholder="Phone Number" onfocus="runFocus(this.id);"/> </div>' +
+                            '<div id="refs-btn" onclick="spoter();"><div id="btn-ok" style="" >SEND SMS</div></div></div>';
 
                 })
                 .fail(function() {
