@@ -123,10 +123,10 @@
 
         <div class="col-xs-12 col-centered col-max">
             <div id="submit" class="btn-apply">
-                <div id="btn-submit" data-type="2">
+                <div id="btn-submit" data-type="nudge">
                     APPLY
                 </div>
-                @if($type === 1)
+                @if($type === 'refer')
                     &nbsp;&nbsp;<div id="btn-refer" data-type="{{$type}}">
                         REFER
                     </div>

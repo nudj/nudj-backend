@@ -24,7 +24,12 @@
             <div class="col-xs-12 col-centered col-max">
                 <p class="lead newp">Hi, <input id="user-name" name="user-name" value="{{ $user->alias }}" />
                 </p>
+                @if(isset($job->id))
                 <input type="hidden" name="jobid" id="jobid" value="{{$job->id}}" />
+                @else
+                    <input type="hidden" name="jobid" id="jobid" value="1" />
+                @endif
+                <input id="from-type" name="from-type" value="{{$from}}" type="hidden"/>
             </div>
         </div>
 

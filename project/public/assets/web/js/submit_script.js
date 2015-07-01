@@ -31,7 +31,10 @@ $("#btn-submit").click(function(e){
                 var obj_verifyet = eval('('+isVerifyet+')');
                 if(data.success){
                    /* console.log("result"+obj_verifyet);*/
-                    window.location.href = "/job/"+$("#jobid").val();
+                    if($("#reqfrom").val() == "refer")
+                         window.location.href = "/job/1";//+$("#jobid").val();
+                    else
+                        window.location.href = "/job/2";//+$("#jobid").val();
                 }
                 else{
                     TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
