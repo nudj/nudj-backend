@@ -20,6 +20,9 @@
 		<link href="{{ asset('assets/web/css/tiny-modal/tiny_style.css') }}" rel="stylesheet">
 	@show
 
+	@section('scriptses')
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	@show
 </head>
 
 <body>
@@ -30,7 +33,6 @@
 
 <!-- JS -->
 @section('scripts')
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
 	<script src="{{ asset('assets/web/js/select/bootstrap-select.min.js') }}"></script>

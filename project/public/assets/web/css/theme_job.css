@@ -327,7 +327,7 @@ input{
     font-size: 16px;
     font-weight: 300;
     position: absolute;
-    top: 120px;
+    top: 140px;
     right: 0;
     left: 17px;
     width: 100%;
@@ -345,6 +345,15 @@ input{
 
 }
 
+.refMsg-phone{
+    border-radius: 5px;
+    border: thin solid #EBEBEB;
+    width: 212px;
+    padding: 7px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
 .refcoda{
     border-radius: 5px;
     border: thin solid #EBEBEB;
@@ -352,6 +361,9 @@ input{
     padding: 7px;
     float: left;
     color: #000000;
+    border-right-color: transparent;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 #refs-btn{

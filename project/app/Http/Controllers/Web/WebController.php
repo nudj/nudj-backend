@@ -87,7 +87,7 @@ class WebController extends \Illuminate\Routing\Controller
         $job = Job::find($jobId);
 
         $type = false;
-        
+
 //        if ($user->isAskedToRefer($job->id))
 //            $type = self::TYPE_REFER;
 //
