@@ -28,9 +28,26 @@ trait Social {
         $this->edit($import);
     }
 
-    public function importFromLinkedIn($data)
+    public function importFromLinkedIn($incomingData)
     {
-        print_r($data);
+
+        $import = [];
+
+        if(!$this->name && (isset($incomingData->firstName) || isset($incomingData->lastName)))
+            $import['name'] = isset($incomingData->firstName) ? $incomingData->firstName : '' . ' ' . isset($incomingData->lastName) ? $incomingData->lastName : '';
+
+        if(!$this->skills && isset($incomingData->skills->values)) {
+            $skillList = [];
+            foreach ($incomingData->skills->values as $skill) {
+                $skillList[] = $skill->skill->name;
+            }
+            $import['skills'] = $skillList[];
+        }
+
+        print_r($incomingData);
+        print_r($import);
+
+//        $this->edit($import);
     }
 
 }

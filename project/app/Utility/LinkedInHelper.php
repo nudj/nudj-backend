@@ -30,7 +30,7 @@ class LinkedInHelper implements SocialInterface
 
     public function getUser()
     {
-        return $this->request('/people/~:(id,first-name,last-name,skills)');
+        return $this->request('/people/~:(id,first-name,last-name,skills,picture-url)');
     }
 
 
