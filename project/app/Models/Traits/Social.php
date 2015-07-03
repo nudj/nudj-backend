@@ -9,7 +9,6 @@ trait Social {
 
     public function importFromFacebook($incomingData)
     {
-        throw new Exception('asd');
         $import = [];
 
         if(!$this->name && isset($incomingData->name))
