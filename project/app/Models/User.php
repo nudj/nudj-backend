@@ -2,6 +2,7 @@
 
 
 use App\Models\Traits\Imageable;
+use App\Models\Traits\Social;
 use App\Utility\Authenticator\Contracts\ShieldAuthServiceContract;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,6 +14,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
     use SoftDeletes;
     use Imageable;
     use Authenticatable;
+    use Social;
 
     protected $table = 'users';
     protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'findme', 'settings'];

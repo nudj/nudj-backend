@@ -92,8 +92,8 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('notifications/test', 'NotificationsController@test');
 
     //SOCIAL
-    Route::get('connect/facebook', 'SocialController@facebook');
-    Route::get('connect/linkedin', 'SocialController@linkedin');
+    Route::put('connect/facebook', 'SocialController@facebook');
+    Route::put('connect/linkedin', 'SocialController@linkedin');
 
     //CONFIG
     Route::get('config', 'ConfigController@index');

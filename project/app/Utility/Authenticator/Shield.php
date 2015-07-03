@@ -64,18 +64,18 @@ class Shield implements ApiAuthenticable
         if (!$this->userRoles)
             return false;
 
-        return (bool) in_array($role, $this->userRoles);
+        return (bool)in_array($role, $this->userRoles);
     }
 
     public function validate($driverType = null)
     {
-        if(!$driverType)
+        if (!$driverType)
             $driverType = $this->defaultDriverType;
 
-        if(!in_array($driverType, $this->driverTypes))
+        if (!in_array($driverType, $this->driverTypes))
             throw new \InvalidArgumentException();
 
-        switch($driverType) {
+        switch ($driverType) {
             case 'session' :
                 $this->token = Session::get('token');
                 break;
@@ -95,7 +95,7 @@ class Shield implements ApiAuthenticable
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
 
-        if(!isset($user->id))
+        if (!isset($user->id))
             throw new \UnexpectedValueException();
 
         $this->userId = $user->id;
@@ -106,13 +106,11 @@ class Shield implements ApiAuthenticable
 
     public function createSession($token)
     {
-       Session::put('token', $token);
+        Session::put('token', $token);
     }
 
-
-
-
-
-
-
+    public function getUserRepository()
+    {
+        return $this->auth;
+    }
 }

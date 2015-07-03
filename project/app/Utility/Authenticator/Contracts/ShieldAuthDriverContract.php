@@ -1,4 +1,4 @@
-<?php namespace app\Utility\Contracts;
+<?php namespace App\Utility\Contracts;
 
 
 interface ShieldAuthDriverContract {
