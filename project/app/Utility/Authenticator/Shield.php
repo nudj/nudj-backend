@@ -59,6 +59,11 @@ class Shield implements ApiAuthenticable
         return $this->userId;
     }
 
+    public function getUserModel()
+    {
+        return $this->user;
+    }
+
     public function hasRole($role)
     {
         if (!$this->userRoles)
@@ -89,17 +94,17 @@ class Shield implements ApiAuthenticable
         if (!$this->token)
             throw new ApiException(ApiExceptionType::$NO_TOKEN);
 
-        $user = $this->auth->findByToken($this->token);
+        $this->user = $this->auth->findByToken($this->token);
 
-        if (!$user)
+        if (!$this->user)
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
 
-        if (!isset($user->id))
+        if (!isset($this->user->id))
             throw new \UnexpectedValueException();
 
-        $this->userId = $user->id;
-        $this->userRoles = json_decode($user->roles);
+        $this->userId = $this->user->id;
+        $this->userRoles = json_decode($this->user->roles);
 
         return true;
     }
@@ -109,8 +114,5 @@ class Shield implements ApiAuthenticable
         Session::put('token', $token);
     }
 
-    public function getUserRepository()
-    {
-        return $this->auth;
-    }
+
 }

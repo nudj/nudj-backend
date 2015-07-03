@@ -69,7 +69,7 @@ class Handler extends ExceptionHandler
 
             $response['error'] = [
                 "message" => $e->getMessage(),
-                "error_code" => $e->getErrorCode()
+                "code" => $e->getErrorCode()
             ];
 
             if ($e->getErrorInfo())

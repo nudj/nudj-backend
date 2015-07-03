@@ -28,8 +28,8 @@ return [
     ],
 
     //Facebook
-    'facebook_app_id' => '686227091453627',
-    'facebook_app_secret' => '7f267e6caa3ffa63ff478b2cf822084a',
+    'facebook_app_id' => '436716026489484',
+    'facebook_app_secret' => 'fb7575dae2525ca8301c74c7b87ed26d',
 
     //LinkedIn
     'linkedin_app_id' => '77l67v0flc6leq',

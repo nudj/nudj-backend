@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Utility\ApiException;
+use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
 use App\Utility\FacebookHelper;
 use App\Utility\LinkedInHelper;
@@ -12,13 +14,19 @@ class SocialController extends ApiController
     public function facebook()
     {
         $networkToken = Request::get('token');
-        $networkToken = 'CAAJwHrIFdrsBAJszlMZCkyJOr0SJ1sHpxGRZBcMVjGqMhaltPZABDQCnYLFdJvv2KMBQWupSZCi5hQg6GyELsnvyikH81y5gG5vpAJPMFFTfvRUNIFWkG8p34PzTQvvCZAAuOZAZAGbdubmL9Wp5oirX2KxlQQXyb69QmEnCCjlrUrh17qT1swexGrtmIKygQ6CzZCiax7yDb4BF2UHF8ItAeUkM44ZBt3kxfHYLbSxPZCngZDZD';
+
+        if(!$networkToken)
+            throw new ApiException(ApiExceptionType::$INVALID_INPUT);
+
+        $networkToken = 'CAAGNMNZBgaowBAIZAkm29Gp3HZAneFb673FvjlQPUuJGlv60vQRLVLlIanMispuPvPUKZC71NKi36FTXSYGDZAysZBh0HnBOdHg0MfAJQQqXTmu1qU808GN95WAioVuGI4ORGVYf1Mr8yRZBkKaiYK52lxCAa89bnZAepKAMPIcPCWRJWZA05V9ZBqMAYyS06ZCcoOGglSlzN5jGdN3pZARJlOFsblZA2ipFFdR8ZBIq331U91QAZDZD';
 
         $facebook = new FacebookHelper($networkToken);
         $data = $facebook->getUser();
+        $user = Shield::getUserModel();
 
-        $user = Shield::getUserRepository();
         $user->importFromFacebook($data);
+
+        return $this->respondWithStatus(true);
     }
 
 
@@ -33,6 +41,7 @@ class SocialController extends ApiController
         $user = Shield::getUserRepository();
         $user->importFromLinkedIn($data);
 
+        return $this->respondWithStatus(true);
     }
 
 

@@ -25,7 +25,7 @@ class FacebookHelper implements SocialInterface
 
     public function getUser()
     {
-        return (object) $this->request('/me');
+        return (object) $this->request('/me?fields=id,name,picture.type(large){url}');
     }
 
     private function request($query = null, $type = 'GET')
