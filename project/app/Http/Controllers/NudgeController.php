@@ -25,5 +25,10 @@ class NudgeController extends ApiController {
 	}
 
 
+	public function apply()
+	{
+		//@TODO
+	}
+
 
 }
