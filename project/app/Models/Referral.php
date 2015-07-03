@@ -1,6 +1,6 @@
 <?php namespace App\Models;
 
-use App\Models\Traits\Indexable;
+use App\Models\Traits\Hashable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -8,6 +8,7 @@ class Referral extends ApiModel
 {
 
     use SoftDeletes;
+    use Hashable;
 
     protected $table = 'job_referrer';
     protected $visible = ['id', 'hash', 'job_id', 'referrer_id'];
@@ -16,6 +17,7 @@ class Referral extends ApiModel
     protected $defaultFields = ['hash'];
 
     protected $prefix = 'referral.';
+
 
 
 
@@ -31,14 +33,32 @@ class Referral extends ApiModel
         return $this->belongsTo('App\Models\Contact', 'referrer_id');
     }
 
-
-
-    /* Search
+    /* Actions
     ----------------------------------------------------- */
-    public static function findByHash($hash = null)
+    public static function askContactsToReffer($jobId, $contactList)
     {
-        return self::where('hash', '=', (string) $hash)->first();
+
+        $job = Job::findOrFail($jobId);
+        $contacts = Contact::findOrFail($contactList);
+
+        foreach ($contacts as $contact)
+            self::askContactToReffer($job->id, $contact->id);
+
     }
+
+
+    private static function askContactToReffer($jobId, $referrerId)
+    {
+        $refferal = new Referral();
+        $refferal->job_id = $jobId;
+        $refferal->referrer_id = $referrerId;
+        $refferal->hash = self::generateUniqueHash();
+        $refferal->save();
+
+        //Fire Event
+    }
+
+
 
 }
 

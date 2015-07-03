@@ -31,5 +31,6 @@ return [
     // Nudge Errors
     ApiExceptionType::$VERIFICATION_ERROR['errorCode'] => "Wrong Verification Code",
     ApiExceptionType::$USER_MISSING['errorCode'] => "User not found in our database",
+    ApiExceptionType::$JOB_MISSING['errorCode'] => "Job not found in our database",
 
 ];

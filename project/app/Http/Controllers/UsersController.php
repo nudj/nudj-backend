@@ -32,10 +32,7 @@ class UsersController extends ApiController
     {
         $id = $this->getPreparedId($id);
 
-        $item = User::api()->find($id);
-
-        if (!$item)
-            throw new ApiException(ApiExceptionType::$USER_MISSING);
+        $item = User::api()->findOrFail($id);
 
         return $this->respondWithItem($item, new UserTransformer());
     }
@@ -143,11 +140,11 @@ class UsersController extends ApiController
     }
 
 
-
     public function favourite($id)
     {
         return $this->respondWithStatus(User::favourite($id, $this->authenticator->getUserId()));
     }
+
 
     public function unfavourite($id)
     {

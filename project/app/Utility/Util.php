@@ -1,7 +1,7 @@
 <?php namespace App\Utility;
 
 
-class Util {
+class  Util {
 
 
     public static function extractParams($params, $prefix = null)
