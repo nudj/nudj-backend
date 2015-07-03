@@ -95,10 +95,13 @@ class Handler extends ExceptionHandler
         // when in local env show stack trace page
         if ('local' != env('APP_ENV')) {
 
-            $response['error'] = ["message" => "Something went wrong: " . $e->getMessage()];
-            $errorCode = $e->getCode() ?: 400;
 
-            return response($response, $errorCode);
+            $response['error'] = [
+                "message" => $e->getMessage(),
+                "code" => $e->getCode()
+            ];
+
+            return $this->respond($response, $e->getCode(), $e->shouldNotify());
         }
 
         return parent::render($request, $e);
