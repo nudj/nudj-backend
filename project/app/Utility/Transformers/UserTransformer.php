@@ -41,9 +41,6 @@ class UserTransformer extends Transformer
             case 'favourite':
                 return (bool) $item->favourites->contains(Shield::getUserId());
 
-            case 'findme':
-                return json_decode($item->findme);
-
             case 'settings':
                 return json_decode($item->settings);
 

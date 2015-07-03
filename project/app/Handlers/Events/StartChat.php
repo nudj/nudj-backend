@@ -22,7 +22,8 @@ class StartChat //implements ShouldBeQueued
     {
 
         $initiator = User::findOrFail($event->initiatorId);
-
+        $initiatorUsername = $initiator->id . '@chat.nudj.co';
+        $interlocutorUsername = $event->interlocutorId . '@chat.nudj.co';
 
         // Create room and invite people
         $rpc = new RpcClient([
@@ -32,7 +33,9 @@ class StartChat //implements ShouldBeQueued
         ]);
 
         $rpc->createRoom($event->chatId);
-        $rpc->inviteToRoom($event->chatId, null, null, [$initiator->id, $event->interlocutorId]);
+        $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername]);
+
+
         // Connect trough XMPP
         $options = new Options(Config::get('cfg.chat_server_tcp'));
         $options->setUsername($initiator->id)
@@ -53,7 +56,7 @@ class StartChat //implements ShouldBeQueued
         // Write your message
         $message = new Message;
         $message->setMessage($event->message)
-            ->setTo($initiator->id)
+            ->setTo($roomFullName)
             ->setType(Message::TYPE_GROUPCHAT);
         $client->send($message);
 

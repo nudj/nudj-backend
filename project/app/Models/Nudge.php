@@ -64,9 +64,6 @@ class Nudge extends ApiModel
         $nudge->hash = self::generateUniqueHash();
         $nudge->save();
 
-        Event::fire(new StartChatEvent());
-
-
     }
 
 

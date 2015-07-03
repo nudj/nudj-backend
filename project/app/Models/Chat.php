@@ -60,13 +60,13 @@ class Chat extends ApiModel
 
     /* CRUD
    ----------------------------------------------------- */
-    public static function add($chatId, $participants = [])
+    public static function add($jobId, $participants = [])
     {
         if (empty($participants))
             throw new ApiException(ApiExceptionType::$CHAT_ERROR);
 
         $chat = new Chat;
-        $chat->job_id = $chatId;
+        $chat->job_id = $jobId;
 
         $chat->save();
 

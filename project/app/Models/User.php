@@ -17,9 +17,9 @@ class User extends ApiModel implements ShieldAuthServiceContract
     use Social;
 
     protected $table = 'users';
-    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'findme', 'settings'];
+    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'settings'];
 
-    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'findme', 'settings', 'status', 'skills', 'contacts', 'favourite'];
+    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'settings', 'status', 'skills', 'contacts', 'favourite'];
     protected $defaultFields = ['name'];
 
     protected $prefix = 'user.';
@@ -118,9 +118,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         if (isset($input['company']))
             $this->company = (string)$input['company'];
-
-        if (isset($input['findme']))
-            $this->findme = (string)json_encode($input['findme']);
 
         if (isset($input['about']))
             $this->about = $input['about'];

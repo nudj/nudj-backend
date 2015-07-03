@@ -94,58 +94,10 @@ class ChatController extends ApiController
     --------------------------------------------- */
     public function spawn()
     {
-
         $room = isset($_GET['room']) ? $_GET['room'] : 1;
-        Event::fire(new StartChatEvent($room, Shield::getUserId(), 1));
+        Event::fire(new StartChatEvent($room, Shield::getUserId(), 3, 'Spawning a chat :)'));
 
-        die();
-//        $options = new Options('tcp://chat.nudj.co:5222');
-//        $options->setUsername('1@chat.nudj.co/6576494651435660563955096')
-//            ->setPassword('sys-7xngvxq1uGF8BWpEwjmmg1NfAqxdYHL4xqgXBCtxwYcxJH3un1Foh0nz');
-//
-//        $client = new Client($options);
-//        $client->connect();
-//
-//        // join a channel
-//        $channel = new Presence;
-//        $channel->setTo('1@conference.chat.nudj.co')
-//            ->setNickName('Some name');
-//        $client->send($channel);
-//
-//        $message = new Message;
-//        $message->setMessage('testing')
-//            ->setTo('1@conference.chat.nudj.co')
-//            ->setType(Message::TYPE_GROUPCHAT);
-//        $client->send($message);
-//        $client->disconnect();
-//        die();
-
-
-
-        $roomName = (string) 1;
-        $creator = $this->getChatName($this->authenticator->getUserId());
-        $other = $this->getChatName(3);
-
-        $chat = Chat::add($roomName, [6,$this->authenticator->getUserId()]);
-
-        $rpc = new RpcClient([
-            'server' => Config::get('cfg.chat_server_ip'),
-            'host' => Config::get('cfg.chat_server_host'),
-            'debug' => false,
-        ]);
-
-
-        $rpc->createRoom($roomName);
-        $rpc->setRoomAffiliation($roomName, $creator, 'owner');
-        $rpc->setRoomAffiliation($roomName, $other, 'owner');
-        $rpc->setRoomOption($roomName,'anonymous', true);
-        $rpc->setRoomOption($roomName,'allow_change_subj', true);
-        $rpc->setRoomOption($roomName,'public', true);
-        $rpc->setRoomOption($roomName,'logging', true);
-
-
-        $rpc->inviteToRoom($roomName, null, null, [$creator, $other]);
-
+        return $this->respondWithStatus('true');
     }
 
     public function deleteAllRooms() {
