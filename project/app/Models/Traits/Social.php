@@ -41,7 +41,7 @@ trait Social {
             foreach ($incomingData->skills->values as $skill) {
                 $skillList[] = $skill->skill->name;
             }
-            $import['skills'] = $skillList[];
+            $import['skills'] = $skillList;
         }
 
         print_r($incomingData);
