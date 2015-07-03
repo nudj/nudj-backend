@@ -22,8 +22,8 @@ class SocialController extends ApiController
 
         $facebook = new FacebookHelper($networkToken);
         $data = $facebook->getUser();
-        $user = Shield::getUserModel();
 
+        $user = Shield::getUserModel();
         $user->importFromFacebook($data);
 
         return $this->respondWithStatus(true);
@@ -33,12 +33,16 @@ class SocialController extends ApiController
     public function linkedin()
     {
         $networkToken = Request::get('token');
+
+        if(!$networkToken)
+            throw new ApiException(ApiExceptionType::$INVALID_INPUT);
+
         $networkToken = 'AQVZewKxPseuIgqU3l6_ivB1mPrM38ecQr_YlJ7o35lNNMKqeWZsIWEfltY-U9M8vjhuf_8K0Jc8dTkqBEMbd9_hpVZBubmqfTbHxuIxTVzCIAtDmYS4W8c1pLCc-zTwk3IT12McBtKPYPpO8ZtXPIcka4_VcOyXOIEJ414OwauEfZ4-siY';
 
         $linkedin = new LinkedInHelper($networkToken    );
         $data = $linkedin->getUser();
 
-        $user = Shield::getUserRepository();
+        $user = Shield::getUserModel();
         $user->importFromLinkedIn($data);
 
         return $this->respondWithStatus(true);

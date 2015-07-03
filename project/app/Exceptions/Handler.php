@@ -92,8 +92,8 @@ class Handler extends ExceptionHandler
 
 
         // handle all other thrown exception
-        // when in debug mode show stack trace page
-        if (!env('APP_DEBUG')) {
+        // when in local env show stack trace page
+        if ('local' != env('APP_ENV')) {
 
             $response['error'] = ["message" => "Something went wrong: " . $e->getMessage()];
             $errorCode = $e->getCode() ?: 400;
