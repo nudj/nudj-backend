@@ -3,11 +3,13 @@
 namespace App\Models\Traits;
 
 
+use League\Flysystem\Exception;
+
 trait Social {
 
     public function importFromFacebook($incomingData)
     {
-
+        throw new Exception('asd');
         $import = [];
 
         if(!$this->name && isset($incomingData->name))
@@ -36,7 +38,8 @@ trait Social {
         if(!$this->name && (isset($incomingData->firstName) || isset($incomingData->lastName)))
             $import['name'] = isset($incomingData->firstName) ? $incomingData->firstName : '' . ' ' . isset($incomingData->lastName) ? $incomingData->lastName : '';
 
-        if(!$this->skills && isset($incomingData->skills->values)) {
+        if(isset($incomingData->skills->values)) {
+            throw new Exception('asd');
             $skillList = [];
             foreach ($incomingData->skills->values as $skill) {
                 $skillList[] = $skill->skill->name;

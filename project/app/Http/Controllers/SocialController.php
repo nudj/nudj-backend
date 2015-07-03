@@ -18,7 +18,7 @@ class SocialController extends ApiController
         if(!$networkToken)
             throw new ApiException(ApiExceptionType::$INVALID_INPUT);
 
-        $networkToken = 'CAAGNMNZBgaowBAIZAkm29Gp3HZAneFb673FvjlQPUuJGlv60vQRLVLlIanMispuPvPUKZC71NKi36FTXSYGDZAysZBh0HnBOdHg0MfAJQQqXTmu1qU808GN95WAioVuGI4ORGVYf1Mr8yRZBkKaiYK52lxCAa89bnZAepKAMPIcPCWRJWZA05V9ZBqMAYyS06ZCcoOGglSlzN5jGdN3pZARJlOFsblZA2ipFFdR8ZBIq331U91QAZDZD';
+        $networkToken = 'CAAGNMNZBgaowBALlZCDUloc3ujqjR7nkQCNwhdJGlUqnOW8zkRaDq4ynQM2lWJNbNjX7oi7S5HQBmMvGLfv4aAOsBPvRKCL6pxOk6NJ4ob1p347rjRozxen2nST9mRGmPOZClAj5Tn95NZAYyx1CL3r1eyff4eHrYkV0JsMtBfKMTJUJbBGcOWVBbyQUYl5TZAIpeRXOpbiE1cJklsPvHM3KsZCJLcGZCA8WtN5Cmcw7gZDZD';
 
         $facebook = new FacebookHelper($networkToken);
         $data = $facebook->getUser();

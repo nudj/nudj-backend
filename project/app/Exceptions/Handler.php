@@ -97,10 +97,10 @@ class Handler extends ExceptionHandler
 
             $response['error'] = [
                 "message" => $e->getMessage(),
-                "code" => $e->getCode()
+                "code" => ApiExceptionType::$GENERAL_ERROR['errorCode']
             ];
 
-            return $this->respond($response, $e->getCode(), $e->shouldNotify());
+            return $this->respond($response, 400);
         }
 
         return parent::render($request, $e);
