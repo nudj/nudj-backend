@@ -89,7 +89,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     //NOTIFICATION
     Route::get('notifications', 'NotificationsController@index');
-    Route::get('notifications/test', 'NotificationsController@test');
+    Route::put('notifications/{id}/read', 'NotificationsController@read');
 
     //SOCIAL
     Route::put('connect/facebook', 'SocialController@facebook');

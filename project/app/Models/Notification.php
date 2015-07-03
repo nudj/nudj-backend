@@ -6,6 +6,7 @@ use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\NotificationTransformer;
 use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Lang;
 
 
 class NotificationType
@@ -82,16 +83,26 @@ class Notification extends ApiModel
 
     public function getMessage()
     {
-        switch ($this->type_id) {
-            case NotificationType::$RECEIVE_NUDGE :
-                return 'Somebody nudged you';
-                break;
-            default :
-                return null;
-
-        }
+        return Lang::get('notifications.' . $this->type_id);
     }
 
+
+    /* Actions
+   ----------------------------------------------------- */
+
+    public static function read($id)
+    {
+
+        $notification = self::find($id);
+
+        if (!$notification)
+            return false;
+
+        $notification->read = true;
+        $notification->save();
+
+        return true;
+    }
 
     /* Create different Notification types
     ----------------------------------------------------- */

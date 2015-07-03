@@ -44,7 +44,7 @@ trait Social {
             }
             $import['skills'] = $skillList;
         }
-        
+
         $this->edit($import);
     }
 
