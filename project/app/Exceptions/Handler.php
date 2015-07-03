@@ -95,7 +95,6 @@ class Handler extends ExceptionHandler
         // when in local env show stack trace page
         if ('local' != env('APP_ENV')) {
 
-
             $response['error'] = [
                 "message" => $e->getMessage(),
                 "code" => $e->getCode()
