@@ -14,6 +14,8 @@ return [
     // Chat Server
     'chat_server_ip' => '162.13.187.75:4560',
     'chat_server_host' => 'chat.nudj.co',
+    'chat_server_tcp' => 'tcp://chat.nudj.co:5222',
+    'chat_conference_domain' => '@conference.chat.nudj.co',
 
     // Exceptions
     'email_system' => 'no-reply@nudj.co',

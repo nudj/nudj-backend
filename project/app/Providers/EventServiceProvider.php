@@ -23,6 +23,9 @@ class EventServiceProvider extends ServiceProvider {
 		'App\Events\LoginUserEvent' => [
 			'App\Handlers\Events\SendSms',
 		],
+		'App\Events\StartChatEvent' => [
+			'App\Handlers\Events\StartChat',
+		],
 
 	];
 

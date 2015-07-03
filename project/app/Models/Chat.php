@@ -75,8 +75,6 @@ class Chat extends ApiModel
         return $chat;
     }
 
-
-
     public function archive($remove = false)
     {
         if($remove)

@@ -118,7 +118,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         if (isset($input['company']))
             $this->company = (string)$input['company'];
-        
+
         if (isset($input['findme']))
             $this->findme = (string)json_encode($input['findme']);
 

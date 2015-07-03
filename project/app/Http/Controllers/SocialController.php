@@ -18,8 +18,6 @@ class SocialController extends ApiController
         if(!$networkToken)
             throw new ApiException(ApiExceptionType::$INVALID_INPUT);
 
-        $networkToken = 'CAAGNMNZBgaowBALlZCDUloc3ujqjR7nkQCNwhdJGlUqnOW8zkRaDq4ynQM2lWJNbNjX7oi7S5HQBmMvGLfv4aAOsBPvRKCL6pxOk6NJ4ob1p347rjRozxen2nST9mRGmPOZClAj5Tn95NZAYyx1CL3r1eyff4eHrYkV0JsMtBfKMTJUJbBGcOWVBbyQUYl5TZAIpeRXOpbiE1cJklsPvHM3KsZCJLcGZCA8WtN5Cmcw7gZDZD';
-
         $facebook = new FacebookHelper($networkToken);
         $data = $facebook->getUser();
 
@@ -37,9 +35,7 @@ class SocialController extends ApiController
         if(!$networkToken)
             throw new ApiException(ApiExceptionType::$INVALID_INPUT);
 
-        $networkToken = 'AQVZewKxPseuIgqU3l6_ivB1mPrM38ecQr_YlJ7o35lNNMKqeWZsIWEfltY-U9M8vjhuf_8K0Jc8dTkqBEMbd9_hpVZBubmqfTbHxuIxTVzCIAtDmYS4W8c1pLCc-zTwk3IT12McBtKPYPpO8ZtXPIcka4_VcOyXOIEJ414OwauEfZ4-siY';
-
-        $linkedin = new LinkedInHelper($networkToken    );
+        $linkedin = new LinkedInHelper($networkToken);
         $data = $linkedin->getUser();
 
         $user = Shield::getUserModel();

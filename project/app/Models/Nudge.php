@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use App\Events\Event;
 use App\Models\Traits\Hashable;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -62,6 +63,9 @@ class Nudge extends ApiModel
         $nudge->candidate_id = $contact->id;
         $nudge->hash = self::generateUniqueHash();
         $nudge->save();
+
+        Event::fire(new StartChatEvent());
+
 
     }
 

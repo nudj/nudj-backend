@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Events\StartChatEvent;
 use App\Http\Requests;
 
 use App\Models\Chat;
@@ -14,6 +15,7 @@ use Fabiang\Xmpp\Protocol\Message;
 use Fabiang\Xmpp\Protocol\Presence;
 use GameNet\Jabber\RpcClient;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Event;
 
 
 class ChatController extends ApiController
@@ -21,6 +23,7 @@ class ChatController extends ApiController
 
     public function index()
     {
+
         $userId = Shield::getUserId();
 
         $items = Chat::api()->mine($userId)->live()->paginate($this->limit);
@@ -92,6 +95,9 @@ class ChatController extends ApiController
     public function spawn()
     {
 
+        Event::fire(new StartChatEvent('lol', Shield::getUserId(), 1));
+
+        die();
 //        $options = new Options('tcp://chat.nudj.co:5222');
 //        $options->setUsername('1@chat.nudj.co/6576494651435660563955096')
 //            ->setPassword('sys-7xngvxq1uGF8BWpEwjmmg1NfAqxdYHL4xqgXBCtxwYcxJH3un1Foh0nz');
@@ -112,7 +118,6 @@ class ChatController extends ApiController
 //        $client->send($message);
 //        $client->disconnect();
 //        die();
-
 
 
 
