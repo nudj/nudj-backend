@@ -44,11 +44,8 @@ trait Social {
             }
             $import['skills'] = $skillList;
         }
-
-        print_r($incomingData);
-        print_r($import);
-
-//        $this->edit($import);
+        
+        $this->edit($import);
     }
 
 }
