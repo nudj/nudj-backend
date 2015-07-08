@@ -24,6 +24,7 @@ function down_modal(){
 $(window).load(function(){
 
     $('.selectpicker').selectpicker('val', 'United Kingdom-44-GB');
+    $('#country_code').val("GB");
 
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
         $('.selectpicker').selectpicker('mobile');
