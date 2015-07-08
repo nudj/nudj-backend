@@ -61,7 +61,7 @@
                     {{--<input id="country_id" name="country_id" type="hidden" value="" maxlength="5">--}}
                     <input id="country_code" name="country_code" type="hidden" value="" maxlength="5">
                     {{--<input id="clean-code" name="clean-code" type="hidden" value="" maxlength="5">--}}
-                    {{--<input id="mobile" name="mobile" class="mobile input-text-centered" type="tel" value="">--}}
+                    <input id="mobile" name="mobile" class="mobile input-text-centered" type="tel" value="">
                     <input id="phone" name="phone" value="" type="hidden">
                     <input id="verification" name="verification" value="{{ $type }}" type="hidden">
                 </div>
