@@ -35,7 +35,7 @@ class JobsController extends ApiController {
 
 	public function store(CreateJobRequest $request)
 	{
-		$job = Job::add($this->authenticator->getUserId(), $request->all());
+		$job = Job::add(Shield::getUserId(), $request->all());
 
 		return $this->respondWithStatus($job->id);
 	}
@@ -43,7 +43,7 @@ class JobsController extends ApiController {
 
 	public function update($id)
 	{
-		$job = Job::findIfOwnedBy($id, $this->authenticator->getUserId());
+		$job = Job::findIfOwnedBy($id, Shield::getUserId());
 
 		if(!$job)
 			throw new ApiException(ApiExceptionType::$NOT_FOUND);
@@ -56,7 +56,7 @@ class JobsController extends ApiController {
 
 	public function destroy($id)
 	{
-		$job = Job::findIfOwnedBy($id, $this->authenticator->getUserId());
+		$job = Job::findIfOwnedBy($id, Shield::getUserId());
 
 		if(!$job)
 			throw new ApiException(ApiExceptionType::$NOT_FOUND);

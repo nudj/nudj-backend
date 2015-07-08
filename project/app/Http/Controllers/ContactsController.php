@@ -5,6 +5,7 @@ use App\Models\Contact;
 use App\Http\Requests;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
+use App\Utility\Facades\Shield;
 use App\Utility\Transformers\ContactTransformer;
 use Illuminate\Support\Facades\Input;
 
@@ -14,7 +15,7 @@ class ContactsController extends ApiController
 
     public function index()
     {
-        $id = $this->authenticator->getUserId();
+        $id = Shield::getUserId();
         $items = Contact::where('contact_of', '=', $id)->api()->get();
 
         return $this->respondWithItems($items, new ContactTransformer());
@@ -22,7 +23,7 @@ class ContactsController extends ApiController
 
     public function update($id = null)
     {
-        $contact = Contact::findIfOwnedBy($id, $this->authenticator->getUserId());
+        $contact = Contact::findIfOwnedBy($id, Shield::getUserId());
 
         if (!$contact)
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
@@ -34,7 +35,7 @@ class ContactsController extends ApiController
 
     public function destroy($id = null)
     {
-        $contact = Contact::findIfOwnedBy($id, $this->authenticator->getUserId());
+        $contact = Contact::findIfOwnedBy($id, Shield::getUserId());
 
         if (!$contact)
             throw new ApiException(ApiExceptionType::$NOT_FOUND);

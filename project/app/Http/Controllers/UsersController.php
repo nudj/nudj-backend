@@ -142,13 +142,13 @@ class UsersController extends ApiController
 
     public function favourite($id)
     {
-        return $this->respondWithStatus(User::favourite($id, $this->authenticator->getUserId()));
+        return $this->respondWithStatus(User::favourite($id, Shield::getUserId()));
     }
 
 
     public function unfavourite($id)
     {
-        return $this->respondWithStatus(User::favourite($id, $this->authenticator->getUserId(), true));
+        return $this->respondWithStatus(User::favourite($id, Shield::getUserId(), true));
     }
 
 }

@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 
-use App\Utility\Facades\Authenticator;
 use Illuminate\Support\Facades\Config;
 
 class ConfigController extends ApiController {

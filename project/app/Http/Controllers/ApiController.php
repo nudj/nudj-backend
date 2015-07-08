@@ -25,8 +25,6 @@ class ApiController extends \Illuminate\Routing\Controller {
 		'App\Http\Controllers\UsersController@exists',
 	];
 
-	protected $authenticator = null;
-
 	function __construct()
 	{
 

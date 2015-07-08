@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Utility\Facades\Shield;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
@@ -11,7 +12,7 @@ class FeedbackController extends ApiController
     public function send()
     {
 
-        $user = User::find($this->authenticator->getUserId());
+        $user = User::find(Shield::getUserId());
 
         $data = [
             'userId' => (int) $user->id,

@@ -11,8 +11,6 @@ use Monolog\Logger;
 class LogResponse
 {
 
-    public $authenticator;
-
     public function handle(ReturnResponseEvent $event)
     {
 
