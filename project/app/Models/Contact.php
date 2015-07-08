@@ -64,7 +64,7 @@ class Contact extends ApiModel
             $contact = Contact::where(['contact_of' => $userId, 'phone' => $phoneData->number])->first();
 
             if (!$contact) {
-                
+
                 $contact = new Contact();
                 $contact->contact_of = $userId;
                 $contact->alias = $record->alias;

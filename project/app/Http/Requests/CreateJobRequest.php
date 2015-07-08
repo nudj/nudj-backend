@@ -16,6 +16,9 @@ class CreateJobRequest extends ApiRequest {
 		return [
 			'title' => 'required',
 			'description' => 'required',
+			'bonus' => 'required',
+			'salary' => 'required',
+			'skills' => 'required',
 		];
 	}
 

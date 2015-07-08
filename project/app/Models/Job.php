@@ -57,9 +57,22 @@ class Job extends ApiModel
             $searchEngineUpdate['description'] = (string)$input['description'];
         }
 
+        if (isset($input['active'])) {
+            $this->active = (bool)$input['active'];
+            $searchEngineUpdate['active'] = (bool)$input['active'];
+        }
+
         if (isset($input['bonus'])) {
             $this->bonus = (double)$input['bonus'];
             $searchEngineUpdate['bonus'] = (double)$input['bonus'];
+        }
+
+        if (isset($input['location'])) {
+            $this->location = (string)$input['location'];
+        }
+
+        if (isset($input['company'])) {
+            $this->company = (string)$input['company'];
         }
 
         if (isset($input['salary'])) {
@@ -71,10 +84,6 @@ class Job extends ApiModel
             $searchEngineUpdate['skills'] = array_column($this->skills->toArray(), 'name');
         }
 
-        if (isset($input['active'])) {
-            $this->active = (bool)$input['active'];
-            $searchEngineUpdate['active'] = (bool)$input['active'];
-        }
 
         $saved = $this->save();
 
@@ -102,11 +111,27 @@ class Job extends ApiModel
         $job->description = (string)$input['description'];
         $job->active = true;
 
-        if (isset($input['salary']))
-            $job->salary = (string)$input['salary'];
+        if (isset($input['bonus'])) {
+            $job->bonus = (double)$input['bonus'];
+            $searchEngineUpdate['bonus'] = (double)$input['bonus'];
+        }
 
-        if (isset($input['bonus']))
-            $job->bonus = (string)$input['bonus'];
+        if (isset($input['location'])) {
+            $job->location = (string)$input['location'];
+        }
+
+        if (isset($input['company'])) {
+            $job->company = (string)$input['company'];
+        }
+
+        if (isset($input['salary'])) {
+            $job->salary = (string)$input['salary'];
+        }
+
+        if (isset($input['skills'])) {
+            $job->syncSkills($input['skills']);
+            $searchEngineUpdate['skills'] = array_column($job->skills->toArray(), 'name');
+        }
 
         $saved = $job->save();
 
