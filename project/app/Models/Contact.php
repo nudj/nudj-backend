@@ -4,6 +4,7 @@
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\ContactTransformer;
+use App\Utility\Util;
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumberUtil;
 
@@ -60,7 +61,7 @@ class Contact extends ApiModel
             if (!isset($record->phone) || !isset($record->alias))
                 throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
-            $phoneData = self::unifyPhoneNumber($record->phone, $userCountryCode);
+            $phoneData = Util::unifyPhoneNumber($record->phone, $userCountryCode);
             $contact = Contact::where(['contact_of' => $userId, 'phone' => $phoneData->number])->first();
 
             if (!$contact) {
@@ -81,20 +82,6 @@ class Contact extends ApiModel
         }
     }
 
-    public static function unifyPhoneNumber($phoneNumber, $defaultCountry)
-    {
-        $phoneUtil = PhoneNumberUtil::getInstance();
-
-        try {
-            $phoneProto = $phoneUtil->parse($phoneNumber, $defaultCountry);
-            $code = $phoneUtil->getRegionCodeForNumber($phoneProto);
-            $number = $phoneUtil->format($phoneProto, PhoneNumberFormat::E164);
-        } catch (\libphonenumber\NumberParseException $e) {
-            return (object)['number' => $phoneNumber, 'code' => $defaultCountry, 'suspicious' => true];
-        }
-
-        return (object)['number' => $number, 'code' => $code, 'suspicious' => false];
-    }
 
     public static function findIfOwnedBy($contactId, $ownerId)
     {

@@ -4,6 +4,7 @@
 use App\Models\Traits\Imageable;
 use App\Models\Traits\Social;
 use App\Utility\Authenticator\Contracts\ShieldAuthServiceContract;
+use App\Utility\Util;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
@@ -69,10 +70,12 @@ class User extends ApiModel implements ShieldAuthServiceContract
     {
         $user = User::where('phone', '=', $input['phone'])->first();
 
+        $phoneData = Util::unifyPhoneNumber($input['phone'], $input['country_code']);
+
         if (!$user) {
             $user = new User;
-            $user->phone = (string)$input['phone'];
-            $user->country_code = (string)$input['country_code'];
+            $user->phone = (string) $phoneData->number;
+            $user->country_code = (string) $input['country_code'];
             $user->token = (string)str_random(60);
             $user->verification = 1111; //(int)mt_rand(1000, 9999);
             $user->mobile = (bool)$mobile;
