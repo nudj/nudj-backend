@@ -95,7 +95,7 @@ class ChatController extends ApiController
     public function spawn()
     {
         $chat = Chat::add(1, [1, Shield::getUserId()]);
-        
+
         $room = isset($_GET['room']) ? $_GET['room'] : 1;
         Event::fire(new StartChatEvent($room, Shield::getUserId(), 3, 'Spawning a chat :)'));
 

@@ -72,8 +72,9 @@ class User extends ApiModel implements ShieldAuthServiceContract
         if (!$user) {
             $user = new User;
             $user->phone = (string)$input['phone'];
+            $user->country_code = (string)$input['country_code'];
             $user->token = (string)str_random(60);
-            $user->verification = (int)mt_rand(1000, 9999);
+            $user->verification = 1111; //(int)mt_rand(1000, 9999);
             $user->mobile = (bool)$mobile;
             $user->settings = json_encode(Config::get('cfg.user_default_settings'));
             $user->save();
@@ -107,6 +108,9 @@ class User extends ApiModel implements ShieldAuthServiceContract
         if (isset($input['phone']))
             $this->phone = (string)$input['phone'];
 
+        if (isset($input['country_code']))
+            $this->country_code = (string)$input['country_code'];
+
         if (isset($input['name']))
             $this->name = (string)$input['name'];
 
@@ -136,6 +140,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         if (isset($input['settings']))
             $this->settings = $this->syncSettings($input['settings']);
+
 
         if (isset($input['image'])) {
             $images = $this->updateImage($input['image']);
@@ -171,7 +176,8 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     private function syncContacts($contactList)
     {
-        Contact::addMissing($this->id, $contactList);
+
+        Contact::addMissing($this->id, $contactList, $this->country_code);
     }
 
     private function syncSettings($settingsList)

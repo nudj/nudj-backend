@@ -66,10 +66,6 @@ class Job extends ApiModel
             $this->salary = (string)$input['salary'];
         }
 
-        if (isset($input['status'])) {
-            $this->status = (string)$input['status'];
-        }
-
         if (isset($input['skills'])) {
             $this->syncSkills($input['skills']);
             $searchEngineUpdate['skills'] = array_column($this->skills->toArray(), 'name');
@@ -108,9 +104,6 @@ class Job extends ApiModel
 
         if (isset($input['salary']))
             $job->salary = (string)$input['salary'];
-
-        if (isset($input['status']))
-            $job->status = (string)$input['status'];
 
         if (isset($input['bonus']))
             $job->bonus = (string)$input['bonus'];

@@ -8,6 +8,7 @@ class ConfigController extends ApiController {
 
 	public function index()
 	{
+
 		return $this->returnResponse(['data' => Config::get('public')]);
 	}
 

@@ -4,6 +4,8 @@
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\ContactTransformer;
+use libphonenumber\PhoneNumberFormat;
+use libphonenumber\PhoneNumberUtil;
 
 class Contact extends ApiModel
 {
@@ -17,7 +19,8 @@ class Contact extends ApiModel
 
     protected $prefix = 'contact.';
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->dependencies = ContactTransformer::$dependencies;
     }
 
@@ -47,22 +50,29 @@ class Contact extends ApiModel
     }
 
 
-    public static function addMissing($userId, $contactsList)
+    public static function addMissing($userId, $contactsList, $userCountryCode)
     {
-        foreach($contactsList as $record) {
 
-            if(!isset($record->phone) || !isset($record->alias))
+        foreach ($contactsList as $record) {
+
+            $record = (object)$record;
+
+            if (!isset($record->phone) || !isset($record->alias))
                 throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
-            $contact = Contact::where(['contact_of' => $userId, 'phone' => $record->phone])->first();
+            $phoneData = self::unifyPhoneNumber($record->phone, $userCountryCode);
+            $contact = Contact::where(['contact_of' => $userId, 'phone' => $phoneData->number])->first();
 
             if (!$contact) {
-                $contact = new Contact;
+                
+                $contact = new Contact();
                 $contact->contact_of = $userId;
-                $contact->phone = $record->phone;
                 $contact->alias = $record->alias;
+                $contact->phone = $phoneData->number;
+                $contact->country_code = $phoneData->code;
+                $contact->suspicious = $phoneData->suspicious;
 
-                if(isset($record->apple_id))
+                if (isset($record->apple_id))
                     $contact->apple_id = $record->apple_id;
 
                 $contact->save();
@@ -71,11 +81,26 @@ class Contact extends ApiModel
         }
     }
 
+    public static function unifyPhoneNumber($phoneNumber, $defaultCountry)
+    {
+        $phoneUtil = PhoneNumberUtil::getInstance();
+
+        try {
+            $phoneProto = $phoneUtil->parse($phoneNumber, $defaultCountry);
+            $code = $phoneUtil->getRegionCodeForNumber($phoneProto);
+            $number = $phoneUtil->format($phoneProto, PhoneNumberFormat::E164);
+        } catch (\libphonenumber\NumberParseException $e) {
+            return (object)['number' => $phoneNumber, 'code' => $defaultCountry, 'suspicious' => true];
+        }
+
+        return (object)['number' => $number, 'code' => $code, 'suspicious' => false];
+    }
+
     public static function findIfOwnedBy($contactId, $ownerId)
     {
         $contact = Contact::with('user')->find($contactId);
 
-        if(isset($contact->user->id) && $ownerId == $contact->user->id)
+        if (isset($contact->user->id) && $ownerId == $contact->user->id)
             return $contact;
 
         return null;

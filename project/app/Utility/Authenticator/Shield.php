@@ -31,6 +31,13 @@ class Shield implements ApiAuthenticable
     protected $token;
 
     /*
+    * User object returned by the User Repository
+    *
+    * @property class $user
+    */
+    protected $user;
+
+    /*
      * TheUser's id in the system
      *
      * @property int $userId
@@ -43,6 +50,8 @@ class Shield implements ApiAuthenticable
      * @property array $userRoles
      */
     protected $userRoles;
+
+
 
 
     public function __construct($authService)

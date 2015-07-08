@@ -37,7 +37,7 @@ class JobsController extends ApiController {
 	{
 		$job = Job::add(Shield::getUserId(), $request->all());
 
-		return $this->respondWithStatus($job->id);
+		return $this->respondWithId($job->id);
 	}
 
 

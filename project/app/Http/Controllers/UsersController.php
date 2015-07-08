@@ -64,7 +64,7 @@ class UsersController extends ApiController
 
         $info = $user->edit(Input::all());
 
-        return $this->respondWithItem($info, new UserTransformer());
+        return $this->respondWithStatus((bool) $info);
     }
 
 

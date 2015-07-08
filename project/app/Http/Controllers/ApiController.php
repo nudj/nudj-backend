@@ -75,6 +75,11 @@ class ApiController extends \Illuminate\Routing\Controller {
 		return Response::json($data, $this->getStatusCode(), $headers);
 	}
 
+	public function respondWithId($id, $status = true, $data = null)
+	{
+		return $this->respondWithStatus($status, ['id' => $id]);
+	}
+
 	public function respondWithStatus($status = true, $data = null)
 	{
 		$response['status'] = (bool) $status;
