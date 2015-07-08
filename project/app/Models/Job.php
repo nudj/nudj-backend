@@ -84,8 +84,8 @@ class Job extends ApiModel
             $searchEngineUpdate['skills'] = array_column($this->skills->toArray(), 'name');
         }
 
-
         $saved = $this->save();
+
 
         if ($saved && $searchEngineUpdate) {
             $this->updateToIndex('job', $this->id, $searchEngineUpdate);
@@ -128,15 +128,12 @@ class Job extends ApiModel
             $job->salary = (string)$input['salary'];
         }
 
+        $saved = $job->save();
+
         if (isset($input['skills'])) {
             $job->syncSkills($input['skills']);
             $searchEngineUpdate['skills'] = array_column($job->skills->toArray(), 'name');
         }
-
-        $saved = $job->save();
-
-        if (isset($input['skills']))
-            $job->syncSkills($input['skills']);
 
         if ($saved) {
             $job->addToIndex('job', $job->id, [
