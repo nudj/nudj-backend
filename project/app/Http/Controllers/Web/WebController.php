@@ -49,7 +49,7 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function validate()
     {
-        $user = User::login(['phone' => Request::get('phone'), 'country_code' => Request::get('code')], false);
+        $user = User::login(['phone' => Request::get('phone'), 'country_code' => Request::get('country_code')], false);
 
         /*Event::fire(new LoginUserEvent($user->phone, $user->verification));*/
 
