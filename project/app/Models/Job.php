@@ -11,9 +11,9 @@ class Job extends ApiModel
     use SoftDeletes, Indexable;
 
     protected $table = 'jobs';
-    protected $visible = ['id', 'title', 'description', 'salary', 'status', 'bonus', 'user_id'];
+    protected $visible = ['id', 'title', 'description', 'salary', 'status', 'bonus', 'company', 'location', 'user_id'];
 
-    protected $gettableFields = ['title', 'description', 'salary', 'status', 'bonus', 'skills', 'user', 'liked'];
+    protected $gettableFields = ['title', 'description', 'salary', 'status', 'bonus', 'company', 'location', 'skills', 'user', 'liked'];
     protected $defaultFields = ['title', 'user'];
 
     protected $prefix = 'job.';

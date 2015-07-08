@@ -24,8 +24,14 @@ class JobTransformer extends Transformer {
             case 'salary':
                 return (string) $item->salary;
 
-            case 'status':
-                return (bool) $item->status;
+            case 'company':
+                return (string) $item->company;
+
+            case 'location':
+                return (string) $item->location;
+
+            case 'active':
+                return (bool) $item->active;
 
             case 'bonus':
                 return (double) $item->bonus;
