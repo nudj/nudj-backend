@@ -1,10 +1,9 @@
 <?php namespace App\Models;
 
 
-use App\Utility\ImageHelper;
+use App\Utility\ApiException;
+use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\ContactTransformer;
-use App\Utility\Util;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contact extends ApiModel
 {
@@ -48,17 +47,24 @@ class Contact extends ApiModel
     }
 
 
-    public static function addMissing($userId, $list)
+    public static function addMissing($userId, $contactsList)
     {
-        foreach($list as $phone => $alias) {
+        foreach($contactsList as $record) {
 
-            $contact = Contact::where(['contact_of' => $userId, 'phone' => $phone])->first();
+            if(!isset($record->phone) || !isset($record->alias))
+                throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
+
+            $contact = Contact::where(['contact_of' => $userId, 'phone' => $record->phone])->first();
 
             if (!$contact) {
                 $contact = new Contact;
-                $contact->phone = $phone;
                 $contact->contact_of = $userId;
-                $contact->alias = $alias;
+                $contact->phone = $record->phone;
+                $contact->alias = $record->alias;
+
+                if(isset($record->apple_id))
+                    $contact->apple_id = $record->apple_id;
+
                 $contact->save();
             }
 

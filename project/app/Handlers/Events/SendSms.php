@@ -23,9 +23,9 @@ class SendSms implements ShouldBeQueued
             $client = new Services_Twilio(Config::get('cfg.twilio_sid'), Config::get('cfg.twilio_token'));
 
             $client->account->messages->create(array(
-                'To' => $event->userPhone,
+                'To' => $event->phone,
                 'From' => Config::get('cfg.twilio_number'),
-                'Body' => $event->verificationCode,
+                'Body' => $event->$message,
             ));
         } catch (Exception $e) {
             throw new ApiException(ApiExceptionType::$TWILIO_ERROR);

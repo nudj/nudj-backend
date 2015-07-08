@@ -4,7 +4,6 @@ use App\Events\NotifyUserEvent;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\NotificationTransformer;
-use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
 
@@ -13,7 +12,7 @@ class NotificationType
 {
 
     public static $ASK_TO_REFER = 1;
-    public static $RECEIVE_NUDGE = 2;
+    public static $NEW_APPLICATION = 2;
     public static $MATCHING_CONTACT = 3;
 
 }

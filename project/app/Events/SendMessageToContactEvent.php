@@ -4,7 +4,7 @@
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Lang;
 
-class LoginUserEvent extends Event {
+class SendMessageToContactEvent extends Event {
 
 	use SerializesModels;
 
@@ -12,12 +12,10 @@ class LoginUserEvent extends Event {
 	public $phone = null;
 	public $mesage = null;
 
-	public function __construct($userPhone, $verificationCode)
+	public function __construct($userPhone, $message)
 	{
 		$this->phone = $userPhone;
-		$this->message =  Lang::get('messages.verificationSMS', [
-			'code' => $verificationCode
-		]);
+		$this->message =  $message;
 	}
 
 }
