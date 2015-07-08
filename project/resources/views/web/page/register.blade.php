@@ -29,7 +29,7 @@
                 @else
                     <input type="hidden" name="jobid" id="jobid" value="1" />
                 @endif
-                <input id="type" name="type" value="{{$type}}" type="hidden"/>
+                <input id="from-type" name="from-type" value="{{$type}}" type="hidden"/>
             </div>
         </div>
 
