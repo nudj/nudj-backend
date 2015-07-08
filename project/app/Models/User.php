@@ -246,10 +246,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         return true;
 
-        return DB::table('nudges')
-            ->where('candidate_id', $this->id)
-            ->where('job_id', $jobId)
-            ->count();
+
 
     }
 

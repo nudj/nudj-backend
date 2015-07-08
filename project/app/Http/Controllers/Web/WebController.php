@@ -2,6 +2,7 @@
 
 
 use App\Http\Requests\Web\VerifyUserRequest;
+use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Job;
 use App\Models\Nudge;
@@ -66,8 +67,10 @@ class WebController extends \Illuminate\Routing\Controller
 
         $user = User::verify($request->all());
 
-        if ($user)
+        if ($user) {
+            Contact::syncContactOf($user->id, $user->phone);
             Shield::createSession($user->token);
+        }
 
         return response()->json([
             'success' => (bool)$user

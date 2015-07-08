@@ -35,6 +35,9 @@ class Contact extends ApiModel
         return $this->belongsTo('App\Models\User', 'contact_of');
     }
 
+    /* CRUD
+    ----------------------------------------------------- */
+
     public function edit($input)
     {
 
@@ -50,6 +53,12 @@ class Contact extends ApiModel
         return $this->save();
     }
 
+    /* Sync
+    ----------------------------------------------------- */
+    public static function syncContactOf($userId, $phone)
+    {
+        Contact::where('phone', '=', $phone)->update(['user_id' => $userId]);
+    }
 
     public static function addMissing($userId, $contactsList, $userCountryCode)
     {
@@ -83,6 +92,8 @@ class Contact extends ApiModel
     }
 
 
+    /* Checks
+    ----------------------------------------------------- */
     public static function findIfOwnedBy($contactId, $ownerId)
     {
         $contact = Contact::with('user')->find($contactId);
