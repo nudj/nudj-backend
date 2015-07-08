@@ -75,6 +75,11 @@ class Job extends ApiModel
             $searchEngineUpdate['skills'] = array_column($this->skills->toArray(), 'name');
         }
 
+        if (isset($input['active'])) {
+            $this->active = (bool)$input['active'];
+            $searchEngineUpdate['active'] = (bool)$input['active'];
+        }
+
         $saved = $this->save();
 
         if ($saved && $searchEngineUpdate) {
@@ -96,9 +101,10 @@ class Job extends ApiModel
     {
 
         $job = new Job;
-        $job->user_id = $userId;
+        $job->user_id = (int) $userId;
         $job->title = (string)$input['title'];
         $job->description = (string)$input['description'];
+        $job->active = true;
 
         if (isset($input['salary']))
             $job->salary = (string)$input['salary'];

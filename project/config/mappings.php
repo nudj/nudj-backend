@@ -42,6 +42,12 @@ return [
                 'include_in_all' => false
             ],
 
+            'active' => [
+                'type' => 'int',
+                'index' => 'not_analyzed',
+                'include_in_all' => false
+            ],
+
             'user_id' => [
                 'type' => 'integer',
                 'index' => 'not_analyzed',
