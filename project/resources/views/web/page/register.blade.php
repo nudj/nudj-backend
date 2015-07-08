@@ -58,7 +58,8 @@
             <div class="col-xs-12 col-centered col-max" style=" max-width: 350px;">
                 <div id="mobile-holder">
                     <input id="code" name="code" class="code mobile-borderless-right" type="text" readonly value="+44" maxlength="5">
-                    <input id="country_id" name="country_id" class="code mobile-borderless-right" type="hidden" value="" maxlength="5">
+                    <input id="country_id" name="country_id" type="hidden" value="" maxlength="5">
+                    <input id="country_code" name="country_code" type="hidden" value="{{$country->iso2}}" maxlength="5">
                     <input id="clean-code" name="clean-code" type="hidden" value="" maxlength="5">
                     <input id="mobile" name="mobile" class="mobile input-text-centered" type="tel" value="">
                     <input id="phone" name="phone" value="" type="hidden">
