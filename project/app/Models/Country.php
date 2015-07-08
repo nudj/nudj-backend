@@ -9,6 +9,6 @@ class Country extends ApiModel
 
     public function scopeWeb($query)
     {
-        return $query->select(['id', 'name', 'code']);
+        return $query->select(['id', 'name', 'code', 'iso2']);
     }
 }
