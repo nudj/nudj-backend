@@ -40,8 +40,7 @@ class WebController extends \Illuminate\Routing\Controller
             return redirect('/');
 
         return view('web/page/register', [
-            'type' => $hash,
-            'from' => $type,
+            'type' => $type,
             'job' => $action->job,
             'user' => $action->referrer,
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
@@ -57,7 +56,6 @@ class WebController extends \Illuminate\Routing\Controller
         return view('web/page/validate', [
             'user' => $user,
             'job' => Request::get('jobid'),
-            'from' => Request::get('from-type')
         ]);
     }
 
@@ -84,31 +82,31 @@ class WebController extends \Illuminate\Routing\Controller
             redirect('/');
         }
 
+        $job = Job::find($jobId);
         $user = User::find(Shield::getUserId());
 
-        $job = Job::find($jobId);
-
-
-        $type = false;
-
+        $type = null;
 
 //        if ($user->isAskedToRefer($job->id))
+//            $type = self::TYPE_REFER;
+//
+//        if ($user->isNudged($job->id))
+//            $type = self::TYPE_NUDGE;
+//
+//        if(!$type)
+//            redirect('/');
+
         if ((int)$jobId == 1)
             $type = self::TYPE_REFER;
 
-//        if ($user->isNudged($job->id))
         if ((int)$jobId == 2)
             $type = self::TYPE_NUDGE;
-
-        if(!$type)
-            redirect('/');
-
 
         return view('web/page/job', [
             'user' => $user,
             'type' => $type,
             'job' => $job,
-            'employer' => $job->user->name,
+            'employer' => $job->company,
             'skills' => $job->skills,
         ]);
     }
