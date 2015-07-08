@@ -61,6 +61,7 @@ $("#countries").on("change",function(){
    $("#code").val(newCode);
    $("#clean-code").val($(this).val().trim());
    $("#country_id").val($(this).val().trim());
+   $("#country_code").val(origVal[2]);
 });
 
 $("#mobile").on("change",function(){
