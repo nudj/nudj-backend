@@ -23,7 +23,7 @@ class SendSms implements ShouldBeQueued
             $client->account->messages->create(array(
                 'To' => $event->phone,
                 'From' => Config::get('cfg.twilio_number'),
-                'Body' => $event->$message,
+                'Body' => $event->message,
             ));
         } catch (Exception $e) {
             throw new ApiException(ApiExceptionType::$TWILIO_ERROR);
