@@ -1,13 +1,12 @@
 <?php namespace App\Models;
 
-use App\Events\Event;
 use App\Events\SendMessageToContactEvent;
 use App\Events\StartChatEvent;
 use App\Models\Traits\Hashable;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
-use App\Utility\Facades\Shield;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
 
 
@@ -54,11 +53,14 @@ class Nudge extends ApiModel
         if(!$referral)
             throw new ApiException(ApiExceptionType::$REFERRAL_MISSING);
 
+
         // we can access $referral->job->user_id instead,
         // but we use the method below to throw an exception in case of missing Job
         $job = Job::findOrFail($referral->job_id);
         $contact = Contact::findOrFail($contactId);
 
+        // @TODO maybe check for duplicates
+        
         $nudge = new Nudge();
         $nudge->job_id = $job->id;
         $nudge->employer_id = $job->user_id;
@@ -68,24 +70,26 @@ class Nudge extends ApiModel
         $nudge->save();
 
         if ($contact->user_id)
-            $this->nudgeUser($job->id, $contact->id, $job->user_id);
+            $this->nudgeUser($job, $contact);
         else
-            $this->nudgeContact($job->id, $contact->id, $job->user_id);
+            $this->nudgeContact($job, $contact, $hash);
 
     }
 
 
-    private function nudgeUser($jobId, $referrerId, $employerId)
+    private function nudgeUser($job, $contact)
     {
-         // Start chat
-        $chat = Chat::add($jobId, [$employerId, $referrerId]);
-        Event::fire(new StartChatEvent($chat->id, $employerId, $referrerId, Lang::get('messages.nudgeUser')));
+
+        $chat = Chat::add($job->id, [$job->user_id, $contact->user_id]);
+        Event::fire(new StartChatEvent($chat->id, $job->user_id, $contact->user_id, Lang::get('messages.nudgeUser')));
+
     }
 
 
-    private function nudgeContact($phone)
+    private function nudgeContact($job, $contact, $hash)
     {
-        Event::fire(new SendMessageToContactEvent($phone,  Lang::get('sms.nudgeContact')));
+        $message = Lang::get('sms.nudge', ['link' => web_url('register/nudge/' . $hash)]);
+        Event::fire(new SendMessageToContactEvent($contact->phone, $message));
     }
 
 
