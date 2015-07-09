@@ -52,8 +52,8 @@ class Referral extends ApiModel
 
             $referral = $this->addNewReferral($job->id, $contact->id);
 
-            if (!$referral)
-                continue;
+//            if (!$referral)
+//                continue;
 
             if ($contact->user_id)
                 $this->askUserToRefer($job, $contact, $message);
