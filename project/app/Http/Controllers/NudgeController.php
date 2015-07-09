@@ -12,7 +12,7 @@ class NudgeController extends ApiController {
 	public function ask(AskForReferralsRequest $request)
 	{
 		$referral = new Referral();
-		$referral->askContactsToReffer($request->job, $request->contacts);
+		$referral->askContactsToReffer($request->job, $request->contacts, $request->message);
 
 		return $this->respondWithStatus(true);
 	}

@@ -20,3 +20,10 @@ if (!function_exists('admin_url')) {
     }
 }
 
+if (!function_exists('web_url')) {
+
+    function web_url($path = null, $parameters = array(), $secure = null)
+    {
+        return app('Illuminate\Contracts\Routing\UrlGenerator')->to($path, $parameters, $secure);
+    }
+}

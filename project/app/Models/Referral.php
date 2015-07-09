@@ -37,7 +37,7 @@ class Referral extends ApiModel
 
     /* Actions
     ----------------------------------------------------- */
-    public function askContactsToReffer($jobId, $contactList)
+    public function askContactsToReffer($jobId, $contactList, $message)
     {
 
         $job = Job::findOrFail($jobId);
@@ -47,13 +47,15 @@ class Referral extends ApiModel
 
         foreach ($contacts as $contact) {
 
-            if(!$this->addNewReferral($jobId, $contact->id))
+            $referral = $this->addNewReferral($jobId, $contact->id);
+
+            if (!$referral)
                 continue;
 
             if ($contact->user_id)
-                $this->askUserToRefer($job->id, $contact->user_id, $job->user_id);
+                $this->askUserToRefer($job, $contact, $message);
             else
-                $this->askContactToRefer($job->id, $contact->phone);
+                $this->askContactToRefer($job, $contact, $message, $referral->hash);
         }
 
     }
@@ -61,7 +63,7 @@ class Referral extends ApiModel
     private function addNewReferral($jobId, $referrerId)
     {
 
-        if(Referral::where(['job_id' => $jobId, 'referrer_id' => $referrerId])->first())
+        if (Referral::where(['job_id' => $jobId, 'referrer_id' => $referrerId])->first())
             return false;
 
         $this->job_id = $jobId;
@@ -71,20 +73,22 @@ class Referral extends ApiModel
         return $this->save();
     }
 
-    private function askUserToRefer($jobId, $referrerUserId, $employerUserId)
+    private function askUserToRefer($job, $contact, $message)
     {
         // Create notification
-        Notification::createAskToReferNotification($referrerUserId, $employerUserId, ['job' => $jobId]);
+        Notification::createAskToReferNotification($contact->user_id, $job->user_id, ['job' => $job->id]);
 
         // Start chat
-        $chat = Chat::add($jobId, [$employerUserId, $referrerUserId]);
-        Event::fire(new StartChatEvent($chat->id, $employerUserId, $referrerUserId, Lang::get('messages.askToRefer')));
+        $chat = Chat::add($job->id, [$job->user_id, $contact->user_id]);
+        Event::fire(new StartChatEvent($chat->id, $job->user_id, $contact->user_id, Lang::get('messages.askToRefer')));
     }
 
 
-    private function askContactToRefer($jobId, $phone)
+    private function askContactToRefer($job, $contact, $message, $hash)
     {
-        Event::fire(new SendMessageToContactEvent($phone, Lang::get('sms.askToRefer')));
+
+        $message = Lang::get('sms.askToRefer', ['link' => web_url('register/refer/' . $hash)]);
+        Event::fire(new SendMessageToContactEvent($contact->phone, $message));
     }
 
 }

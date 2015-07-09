@@ -2,11 +2,13 @@
 
 
 use App\Utility\Facades\Shield;
+use Carbon\Carbon;
 
 class JobTransformer extends Transformer {
 
     public static $dependencies = [
-        'user' => 'user_id'
+        'user' => 'user_id',
+        'created' => 'created_at',
     ];
 
     public function transformMap($item, $column) {
@@ -35,6 +37,9 @@ class JobTransformer extends Transformer {
 
             case 'bonus':
                 return (double) $item->bonus;
+
+            case 'created':
+                return (string) Carbon::createFromTimestamp(strtotime($item->created_at))->diffForHumans();
 
             case 'liked':
                 return  (bool) $item->likes->contains(Shield::getUserId());
