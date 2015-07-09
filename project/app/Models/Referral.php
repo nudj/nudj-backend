@@ -49,9 +49,9 @@ class Referral extends ApiModel
             $this->addNewReferral($jobId, $contact->id);
 
             if ($contact->user_id)
-                $this->askContactToRefer($job->id, $contact->id, $job->user_id);
-            else
                 $this->askUserToRefer($job->id, $contact->id, $job->user_id);
+            else
+                $this->askContactToRefer($job->id, $contact->id, $job->user_id);
         }
 
     }
