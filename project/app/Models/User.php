@@ -237,9 +237,8 @@ class User extends ApiModel implements ShieldAuthServiceContract
             if (count($referral->referrer->user))
                 $userIds[] = $referral->referrer->user->id;
         }
-        echo $this->id;
-        print_r($userIds);
-        
+
+
         return in_array($this->id, $userIds);
 
     }
