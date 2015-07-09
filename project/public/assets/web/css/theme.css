@@ -432,12 +432,24 @@ iPad 3
     }
     .labels{
         padding: 4px;
+        font-weight: 600;
     }
     #name{
-        margin-top: 30px;
+        margin-top: 0px;
     }
     #push{
-        margin-top: 20px;
+        margin-top: 40px;
+    }
+    .col-centered{
+        padding: 2px;
+    }
+
+    #phone{
+        margin-top: 15px;
+    }
+
+    #country{
+        margin-top: 15px;
     }
 }
 
