@@ -84,7 +84,8 @@ class Handler extends ExceptionHandler
             $modelName = explode('\\', $e->getModel());
             $resourceMissing = strtoupper(array_pop($modelName) . '_MISSING');
 
-            if(property_exists(new ApiExceptionType, $resourceMissing))
+
+            if(property_exists(new ApiExceptionType(), $resourceMissing))
                 throw new ApiException(ApiExceptionType::$$resourceMissing);
             else
                 throw new ApiException(ApiExceptionType::$GENERAL_ERROR, $e->getMessage());

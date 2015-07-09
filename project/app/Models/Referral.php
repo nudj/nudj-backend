@@ -46,7 +46,8 @@ class Referral extends ApiModel
 
         foreach ($contacts as $contact) {
 
-            $this->addNewReferral($jobId, $contact->id);
+            if(!$this->addNewReferral($jobId, $contact->id))
+                continue;
 
             if ($contact->user_id)
                 $this->askUserToRefer($job->id, $contact->id, $job->user_id);
@@ -58,11 +59,15 @@ class Referral extends ApiModel
 
     private function addNewReferral($jobId, $referrerId)
     {
+
+        if(Contact::where(['job_id' => $jobId, 'referrer_id' => $referrerId])->first())
+            return false;
+
         $this->job_id = $jobId;
         $this->referrer_id = $referrerId;
         $this->hash = self::generateUniqueHash();
-        $this->save();
 
+        return $this->save();
     }
 
     private function askUserToRefer($jobId, $referrerId, $employerId)

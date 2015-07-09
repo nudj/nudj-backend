@@ -32,5 +32,8 @@ return [
     ApiExceptionType::$VERIFICATION_ERROR['errorCode'] => "Wrong Verification Code",
     ApiExceptionType::$USER_MISSING['errorCode'] => "User not found in our database",
     ApiExceptionType::$JOB_MISSING['errorCode'] => "Job not found in our database",
+    ApiExceptionType::$CONTACT_MISSING['errorCode'] => "Contact not found in our database",
+    ApiExceptionType::$REFERRAL_MISSING['errorCode'] => "Referral not found in our database",
+    ApiExceptionType::$NUDGE_MISSING['errorCode'] => "Nudge not found in our database",
 
 ];
