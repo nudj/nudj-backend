@@ -90,13 +90,15 @@ class WebController extends \Illuminate\Routing\Controller
         $job = Job::find($jobId);
         $user = User::find(Shield::getUserId());
 
-        $type = null;
+
 
         if ($user->isAskedToRefer($job->id))
             $type = self::TYPE_REFER;
-
-        if ($user->isNudged($job->id))
+        else if ($user->isNudged($job->id))
             $type = self::TYPE_NUDGE;
+        else
+            $type = null;
+
 
         if(Request::has('type'))
             $type = Request::get('type');
