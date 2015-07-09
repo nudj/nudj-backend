@@ -98,6 +98,9 @@ class WebController extends \Illuminate\Routing\Controller
         if ($user->isNudged($job->id))
             $type = self::TYPE_NUDGE;
 
+        if(Request::get('type'))
+            $type = Request::get('type');
+        
         if(!$type)
             redirect('/');
 
