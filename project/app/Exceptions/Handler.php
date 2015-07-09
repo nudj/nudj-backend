@@ -1,5 +1,6 @@
 <?php namespace App\Exceptions;
 
+
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use Exception;
@@ -8,7 +9,6 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
-use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -68,8 +68,8 @@ class Handler extends ExceptionHandler
         if ($e instanceof ApiException) {
 
             $response['error'] = [
-                "message" => $e->getMessage(),
-                "code" => $e->getErrorCode()
+                'message' => $e->getMessage(),
+                'code' => $e->getErrorCode()
             ];
 
             if ($e->getErrorInfo())
@@ -96,8 +96,8 @@ class Handler extends ExceptionHandler
         if ('local' != env('APP_ENV')) {
 
             $response['error'] = [
-                "message" => $e->getMessage(),
-                "code" => ApiExceptionType::$GENERAL_ERROR['errorCode']
+                'message' => $e->getMessage(),
+                'code' => 10001
             ];
 
             return $this->respond($response, 400);

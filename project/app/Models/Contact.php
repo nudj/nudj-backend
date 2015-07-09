@@ -70,9 +70,7 @@ class Contact extends ApiModel
             if (!isset($record->phone) || !isset($record->alias))
                 throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
-            if(!$phoneData = Util::unifyPhoneNumber($record->phone, $userCountryCode))
-                continue;
-
+            $phoneData = Util::unifyPhoneNumber($record->phone, $userCountryCode);
             $contact = Contact::where(['contact_of' => $userId, 'phone' => $phoneData->number])->first();
 
             if (!$contact) {

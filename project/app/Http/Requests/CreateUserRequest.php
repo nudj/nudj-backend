@@ -14,7 +14,8 @@ class CreateUserRequest extends ApiRequest {
 	public function rules()
 	{
 		return [
-			'phone' => 'required'
+			'phone' => 'required',
+			'country_code' => 'required'
 		];
 	}
 

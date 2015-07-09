@@ -41,12 +41,6 @@ class  Util {
             return (object)['number' => $phoneNumber, 'code' => $defaultCountry, 'suspicious' => true];
         }
 
-        if(!$number)
-            return false;
-
-        if(!$code)
-            $code = $defaultCountry;
-
         return (object)['number' => $number, 'code' => $code, 'suspicious' => false];
     }
 
