@@ -51,7 +51,7 @@ class Referral extends ApiModel
             if ($contact->user_id)
                 $this->askUserToRefer($job->id, $contact->user_id, $job->user_id);
             else
-                $this->askContactToRefer($job->id, $contact->id, $job->user_id);
+                $this->askContactToRefer($job->id, $contact->phone);
         }
 
     }
@@ -80,9 +80,9 @@ class Referral extends ApiModel
     }
 
 
-    private function askContactToRefer($phone)
+    private function askContactToRefer($jobId, $phone)
     {
-        Event::fire(new SendMessageToContactEvent($phone,  Lang::get('sms.askToRefer')));
+        Event::fire(new SendMessageToContactEvent($phone, Lang::get('sms.askToRefer')));
     }
 
 }
