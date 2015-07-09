@@ -31,8 +31,7 @@ class DatabaseSeeder extends Seeder {
 		DB::table('notifications')->truncate();
 		$this->command->info('Truncated: notifications');
 
-		DB::table('tasks')->truncate();
-		DB::table('failed')->truncate();
+		$this->call('TaskSeeder');
 		$this->command->info('Task Queue Cleared');
 
 		Model::reguard();
