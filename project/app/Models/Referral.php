@@ -52,7 +52,7 @@ class Referral extends ApiModel
             if (!$referral)
                 continue;
 
-            $message = $message ?: Lang::get('messages.refer');
+            $message = $message ?: Lang::get('messages.refer', ['position' => $job->title]);
 
             if ($contact->user_id)
                 $this->askUserToRefer($job, $contact, $message);
