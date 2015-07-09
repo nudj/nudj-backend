@@ -43,7 +43,7 @@ return [
             ],
 
             'active' => [
-                'type' => 'int',
+                'type' => 'integer',
                 'index' => 'not_analyzed',
                 'include_in_all' => false
             ],
