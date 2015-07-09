@@ -99,6 +99,7 @@ class WebController extends \Illuminate\Routing\Controller
         else
             $type = null;
 
+        echo $type;
 
         if(Request::has('type'))
             $type = Request::get('type');
