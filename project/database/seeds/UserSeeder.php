@@ -19,6 +19,8 @@ class UserSeeder extends Seeder {
 			'roles' => json_encode(['admin'])
 		]);
 
+		$this->command->info('Users seeded!');
+
 
 	}
 

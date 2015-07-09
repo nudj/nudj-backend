@@ -123,6 +123,9 @@ class SkillSeeder extends Seeder {
 
 
 		DB::table('skills')->insert($skills);
+
+		$this->command->info('Skills seeded!');
+
 	}
 
 }

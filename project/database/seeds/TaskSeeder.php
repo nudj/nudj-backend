@@ -11,6 +11,7 @@ class TaskSeeder extends Seeder {
 		DB::table('tasks')->truncate();
 		DB::table('failed')->truncate();
 
+		$this->command->info('Task Queue Cleared');
 	}
 
 }

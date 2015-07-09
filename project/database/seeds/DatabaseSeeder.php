@@ -17,22 +17,18 @@ class DatabaseSeeder extends Seeder {
 
 
 		$this->call('ChatSeeder');
-		$this->command->info('Chats seeded!');
 
 		$this->call('JobSeeder');
-		$this->command->info('Jobs seeded!');
 
 		$this->call('UserSeeder');
-		$this->command->info('Users seeded!');
 
 		$this->call('SkillSeeder');
-		$this->command->info('Skills seeded!');
 
 		DB::table('notifications')->truncate();
 		$this->command->info('Truncated: notifications');
 
 		$this->call('TaskSeeder');
-		$this->command->info('Task Queue Cleared');
+
 
 		Model::reguard();
 	}

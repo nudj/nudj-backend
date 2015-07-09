@@ -11,6 +11,9 @@ class ChatSeeder extends Seeder {
 		DB::table('chat_participants')->truncate();
 		DB::table('chats')->truncate();
 
+
+		$this->command->info('Chats seeded!');
+
 	}
 
 }

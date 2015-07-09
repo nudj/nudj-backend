@@ -14,6 +14,8 @@ class JobSeeder extends Seeder {
 		DB::table('nudges')->truncate();
 		DB::table('jobs')->truncate();
 
+		$this->command->info('Jobs seeded!');
+
 	}
 
 }
