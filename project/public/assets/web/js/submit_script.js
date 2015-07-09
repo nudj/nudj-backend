@@ -25,7 +25,7 @@ $("#btn-submit").click(function(e){
         var country_code = $("#country_code").val().trim();
 
         var put_data = {phone:phone,verification:verific,country_code:country_code};
-        $.post( "/verify", put_data,function(data) {})
+        $.post( base_path +"/verify", put_data,function(data) {})
             .done(function( data ) {
                 /*console.log(data.success);*/
                 isVerifyet = JSON.stringify(data);
@@ -33,9 +33,9 @@ $("#btn-submit").click(function(e){
                 if(data.success){
                    /* console.log("result"+obj_verifyet);*/
                     if($("#reqfrom").val() == "refer")
-                         window.location.href = "/job/"+$("#jobid").val();
+                         window.location.href = base_path +"/job/"+$("#jobid").val();
                     else
-                        window.location.href = "/job/"+$("#jobid").val();
+                        window.location.href = base_path +"/job/"+$("#jobid").val();
                 }
                 else{
                     TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
