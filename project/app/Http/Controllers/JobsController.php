@@ -19,6 +19,9 @@ class JobsController extends ApiController
         $me = Shield::getUserId();
 
         switch ($filter) {
+            case 'mine' :
+                $items = Job::mine($me)->api()->paginate($this->limit);
+                break;
             case 'liked' :
                 $items = Job::liked($me)->api()->paginate($this->limit);
                 break;

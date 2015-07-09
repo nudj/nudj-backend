@@ -43,6 +43,11 @@ class Job extends ApiModel
 
     /* Scopes
    ----------------------------------------------------- */
+    public function scopeMine($query, $userId = null)
+    {
+        return $query->where('user_id', '=', $userId);
+    }
+
     public function scopeLiked($query, $userId = null)
     {
         return $query->whereHas('likes', function($q) use ($userId)
