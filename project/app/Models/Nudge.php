@@ -70,7 +70,7 @@ class Nudge extends ApiModel
         $nudge->hash = self::generateUniqueHash();
         $nudge->save();
 
-        $message = $message ?: Lang::get('messages.refer');
+        $message = $message ?: Lang::get('messages.nudge');
         $referrer = Shield::getUserModel();
 
         if ($contact->user_id)
