@@ -19,6 +19,8 @@ class ContactTransformer extends Transformer {
             case 'phone':
                 return (string) $item->phone;
 
+            case 'apple_id':
+                return (string) $item->apple_id;
 
             case 'favourite':
                 return (bool) $item->favourite;
