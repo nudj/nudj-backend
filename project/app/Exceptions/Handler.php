@@ -94,7 +94,7 @@ class Handler extends ExceptionHandler
 
         // handle all other thrown exception
         // when in local env show stack trace page
-        if ('local' != env('APP_ENV')) {
+        if ('local' != env('APP_ENV') && Request::get('debug') != true) {
 
             $response['error'] = [
                 'message' => $e->getMessage(),

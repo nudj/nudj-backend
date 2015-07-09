@@ -53,7 +53,7 @@ class Referral extends ApiModel
                 continue;
 
             if ($contact->user_id)
-                $this->askUserToRefer($job, $contact, $message);
+                $this->askUserToRefer($job, $contact);
             else
                 $this->askContactToRefer($job, $contact, $message, $referral->hash);
         }
@@ -73,7 +73,7 @@ class Referral extends ApiModel
         return $this->save();
     }
 
-    private function askUserToRefer($job, $contact, $message)
+    private function askUserToRefer($job, $contact)
     {
         // Create notification
         Notification::createAskToReferNotification($contact->user_id, $job->user_id, ['job' => $job->id]);
@@ -86,8 +86,8 @@ class Referral extends ApiModel
 
     private function askContactToRefer($job, $contact, $message, $hash)
     {
-
         $message = Lang::get('sms.askToRefer', ['link' => web_url('register/refer/' . $hash)]);
+
         Event::fire(new SendMessageToContactEvent($contact->phone, $message));
     }
 
