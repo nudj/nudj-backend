@@ -25,9 +25,9 @@
                 <p class="lead newp">Hi, <input id="user-name" name="user-name" value="{{ $user->alias }}" />
                 </p>
                 @if(isset($job->id))
-                <input type="hidden" name="jobid" id="jobid" value="{{$job->id}}" />
+                <input type="hidden" name="job_id" id="job_id" value="{{$job->id}}" />
                 @else
-                    <input type="hidden" name="jobid" id="jobid" value="1" />
+                    <input type="hidden" name="job_id" id="job_id" value="1" />
                 @endif
                 <input id="type" name="type" value="{{$type}}" type="hidden"/>
             </div>
