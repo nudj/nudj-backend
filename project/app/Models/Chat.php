@@ -69,7 +69,6 @@ class Chat extends ApiModel
         $chat->job_id = $jobId;
 
         $chat->save();
-
         $chat->participants()->sync($participants);
 
         return $chat;

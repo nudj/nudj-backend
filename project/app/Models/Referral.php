@@ -43,6 +43,8 @@ class Referral extends ApiModel
         $job = Job::findOrFail($jobId);
         $contacts = Contact::findOrFail($contactList);
 
+        //@TODO check if job is held by current user
+
         foreach ($contacts as $contact) {
 
             if(!$this->addNewReferral($jobId, $contact->id))
