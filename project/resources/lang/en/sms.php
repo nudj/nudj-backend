@@ -3,8 +3,8 @@
 return [
 
     'verification' => 'Your Nudj verification code is :code',
-    'nudge' => 'You were referred by :name for the position :position :link',
-    'invite' => 'Hi, :name I want to invite you',
-    'askToRefer' => 'Please help me find the right candidate :link',
+    'refer' => ':name has messaged you via Nudj: \n :message \n :link',
+    'nudge' => ':name has messaged you via Nudj: \n :message \n :link',
+    'invite' => ':name has messaged you via Nudj: :message \n :link',
 
 ];

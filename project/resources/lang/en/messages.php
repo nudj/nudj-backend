@@ -2,7 +2,7 @@
 
 return [
 
-    'nudgeUser' => 'Nudge message',
-    'askToRefer' => 'Ask to refer message'
+    'nudge' => 'Please check this job offer',
+    'refer' => 'Can you refer someone for the position of :position'
 
 ];
