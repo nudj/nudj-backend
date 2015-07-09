@@ -32,7 +32,7 @@ class StartChat //implements ShouldBeQueued
             'debug' => false,
         ]);
 
-        $rpc->createRoom($event->chatId);
+        $rpc->createRoom((string) $event->chatId);
         $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername]);
 
 
