@@ -32,7 +32,9 @@ class SendSms //implements ShouldBeQueued
 
     public function subscribe($events)
     {
-        $events->listen('App\Events\LoginUserEvent', 'UserEventHandler@send');
+        $events->listen('App\Events\LoginUserEvent', 'App\Handlers\Events\SendSms@send');
+
+        $events->listen('App\Events\SendMessageToContactEvent', 'App\Handlers\Events\SendSms@send');
     }
 
 

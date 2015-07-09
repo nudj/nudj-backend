@@ -49,7 +49,7 @@ class Referral extends ApiModel
                 continue;
 
             if ($contact->user_id)
-                $this->askUserToRefer($job->id, $contact->id, $job->user_id);
+                $this->askUserToRefer($job->id, $contact->user_id, $job->user_id);
             else
                 $this->askContactToRefer($job->id, $contact->id, $job->user_id);
         }
@@ -69,14 +69,14 @@ class Referral extends ApiModel
         return $this->save();
     }
 
-    private function askUserToRefer($jobId, $referrerId, $employerId)
+    private function askUserToRefer($jobId, $referrerUserId, $employerUserId)
     {
         // Create notification
-        Notification::createAskToReferNotification($referrerId, $employerId, ['job' => $jobId]);
+        Notification::createAskToReferNotification($referrerUserId, $employerUserId, ['job' => $jobId]);
 
         // Start chat
-        $chat = Chat::add($jobId, [$employerId, $referrerId]);
-        Event::fire(new StartChatEvent($chat->id, $employerId, $referrerId, Lang::get('messages.askToRefer')));
+        $chat = Chat::add($jobId, [$employerUserId, $referrerUserId]);
+        Event::fire(new StartChatEvent($chat->id, $employerUserId, $referrerUserId, Lang::get('messages.askToRefer')));
     }
 
 
