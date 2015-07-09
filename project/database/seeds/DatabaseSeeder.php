@@ -25,9 +25,11 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UserSeeder');
 		$this->command->info('Users seeded!');
 
+		$this->call('SkillSeeder');
+		$this->command->info('Skills seeded!');
+
 		DB::table('notifications')->truncate();
-		DB::table('skills')->truncate();
-		$this->command->info('Truncated: notifications, skills');
+		$this->command->info('Truncated: notifications');
 
 		DB::table('tasks')->truncate();
 		DB::table('failed')->truncate();
