@@ -54,7 +54,7 @@ class WebController extends \Illuminate\Routing\Controller
     {
         $user = User::login(['phone' => Request::get('phone'), 'country_code' => Request::get('country_code')], false);
 
-//       Event::fire(new LoginUserEvent($user->phone, $user->verification));
+        Event::fire(new LoginUserEvent($user->phone, $user->verification));
 
         return view('web/page/validate', [
             'user' => $user,
