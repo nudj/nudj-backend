@@ -74,14 +74,14 @@ class Notification extends ApiModel
 
         $notification->save();
 
-        Event::fire(new NotifyUserEvent($recipientId, $notification->getMessage()));
+        Event::fire(new NotifyUserEvent($recipientId, $notification->getMessage($meta)));
 
         return $notification;
     }
 
-    public function getMessage()
+    public function getMessage($meta = [])
     {
-        return Lang::get('notifications.' . $this->type_id);
+        return Lang::get('notifications.' . $this->type_id, $meta);
     }
 
 
