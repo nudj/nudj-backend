@@ -229,8 +229,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
     public function isAskedToRefer($jobId)
     {
 
-        return true;
-
         // @TODO: USE WHERE IN
         $referrals = Referral::where('job_id', '=', $jobId)->with('referrer')->get();
 
@@ -239,17 +237,16 @@ class User extends ApiModel implements ShieldAuthServiceContract
             if (count($referral->referrer->user))
                 $userIds[] = $referral->referrer->user->id;
         }
-
+        echo $this->id;
+        print_r($userIds);
+        
         return in_array($this->id, $userIds);
 
     }
 
     public function isNudged($jobId)
     {
-
-        return true;
-
-
+        return false;
 
     }
 
