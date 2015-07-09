@@ -16,9 +16,7 @@ class SendSms implements ShouldBeQueued
 
     public function handle(LoginUserEvent $event)
     {
-        //mute sms messages while in development
-        return true;
-
+      
         try {
             $client = new Services_Twilio(Config::get('cfg.twilio_sid'), Config::get('cfg.twilio_token'));
 

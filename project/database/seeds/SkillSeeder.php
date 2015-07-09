@@ -56,8 +56,8 @@ class SkillSeeder extends Seeder {
 			['name' => 'Technology'],
 			['name' => 'Finance'],
 			['name' => 'Retail'],
-			['name' => 'accounting'],
-			['name' => 'social media'],
+			['name' => 'Accounting'],
+			['name' => 'Social media'],
 			['name' => 'Teaching'],
 			['name' => 'Engineering'],
 			['name' => 'Performance Tuning'],
@@ -115,6 +115,8 @@ class SkillSeeder extends Seeder {
 			['name' => 'Java'],
 			['name' => 'Laravel'],
 			['name' => 'Codeigniter'],
+			['name' => 'MSSql'],
+			['name' => 'MongoDB'],
 		];
 
 
