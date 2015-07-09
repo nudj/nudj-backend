@@ -10,72 +10,83 @@ use App\Utility\Transformers\JobTransformer;
 use Illuminate\Support\Facades\Input;
 
 
-class JobsController extends ApiController {
+class JobsController extends ApiController
+{
 
 
-	public function index()
-	{
+    public function index($filter = null)
+    {
+        $me = Shield::getUserId();
 
-		$items = Job::api()->paginate($this->limit);
+        switch ($filter) {
+            case 'liked' :
+                $items = Job::liked($me)->api()->paginate($this->limit);
+                break;
+            case 'available' :
+                $items = Job::available($me)->api()->paginate($this->limit);
+                break;
+            default:
+                throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
+        }
 
-		return $this->respondWithPagination($items, new JobTransformer());
-	}
-
-
-	public function show($id)
-	{
-
-		$item = Job::api()->find($id);
-
-		if(!$item)
-			throw new ApiException(ApiExceptionType::$NOT_FOUND);
-
-		return $this->respondWithItem($item, new JobTransformer());
-	}
+        return $this->respondWithPagination($items, new JobTransformer());
+    }
 
 
-	public function store(CreateJobRequest $request)
-	{
-		$job = Job::add(Shield::getUserId(), $request->all());
+    public function show($id)
+    {
 
-		return $this->respondWithId($job->id);
-	}
+        $item = Job::api()->find($id);
 
+        if (!$item)
+            throw new ApiException(ApiExceptionType::$NOT_FOUND);
 
-	public function update($id)
-	{
-		$job = Job::findIfOwnedBy($id, Shield::getUserId());
-
-		if(!$job)
-			throw new ApiException(ApiExceptionType::$NOT_FOUND);
-
-		$status = $job->edit(Input::all());
-
-		return $this->respondWithStatus($status);
-	}
+        return $this->respondWithItem($item, new JobTransformer());
+    }
 
 
-	public function destroy($id)
-	{
-		$job = Job::findIfOwnedBy($id, Shield::getUserId());
+    public function store(CreateJobRequest $request)
+    {
+        $job = Job::add(Shield::getUserId(), $request->all());
 
-		if(!$job)
-			throw new ApiException(ApiExceptionType::$NOT_FOUND);
-
-		$status = $job->delete();
-
-		return $this->respondWithStatus($status);
-	}
+        return $this->respondWithId($job->id);
+    }
 
 
-	public function like($id)
-	{
-		return $this->respondWithStatus(Job::like($id, Shield::getUserId()));
-	}
+    public function update($id)
+    {
+        $job = Job::findIfOwnedBy($id, Shield::getUserId());
 
-	public function unlike($id)
-	{
-		return $this->respondWithStatus(Job::like($id, Shield::getUserId(), true));
-	}
+        if (!$job)
+            throw new ApiException(ApiExceptionType::$NOT_FOUND);
+
+        $status = $job->edit(Input::all());
+
+        return $this->respondWithStatus($status);
+    }
+
+
+    public function destroy($id)
+    {
+        $job = Job::findIfOwnedBy($id, Shield::getUserId());
+
+        if (!$job)
+            throw new ApiException(ApiExceptionType::$NOT_FOUND);
+
+        $status = $job->delete();
+
+        return $this->respondWithStatus($status);
+    }
+
+
+    public function like($id)
+    {
+        return $this->respondWithStatus(Job::like($id, Shield::getUserId()));
+    }
+
+    public function unlike($id)
+    {
+        return $this->respondWithStatus(Job::like($id, Shield::getUserId(), true));
+    }
 
 }

@@ -45,7 +45,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'api/v1'], function () {
 
     // JOBS
-    Route::get('jobs', 'JobsController@index');
+    Route::get('jobs/{filter}', 'JobsController@index');
     Route::get('jobs/{id}', 'JobsController@show');
     Route::post('jobs', 'JobsController@store');
     Route::put('jobs/{id}', 'JobsController@update');

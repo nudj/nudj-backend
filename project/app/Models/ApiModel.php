@@ -48,6 +48,17 @@ class ApiModel extends Model
         return $this->defaultFields;
     }
 
+    public function getDefaultValues()
+    {
+        $result = [];
+        $showing = array_intersect($this->visible, $this->defaultFields);
+        foreach ($showing as $field) {
+            $result[$field] = $this->$field;
+        }
+
+        return $result;
+    }
+
     public function getConfigItem($item) {
 
         if(!isset($this->table))

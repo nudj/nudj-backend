@@ -40,7 +40,7 @@ class Referral extends ApiModel
     public function askContactsToReffer($jobId, $contactList, $message)
     {
 
-        $job = Job::with('user')->findOrFail($jobId);
+        $job = Job::findOrFail($jobId);
         $contacts = Contact::findOrFail($contactList);
 
         //@TODO check if job is held by current user

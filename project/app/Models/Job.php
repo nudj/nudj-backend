@@ -3,6 +3,7 @@
 use App\Models\Traits\Indexable;
 use App\Utility\Transformers\JobTransformer;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 
 class Job extends ApiModel
@@ -38,6 +39,33 @@ class Job extends ApiModel
     public function likes()
     {
         return $this->belongsToMany('App\Models\User', 'job_likes');
+    }
+
+    /* Scopes
+   ----------------------------------------------------- */
+    public function scopeLiked($query, $userId = null)
+    {
+        return $query->whereHas('likes', function($q) use ($userId)
+        {
+            $q->where('job_likes.user_id', '=', $userId);
+        });
+    }
+
+    public function scopeAvailable($query, $userId = null)
+    {
+        $contacts = DB::table('contacts')
+            ->select('user_id')
+            ->where('contact_of', '=', $userId)
+            ->whereNotNull('user_id')
+            ->get();
+
+
+        $ids = [$userId];
+        foreach($contacts as $contact)
+            $ids[] = $contact->user_id;
+
+
+        return $query->whereIn('user_id', $ids);
     }
 
 

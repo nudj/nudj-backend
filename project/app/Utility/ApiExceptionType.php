@@ -9,7 +9,8 @@ class ApiExceptionType {
     public static $GENERAL_ERROR        = ['errorCode' => 10001, 'code' => 400, 'notify' => false];
 
     //Development Errors
-    public static $MISSING_PROPERTY     = ['errorCode' => 10101, 'code' => 400, 'notify' => false];
+    public static $INVALID_ENDPOINT     = ['errorCode' => 10101, 'code' => 400, 'notify' => false];
+    public static $MISSING_PROPERTY     = ['errorCode' => 10102, 'code' => 400, 'notify' => false];
 
     public static $BAD_REQUEST          = ['errorCode' => 10400, 'code' => 400, 'notify' => false];
     public static $UNAUTHORIZED         = ['errorCode' => 10401, 'code' => 401, 'notify' => false];
