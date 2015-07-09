@@ -2,6 +2,7 @@
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider {
 
@@ -20,12 +21,12 @@ class EventServiceProvider extends ServiceProvider {
 		'App\Events\NotifyUserEvent' => [
 			'App\Handlers\Events\SendApn',
 		],
-		'App\Events\LoginUserEvent' => [
-			'App\Handlers\Events\SendSms',
-		],
-		'App\Events\SendMessageToContactEvent' => [
-			'App\Handlers\Events\SendSms',
-		],
+//		'App\Events\LoginUserEvent' => [
+//			'App\Handlers\Events\SendSms',
+//		],
+//		'App\Events\SendMessageToContactEvent' => [
+//			'App\Handlers\Events\SendSms',
+//		],
 		'App\Events\StartChatEvent' => [
 			'App\Handlers\Events\StartChat',
 		],
@@ -42,7 +43,7 @@ class EventServiceProvider extends ServiceProvider {
 	{
 		parent::boot($events);
 
-		//
+		Event::subscribe('UserEventHandler');
 	}
 
 }

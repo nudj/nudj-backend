@@ -6,7 +6,6 @@ use App\Models\Traits\Hashable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
-use OpenCloud\CloudMonitoring\Resource\Notification;
 
 
 class Referral extends ApiModel

@@ -13,8 +13,7 @@ use Services_Twilio;
 class SendSms //implements ShouldBeQueued
 {
 
-
-    public function handle(LoginUserEvent $event)
+    public function send($event)
     {
 
         try {
@@ -30,5 +29,13 @@ class SendSms //implements ShouldBeQueued
         }
 
     }
+
+    public function subscribe($events)
+    {
+        $events->listen('App\Events\LoginUserEvent', 'UserEventHandler@send');
+    }
+
+
+
 
 }
