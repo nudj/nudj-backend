@@ -43,7 +43,7 @@ class EventServiceProvider extends ServiceProvider {
 	{
 		parent::boot($events);
 
-		Event::subscribe('SendSms');
+		Event::subscribe('App\Handlers\Events\SendSms');
 	}
 
 }
