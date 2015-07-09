@@ -3,6 +3,7 @@
 use App\Events\LoginUserEvent;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\VerifyUserRequest;
+use App\Models\Contact;
 use App\Models\User;
 use App\Http\Requests;
 use App\Utility\ApiException;
@@ -87,6 +88,8 @@ class UsersController extends ApiController
 
         if (!$user)
             throw new ApiException(ApiExceptionType::$VERIFICATION_ERROR);
+
+        Contact::syncContactOf($user->id, $user->phone);
 
         return $this->respondWithStatus(true, [
             'id' => $user->id,
