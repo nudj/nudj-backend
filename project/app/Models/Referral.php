@@ -69,8 +69,9 @@ class Referral extends ApiModel
         $this->job_id = $jobId;
         $this->referrer_id = $referrerId;
         $this->hash = self::generateUniqueHash();
+        $this->save();
 
-        return $this->save();
+        return $this;
     }
 
     private function askUserToRefer($job, $contact)
