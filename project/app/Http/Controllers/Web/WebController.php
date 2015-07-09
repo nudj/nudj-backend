@@ -65,7 +65,7 @@ class WebController extends \Illuminate\Routing\Controller
     public function verify(VerifyUserRequest $request)
     {
         if (!Request::ajax())
-            redirect('/');
+            return redirect('/');
 
         $user = User::verify($request->all());
 
@@ -84,12 +84,14 @@ class WebController extends \Illuminate\Routing\Controller
         try {
             Shield::validate('session');
         } catch (ApiException $e) {
-            redirect('/');
+            return redirect('/');
         }
 
         $job = Job::find($jobId);
         $user = User::find(Shield::getUserId());
 
+        if(!$user || !$job)
+            return redirect('/');
 
 
         if ($user->isAskedToRefer($job->id))
@@ -99,13 +101,12 @@ class WebController extends \Illuminate\Routing\Controller
         else
             $type = null;
 
-        echo $type;
 
         if(Request::has('type'))
             $type = Request::get('type');
         
         if(!$type)
-            redirect('/');
+            return redirect('/');
 
 
         return view('web/page/job', [
