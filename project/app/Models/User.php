@@ -88,7 +88,10 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     public static function verify($input)
     {
-        $user = User::where('phone', '=', $input['phone'])
+
+        $phoneData = Util::unifyPhoneNumber($input['phone'], $input['country_code']);
+
+        $user = User::where('phone', '=', $phoneData->number)
             ->where('verification', '=', $input['verification'])
             ->first();
 
