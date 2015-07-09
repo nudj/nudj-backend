@@ -1,11 +1,14 @@
 <?php namespace App\Models;
 
 use App\Events\Event;
+use App\Events\SendMessageToContactEvent;
+use App\Events\StartChatEvent;
 use App\Models\Traits\Hashable;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Lang;
 
 
 class Nudge extends ApiModel
@@ -44,7 +47,7 @@ class Nudge extends ApiModel
 
     /* Actions
    ----------------------------------------------------- */
-    public static function addNewNudge($hash, $contactId)
+    public function addNewNudge($hash, $contactId)
     {
         $referral = Referral::where('hash', '=', $hash)->first();
 
@@ -64,6 +67,25 @@ class Nudge extends ApiModel
         $nudge->hash = self::generateUniqueHash();
         $nudge->save();
 
+        if ($contact->user_id)
+            $this->nudgeUser($job->id, $contact->id, $job->user_id);
+        else
+            $this->nudgeContact($job->id, $contact->id, $job->user_id);
+
+    }
+
+
+    private function nudgeUser($jobId, $referrerId, $employerId)
+    {
+         // Start chat
+        $chat = Chat::add($jobId, [$employerId, $referrerId]);
+        Event::fire(new StartChatEvent($chat->id, $employerId, $referrerId, Lang::get('messages.nudgeUser')));
+    }
+
+
+    private function nudgeContact($phone)
+    {
+        Event::fire(new SendMessageToContactEvent($phone,  Lang::get('sms.nudgeContact')));
     }
 
 

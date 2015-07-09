@@ -13,10 +13,10 @@ class Contact extends ApiModel
     public $timestamps = false;
 
     protected $table = 'contacts';
-    protected $visible = ['id', 'phone', 'alias', 'user_id'];
+    protected $visible = ['id', 'phone', 'alias', 'user_id', 'apple_id'];
 
-    protected $gettableFields = ['id', 'phone', 'alias', 'favourite', 'user'];
-    protected $defaultFields = ['phone', 'alias', 'favourite'];
+    protected $gettableFields = ['id', 'phone', 'alias', 'favourite', 'user', 'apple_id'];
+    protected $defaultFields = ['phone', 'alias'];
 
     protected $prefix = 'contact.';
 

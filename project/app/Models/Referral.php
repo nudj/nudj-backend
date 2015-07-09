@@ -6,6 +6,7 @@ use App\Models\Traits\Hashable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
+use OpenCloud\CloudMonitoring\Resource\Notification;
 
 
 class Referral extends ApiModel
@@ -66,9 +67,11 @@ class Referral extends ApiModel
 
     private function askUserToRefer($jobId, $referrerId, $employerId)
     {
+        // Create notification
+        Notification::createAskToReferNotification($referrerId, $employerId, ['job' => $jobId]);
 
+        // Start chat
         $chat = Chat::add($jobId, [$employerId, $referrerId]);
-
         Event::fire(new StartChatEvent($chat->id, $employerId, $referrerId, Lang::get('messages.askToRefer')));
     }
 

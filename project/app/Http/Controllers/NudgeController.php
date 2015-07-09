@@ -19,7 +19,8 @@ class NudgeController extends ApiController {
 
 	public function nudge(NudgeRequest $request)
 	{
-		Nudge::addNewNudge($request->hash, $request->contact);
+		$nudge = new Nudge();
+		$nudge->addNewNudge($request->hash, $request->contact);
 
 		$this->respondWithStatus(true);
 	}

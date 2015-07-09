@@ -15,6 +15,7 @@ class JobsController extends ApiController {
 
 	public function index()
 	{
+
 		$items = Job::api()->paginate($this->limit);
 
 		return $this->respondWithPagination($items, new JobTransformer());

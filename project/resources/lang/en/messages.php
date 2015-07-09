@@ -2,7 +2,7 @@
 
 return [
 
-    'nudge' => 'Nudge message',
+    'nudgeUser' => 'Nudge message',
     'askToRefer' => 'Ask to refer message'
 
 ];

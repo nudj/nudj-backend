@@ -74,7 +74,6 @@ class Notification extends ApiModel
 
         $notification->save();
 
-
         Event::fire(new NotifyUserEvent($recipientId, $notification->getMessage()));
 
         return $notification;
@@ -106,9 +105,20 @@ class Notification extends ApiModel
     /* Create different Notification types
     ----------------------------------------------------- */
 
-    public static function addNudge($recipientId, $senderId, $meta = null)
+
+    public static function createAskToReferNotification($recipientId, $senderId, $meta = null)
     {
-        return Notification::add($recipientId, $senderId, NotificationType::$NUDGE, $meta);
+        return Notification::add($recipientId, $senderId, NotificationType::$ASK_TO_REFER, $meta);
+    }
+
+    public static function createNewApplicationNotification($recipientId, $senderId, $meta = null)
+    {
+        return Notification::add($recipientId, $senderId, NotificationType::$NEW_APPLICATION, $meta);
+    }
+
+    public static function createMatchingContactNotification($recipientId, $senderId, $meta = null)
+    {
+        return Notification::add($recipientId, $senderId, NotificationType::$MATCHING_CONTACT, $meta);
     }
 
 
