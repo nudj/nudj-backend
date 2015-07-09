@@ -13,7 +13,6 @@ class RepairController extends AdminController {
 
 	public function index()
 	{
-
 		return view('admin/page/repair',[
 			'token' => Auth::user()->api_token
 		]);

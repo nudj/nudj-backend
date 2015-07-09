@@ -20,7 +20,7 @@ class ContactTransformer extends Transformer {
                 return (string) $item->phone;
 
             case 'apple_id':
-                return (string) $item->apple_id;
+                return (int) $item->apple_id;
 
             case 'favourite':
                 return (bool) $item->favourite;

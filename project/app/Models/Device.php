@@ -20,20 +20,21 @@ class Device extends ApiModel
 
     public static function add($userId, $input)
     {
+        $device = Device::where('token', '=', $input['token'])->first();
 
-        $device = Device::where('user_id', '=', $userId)
-                ->where('token', '=', $input['token'])
-                ->first();
-
-        if($device)
+        if ($device && $device->user_id == $userId) {
             return $device;
+        } elseif ($device && $device->user_id != $userId) {
+            $device->delete();
+        }
 
         $device = new Device;
         $device->user_id = $userId;
-        $device->token = (string) $input['token'];
+        $device->token = (string)$input['token'];
         $device->save();
 
         return $device;
+
     }
 
 }
