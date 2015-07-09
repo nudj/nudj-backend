@@ -57,6 +57,7 @@ class WebController extends \Illuminate\Routing\Controller
         return view('web/page/validate', [
             'user' => $user,
             'job' => Request::get('jobid'),
+            'country_code' => Request::get('country_code'),
         ]);
     }
 

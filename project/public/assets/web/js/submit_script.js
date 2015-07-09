@@ -22,8 +22,9 @@ $("#btn-submit").click(function(e){
     }
     else{
         var phone = $("#phone").html().trim();
+        var country_code = $("#country_code").val().trim();
 
-        var put_data = {phone:phone,verification:verific};
+        var put_data = {phone:phone,verification:verific,country_code:country_code};
         $.post( "/verify", put_data,function(data) {})
             .done(function( data ) {
                 /*console.log(data.success);*/
