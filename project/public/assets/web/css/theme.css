@@ -454,7 +454,7 @@ iPad 3
 }
 
 /* iPhone 6+ ----------- */
-@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape){
     /* Styles */
     #name{
         margin-top: 50px;
@@ -464,13 +464,13 @@ iPad 3
     }
 }
 
-@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait){
     /* Styles */
     #name{
         margin-top: 50px;
     }
     #push{
-        margin-top: 20px;
+        margin-top: 50px;
     }
 }
 
