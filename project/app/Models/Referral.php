@@ -60,7 +60,7 @@ class Referral extends ApiModel
     private function addNewReferral($jobId, $referrerId)
     {
 
-        if(Contact::where(['job_id' => $jobId, 'referrer_id' => $referrerId])->first())
+        if(Referral::where(['job_id' => $jobId, 'referrer_id' => $referrerId])->first())
             return false;
 
         $this->job_id = $jobId;
