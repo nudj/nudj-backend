@@ -9,7 +9,6 @@ use App\Utility\Facades\Shield;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
-use OpenCloud\Database\Resource\User;
 
 
 class Nudge extends ApiModel
