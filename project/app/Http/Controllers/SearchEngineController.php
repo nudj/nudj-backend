@@ -45,6 +45,8 @@ class SearchEngineController extends ApiController
     {
         $items = Job::all();
 
+        echo "Found" . count($items) ." jobs. <br/>";
+
         foreach ($items as $item) {
 
             $data = [
@@ -70,6 +72,7 @@ class SearchEngineController extends ApiController
     {
         $items = Skill::all();
 
+        echo "Found" . count($items) ." skills. <br/>";
         foreach ($items as $item) {
 
             $data = [
