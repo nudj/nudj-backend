@@ -24,7 +24,10 @@ class VerifyUserRequest extends FormRequest {
 	}
 
 
-
+	protected function failedValidation(Validator $validator)
+	{
+		die(json_encode($this->formatErrors($validator)));
+	}
 
 
 }
