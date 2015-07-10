@@ -57,19 +57,19 @@ function closeFailed(){
 }
 
 $("#mobile-one").keypress(function(e){
-   if($(this).val().length > 0){
+   if($("input[name=mobile-one]").val().length > 0){
        $("#mobile-two").focus();
    }
 });
 
 $("#mobile-two").keypress(function(e){
-   if($(this).val().length > 0){
+   if($("input[name=mobile-two]").val().length > 0){
        $("#mobile-three").focus();
    }
 });
 
 $("#mobile-three").keypress(function(e){
-   if($(this).val().length > 0){
+   if($("input[name=mobile-three]").val().length > 0){
        $("#mobile-four").focus();
    }
 });

@@ -41,16 +41,16 @@
         <div class="col-xs-12 col-centered col-max">
             <div id="mobile-holder">
                 <div class="mobile-box mobile-border-left">
-                    <input id="mobile-one" name="mobile-one" class="mobile" type="password" value="" maxlength="1">
+                    <input id="mobile-one" name="mobile-one" class="mobile" type="tel" value="" maxlength="1">
                 </div>
                 <div class="mobile-box mobile-border-left">
-                    <input id="mobile-two" name="mobile-two" class="mobile" type="password" value="" maxlength="1">
+                    <input id="mobile-two" name="mobile-two" class="mobile" type="tel" value="" maxlength="1">
                 </div>
                 <div class="mobile-box mobile-border-left">
-                    <input id="mobile-three" name="mobile-three" class="mobile" type="password" value="" maxlength="1">
+                    <input id="mobile-three" name="mobile-three" class="mobile" type="tel" value="" maxlength="1">
                 </div>
                 <div class="mobile-box mobile-border-left">
-                    <input id="mobile-four" name="mobile-four" class="mobile" type="password" value="" maxlength="1">
+                    <input id="mobile-four" name="mobile-four" class="mobile" type="tel" value="" maxlength="1">
                 </div>
             </div>
         </div>
