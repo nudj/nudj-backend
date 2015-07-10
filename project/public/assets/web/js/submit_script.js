@@ -56,23 +56,23 @@ function closeFailed(){
     $("#mobile-one").focus();
 }
 
-$("#mobile-one").keypress(function(e){
-   if($(this).length > 0){
-       $("#mobile-two").focus();
-   }
-});
-
-$("#mobile-two").keypress(function(e){
-   if($(this).length > 0){
-       $("#mobile-three").focus();
-   }
-});
-
-$("#mobile-three").keypress(function(e){
-   if($(this).length > 0){
-       $("#mobile-four").focus();
-   }
-});
+//$("#mobile-one").keypress(function(e){
+//   if($(this).length > 0){
+//       $("#mobile-two").focus();
+//   }
+//});
+//
+//$("#mobile-two").keypress(function(e){
+//   if($(this).length > 0){
+//       $("#mobile-three").focus();
+//   }
+//});
+//
+//$("#mobile-three").keypress(function(e){
+//   if($(this).length > 0){
+//       $("#mobile-four").focus();
+//   }
+//});
 
 $("#mobile-four").keypress(function(e){
 
