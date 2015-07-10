@@ -52,6 +52,7 @@ class  Util
 
         foreach ($requiredFields as $field) {
             if (!isset($array[$field])) {
+                echo $array[$field];
                 return false;
             }
         }

@@ -75,14 +75,14 @@ class Notification extends ApiModel
 
         $notification->save();
 
-        Event::fire(new NotifyUserEvent($recipientId, $notification->getMessage()));
+        Event::fire(new NotifyUserEvent($recipientId, $notification->getMessage($meta)));
 
         return $notification;
     }
 
-    public function getMessage()
+    public function getMessage($meta = [])
     {
-        return Lang::get('notifications.' . $this->type_id);
+        return Lang::get('notifications.' . $this->type_id, $meta);
     }
 
 
@@ -109,7 +109,7 @@ class Notification extends ApiModel
 
     public static function createAskToReferNotification($recipientId, $senderId, $meta = null)
     {
-        if(!Util::arrayIsValid($meta, 'message, employer'))
+        if(!Util::arrayIsValid($meta, 'message,employer'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
         return Notification::add($recipientId, $senderId, NotificationType::$ASK_TO_REFER, $meta);
