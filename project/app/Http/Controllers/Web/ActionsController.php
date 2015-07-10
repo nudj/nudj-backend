@@ -16,8 +16,7 @@ class ActionsController extends \Illuminate\Routing\Controller
 
     public function __construct()
     {
-        if (!Request::ajax())
-            return redirect('/');
+       
     }
 
     public function countries(){
