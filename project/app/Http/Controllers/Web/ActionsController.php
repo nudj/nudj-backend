@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Web;
 
 
+use App\Http\Requests\ApplyRequest;
 use App\Http\Requests\NudgeRequest;
 use App\Http\Requests\Web\VerifyUserRequest;
 use App\Models\Contact;
@@ -50,7 +51,7 @@ class ActionsController extends \Illuminate\Routing\Controller
 
     public function apply(ApplyRequest $request)
     {
-        // @TODO
+        die(json_encode(['status' => true]));
     }
 }
 
