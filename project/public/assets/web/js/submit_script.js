@@ -28,21 +28,23 @@ $("#btn-submit").click(function(e){
         $.post( base_path +"/verify", put_data,function(data) {})
             .done(function( data ) {
                 /*console.log(data.success);*/
-                isVerifyet = JSON.stringify(data);
-                var obj_verifyet = eval('('+isVerifyet+')');
-                if(data.success){
-                   /* console.log("result"+obj_verifyet);*/
-                    if($("#reqfrom").val() == "refer")
-                         window.location.href = base_path +"/job/"+$("#jobid").val();
-                    else
-                        window.location.href = base_path +"/job/"+$("#jobid").val();
-                }
-                else{
-                    TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
-                }
+                //isVerifyet = JSON.stringify(data);
+                //var obj_verifyet = eval('('+isVerifyet+')');
+                //if(data.success){
+                //   /* console.log("result"+obj_verifyet);*/
+                //    if($("#reqfrom").val() == "refer")
+                //         window.location.href = base_path +"/job/"+$("#jobid").val();
+                //    else
+                //        window.location.href = base_path +"/job/"+$("#jobid").val();
+                //}
+                //else{
+                //    TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+                //}
+                window.location.href = base_path +"/job/"+$("#jobid").val();
             })
             .fail(function(){
-                TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+                //TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+                window.location.href = base_path +"/job/"+$("#jobid").val();
             })
     }
 
