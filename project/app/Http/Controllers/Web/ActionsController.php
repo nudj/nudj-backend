@@ -16,7 +16,7 @@ class ActionsController extends \Illuminate\Routing\Controller
 
     public function __construct()
     {
-       
+
     }
 
     public function countries(){
