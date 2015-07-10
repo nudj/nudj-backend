@@ -17,7 +17,7 @@ class JobSeeder extends Seeder {
 
 		DB::table('jobs')->insert([
 			'id' => 1,
-			'user_id' => 3,
+			'user_id' => 2,
 			'title' => 'Junior web developer',
 			'location' => 'Sofia',
 			'bonus' => 300,
@@ -29,7 +29,7 @@ class JobSeeder extends Seeder {
 
 		DB::table('jobs')->insert([
 			'id' => 2,
-			'user_id' => 4,
+			'user_id' => 3,
 			'title' => 'Architect',
 			'location' => 'Hoxton, London',
 			'bonus' => 225,
