@@ -4,6 +4,7 @@ use App\Events\NotifyUserEvent;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\NotificationTransformer;
+use App\Utility\Util;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
 
@@ -108,18 +109,28 @@ class Notification extends ApiModel
 
     public static function createAskToReferNotification($recipientId, $senderId, $meta = null)
     {
+        if(!Util::arrayIsValid($meta, 'message, employer'))
+            throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
+
         return Notification::add($recipientId, $senderId, NotificationType::$ASK_TO_REFER, $meta);
     }
 
     public static function createNewApplicationNotification($recipientId, $senderId, $meta = null)
     {
+        if(!Util::arrayIsValid($meta, 'candidate, referrer, position'))
+            throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
+
         return Notification::add($recipientId, $senderId, NotificationType::$NEW_APPLICATION, $meta);
     }
 
     public static function createMatchingContactNotification($recipientId, $senderId, $meta = null)
     {
+        if(!Util::arrayIsValid($meta, 'candidate, job, employer'))
+            throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
+
         return Notification::add($recipientId, $senderId, NotificationType::$MATCHING_CONTACT, $meta);
     }
+
 
 
 }

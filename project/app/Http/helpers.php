@@ -27,3 +27,6 @@ if (!function_exists('web_url')) {
         return app('Illuminate\Contracts\Routing\UrlGenerator')->to($path, $parameters, $secure);
     }
 }
+
+
+

@@ -40,7 +40,7 @@ class Referral extends ApiModel
     public function askContactsToReffer($jobId, $contactList, $message)
     {
 
-        $job = Job::findOrFail($jobId);
+        $job = Job::with('user')->findOrFail($jobId);
         $contacts = Contact::findOrFail($contactList);
 
         //@TODO check if job is held by current user
@@ -52,7 +52,7 @@ class Referral extends ApiModel
 
             $referral = $this->addNewReferral($job->id, $contact->id);
 
-//            if (!$referral)
+//          if (!$referral)
 //                continue;
 
             if ($contact->user_id)
@@ -77,10 +77,13 @@ class Referral extends ApiModel
         return $this;
     }
 
-    private function askUserToRefer($job, $contact, $message)
+    private function askUserToRefer($job, $contact,$message)
     {
         // Create notification
-        Notification::createAskToReferNotification($contact->user_id, $job->user_id);
+        Notification::createAskToReferNotification($contact->user_id, $job->user_id, [
+            'message' => $message,
+            'employer' => $job->user->name,
+        ]);
 
         // Start chat
         $chat = Chat::add($job->id, [$job->user_id, $contact->user_id]);

@@ -4,7 +4,8 @@
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumberUtil;
 
-class  Util {
+class  Util
+{
 
 
     public static function extractParams($params, $prefix = null)
@@ -14,7 +15,7 @@ class  Util {
         $length = strlen($prefix);
         foreach (explode(',', $params) as $field) {
 
-            if(!$prefix) {
+            if (!$prefix) {
                 $columns[] = $field;
                 continue;
             }
@@ -26,7 +27,6 @@ class  Util {
 
         return $columns;
     }
-
 
 
     public static function unifyPhoneNumber($phoneNumber, $defaultCountry)
@@ -45,6 +45,17 @@ class  Util {
     }
 
 
+    public static function arrayIsValid($array, $requiredFields)
+    {
+        if(!is_array($requiredFields))
+            $requiredFields = explode(',', $requiredFields);
 
+        foreach ($requiredFields as $field) {
+            if (!isset($array[$field])) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
