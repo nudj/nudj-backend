@@ -16,7 +16,7 @@ class SendSms //implements ShouldBeQueued
     public function send($event)
     {
 
-        return true;
+//        return true;
         
         try {
             $client = new Services_Twilio(Config::get('cfg.twilio_sid'), Config::get('cfg.twilio_token'));
