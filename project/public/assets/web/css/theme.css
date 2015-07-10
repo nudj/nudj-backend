@@ -460,17 +460,57 @@ iPad 3
         margin-top: 50px;
     }
     #push{
+        margin-top: 70px;
+    }
+    .labels{
+        font-weight: 600;
+    }
+    .col-centered{
+        padding: 0;
+    }
+
+    #mobile-holder{
+        max-width: 335px;
+    }
+
+    #phone{
         margin-top: 20px;
+    }
+
+    #paragraph{
+        margin-top: 15px;
     }
 }
 
 @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait){
     /* Styles */
     #name{
-        margin-top: 50px;
+        margin-top: 5px;
     }
     #push{
-        margin-top: 50px;
+        margin-top: 70px;
+    }
+    #country{
+        margin-top: 15px;
+    }
+    .labels{
+        font-weight: 600;
+    }
+
+    .col-centered{
+        padding: 0;
+    }
+
+    #mobile-holder{
+        max-width: 335px;
+    }
+
+    #phone{
+        margin-top: 20px;
+    }
+
+    #paragraph{
+        margin-top: 15px;
     }
 }
 
