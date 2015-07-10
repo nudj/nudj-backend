@@ -32,6 +32,9 @@ class UserTransformer extends Transformer
             case 'address':
                 return (string)$item->address;
 
+            case 'company':
+                return (string)$item->company;
+
             case 'status':
                 return (int)$item->status;
 
