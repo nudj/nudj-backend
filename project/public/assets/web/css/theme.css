@@ -422,6 +422,9 @@ iPad 3
     #push{
         margin-top: 20px;
     }
+    #user-name{
+        width: 285px;
+    }
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
@@ -451,6 +454,9 @@ iPad 3
     #country{
         margin-top: 15px;
     }
+    #user-name{
+        width: 285px;
+    }
 }
 
 /* iPhone 6+ ----------- */
@@ -479,6 +485,9 @@ iPad 3
 
     #paragraph{
         margin-top: 15px;
+    }
+    #user-name{
+        width: 285px;
     }
 }
 
@@ -511,6 +520,9 @@ iPad 3
 
     #paragraph{
         margin-top: 15px;
+    }
+    #user-name{
+        width: 285px;
     }
 }
 

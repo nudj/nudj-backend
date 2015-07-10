@@ -55,7 +55,7 @@
                 <div id="mobile-holder">
                     <input id="code" name="code" class="code mobile-borderless-right" type="text" readonly value="+44" maxlength="5">
                     <input id="country_code" name="country_code" type="hidden" value="" maxlength="5">
-                    <input id="mobile" name="mobile" class="mobile input-text-centered" type="tel" value="">
+                    <input id="mobile" name="mobile" class="mobile input-text-centered" type="tel" value="" placeholder="Your phone number">
                     <input id="phone" name="phone" value="" type="hidden">
                     <input id="verification" name="verification" value="{{ $type }}" type="hidden">
                 </div>
