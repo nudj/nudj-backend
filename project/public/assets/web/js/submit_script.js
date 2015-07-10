@@ -56,25 +56,25 @@ function closeFailed(){
     $("#mobile-one").focus();
 }
 
-$("#mobile-one").keypress(function(e){
+$("#mobile-one").keyup(function(e){
    if($("input[name=mobile-one]").val().length > 0){
        $("#mobile-two").focus();
    }
 });
 
-$("#mobile-two").keypress(function(e){
+$("#mobile-two").keyup(function(e){
    if($("input[name=mobile-two]").val().length > 0){
        $("#mobile-three").focus();
    }
 });
 
-$("#mobile-three").keypress(function(e){
+$("#mobile-three").keyup(function(e){
    if($("input[name=mobile-three]").val().length > 0){
        $("#mobile-four").focus();
    }
 });
 
-$("#mobile-four").keypress(function(e){
+$("#mobile-four").keyup(function(e){
 
     if (e.keyCode == 13) {
 
