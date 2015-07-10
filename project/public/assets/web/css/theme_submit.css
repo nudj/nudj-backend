@@ -385,10 +385,13 @@ iPad 3
         padding: 0;
     }
     #name{
-        margin-top: 50px;
+        margin-top: 15px;
     }
     #push{
-        margin-top: 20px;
+        margin-top: 5px;
+    }
+    #mobile-holder{
+        margin-top: 25px;
     }
 }
 
@@ -405,16 +408,20 @@ iPad 3
         margin-top: 50px;
     }
     #push{
-        margin-top: 20px;
+        margin-top: 5px;
     }
 
     #name{
-        margin-top: 55px;
+        margin-top: 15px;
+    }
+
+    #mobile-holder{
+        margin-top: 25px;
     }
 }
 
 /* iPhone 6+ ----------- */
-@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape){
     /* Styles */
     #name{
         margin-top: 50px;
@@ -424,7 +431,7 @@ iPad 3
     }
 }
 
-@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait){
     /* Styles */
     #name{
         margin-top: 50px;
@@ -435,6 +442,10 @@ iPad 3
 
     #name{
         margin-top: 90px;
+    }
+
+    #mobile-holder{
+        margin-top: 50px;
     }
 }
 
