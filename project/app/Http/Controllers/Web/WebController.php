@@ -81,12 +81,12 @@ class WebController extends \Illuminate\Routing\Controller
 //            $type = self::TYPE_NUDGE;
 //        else
 //            $type = null;
-        
 
 
+        $type = 'refer';
         if(Request::has('type'))
             $type = Request::get('type');
-        
+
         if(!$type)
             return redirect('/');
 
