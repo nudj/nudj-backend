@@ -75,12 +75,13 @@ class WebController extends \Illuminate\Routing\Controller
 //            return redirect('/');
 
 
-        if ($user->isAskedToRefer($job->id))
-            $type = self::TYPE_REFER;
-        else if ($user->isNudged($job->id))
-            $type = self::TYPE_NUDGE;
-        else
-            $type = null;
+//        if ($user->isAskedToRefer($job->id))
+//            $type = self::TYPE_REFER;
+//        else if ($user->isNudged($job->id))
+//            $type = self::TYPE_NUDGE;
+//        else
+//            $type = null;
+        
 
 
         if(Request::has('type'))
