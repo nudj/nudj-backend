@@ -14,9 +14,12 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('register/{type}/{hash}', 'Web\WebController@register');
     Route::post('validate', 'Web\WebController@validate');
-    Route::post('verify', 'Web\WebController@verify');
     Route::get('job/{jobId}', 'Web\WebController@job');
-    Route::get('countries', 'Web\WebController@countries');
+
+    Route::post('verify', 'Web\ActionsController@verify');
+    Route::post('apply', 'Web\ActionsController@apply');
+    Route::post('refer', 'Web\ActionsController@apply');
+    Route::get('countries', 'Web\ActionsController@countries');
 
 });
 

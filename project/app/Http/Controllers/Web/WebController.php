@@ -21,10 +21,6 @@ class WebController extends \Illuminate\Routing\Controller
     const TYPE_REFER = 'refer';
 
 
-    public function countries(){
-        return Country::web()->orderBy('name', 'asc')->get();
-    }
-
     public function register($type = null, $hash = null)
     {
 
@@ -62,22 +58,7 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
-    public function verify(VerifyUserRequest $request)
-    {
-        if (!Request::ajax())
-            return redirect('/');
 
-        $user = User::verify($request->all());
-
-        if ($user) {
-            Contact::syncContactOf($user->id, $user->phone);
-            Shield::createSession($user->token);
-        }
-
-        return response()->json([
-            'success' => (bool)$user
-        ]);
-    }
 
     public function job($jobId = null)
     {
