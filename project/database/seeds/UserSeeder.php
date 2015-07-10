@@ -30,7 +30,7 @@ class UserSeeder extends Seeder {
 			'mobile' => 1,
 			'name' => 'Vanessa',
 			'image' => '{"profile":"XQrFsvPlbz.png","cover":"XQrFsvPlbz.jpg"}',
-			'notifications' => '{"notifications":{"1":true,"2":true,"3":true,"4":true,"5":true}}'
+			'settings' => '{"notifications":{"1":true,"2":true,"3":true,"4":true,"5":true}}'
 		]);
 
 		DB::table('users')->insert([
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder {
 			'company' => 'E-man',
 			'about' => 'Everything is possible. The impossible just takes me more timet. Test',
 			'image' => '{"profile":"AHf92G5rK3.png","cover":"AHf92G5rK3.jpg"}',
-			'notifications' => '{"notifications":{"1":true,"2":true,"3":true,"4":true,"5":true}}'
+			'settings' => '{"notifications":{"1":true,"2":true,"3":true,"4":true,"5":true}}'
 		]);
 
 		$this->command->info('Users seeded!');
