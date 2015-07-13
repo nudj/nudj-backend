@@ -8,7 +8,7 @@ abstract class ApiRequest extends FormRequest {
 
     public function response(array $errors)
     {
-        throw new ApiException(ApiExceptionType::$VALIDATION_ERROR, json_encode($errors));
+        throw new ApiException(ApiExceptionType::$VALIDATION_ERROR, $errors);
     }
 
     public function forbiddenResponse()
