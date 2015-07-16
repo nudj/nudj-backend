@@ -62,11 +62,11 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function job($jobId = null)
     {
-        try {
-            Shield::validate('session');
-        } catch (ApiException $e) {
-            return redirect('/');
-        }
+//        try {
+//            Shield::validate('session');
+//        } catch (ApiException $e) {
+//            return redirect('/');
+//        }
 
         $job = Job::find($jobId);
         $user = User::find(Shield::getUserId());
