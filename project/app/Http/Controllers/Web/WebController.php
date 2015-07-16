@@ -62,34 +62,29 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function job($jobId = null)
     {
-//        try {
-//            Shield::validate('session');
-//        } catch (ApiException $e) {
-//            return redirect('/');
-//        }
+        try {
+            Shield::validate('session');
+        } catch (ApiException $e) {
+            return redirect('/');
+        }
 
         $job = Job::find($jobId);
         $user = User::find(Shield::getUserId());
 
-//        if(!$user || !$job)
-//            return redirect('/');
+        if(!$user || !$job)
+            return redirect('/');
 
 
-//        if ($user->isAskedToRefer($job->id))
-//            $type = self::TYPE_REFER;
-//        else if ($user->isNudged($job->id))
-//            $type = self::TYPE_NUDGE;
-//        else
-//            $type = null;
+        if ($user->isAskedToRefer($job->id))
+            $type = self::TYPE_REFER;
+        else if ($user->isNudged($job->id))
+            $type = self::TYPE_NUDGE;
+        else
+            $type = null;
 
-
-        $type = 'refer';
-        if(Request::has('type'))
-            $type = Request::get('type');
 
         if(!$type)
             return redirect('/');
-
 
         return view('web/page/job', [
             'user' => $user,
