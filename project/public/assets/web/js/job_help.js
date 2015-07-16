@@ -1,6 +1,10 @@
 /**
  * Created by viperS on 16-07-2015 г..
  */
+
+var goCountr = '';
+var msgRefer ='';
+
 $.get( "/countries", function() {})
     .done(function(data) {
         isVerifyet = JSON.stringify(data);

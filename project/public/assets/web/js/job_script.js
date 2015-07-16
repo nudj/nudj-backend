@@ -2,7 +2,7 @@
  * Created by viperS on 24-06-2015 г..
  */
 var pubUrl = window.location.protocol + '//' + window.location.host;
-var goCountr = '';var msgRefer ='';
+
 
 function down_modal(){
     parent.TINY.box.hide();
