@@ -44,7 +44,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-// API V! routes
+// API V1 routes
 Route::group(['prefix' => 'api/v1'], function () {
 
     // JOBS
