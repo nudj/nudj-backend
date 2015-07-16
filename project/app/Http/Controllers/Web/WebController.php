@@ -85,6 +85,7 @@ class WebController extends \Illuminate\Routing\Controller
 
 //        if(!$type)
 //            return redirect('/');
+        echo $type;die();
 
         return view('web/page/job', [
             'user' => $user,

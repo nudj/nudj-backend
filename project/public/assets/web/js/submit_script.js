@@ -40,11 +40,9 @@ $("#btn-submit").click(function(e){
                 else{
                     TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
                 }
-                //window.location.href = base_path +"/job/"+$("#jobid").val();
             })
             .fail(function(){
-                TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
-                //window.location.href = base_path +"/job/"+$("#jobid").val();
+                TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}});
             })
     }
 
