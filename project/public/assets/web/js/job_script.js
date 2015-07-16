@@ -92,18 +92,18 @@ function closeFailed(){
 
 /*applay*/
 
-//$("#btn-submit").click(function(e){
-//    /*e.preventDefault();*/
-//
-//    var job_id = $("#job_id").val();
-//
-//        var put_data = {job_id:job_id};
-//        $.post( base_path +"/applay", put_data,function(data) {})
-//            .done(function( data ) {
-//                successResult();
-//            })
-//            .fail(function(){
-//                TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
-//            })
-//});
+$("#btn-submit").click(function(e){
+    /*e.preventDefault();*/
+
+    var job_id = $("#job_id").val();
+
+        var put_data = {job_id:job_id};
+        $.post( base_path +"/applay", put_data,function(data) {})
+            .done(function( data ) {
+                successResult();
+            })
+            .fail(function(){
+                TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+            })
+});
 
