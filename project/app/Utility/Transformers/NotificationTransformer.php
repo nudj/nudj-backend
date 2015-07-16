@@ -21,6 +21,9 @@ class NotificationTransformer extends Transformer {
             case 'message':
                 return $item->getMessage(json_decode($item->meta, true));
 
+            case 'meta':
+                return json_decode($item->meta);
+
             case 'read':
                 return (bool) $item->read;
 
