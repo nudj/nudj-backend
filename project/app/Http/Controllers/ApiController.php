@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\URL;
 
 
 class ApiController extends \Illuminate\Routing\Controller {
@@ -109,13 +110,15 @@ class ApiController extends \Illuminate\Routing\Controller {
 	{
 		$items->appends(Request::all())->render();
 
+		$baseUrl = URL::to('/');
+
 		$response = [
 			'data' => $transformer->transformCollection($items),
 			'pagination' => [
 				'total' => $items->total(),
 				'count' => $items->count(),
-				'next' => $items->nextPageUrl() ?: false,
-				'previous' => $items->previousPageUrl() ?: false,
+				'next' => $items->nextPageUrl() ? str_replace($baseUrl,'',$items->nextPageUrl()) : false,
+				'previous' => $items->previousPageUrl() ? str_replace($baseUrl,'',$items->previousPageUrl()) : false,
 			]
 		];
 
