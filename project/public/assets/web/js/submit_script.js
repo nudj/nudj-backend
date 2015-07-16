@@ -21,7 +21,7 @@ $("#btn-submit").click(function(e){
         TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
     }
     else{
-        var phone = $("#phone").html().trim();
+        var phone = $("#phone").val().trim();
         var country_code = $("#country_code").val().trim();
 
         var put_data = {phone:phone,verification:verific,country_code:country_code};
