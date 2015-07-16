@@ -26,42 +26,42 @@ $.get( "/countries", function() {})
     .fail(function() {
         console.log( "error" );
     });
-//
-//        /*refer*/
-//
-//        $("#refs-btn").click(function(e){
-//            /*e.preventDefault();*/
-//            var chkr = 0;
-//
-//            if($("#refphone").val().length == 0){
-//                chkr = chkr +1;
-//                $("#refphone").css("border-color","red");
-//            }
-//            if($("#refname").val().length == 0){
-//                chkr =chkr + 1;
-//                $("#refname").css("border-color","red");
-//            }
-//            if($("#themsg").val().length == 0){
-//                chkr =chkr + 1;
-//                $("#themsg").css("border-color","red");
-//            }
-//
-//            if(chkr == 0){
-//                var job_id = $("#job_id").val();
-//
-//                var put_data = {job_id:job_id};
-//                $.post( base_path +"/refer", put_data,function(data) {})
-//                        .done(function( data ) {
-//                            successSpoter();
-//                            setTimeout(function() {
-//                                parent.TINY.box.hide();
-//                            }, 3000);
-//                        })
-//                        .fail(function(){
-//                            TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
-//                        })
-//
-//
-//            }
-//
-//        });
+
+        /*refer*/
+
+        $("#refs-btn").click(function(e){
+            /*e.preventDefault();*/
+            var chkr = 0;
+
+            if($("#refphone").val().length == 0){
+                chkr = chkr +1;
+                $("#refphone").css("border-color","red");
+            }
+            if($("#refname").val().length == 0){
+                chkr =chkr + 1;
+                $("#refname").css("border-color","red");
+            }
+            if($("#themsg").val().length == 0){
+                chkr =chkr + 1;
+                $("#themsg").css("border-color","red");
+            }
+
+            if(chkr == 0){
+                var job_id = $("#job_id").val();
+
+                var put_data = {job_id:job_id};
+                $.post( base_path +"/refer", put_data,function(data) {})
+                        .done(function( data ) {
+                            successSpoter();
+                            setTimeout(function() {
+                                parent.TINY.box.hide();
+                            }, 3000);
+                        })
+                        .fail(function(){
+                            TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+                        })
+
+
+            }
+
+        });
