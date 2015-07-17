@@ -84,9 +84,13 @@ $("#btn-refer").click(function() {
 });
 
 function closeSuccess(){
+    $("#bluemask").css("display","none");
+    $("#tbox").css("display","none");
     console.log("Closed modal");
 }
 function closeFailed(){
+    $("#bluemask").css("display","none");
+    $("#tbox").css("display","none");
     console.log("Closed modal");
 }
 
