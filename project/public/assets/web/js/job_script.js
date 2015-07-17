@@ -93,7 +93,7 @@ function closeFailed(){
 /*applay*/
 
 $("#btn-submit").click(function(e){
-    /*e.preventDefault();*/
+    e.preventDefault();
 
     var job_id = $("#job_id").val();
 

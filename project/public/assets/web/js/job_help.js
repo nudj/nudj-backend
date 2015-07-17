@@ -45,7 +45,7 @@ msgRefer =
         /*refer*/
 
         $("#refs-btn").click(function(e){
-            /*e.preventDefault();*/
+            e.preventDefault();
             var chkr = 0;
 
             if($("#refphone").val().length == 0){
