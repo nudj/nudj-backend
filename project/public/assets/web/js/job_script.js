@@ -84,9 +84,11 @@ $("#btn-refer").click(function() {
 });
 
 function closeSuccess(){
+    parent.TINY.box.hide();
     console.log("Closed modal");
 }
 function closeFailed(){
+    parent.TINY.box.hide();
     console.log("Closed modal");
 }
 
