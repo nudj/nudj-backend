@@ -108,7 +108,7 @@ $("#btn-submit").click(function(e){
     successResult();
 });
 
-$("#refs-ok").click(function(e){
+$("#btn-ok").click(function(e){
     e.preventDefault();
     var chkr = 0;
 
