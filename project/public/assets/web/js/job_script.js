@@ -26,7 +26,7 @@ function spoter(){
     if(chkr == 0){
         successSpoter();
         setTimeout(function() {
-            parent.TINY.box.hide();
+            down_modal();
         }, 3000);
     }
 
@@ -84,11 +84,9 @@ $("#btn-refer").click(function() {
 });
 
 function closeSuccess(){
-    parent.TINY.box.hide();
     console.log("Closed modal");
 }
 function closeFailed(){
-    parent.TINY.box.hide();
     console.log("Closed modal");
 }
 
