@@ -1,12 +1,12 @@
 /**
  * Created by viperS on 24-06-2015 г..
  */
-var pubUrl = window.location.protocol + '//' + window.location.host;
 
 
 function down_modal(){
     parent.TINY.box.hide();
 }
+
 function spoter(){
     var chkr = 0;
 
