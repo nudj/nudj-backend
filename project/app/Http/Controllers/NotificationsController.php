@@ -22,7 +22,7 @@ class NotificationsController extends ApiController
 
     public function read($id)
     {
-        return $this->respondWithStatus(Notification::read($id));
+        return $this->respondWithStatus(Notification::markRead($id));
     }
 
 

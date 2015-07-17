@@ -6,6 +6,9 @@ use App\Utility\Facades\Shield;
 class UserTransformer extends Transformer
 {
 
+    public static $aliases = [
+        'sender' => 'user',
+    ];
 
     public function transformMap($item, $column)
     {

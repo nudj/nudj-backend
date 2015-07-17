@@ -11,6 +11,8 @@ class ApiModel extends Model
 {
 
     public $selection;
+    protected $prefix = null;
+    protected $aliases = [];
     protected $dependencies = [];
 
     public function scopeApi($query)
@@ -36,6 +38,11 @@ class ApiModel extends Model
     public function getFields()
     {
         return $this->gettableFields;
+    }
+
+    public function getAliases()
+    {
+        return $this->aliases;
     }
 
     public function getPrefix()

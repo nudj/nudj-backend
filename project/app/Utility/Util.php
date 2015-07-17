@@ -8,11 +8,18 @@ class  Util
 {
 
 
-    public static function extractParams($params, $prefix = null)
+    public static function extractParams($params, $prefix = null, $aliases = [])
     {
         $columns = [];
 
         $length = strlen($prefix);
+
+        if($aliases) {
+            foreach ($aliases as $alias => $original) {
+               $params = str_replace($alias . '.', $original . '.', $params);
+            }
+        }
+
         foreach (explode(',', $params) as $field) {
 
             if (!$prefix) {

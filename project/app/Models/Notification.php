@@ -13,8 +13,9 @@ class NotificationType
 {
 
     public static $ASK_TO_REFER = 1;
-    public static $NEW_APPLICATION = 2;
-    public static $MATCHING_CONTACT = 3;
+    public static $APP_APPLICATION = 2;
+    public static $WEB_APPLICATION = 3;
+    public static $MATCHING_CONTACT = 4;
 
 }
 
@@ -23,9 +24,9 @@ class Notification extends ApiModel
 {
 
     protected $table = 'notifications';
-    protected $visible = ['id', 'type_id', 'meta', 'read'];
+    protected $visible = ['id', 'type_id', 'meta', 'read', 'sender_id'];
 
-    protected $gettableFields = ['type', 'message', 'read'];
+    protected $gettableFields = ['type', 'message', 'read', 'sender'];
     protected $defaultFields = ['type', 'message', 'meta', 'read'];
 
     protected $prefix = 'notify.';
@@ -47,6 +48,8 @@ class Notification extends ApiModel
     {
         return $this->belongsTo('App\Models\User', 'sender_id');
     }
+
+
 
 
     /* CRUD
@@ -89,7 +92,7 @@ class Notification extends ApiModel
     /* Actions
    ----------------------------------------------------- */
 
-    public static function read($id)
+    public static function markRead($id)
     {
 
         $notification = self::find($id);

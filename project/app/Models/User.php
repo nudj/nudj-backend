@@ -4,6 +4,7 @@
 use App\Models\Traits\Imageable;
 use App\Models\Traits\Social;
 use App\Utility\Authenticator\Contracts\ShieldAuthServiceContract;
+use App\Utility\Transformers\UserTransformer;
 use App\Utility\Util;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -25,6 +26,11 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     protected $prefix = 'user.';
 
+
+    public function __construct()
+    {
+        $this->aliases = UserTransformer::$aliases;
+    }
 
     /* Relations
     ----------------------------------------------------- */

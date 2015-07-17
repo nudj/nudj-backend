@@ -18,7 +18,8 @@ abstract class Transformer
     
     public function transform($item) {
 
-        $columns = Util::extractParams(Input::get('params'), $item->getPrefix());
+        $columns = Util::extractParams(Input::get('params'), $item->getPrefix(), $item->getAliases());
+
         $columns = array_intersect($columns, $item->getFields());
         if(empty($columns))
             $columns = $item->getDefaultFields();
