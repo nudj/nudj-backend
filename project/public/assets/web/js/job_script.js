@@ -98,7 +98,7 @@ $("#btn-submit").click(function(e){
     var job_id = $("#job_id").val();
 
         var put_data = {job_id:job_id};
-        $.post( base_path +"/applay", put_data,function(data) {})
+        $.post( base_path +"/apply", put_data,function(data) {})
             .done(function( data ) {
                 successResult();
             })

@@ -55,7 +55,7 @@ $.get( "/countries", function() {})
                 var job_id = $("#job_id").val();
 
                 var put_data = {job_id:job_id};
-                $.post( base_path +"/refer", put_data,function(data) {})
+                $.post( base_path +"/apply", put_data,function(data) {})
                         .done(function( data ) {
                             successSpoter();
                             setTimeout(function() {
