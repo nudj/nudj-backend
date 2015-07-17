@@ -75,9 +75,9 @@ function failedResult(){
     TINY.box.show({html:msgFailed,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
 }
 
-$("#btn-submit").click(function(){
-    successResult();
-});
+//$("#btn-submit").click(function(){
+//    successResult();
+//});
 
 $("#btn-refer").click(function() {
     refResult();
