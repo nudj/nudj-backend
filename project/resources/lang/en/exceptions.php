@@ -12,6 +12,7 @@ return [
     ApiExceptionType::$NOT_FOUND['errorCode'] => "Not Found",
 
     // Development Errors
+    ApiExceptionType::$INVALID_ENDPOINT['errorCode'] => "Invalid Endpoint",
     ApiExceptionType::$MISSING_PROPERTY['errorCode'] => "Development Error :: Missing Property",
 
     // API Errors
@@ -31,6 +32,7 @@ return [
     // Nudge Errors
     ApiExceptionType::$VERIFICATION_ERROR['errorCode'] => "Wrong Verification Code",
     ApiExceptionType::$USER_MISSING['errorCode'] => "User not found in our database",
+    ApiExceptionType::$CHAT_MISSING['errorCode'] => "Chat not found in our database",
     ApiExceptionType::$JOB_MISSING['errorCode'] => "Job not found in our database",
     ApiExceptionType::$CONTACT_MISSING['errorCode'] => "Contact not found in our database",
     ApiExceptionType::$REFERRAL_MISSING['errorCode'] => "Referral not found in our database",
