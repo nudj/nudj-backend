@@ -44,7 +44,7 @@ msgRefer =
 
         /*refer*/
 
-        $("#refs-btn").click(function(e){
+        $("#refs-ok").click(function(e){
             e.preventDefault();
             var chkr = 0;
 
