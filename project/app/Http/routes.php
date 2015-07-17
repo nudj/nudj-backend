@@ -2,7 +2,9 @@
 
 
 // Define patterns for expected parameters
-$router->pattern('id', '([0-9]+)|(me)');
+$router->pattern('id', '([0-9]+)');
+$router->pattern('userid', '([0-9]+)|(me)');
+$router->pattern('filter', '([a-z]+)');
 
 
 // Default view
@@ -58,16 +60,16 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     // USERS
     Route::get('users', 'UsersController@index');
-    Route::get('users/{id}', 'UsersController@show');
+    Route::get('users/{userid}', 'UsersController@show');
     Route::post('users', 'UsersController@store');
-    Route::put('users/{id?}', 'UsersController@update');
-    Route::delete('users/{id}', 'UsersController@destroy');
+    Route::put('users/{userid?}', 'UsersController@update');
+    Route::delete('users/{userid}', 'UsersController@destroy');
     Route::put('users/verify', 'UsersController@verify');
-    Route::get('users/exists/{id}', 'UsersController@exists');
-    Route::get('users/{id}/contacts', 'UsersController@contacts');
-    Route::get('users/{id}/favourites', 'UsersController@favourites');
-    Route::put('users/{id}/favourite', 'UsersController@favourite');
-    Route::delete('users/{id}/favourite', 'UsersController@unfavourite');
+    Route::get('users/exists/{userid}', 'UsersController@exists');
+    Route::get('users/{userid}/contacts', 'UsersController@contacts');
+    Route::get('users/{userid}/favourites', 'UsersController@favourites');
+    Route::put('users/{userid}/favourite', 'UsersController@favourite');
+    Route::delete('users/{userid}/favourite', 'UsersController@unfavourite');
 
 
     //NUDGE
