@@ -35,7 +35,7 @@ $.get( "/countries", function() {})
             '<select id="countr" class="form-control" style="margin-top: 14px;" onchange="myFunction();">'+goCountr+'</select>'+
             '<input style="margin-top: 14px;" class="refcoda" id="refcode" name="refcode" value="+44" placeholder=""/>'+
             '<input class="refMsg-phone" id="refphone" name="refphone" style="  float: left;width: 158px;  margin-top: 14px;" value="" placeholder="Phone Number" onfocus="runFocus(this.id);"/> </div>' +
-            '<div id="refs-btn"><div id="btn-ok" style="" >SEND SMS</div></div></div>';
+            '<div id="refs-btn"><div id="btn-okay" style="" onclick="spoter();" >SEND SMS</div></div></div>';
 
     })
     .fail(function() {
