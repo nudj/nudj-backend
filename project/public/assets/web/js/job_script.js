@@ -72,8 +72,8 @@ function successResult(){
 
 function refResult(){
     title.html("Refer Someone");
-    body.html(msgRefer);
-    footer.css("display","none");
+    body.html("<p>The hirer has been notified about your application.</p>");
+    //footer.css("display","none");
     modal.modal('show');
 }
 
