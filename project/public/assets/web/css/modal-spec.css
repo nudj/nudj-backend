@@ -1,0 +1,46 @@
+.header-new{
+    background-color: #00A187;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#titleModal{
+    color: #fff;
+    text-align: center;
+}
+
+.modal-body-new{
+    text-align: center;
+}
+
+#footerModal{
+    text-align: center;
+}
+
+.btn-new{
+    max-width: 290px;
+    width: 100%;
+    background-color: #00A187;
+    color: #fff;
+}
+
+.modal-footer {
+    border-top: 1px solid transparent;
+}
+
+
+.btn-flash {
+    padding: 10px 12px;
+    max-width: 213px;
+    width: 100%;
+    outline: hidden;
+}
+
+.btn-flash:hover{
+    background-color: #ffffff;
+    color: #00A187;
+    border: thin solid #00A187;
+}
+.btn-flash:checked{
+    border: thin solid transparent;
+}

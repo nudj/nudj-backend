@@ -5,6 +5,7 @@
 var goCountr = '';
 var msgRefer ='';
 
+
 $.get( "/countries", function() {})
     .done(function(data) {
         isVerifyet = JSON.stringify(data);
@@ -19,8 +20,7 @@ $.get( "/countries", function() {})
 
         msgRefer =
             '<div id="inn">'+
-            '<div id="refera-content">Refer Someone</div>' +
-            '<div ><textarea id="themsg" placeholder="Write your referral message" cols="30" rows="4" onfocus="runFocus(this.id);"></textarea></div>' +
+            '<div class="holdMsg" ><textarea id="themsg" placeholder="Write your referral message" cols="30" rows="4" onfocus="runFocus(this.id);"></textarea></div>' +
             '<div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name"  onfocus="runFocus(this.id);"/>'+
             '<select id="countr" class="form-control" style="margin-top: 14px;" onchange="myFunction();">'+goCountr+'</select>'+
             '<input style="margin-top: 14px;" class="refcoda" id="refcode" name="refcode" value="+44" placeholder=""/>'+

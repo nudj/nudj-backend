@@ -97,8 +97,8 @@
     @endif
 
         <div class="col-xs-12 col-centered col-max">
-            <div id="submit" class="btn-apply">
-                <div id="btn-submit" data-type="{{$type}}">
+            <div id="submit-area" class="btn-apply">
+                <div id="btn-submit" data-type="{{$type}}" onclick="successResult();">
                     APPLY
                 </div>
                 @if($type === 'refer')

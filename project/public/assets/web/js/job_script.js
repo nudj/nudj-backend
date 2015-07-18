@@ -1,26 +1,33 @@
 /**
  * Created by viperS on 24-06-2015 г..
  */
-
+var title = $("#titleModal");
+var body = $("#bodyModal");
+var modal = $("#nudjModal");
+var footer = $("#footerModal");
 
 function down_modal(){
-    parent.TINY.box.hide();
+    modal.modal('hide');
 }
 
 function spoter(){
-    var chkr = 0;
 
-    if($("#refphone").val().length == 0){
+    var chkr = 0;
+    var refPhone = $("#refphone");
+    var refName = $("#refname");
+    var refMsg = $("#themsg");
+
+    if(refPhone.val().length == 0){
         chkr = chkr +1;
-        $("#refphone").css("border-color","red");
+        refPhone.css("border-color","red");
     }
-    if($("#refname").val().length == 0){
+    if(refName.val().length == 0){
         chkr =chkr + 1;
-        $("#refname").css("border-color","red");
+        refName.css("border-color","red");
     }
-    if($("#themsg").val().length == 0){
+    if(refMsg.val().length == 0){
         chkr =chkr + 1;
-        $("#themsg").css("border-color","red");
+        refMsg.css("border-color","red");
     }
 
     if(chkr == 0){
@@ -35,73 +42,61 @@ function spoter(){
 
 function runFocus(thisElement){
     $("#"+thisElement).css("border-color","#EBEBEB");
-};
+}
 
 
 function myFunction(){
     var origVal = $("#countr").val().split("-");
     var newCode = '+' + origVal[1];
     $("#refcode").val(newCode);
-};
+}
 
-
-var msgSuccess =
-    '<div id="success-head">Success !</div>' +
-    '<div id="success-content">The hirer has been notified about your application.</div>' +
-    '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
 var msgSpoter =
     '<div id="sms-head" class="sms-sent">SMS sent!</div>';
 
-var msgFailed =
-    '<div id="failed-head">Failed !</div>' +
-    '<div id="failed-content">Something went wrong.Please try again.</div>' +
-    '<div id="success-btn" onclick="down_modal();"><div id="btn-ok" style="" >OK</div></div>';
 
 
 function successSpoter(){
-    TINY.box.show({html:msgSpoter,width:200,height:50,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
+    title.html("Success !");
+    body.html("<p>SMS sent!</p>");
+    modal.modal('show');
 }
 
 function successResult(){
-    TINY.box.show({html:msgSuccess,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
+    title.html("Success !");
+    body.html("<p>The hirer has been notified about your application.</p>");
+    footer.css("display","block");
+    modal.modal('show');
 }
 
 function refResult(){
-    TINY.box.show({html:msgRefer,width:260,height:360,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeSuccess()}})
+    title.html("Refer Someone");
+    body.html(msgRefer);
+    footer.css("display","none");
+    modal.modal('show');
 }
 
 function failedResult(){
-    TINY.box.show({html:msgFailed,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
+    title.html("Failed !");
+    body.html("<p style='color: red;'>Something went wrong.Please try again.</p>");
+    footer.css("display","block");
+    modal.modal('show');
 }
 
-//$("#btn-submit").click(function(){
-//    successResult();
-//});
 
 $("#btn-refer").click(function() {
     refResult();
 });
 
-function closeSuccess(){
-    $("#bluemask").css("display","none");
-    $("#tbox").css("display","none");
-    console.log("Closed modal");
-}
-function closeFailed(){
-    $("#bluemask").css("display","none");
-    $("#tbox").css("display","none");
-    console.log("Closed modal");
-}
-
 /*applay*/
 
-$("#btn-submit").click(function(e){
-    e.preventDefault();
-
-    var job_id = $("#job_id").val();
-
-        var put_data = {job_id:job_id};
+function resApply(){
+    //e.preventDefault();
+   console.log("Success");
+    //var job_id = $("#job_id").val();
+    //
+    //    var put_data = {job_id:job_id};
         //$.post( base_path +"/apply", put_data,function(data) {})
         //    .done(function( data ) {
         //        successResult();
@@ -110,5 +105,5 @@ $("#btn-submit").click(function(e){
         //        TINY.box.show({html:msgFail,width:200,height:200,fixed:false,maskid:'bluemask',maskopacity:40,close:false,closejs:function(){closeFailed()}})
         //    })
     successResult();
-});
+}
 
