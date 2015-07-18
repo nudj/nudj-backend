@@ -5,8 +5,7 @@
 var goCountr = '';
 var msgRefer ='';
 
-
-$.get( "/countries", function() {})
+$.get(base_path +"/countries", function() {})
     .done(function(data) {
         isVerifyet = JSON.stringify(data);
         var obj_verifyet = eval('('+isVerifyet+')');
