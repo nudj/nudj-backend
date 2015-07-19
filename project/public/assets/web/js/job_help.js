@@ -14,6 +14,36 @@ msgRefer =
     '<input class="refMsg-phone" id="refphone" name="refphone" style="  float: left;width: 158px;  margin-top: 14px;" value="" placeholder="Phone Number" onfocus="runFocus(this.id);"/> </div>' +
     '<div id="refs-btn"><div id="btn-ok" style="" onclick="spoter();" >SEND SMS</div></div></div>';
 
+function spoter(){
+
+    var chkr = 0;
+    var refPhone = $("#refphone");
+    var refName = $("#refname");
+    var refMsg = $("#themsg");
+
+    if(refPhone.val().length == 0){
+        chkr = chkr +1;
+        refPhone.css("border-color","red");
+    }
+    if(refName.val().length == 0){
+        chkr =chkr + 1;
+        refName.css("border-color","red");
+    }
+    if(refMsg.val().length == 0){
+        chkr =chkr + 1;
+        refMsg.css("border-color","red");
+    }
+
+    if(chkr == 0){
+        successSpoter();
+        setTimeout(function() {
+            down_modal();
+        }, 3000);
+    }
+
+
+}
+
 $.get(base_path +"/countries", function() {})
     .done(function(data) {
         isVerifyet = JSON.stringify(data);
@@ -33,7 +63,7 @@ $.get(base_path +"/countries", function() {})
             '<select id="countr" class="form-control" style="margin-top: 14px;" onchange="myFunction();">'+goCountr+'</select>'+
             '<input style="margin-top: 14px;" class="refcoda" id="refcode" name="refcode" value="+44" placeholder=""/>'+
             '<input class="refMsg-phone" id="refphone" name="refphone" style="  float: left;width: 158px;  margin-top: 14px;" value="" placeholder="Phone Number" onfocus="runFocus(this.id);"/> </div>' +
-            '<div id="refs-btn"><div id="btn-ok" style="" onclick="spoter();" >SEND SMS</div></div></div>';
+            '<div id="refs-btn"><div id="btn-ok" onclick="spoter();" >SEND SMS</div></div></div>';
 
     })
     .fail(function() {

@@ -10,36 +10,6 @@ function down_modal(){
     modal.modal('hide');
 }
 
-function spoter(){
-
-    var chkr = 0;
-    var refPhone = $("#refphone");
-    var refName = $("#refname");
-    var refMsg = $("#themsg");
-
-    if(refPhone.val().length == 0){
-        chkr = chkr +1;
-        refPhone.css("border-color","red");
-    }
-    if(refName.val().length == 0){
-        chkr =chkr + 1;
-        refName.css("border-color","red");
-    }
-    if(refMsg.val().length == 0){
-        chkr =chkr + 1;
-        refMsg.css("border-color","red");
-    }
-
-    if(chkr == 0){
-        successSpoter();
-        setTimeout(function() {
-            down_modal();
-        }, 3000);
-    }
-
-
-}
-
 function runFocus(thisElement){
     $("#"+thisElement).css("border-color","#EBEBEB");
 }
@@ -72,8 +42,8 @@ function successResult(){
 
 function refResult(){
     title.html("Refer Someone");
-    body.html("<p>The hirer has been notified about your application.</p>");
-    //footer.css("display","none");
+    body.html(msgRefer);
+    footer.css("display","none");
     modal.modal('show');
 }
 
@@ -83,11 +53,6 @@ function failedResult(){
     footer.css("display","block");
     modal.modal('show');
 }
-
-
-$("#btn-refer").click(function() {
-    refResult();
-});
 
 /*applay*/
 

@@ -102,7 +102,7 @@
                     APPLY
                 </div>
                 @if($type === 'refer')
-                    &nbsp;&nbsp;<div id="btn-refer" data-type="{{$type}}">
+                    &nbsp;&nbsp;<div id="btn-refer" data-type="{{$type}}" onclick="refResult();">
                         REFER
                     </div>
                 @endif
