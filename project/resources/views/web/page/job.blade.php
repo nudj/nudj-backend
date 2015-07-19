@@ -101,9 +101,11 @@
                 <div id="btn-submit" data-type="{{$type}}" onclick="successResult();">
                     APPLY
                 </div>
-                <div id="btn-refer" data-type="{{$type}}" onclick="refResult();">
-                    REFER
-                </div>
+                @if($type === 'refer')
+                    &nbsp;&nbsp;<div id="btn-refer" data-type="{{$type}}" onclick="refResult();">
+                        REFER
+                    </div>
+                @endif
             </div>
         </div>
     </div>
