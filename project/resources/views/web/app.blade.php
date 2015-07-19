@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<div id="nudjModal" class="modal fade">
+<div id="nudjModal" class="modal">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header header-new">
