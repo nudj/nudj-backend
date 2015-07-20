@@ -84,15 +84,15 @@ return [
 			'prefix'   => '',
 		],
 
-		'mongodb' => array(
-			'driver'   => 'mongodb',
-			'host'     => 'localhost',
-			'port'     => 27017,
-			'username' => '',
-			'password' => '',
-			'database' => 'local',
-			'options' => []
-		),
+//		'mongodb' => [
+//			'driver'   => 'mongodb',
+//			'host'     => 'localhost',
+//			'port'     => 27017,
+//			'username' => '',
+//			'password' => '',
+//			'database' => 'local',
+//			'options' => []
+//		],
 
 	],
 
