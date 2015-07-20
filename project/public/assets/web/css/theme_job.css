@@ -124,28 +124,42 @@ input{
     color:#00A187;
 }
 
+.best-alg{
+    max-width: 300px;
+}
+
 .btn-default{
     border-color: #EBEBEB;
 }
 
-#btn-submit{
-    display: table-cell;
-    vertical-align: middle;
+#btn-apply{
+    display: inline-block;
+    line-height: 39px;
     font-size: 18px;
     font-weight: 300;
     cursor: pointer;
     background-color: #00A187;
     border-radius: 5px;
+    width: 120px;
+    float: left;
+    height: 40px;
+    color: #FFFFFF;
+    text-align: center;
 }
 
 #btn-refer{
-    display: table-cell;
-    vertical-align: middle;
+    display: inline-block;
+    line-height: 38px;
     font-size: 18px;
     font-weight: 300;
     cursor: pointer;
     background-color: #1293BD;
     border-radius: 5px;
+    width: 120px;
+    float: right;
+    height: 40px;
+    color: #FFFFFF;
+    text-align: center;
 }
 
 .col-centered{
