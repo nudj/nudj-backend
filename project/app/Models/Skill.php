@@ -2,9 +2,8 @@
 
 
 use App\Models\Traits\Indexable;
-use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Model
+class Skill extends ApiModel
 {
 
     use Indexable;
