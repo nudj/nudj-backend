@@ -149,7 +149,7 @@ return [
 		 * External Service Providers...
 		 */
 		'Intervention\Image\ImageServiceProvider',
-//		'Jenssegers\Mongodb\MongodbServiceProvider',
+		'Jenssegers\Mongodb\MongodbServiceProvider',
 		'App\Utility\Providers\ShieldServiceProvider'
 
 
