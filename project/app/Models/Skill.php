@@ -1,15 +1,11 @@
 <?php namespace App\Models;
 
-use Jenssegers\Mongodb\Model as Eloquent;
-
 
 use App\Models\Traits\Indexable;
+use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Eloquent
+class Skill extends Model
 {
-
-    protected $connection = 'mongodb';
-    protected $collection = 'skills_collection';
 
     use Indexable;
 
