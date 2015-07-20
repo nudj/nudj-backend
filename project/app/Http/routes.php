@@ -117,6 +117,8 @@ Route::group(['prefix' => 'api/v1'], function () {
 
 
     //TEMP
+    Route::get('services/test', 'ServicesController@test');
+
     Route::put('chat', 'ChatController@spawn');
     Route::delete('chat/all', 'ChatController@deleteAllRooms');
 
