@@ -124,28 +124,42 @@ input{
     color:#00A187;
 }
 
+.best-alg{
+    max-width: 300px;
+}
+
 .btn-default{
     border-color: #EBEBEB;
 }
 
-#btn-submit{
-    display: table-cell;
-    vertical-align: middle;
+#btn-apply{
+    display: inline-block;
+    line-height: 39px;
     font-size: 18px;
     font-weight: 300;
     cursor: pointer;
     background-color: #00A187;
     border-radius: 5px;
+    width: 120px;
+    float: left;
+    height: 40px;
+    color: #FFFFFF;
+    text-align: center;
 }
 
 #btn-refer{
-    display: table-cell;
-    vertical-align: middle;
+    display: inline-block;
+    line-height: 38px;
     font-size: 18px;
     font-weight: 300;
     cursor: pointer;
     background-color: #1293BD;
     border-radius: 5px;
+    width: 120px;
+    float: right;
+    height: 40px;
+    color: #FFFFFF;
+    text-align: center;
 }
 
 .col-centered{
@@ -327,14 +341,16 @@ input{
     font-size: 16px;
     font-weight: 300;
     position: absolute;
-    top: 140px;
+    top: 100px;
     right: 0;
-    left: 17px;
+    left: 0;
     width: 100%;
     text-align: center;
     padding: 5px;
     overflow: hidden;
     max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .refMsg{
@@ -376,18 +392,19 @@ input{
     max-width: 213px;
     background-size: contain;
     background-repeat: no-repeat;
-    margin: auto;text-align: center;
+    margin: auto;
+    text-align: center;
     overflow: hidden;
     background-color: #1293BD;
-    color:#FFFFFF;
+    color: #FFFFFF;
     font-size: 16px;
     font-weight: 100;
     display: table;
     border-radius: 3px;
     position: absolute;
-    bottom:-40px;
+    bottom: 0px;
     right: 0;
-    left:0;
+    left: 0;
     cursor: pointer;
 }
 
@@ -398,15 +415,21 @@ input{
     padding: 5px;
 }
 
+.holdMsg{
+    max-width: 210px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
 #themsg{
     outline: none;
     resize: none;
     border-color: #EBEBEB;
     border-radius: 5px;
     max-width: 210px;
-    position: absolute;
-    top: 45px;
-    left: 23px;
     font-weight: 100;
 }
 

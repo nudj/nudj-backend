@@ -5,6 +5,7 @@
 /bootstrap/compiled.php
 
 .env
+*.lock
 
 /public/upload/
 

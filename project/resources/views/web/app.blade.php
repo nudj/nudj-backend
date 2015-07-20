@@ -17,7 +17,7 @@
     @section('styles')
         <link href="{{ asset('assets/web/css/bootstrap.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/web/css/select/bootstrap-select.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/web/css/tiny-modal/tiny_style.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/web/css/modal-spec.css') }}" rel="stylesheet">
     @show
 
     @section('scriptses')
@@ -27,7 +27,20 @@
 </head>
 
 <body>
-
+<div id="nudjModal" class="modal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header header-new">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="titleModal" class="modal-title"></h4>
+            </div>
+            <div id="bodyModal" class="modal-body modal-body-new"></div>
+            <div id="footerModal" class="modal-footer">
+                <button type="button" class="btn btn-default btn-new btn-flash" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @yield('page')
 
@@ -37,7 +50,6 @@
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/web/js/select/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('assets/web/js/tiny-modal/tinybox.js') }}"></script>
 @show
 
 @section('runnable')
