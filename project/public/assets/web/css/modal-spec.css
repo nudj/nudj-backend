@@ -120,7 +120,7 @@ iPad 3
 
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
     .modal{
-        top: 150px;
+        top: 100px;
     }
 }
 
@@ -131,7 +131,7 @@ iPad 3
 
 @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait){
     .modal{
-        top: 150px;
+        top: 100px;
     }
 }
 
