@@ -1,10 +1,15 @@
 <?php namespace App\Models;
 
+use Jenssegers\Mongodb\Model as Eloquent;
+
 
 use App\Models\Traits\Indexable;
 
-class Skill extends ApiModel
+class Skill extends Eloquent
 {
+
+    protected $connection = 'mongodb';
+    protected $collection = 'skills_collection';
 
     use Indexable;
 
