@@ -88,6 +88,12 @@ class Contact extends ApiModel
                 $contact->save();
             }
 
+            $user = User::select('id')->where('phone', '=', $phoneData->number)->first();
+            if($user) {
+                $contact->user_id = $user->id;
+                $contact->save();
+            }
+
         }
     }
 

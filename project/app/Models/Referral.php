@@ -49,7 +49,7 @@ class Referral extends ApiModel
         if($userId != $job->user_id)
             throw new ApiException(ApiExceptionType::$JOB_OWNER_MISMATCH);
 
-        
+
         // prepare message
         $message = $message ?: Lang::get('messages.refer', ['position' => $job->title]);
 
