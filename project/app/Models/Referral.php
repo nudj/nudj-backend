@@ -39,7 +39,7 @@ class Referral extends ApiModel
 
     /* Actions
     ----------------------------------------------------- */
-    public function askContactsToReffer($userId, $jobId, $contactList, $message)
+    public static function askContacts($userId, $jobId, $contactList, $message)
     {
 
         $job = Job::with('user')->findOrFail($jobId);
@@ -55,34 +55,35 @@ class Referral extends ApiModel
 
         foreach ($contacts as $contact) {
 
-            $referral = $this->addNewReferral($job->id, $contact->id);
+           $referral = self::addNewReferral($job->id, $contact->id);
 
           if (!$referral)
                 continue;
 
             if ($contact->user_id)
-                $this->askUserToRefer($job, $contact, $message);
+                $referral->askUserToRefer($job, $contact, $message);
             else
-                $this->askContactToRefer($job, $contact, $message, $referral->hash);
+                $referral->askContactToRefer($job, $contact, $message);
         }
 
     }
 
-    private function addNewReferral($jobId, $referrerId)
+    private static function addNewReferral($jobId, $referrerId)
     {
 
         if (Referral::where(['job_id' => $jobId, 'referrer_id' => $referrerId])->first())
             return false;
 
-        $this->job_id = $jobId;
-        $this->referrer_id = $referrerId;
-        $this->hash = self::generateUniqueHash();
-        $this->save();
+        $referral = new Referral();
+        $referral->job_id = $jobId;
+        $referral->referrer_id = $referrerId;
+        $referral->hash = self::generateUniqueHash();
+        $referral->save();
 
-        return $this;
+        return $referral;
     }
 
-    private function askUserToRefer($job, $contact,$message)
+    private function askUserToRefer($job, $contact, $message)
     {
         // Create notification
         Notification::createAskToReferNotification($contact->user_id, $job->user_id, [
@@ -99,14 +100,14 @@ class Referral extends ApiModel
     }
 
 
-    private function askContactToRefer($job, $contact, $message, $hash)
+    private function askContactToRefer($job, $contact, $message)
     {
         $employer = User::findOrFail($job->user_id);
 
         $message = Lang::get('sms.refer', [
             'name' => $employer->name,
             'message' => $message,
-            'link' => web_url('register/refer/' . $hash)
+            'link' => web_url('register/refer/' . $this->hash)
         ]);
 
 

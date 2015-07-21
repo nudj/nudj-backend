@@ -47,38 +47,50 @@ class Nudge extends ApiModel
 
     /* Actions
    ----------------------------------------------------- */
-    public function addNewNudge($hash, $contactId, $message = null)
+    public function nudgeContacts($userId, $jobId, $contactList, $message)
     {
-        $referral = Referral::where('hash', '=', $hash)->first();
-
-        if(!$referral)
-            throw new ApiException(ApiExceptionType::$REFERRAL_MISSING);
-
-
-        // we can access $referral->job->user_id instead,
-        // but we use the method below to throw an exception in case of missing Job
-        $job = Job::findOrFail($referral->job_id);
-        $contact = Contact::findOrFail($contactId);
+        $job = Job::with('user')->findOrFail($jobId);
+        $contacts = Contact::findOrFail($contactList);
 
         // @TODO maybe check for duplicates
 
+
+        foreach ($contacts as $contact) {
+
+            $nudge = $this->addNewNudge($job->id, $job->user_id, $userId, $contact->id);
+
+            if (!$nudge)
+                continue;
+
+            $message = $message ?: Lang::get('messages.nudge');
+            $referrer = User::find($userId);
+
+            if ($contact->user_id)
+                $nudge->nudgeUser($job, $referrer, $contact, $message);
+            else
+                $nudge->nudgeContact($job, $referrer, $contact, $message);
+        }
+
+    }
+
+    private static function addNewNudge($jobId, $employerId, $referrerId, $candidateId)
+    {
+
+        if (Referral::min()->where(['job_id' => $jobId, 'referrer_id' => $referrerId, 'candidate_id' => $candidateId])->first())
+            return false;
+
         $nudge = new Nudge();
-        $nudge->job_id = $job->id;
-        $nudge->employer_id = $job->user_id;
-        $nudge->referrer_id = $referral->referrer_id;
-        $nudge->candidate_id = $contact->id;
+        $nudge->job_id = $jobId;
+        $nudge->employer_id = $employerId;
+        $nudge->referrer_id = $referrerId;
+        $nudge->candidate_id = $candidateId;
         $nudge->hash = self::generateUniqueHash();
         $nudge->save();
 
-        $message = $message ?: Lang::get('messages.nudge');
-        $referrer = Shield::getUserModel();
-
-        if ($contact->user_id)
-            $this->nudgeUser($job, $referrer, $contact, $message);
-        else
-            $this->nudgeContact($job, $referrer, $contact, $message, $hash);
-
+        return $nudge;
     }
+
+
 
 
     private function nudgeUser($job, $referrer, $contact, $message)
@@ -88,13 +100,13 @@ class Nudge extends ApiModel
     }
 
 
-    private function nudgeContact($job, $referrer, $contact, $message, $hash)
+    private function nudgeContact($job, $referrer, $contact, $message)
     {
 
         $message = Lang::get('sms.nudge', [
             'name' => $referrer->name,
             'message' => $message,
-            'link' => web_url('register/nudge/' . $hash)
+            'link' => web_url('register/nudge/' . $this->hash)
         ]);
 
         Event::fire(new SendMessageToContactEvent($contact->phone, $message));
