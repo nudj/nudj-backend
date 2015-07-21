@@ -7,6 +7,4 @@ return [
         1 => 'hiring'
     ],
 
-    'something' => 'some value'
-
 ];

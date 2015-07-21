@@ -82,6 +82,8 @@ class Referral extends ApiModel
         // Create notification
         Notification::createAskToReferNotification($contact->user_id, $job->user_id, [
             'job_id' => $job->id,
+            'job_title' => $job->title,
+            'job_bonus' => $job->bonus,
             'message' => $message,
             'employer' => $job->user->name,
         ]);

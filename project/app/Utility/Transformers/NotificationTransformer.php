@@ -7,6 +7,7 @@ class NotificationTransformer extends Transformer
     public static $dependencies = [
         'type' => 'type_id',
         'sender' => 'sender_id',
+        'created' => 'created_at',
         'message' => 'meta',
     ];
 
@@ -27,6 +28,9 @@ class NotificationTransformer extends Transformer
 
             case 'read':
                 return (bool)$item->read;
+
+            case 'created':
+                return strtotime($item->created_at);
 
             case 'message':
                 $meta = json_decode($item->meta, true);

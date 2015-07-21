@@ -24,9 +24,9 @@ class Notification extends ApiModel
 {
 
     protected $table = 'notifications';
-    protected $visible = ['id', 'type_id', 'meta', 'read', 'sender_id'];
+    protected $visible = ['id', 'type_id', 'meta', 'read', 'sender_id', 'created_at'];
 
-    protected $gettableFields = ['type', 'message', 'read', 'sender', 'meta'];
+    protected $gettableFields = ['type', 'message', 'read', 'sender', 'meta', 'created'];
     protected $defaultFields = ['type', 'message', 'meta', 'read'];
 
     protected $prefix = 'notify.';
