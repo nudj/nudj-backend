@@ -20,6 +20,7 @@ class NotificationType
 }
 
 
+
 class Notification extends ApiModel
 {
 

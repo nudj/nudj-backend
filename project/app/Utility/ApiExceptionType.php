@@ -35,8 +35,10 @@ class ApiExceptionType {
     public static $USER_MISSING         = ['errorCode' => 14201, 'code' => 404, 'notify' => false];
     public static $CHAT_MISSING         = ['errorCode' => 14301, 'code' => 404, 'notify' => false];
     public static $JOB_MISSING          = ['errorCode' => 14401, 'code' => 404, 'notify' => false];
+    public static $JOB_OWNER_MISMATCH   = ['errorCode' => 14402, 'code' => 400, 'notify' => false];
     public static $CONTACT_MISSING      = ['errorCode' => 14501, 'code' => 404, 'notify' => false];
     public static $REFERRAL_MISSING     = ['errorCode' => 14601, 'code' => 404, 'notify' => false];
     public static $NUDGE_MISSING        = ['errorCode' => 14701, 'code' => 404, 'notify' => false];
+
 
 }

@@ -3,6 +3,8 @@
 use App\Events\SendMessageToContactEvent;
 use App\Events\StartChatEvent;
 use App\Models\Traits\Hashable;
+use App\Utility\ApiException;
+use App\Utility\ApiExceptionType;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
@@ -37,14 +39,17 @@ class Referral extends ApiModel
 
     /* Actions
     ----------------------------------------------------- */
-    public function askContactsToReffer($jobId, $contactList, $message)
+    public function askContactsToReffer($userId, $jobId, $contactList, $message)
     {
 
         $job = Job::with('user')->findOrFail($jobId);
         $contacts = Contact::findOrFail($contactList);
 
-        //@TODO check if job is held by current user
 
+        if($userId != $job->user_id)
+            throw new ApiException(ApiExceptionType::$JOB_OWNER_MISMATCH);
+
+        
         // prepare message
         $message = $message ?: Lang::get('messages.refer', ['position' => $job->title]);
 

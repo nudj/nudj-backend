@@ -5,6 +5,7 @@ use App\Http\Requests\AskForReferralsRequest;
 use App\Http\Requests\NudgeRequest;
 use App\Models\Nudge;
 use App\Models\Referral;
+use App\Utility\Facades\Shield;
 
 class NudgeController extends ApiController {
 
@@ -12,7 +13,7 @@ class NudgeController extends ApiController {
 	public function ask(AskForReferralsRequest $request)
 	{
 		$referral = new Referral();
-		$referral->askContactsToReffer($request->job, $request->contacts, $request->message);
+		$referral->askContactsToReffer(Shield::getUserId(), $request->job, $request->contacts, $request->message);
 
 		return $this->respondWithStatus(true);
 	}
