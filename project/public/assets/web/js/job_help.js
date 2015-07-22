@@ -57,11 +57,11 @@ $.get(base_path +"/countries", function() {})
 
         msgRefer =
             '<div id="inn">'+
-            '<div class="holdMsg" ><textarea id="themsg" placeholder="Write your referral message" cols="30" rows="4" onfocus="runFocus(this.id);">Hello</textarea></div>' +
-            '<div id="ref-content"><input class="refMsg" id="refname" name="refname" value="Ivan" placeholder="Name"  onfocus="runFocus(this.id);"/>'+
+            '<div class="holdMsg" ><textarea id="themsg" placeholder="Write your referral message" cols="30" rows="4" onfocus="runFocus(this.id);"></textarea></div>' +
+            '<div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name"  onfocus="runFocus(this.id);"/>'+
             '<select id="countr" class="form-control" style="margin-top: 14px;" onchange="myFunction();">'+goCountr+'</select>'+
             '<input style="margin-top: 14px;" class="refcoda" id="refcode" name="refcode" value="+44" placeholder="" readonly/>'+
-            '<input class="refMsg-phone" id="refphone" name="refphone" style="  float: left;width: 158px;  margin-top: 14px;" value="7946390510" placeholder="Phone Number" onfocus="runFocus(this.id);"/> </div>' +
+            '<input class="refMsg-phone" id="refphone" name="refphone" style="  float: left;width: 158px;  margin-top: 14px;" value="" placeholder="Phone Number" onfocus="runFocus(this.id);"/> </div>' +
             '<div id="refs-btn"><div id="btn-ok" onclick="spoter();" >SEND SMS</div></div></div>';
 
     })
