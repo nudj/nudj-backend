@@ -113,15 +113,16 @@ class Notification extends ApiModel
 
     public static function createAskToReferNotification($recipientId, $senderId, $meta = null)
     {
-        if(!Util::arrayIsValid($meta, 'message,employer'))
+        if(!Util::arrayIsValid($meta, 'job_id,job_title,job_bonus,message,employer'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
         return Notification::add($recipientId, $senderId, NotificationType::$ASK_TO_REFER, $meta);
     }
 
-    public static function createNewApplicationNotification($recipientId, $senderId, $meta = null)
+
+    public static function createAppApplicationNotification($recipientId, $senderId, $meta = null)
     {
-        if(!Util::arrayIsValid($meta, 'candidate, referrer, position'))
+        if(!Util::arrayIsValid($meta, 'job_id,job_title,referrer_id'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
         return Notification::add($recipientId, $senderId, NotificationType::$NEW_APPLICATION, $meta);

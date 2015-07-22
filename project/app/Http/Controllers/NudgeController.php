@@ -4,6 +4,7 @@
 use App\Http\Requests\ApplyRequest;
 use App\Http\Requests\AskForReferralsRequest;
 use App\Http\Requests\NudgeRequest;
+use App\Models\Application;
 use App\Models\Nudge;
 use App\Models\Referral;
 use App\Utility\Facades\Shield;
@@ -28,7 +29,7 @@ class NudgeController extends ApiController {
 
 	public function apply(ApplyRequest $request)
 	{
-		Nudge::applyForJob(Shield::getUserId(), $request->job_id);
+		Application::applyForJob(Shield::getUserId(), $request->job_id);
 	}
 
 

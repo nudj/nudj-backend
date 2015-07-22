@@ -26,8 +26,6 @@ class Nudge extends ApiModel
     protected $prefix = 'nudge.';
 
 
-
-
     /* Relations
     ----------------------------------------------------- */
     public function employer()
@@ -70,10 +68,15 @@ class Nudge extends ApiModel
 
     }
 
+
+
+
+    /* Private Methods
+    ----------------------------------------------------- */
     private static function addNewNudge($jobId, $employerId, $referrerId, $candidateId)
     {
 
-        if (Referral::min()->where(['job_id' => $jobId, 'referrer_id' => $referrerId, 'candidate_id' => $candidateId])->first())
+        if (Nudge::min()->where(['job_id' => $jobId, 'referrer_id' => $referrerId, 'candidate_id' => $candidateId])->first())
             return false;
 
         $nudge = new Nudge();

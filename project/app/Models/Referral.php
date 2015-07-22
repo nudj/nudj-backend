@@ -16,7 +16,7 @@ class Referral extends ApiModel
     use SoftDeletes;
     use Hashable;
 
-    protected $table = 'job_referrer';
+    protected $table = 'refferals';
     protected $visible = ['id', 'hash', 'job_id', 'referrer_id'];
 
     protected $gettableFields = ['id', 'hash', 'job_id', 'referrer_id'];
