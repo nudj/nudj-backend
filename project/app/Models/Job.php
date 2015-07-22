@@ -65,10 +65,14 @@ class Job extends ApiModel
             ->get();
 
 
+
         $ids = [$userId];
         foreach($contacts as $contact)
             $ids[] = $contact->user_id;
 
+        
+        if(isset($_GET['debug']) && $_GET['debug'] = 'contacts')
+            print_r($ids);
 
         return $query->whereIn('user_id', $ids);
     }
