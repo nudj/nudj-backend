@@ -50,7 +50,7 @@ class ActionsController extends \Illuminate\Routing\Controller
 
         // Add the recommended person as a contact
         $contact = ['phone' => $request->phone, 'alias' => $request->name];
-        $contactIds = Contact::addMissing($userId, [$contact], 'GB');
+        $contactIds = Contact::addMissing($userId, [$contact], config('default.country_code'));
 
         // Create new Nudge
         Nudge::nudgeContacts($userId, $request->job_id, $contactIds, $request->message);
