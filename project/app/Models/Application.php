@@ -48,7 +48,7 @@ class Application extends ApiModel
         $application->save();
 
         // Create notification
-        Notification::createNewApplicationNotification($job->user_id, $userId, [
+        Notification::createAppApplicationNotification($job->user_id, $userId, [
             'job_id' => $job->id,
             'job_title' => $job->title,
             'referrer_id' => null,

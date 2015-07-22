@@ -125,7 +125,7 @@ class Notification extends ApiModel
         if(!Util::arrayIsValid($meta, 'job_id,job_title,referrer_id'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
-        return Notification::add($recipientId, $senderId, NotificationType::$NEW_APPLICATION, $meta);
+        return Notification::add($recipientId, $senderId, NotificationType::$APP_APPLICATION, $meta);
     }
 
     public static function createMatchingContactNotification($recipientId, $senderId, $meta = null)
