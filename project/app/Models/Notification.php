@@ -12,14 +12,13 @@ use Illuminate\Support\Facades\Lang;
 class NotificationType
 {
 
-    public static $ASK_TO_REFER             = 1;
-    public static $APP_APPLICATION          = 2;
-    public static $WEB_APPLICATION          = 3;
-    public static $MATCHING_CONTACT         = 4;
-    public static $APP_APPLICATION_NOREF    = 5;
-    public static $WEB_APPLICATION_NOREF    = 6;
+    public static $ASK_TO_REFER = 1;
+    public static $APP_APPLICATION = 2;
+    public static $WEB_APPLICATION = 3;
+    public static $MATCHING_CONTACT = 4;
+    public static $APP_APPLICATION_NOREF = 5;
+    public static $WEB_APPLICATION_NOREF = 6;
 }
-
 
 
 class Notification extends ApiModel
@@ -50,8 +49,6 @@ class Notification extends ApiModel
     {
         return $this->belongsTo('App\Models\User', 'sender_id');
     }
-
-
 
 
     /* CRUD
@@ -114,29 +111,34 @@ class Notification extends ApiModel
 
     public static function createAskToReferNotification($recipientId, $senderId, $meta = null)
     {
-        if(!Util::arrayIsValid($meta, 'job_id,job_title,job_bonus,message,employer'))
+        if (!Util::arrayIsValid($meta, 'job_id,job_title,job_bonus,message,employer'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
         return Notification::add($recipientId, $senderId, NotificationType::$ASK_TO_REFER, $meta);
     }
 
-
-    public static function createAppApplicationNotification($recipientId, $senderId, $meta = null)
+    public static function createAppApplicationNotification($recipientId, $senderId, $meta = null, $referrer = null)
     {
-        if(!Util::arrayIsValid($meta, 'job_id,job_title'))
+        if (!Util::arrayIsValid($meta, 'job_id,job_title,position,candidate'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
-        return Notification::add($recipientId, $senderId, NotificationType::$APP_APPLICATION, $meta);
+        $type = NotificationType::$APP_APPLICATION_NOREF;
+        if ($referrer) {
+            $type = NotificationType::$APP_APPLICATION;
+            $meta['referrer_id'] = $referrer->id;
+            $meta['referrer'] = $referrer->name;
+        }
+
+        return Notification::add($recipientId, $senderId, $type, $meta);
     }
 
     public static function createMatchingContactNotification($recipientId, $senderId, $meta = null)
     {
-        if(!Util::arrayIsValid($meta, 'candidate, job, employer'))
+        if (!Util::arrayIsValid($meta, 'candidate, job, employer'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
         return Notification::add($recipientId, $senderId, NotificationType::$MATCHING_CONTACT, $meta);
     }
-
 
 
 }

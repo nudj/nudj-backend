@@ -60,13 +60,12 @@ class Application extends ApiModel
             'candidate' => $candidate->name
         ];
 
+        $referrer = null;
         if ($referrerId) {
             $referrer = User::findoRFail($referrerId);
-            $meta['referrer_id'] = $referrer->id;
-            $meta['referrer'] = $referrer->name;
         }
 
-        Notification::createAppApplicationNotification($job->user_id, $userId, $meta);
+        Notification::createAppApplicationNotification($job->user_id, $userId, $meta, $referrer);
 
     }
 
