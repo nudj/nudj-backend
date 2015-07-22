@@ -14,7 +14,7 @@ class NotificationsController extends ApiController
     public function index()
     {
         $id = Shield::getUserId();
-        $items = User::min()->find($id)->notifications()->api()->paginate($this->limit);
+        $items = User::min()->find($id)->notifications()->api()->desc()->paginate($this->limit);
 
         return $this->respondWithPagination($items, new NotificationTransformer());
 

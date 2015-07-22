@@ -16,7 +16,7 @@ class ContactsController extends ApiController
     public function index()
     {
         $id = Shield::getUserId();
-        $items = Contact::where('contact_of', '=', $id)->api()->get();
+        $items = Contact::where('contact_of', '=', $id)->api()->orderBy('alias', 'asc')->get();
 
         return $this->respondWithItems($items, new ContactTransformer());
     }
