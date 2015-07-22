@@ -119,10 +119,7 @@ class ChatController extends ApiController
 
     }
 
-    private function getChatName($id)
-    {
-        return $id . '@' . Config::get('cfg.chat_server_host');
-    }
+
 
 
 }
