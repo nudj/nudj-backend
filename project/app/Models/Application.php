@@ -47,7 +47,6 @@ class Application extends ApiModel
         $application->candidate_id = $userId;
         $application->save();
 
-
         // Create notification
         Notification::createNewApplicationNotification($job->user_id, $userId, [
             'job_id' => $job->id,
