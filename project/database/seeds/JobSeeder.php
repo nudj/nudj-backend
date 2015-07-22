@@ -10,7 +10,7 @@ class JobSeeder extends Seeder {
 
 		DB::table('job_likes')->truncate();
 		DB::table('job_skill')->truncate();
-		DB::table('job_referrer')->truncate();
+		DB::table('referrals')->truncate();
 		DB::table('nudges')->truncate();
 		DB::table('jobs')->truncate();
 
