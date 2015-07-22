@@ -40,5 +40,27 @@ class ActionsController extends \Illuminate\Routing\Controller
     }
 
 
+    public function ask()
+    {
+        return response()->json([
+            'success' => true
+        ]);
+
+    }
+
+    public function nudge()
+    {
+        return response()->json([
+            'success' => true
+        ]);
+    }
+
+    public function apply()
+    {
+        return response()->json([
+            'success' => true
+        ]);
+    }
+
 }
 
