@@ -47,17 +47,14 @@ class Nudge extends ApiModel
 
     /* Actions
    ----------------------------------------------------- */
-    public function nudgeContacts($userId, $jobId, $contactList, $message)
+    public static function nudgeContacts($userId, $jobId, $contactList, $message)
     {
         $job = Job::with('user')->findOrFail($jobId);
         $contacts = Contact::findOrFail($contactList);
 
-        // @TODO maybe check for duplicates
-
-
         foreach ($contacts as $contact) {
 
-            $nudge = $this->addNewNudge($job->id, $job->user_id, $userId, $contact->id);
+            $nudge = self::addNewNudge($job->id, $job->user_id, $userId, $contact->id);
 
             if (!$nudge)
                 continue;
@@ -90,15 +87,11 @@ class Nudge extends ApiModel
         return $nudge;
     }
 
-
-
-
     private function nudgeUser($job, $referrer, $contact, $message)
     {
         $chat = Chat::add($job->id, [$referrer->id, $contact->user_id]);
         Event::fire(new StartChatEvent($chat->id, $referrer->id, $contact->user_id, $message));
     }
-
 
     private function nudgeContact($job, $referrer, $contact, $message)
     {

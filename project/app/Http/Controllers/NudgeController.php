@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Http\Requests\ApplyRequest;
 use App\Http\Requests\AskForReferralsRequest;
 use App\Http\Requests\NudgeRequest;
 use App\Models\Nudge;
@@ -19,16 +20,15 @@ class NudgeController extends ApiController {
 
 	public function nudge(NudgeRequest $request)
 	{
-		$nudge = new Nudge();
-		$nudge->nudgeContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
+		Nudge::nudgeContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
 
 		return $this->respondWithStatus(true);
 	}
 
 
-	public function apply()
+	public function apply(ApplyRequest $request)
 	{
-		//@TODO
+		Nudge::applyForJob(Shield::getUserId(), $request->job_id);
 	}
 
 

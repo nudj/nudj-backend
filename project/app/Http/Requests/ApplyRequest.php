@@ -14,7 +14,7 @@ class ApplyRequest extends ApiRequest {
 	public function rules()
 	{
 		return [
-			'job_Id' => 'required',
+			'job_id' => 'required',
 		];
 	}
 

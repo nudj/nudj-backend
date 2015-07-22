@@ -14,8 +14,8 @@ class NudgeRequest extends ApiRequest {
 	public function rules()
 	{
 		return [
-			'hash' => 'required',
-			'contact' => 'required',
+			'job' => 'required',
+			'contacts' => 'required',
 		];
 	}
 
