@@ -26,7 +26,7 @@ class ChatController extends ApiController
 
         $userId = Shield::getUserId();
 
-        $items = Chat::api()->mine($userId)->live()->paginate($this->limit);
+        $items = Chat::api()->mine($userId)->live()->desc()->paginate($this->limit);
 
         return $this->respondWithPagination($items, new ChatTransformer());
     }

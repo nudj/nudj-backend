@@ -75,6 +75,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     //NUDGE
     Route::put('nudge', 'NudgeController@nudge');
     Route::put('nudge/ask', 'NudgeController@ask');
+    Route::put('nudge/apply', 'NudgeController@apply');
 
 
     //CONTACTS

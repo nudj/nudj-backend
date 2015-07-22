@@ -35,6 +35,11 @@ class ApiModel extends Model
         return $query->select($this->primaryKey);
     }
 
+    public function scopeDesc($query)
+    {
+        return $query->orderBy('id', 'desc');
+    }
+
     public function getFields()
     {
         return $this->gettableFields;

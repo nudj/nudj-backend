@@ -20,13 +20,13 @@ class JobsController extends ApiController
 
         switch ($filter) {
             case 'mine' :
-                $items = Job::mine($me)->api()->paginate($this->limit);
+                $items = Job::mine($me)->api()->desc()->paginate($this->limit);
                 break;
             case 'liked' :
-                $items = Job::liked($me)->api()->paginate($this->limit);
+                $items = Job::liked($me)->api()->desc()->paginate($this->limit);
                 break;
             case 'available' :
-                $items = Job::available($me)->api()->paginate($this->limit);
+                $items = Job::available($me)->api()->desc()->paginate($this->limit);
                 break;
             default:
                 throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);

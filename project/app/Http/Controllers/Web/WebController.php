@@ -58,8 +58,6 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
-
-
     public function job($jobId = null)
     {
         try {

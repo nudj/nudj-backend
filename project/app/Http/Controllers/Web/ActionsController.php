@@ -40,17 +40,5 @@ class ActionsController extends \Illuminate\Routing\Controller
     }
 
 
-    public function refer(NudgeRequest $request)
-    {
-        $nudge = new Nudge();
-        $nudge->addNewNudge($request->hash, $request->contact);
-
-        return $this->respondWithStatus(true);
-    }
-
-    public function apply(ApplyRequest $request)
-    {
-        die(json_encode(['status' => true]));
-    }
 }
 
