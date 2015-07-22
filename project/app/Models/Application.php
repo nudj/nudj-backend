@@ -37,21 +37,27 @@ class Application extends ApiModel
     ----------------------------------------------------- */
 
 
-    public static function applyForJob($userId, $jobId)
+    public static function applyForJob($userId, $jobId, $referrerId = null)
     {
+
+        //@TODO check for previous application
 
         $job = Job::with('user')->findOrFail($jobId);
 
         $application = new Application();
         $application->job_id = $jobId;
         $application->candidate_id = $userId;
+
+        if($referrerId)
+            $application->referrer_id = $referrerId;
+
         $application->save();
 
         // Create notification
         Notification::createAppApplicationNotification($job->user_id, $userId, [
             'job_id' => $job->id,
             'job_title' => $job->title,
-            'referrer_id' => null,
+            'referrer_id' => $referrerId,
         ]);
 
     }

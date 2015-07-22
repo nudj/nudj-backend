@@ -29,7 +29,7 @@ class NudgeController extends ApiController {
 
 	public function apply(ApplyRequest $request)
 	{
-		Application::applyForJob(Shield::getUserId(), $request->job_id);
+		Application::applyForJob(Shield::getUserId(), $request->job_id, $request->referrer_id);
 
 		return $this->respondWithStatus(true);
 	}

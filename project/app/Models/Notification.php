@@ -122,7 +122,7 @@ class Notification extends ApiModel
 
     public static function createAppApplicationNotification($recipientId, $senderId, $meta = null)
     {
-        if(!Util::arrayIsValid($meta, 'job_id,job_title,referrer_id'))
+        if(!Util::arrayIsValid($meta, 'job_id,job_title'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
         return Notification::add($recipientId, $senderId, NotificationType::$APP_APPLICATION, $meta);
