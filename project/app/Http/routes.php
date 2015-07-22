@@ -20,7 +20,7 @@ Route::group(['prefix' => '/'], function () {
 
     Route::post('verify', 'Web\ActionsController@verify');
     Route::post('apply', 'Web\ActionsController@apply');
-    Route::post('refer', 'Web\ActionsController@apply');
+    Route::post('refer', 'Web\ActionsController@nudge');
     Route::get('countries', 'Web\ActionsController@countries');
 
 });

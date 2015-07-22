@@ -12,6 +12,8 @@ class ApiException extends \Exception
 
     public function __construct($type = null, $errors = null, $notify = null)
     {
+        if(is_array($errors) || is_object($errors))
+            $errors = json_encode($errors);
 
         $this->notify = ($notify !== null) ? $notify : $type['notify'];
         $this->errorCode = $type['errorCode'];

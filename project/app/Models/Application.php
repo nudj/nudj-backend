@@ -32,7 +32,6 @@ class Application extends ApiModel
     }
 
 
-
     /* Actions
     ----------------------------------------------------- */
 
@@ -43,22 +42,31 @@ class Application extends ApiModel
         //@TODO check for previous application
 
         $job = Job::with('user')->findOrFail($jobId);
+        $candidate = User::findoRFail($userId);
 
+        // Create new application
         $application = new Application();
         $application->job_id = $jobId;
         $application->candidate_id = $userId;
-
-        if($referrerId)
-            $application->referrer_id = $referrerId;
-
+        $application->referrer_id = $referrerId;
         $application->save();
 
+
         // Create notification
-        Notification::createAppApplicationNotification($job->user_id, $userId, [
+        $meta = [
             'job_id' => $job->id,
             'job_title' => $job->title,
-            'referrer_id' => $referrerId,
-        ]);
+            'position' => $job->title,
+            'candidate' => $candidate->name
+        ];
+
+        if ($referrerId) {
+            $referrer = User::findoRFail($referrerId);
+            $meta['referrer_id'] = $referrer->id;
+            $meta['referrer'] = $referrer->name;
+        }
+
+        Notification::createAppApplicationNotification($job->user_id, $userId, $meta);
 
     }
 

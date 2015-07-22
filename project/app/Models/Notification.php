@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Lang;
 class NotificationType
 {
 
-    public static $ASK_TO_REFER = 1;
-    public static $APP_APPLICATION = 2;
-    public static $WEB_APPLICATION = 3;
-    public static $MATCHING_CONTACT = 4;
-
+    public static $ASK_TO_REFER             = 1;
+    public static $APP_APPLICATION          = 2;
+    public static $WEB_APPLICATION          = 3;
+    public static $MATCHING_CONTACT         = 4;
+    public static $APP_APPLICATION_NOREF    = 5;
+    public static $WEB_APPLICATION_NOREF    = 6;
 }
 
 

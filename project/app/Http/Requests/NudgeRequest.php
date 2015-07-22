@@ -2,7 +2,7 @@
 
 
 
-class NudgeRequest extends ApiRequest {
+class 	NudgeRequest extends ApiRequest {
 
 
 	public function authorize()

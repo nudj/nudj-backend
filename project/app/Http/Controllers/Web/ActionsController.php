@@ -2,14 +2,12 @@
 
 
 use App\Http\Requests\ApplyRequest;
-use App\Http\Requests\AskForReferralsRequest;
-use App\Http\Requests\NudgeRequest;
+use App\Http\Requests\Web\NudgeRequest;
 use App\Http\Requests\Web\VerifyUserRequest;
 use App\Models\Application;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Nudge;
-use App\Models\Referral;
 use App\Models\User;
 use App\Utility\Facades\Shield;
 
@@ -44,6 +42,7 @@ class ActionsController extends \Illuminate\Routing\Controller
 
     public function nudge(NudgeRequest $request)
     {
+
         if(!Shield::validate('session'))
             return response()->json(['success' => false]);
 
