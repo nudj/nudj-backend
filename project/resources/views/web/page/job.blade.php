@@ -97,7 +97,7 @@
                     @endif
                     <div class="col-xs-12 col-centered col-max best-alg">
                         <div id="submit-area" class="div-apply">
-                            <div id="btn-apply" data-type="{{$type}}" onclick="successResult();">
+                            <div id="btn-apply" data-type="{{$type}}" onclick="resApply();">
                                 APPLY
                             </div>
                         </div>
