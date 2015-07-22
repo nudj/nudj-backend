@@ -63,6 +63,8 @@ class Contact extends ApiModel
     public static function addMissing($userId, $contactsList, $userCountryCode)
     {
 
+        $contactIds = [];
+
         foreach ($contactsList as $record) {
 
             $record = (object)$record;
@@ -86,6 +88,8 @@ class Contact extends ApiModel
                     $contact->apple_id = $record->apple_id;
 
                 $contact->save();
+
+                $contactIds[] = $contact->id;
             }
 
             $user = User::select('id')->where('phone', '=', $phoneData->number)->first();
@@ -95,6 +99,8 @@ class Contact extends ApiModel
             }
 
         }
+
+        return $contactIds;
     }
 
 

@@ -1,9 +1,10 @@
 <?php namespace App\Http\Requests\Web;
 
 
-use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUserRequest extends FormRequest {
+use App\Http\Requests\ApiRequest;
+
+class NudgeRequest extends ApiRequest {
 
 
 	public function authorize()
@@ -11,12 +12,14 @@ class CreateUserRequest extends FormRequest {
 		return true;
 	}
 
+
 	public function rules()
 	{
 		return [
 			'phone' => 'required',
-			'type' => 'required',
-			'country_id' => 'required',
+			'country_code' => 'required',
+			'name' => 'required',
+			'message' => 'required',
 		];
 	}
 

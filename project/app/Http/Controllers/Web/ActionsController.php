@@ -42,23 +42,19 @@ class ActionsController extends \Illuminate\Routing\Controller
     }
 
 
-    public function ask(AskForReferralsRequest $request)
-    {
-
-        if(!Shield::validate('session'))
-            return response()->json(['success' => false]);
-
-        Referral::askContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
-
-        return response()->json(['success' => true]);
-    }
-
     public function nudge(NudgeRequest $request)
     {
         if(!Shield::validate('session'))
             return response()->json(['success' => false]);
 
-        Nudge::nudgeContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
+        $userId = Shield::getUserId();
+
+        // Add the recommended person as a contact
+        $contact = ['phone' => $request->phone, 'alias' => $request->name];
+        $contactIds = Contact::addMissing($userId, [$contact], 'GB');
+
+        // Create new Nudge
+        Nudge::nudgeContacts($userId, $request->job_id, $contactIds, $request->message);
 
         return response()->json(['success' => true]);
     }
