@@ -48,7 +48,8 @@ class Application extends ApiModel
         $application = new Application();
         $application->job_id = $jobId;
         $application->candidate_id = $userId;
-        $application->referrer_id = $referrerId;
+        if($referrerId)
+            $application->referrer_id = $referrerId;
         $application->save();
 
 
