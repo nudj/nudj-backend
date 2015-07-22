@@ -2,14 +2,16 @@
 
 
 use App\Http\Requests\ApplyRequest;
+use App\Http\Requests\AskForReferralsRequest;
 use App\Http\Requests\NudgeRequest;
 use App\Http\Requests\Web\VerifyUserRequest;
+use App\Models\Application;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Nudge;
+use App\Models\Referral;
 use App\Models\User;
 use App\Utility\Facades\Shield;
-use Illuminate\Support\Facades\Request;
 
 class ActionsController extends \Illuminate\Routing\Controller
 {
@@ -35,31 +37,41 @@ class ActionsController extends \Illuminate\Routing\Controller
         }
 
         return response()->json([
-            'success' => (bool)$user
+            'success' => (bool) $user
         ]);
     }
 
 
-    public function ask()
+    public function ask(AskForReferralsRequest $request)
     {
-        return response()->json([
-            'success' => true
-        ]);
 
+        if(!Shield::validate('session'))
+            return response()->json(['success' => false]);
+
+        Referral::askContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
+
+        return response()->json(['success' => true]);
     }
 
-    public function nudge()
+    public function nudge(NudgeRequest $request)
     {
-        return response()->json([
-            'success' => true
-        ]);
+        if(!Shield::validate('session'))
+            return response()->json(['success' => false]);
+
+        Nudge::nudgeContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
+
+        return response()->json(['success' => true]);
     }
 
-    public function apply()
+
+    public function apply(ApplyRequest $request)
     {
-        return response()->json([
-            'success' => true
-        ]);
+        if(!Shield::validate('session'))
+            return response()->json(['success' => false]);
+
+        Application::applyForJob(Shield::getUserId(), $request->job_id);
+
+        return response()->json(['success' => true]);
     }
 
 }
