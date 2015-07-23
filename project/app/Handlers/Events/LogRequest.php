@@ -1,11 +1,9 @@
 <?php namespace App\Handlers\Events;
 
 use App\Events\IncomingRequestEvent;
-use App\Utility\Logger\ApiMongoFormatter;
+use App\Utility\Logger\Log;
 use Illuminate\Support\Facades\Request;
-use MongoClient;
-use Monolog\Handler\MongoDBHandler;
-use Monolog\Logger;
+
 
 class LogRequest
 {
@@ -13,17 +11,7 @@ class LogRequest
     public function handle(IncomingRequestEvent $event)
     {
 
-        $mongoHandler = new MongoDBHandler(
-            new MongoClient(),
-            'logger',
-            'requests'
-        );
-
-        $mongoHandler->setFormatter(new ApiMongoFormatter());
-
-        $logger = new Logger('requests');
-        $logger->pushHandler($mongoHandler);
-        $logger->addInfo('Incomming request', [
+        Log::create([
             'id' => Request::server('REQUEST_TIME_FLOAT'),
 
             'type' =>  Request::server('REQUEST_METHOD'),
@@ -34,19 +22,12 @@ class LogRequest
 
             'get' =>  $_GET,
             'post' =>  Request::except(array_keys($_GET)),
-
-//          'headers' => getalheaders(),
-
-
         ]);
 
 
-//        $logger->pushHandler($handler);
-
-
+//        Deprecated file logging with Monolog
+//
 //        $handler = new RotatingFileHandler(storage_path().'/logs/requests.log', 0, Logger::INFO);
-//
-//
 //        $logger = new Logger('requests');
 //        $logger->pushHandler($handler);
 //        $logger->addInfo('Incomming request', [

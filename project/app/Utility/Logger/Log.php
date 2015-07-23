@@ -7,4 +7,7 @@ class Log extends Moloquent
     protected $connection = 'mongodb';
     protected $collection = 'requests';
 
+    protected $fillable = ['id', 'type', 'from', 'endpoint', 'token', 'get','post'];
+
+
 }
