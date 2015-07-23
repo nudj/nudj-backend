@@ -28,6 +28,7 @@ class ServicesController extends ApiController
         $log = new Log();
         $log->date = time();
         $log->save();
+
         $logs = DB::connection('mongodb')->collection('logs')->get();
 
         print_r($logs);
