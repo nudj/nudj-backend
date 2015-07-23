@@ -10,4 +10,6 @@ class Log extends Moloquent
     protected $fillable = ['id', 'type', 'from', 'endpoint', 'token', 'get','post'];
 
 
+
+
 }
