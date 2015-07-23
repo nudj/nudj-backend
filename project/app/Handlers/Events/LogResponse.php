@@ -11,12 +11,12 @@ class LogResponse
     public function handle(ReturnResponseEvent $event)
     {
 
+        echo $event->response;
+
         $log = Log::find(Request::server('REQUEST_TIME_FLOAT'));
 
-        if($log){
-            print_r($log);
-        }
-        
+        print_r($log);
+
 //        $log->response = json_encode([
 //            'timestamp' => microtime(true),
 //            'body' => $event->response
