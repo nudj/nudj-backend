@@ -26,14 +26,8 @@ class ServicesController extends ApiController
     {
 
 
-//        $skill = new Skill;
-//        $skill->name = 'John';
-//        $status = $skill->save();
-
-//        var_dump($status);
-
-//        $skills = DB::connection('mongodb')->collection('skills')->get();
-//        print_r($skills);
+        $logs = DB::connection('mongodb')->collection('logs')->get();
+        print_r($logs);
     }
 
 

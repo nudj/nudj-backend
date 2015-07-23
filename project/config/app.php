@@ -202,8 +202,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 
-		'Image' => 'Intervention\Image\Facades\Image',
-		'Shield' => 'App\Utility\Authenticate\ShieldFacade'
+		'Image' 	=> 'Intervention\Image\Facades\Image',
+		'Shield' 	=> 'App\Utility\Authenticate\ShieldFacade',
 	],
 
 ];

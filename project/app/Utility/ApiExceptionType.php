@@ -26,7 +26,7 @@ class ApiExceptionType {
     public static $RACKSPACE_ERROR      = ['errorCode' => 12201, 'code' => 400, 'notify' => false];
 
     // Third Party Errors
-    public static $TWILIO_ERROR         = ['errorCode' => 13101, 'code' => 400, 'notify' => false];
+    public static $TWILIO_ERROR         = ['errorCode' => 13101, 'code' => 400, 'notify' => true];
     public static $FACEBOOK_ERROR       = ['errorCode' => 13201, 'code' => 400, 'notify' => false];
     public static $CHAT_ERROR           = ['errorCode' => 13301, 'code' => 400, 'notify' => false];
 
