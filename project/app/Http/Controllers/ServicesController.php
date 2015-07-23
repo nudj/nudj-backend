@@ -24,9 +24,12 @@ class ServicesController extends ApiController
 
         $logs = Log::all();
 
-        foreach($logs as $log)
-           echo $log->display();
 
+        foreach($logs as $log) {
+            $log->response = 'asd';
+            $log->save();
+            echo $log->display();
+        }
 
     }
 
