@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Request;
 use MongoClient;
 use Monolog\Handler\MongoDBHandler;
 use Monolog\Logger;
+use Monolog\Processor\WebProcessor;
 
 class LogRequest
 {
@@ -13,31 +14,34 @@ class LogRequest
     public function handle(IncomingRequestEvent $event)
     {
 
-        $handler = new MongoDBHandler(
+        $mongoHandler = new MongoDBHandler(
             new MongoClient(),
             'logger',
             'requests'
         );
 
-        $handler->setFormatter(new ApiMongoFormatter());
+        $mongoHandler->setFormatter(new ApiMongoFormatter());
 
         $logger = new Logger('requests');
-        $status = $logger->addInfo('Incomming request', [
-            'id' => Request::server('REQUEST_TIME_FLOAT'),
+        $logger->pushProcessor(new WebProcessor($_SERVER));
 
-            'type' =>  Request::server('REQUEST_METHOD'),
-            'from' => Request::server('REMOTE_ADDR'),
 
-            'endpoint' =>  Request::path(),
-            'token' => Request::header('token'),
+//        $status = $logger->addInfo('Incomming request', [
+//            'id' => Request::server('REQUEST_TIME_FLOAT'),
+//
+//            'type' =>  Request::server('REQUEST_METHOD'),
+//            'from' => Request::server('REMOTE_ADDR'),
+//
+//            'endpoint' =>  Request::path(),
+//            'token' => Request::header('token'),
+//
+//            'get' =>  $_GET,
+//            'post' =>  Request::except(array_keys($_GET)),
+//
+////            'headers' => getallheaders(),
+//        ]);
 
-            'get' =>  $_GET,
-            'post' =>  Request::except(array_keys($_GET)),
-
-//            'headers' => getallheaders(),
-        ]);
-
-        var_dump($status);
+       
 
 //        $logger->pushHandler($handler);
 
