@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CloudController;
+use App\Utility\CloudHelper;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +16,11 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Model::unguard();
+
+
+		$cloudHelper = new CloudHelper(config('cfg.rackspace'));
+		$cloudHelper->emptyContainer('UserImage');
+		$this->command->info('All cloud containers emtied!');
 
 
 		$this->call('ChatSeeder');

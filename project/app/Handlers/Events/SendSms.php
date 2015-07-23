@@ -1,7 +1,6 @@
 <?php namespace App\Handlers\Events;
 
 
-use App\Events\LoginUserEvent;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
