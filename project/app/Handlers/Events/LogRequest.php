@@ -12,13 +12,13 @@ class LogRequest
     {
 
         Log::create([
-            'id' => Request::server('REQUEST_TIME_FLOAT'),
+            'id' => (string) Request::server('REQUEST_TIME_FLOAT'),
 
-            'type' =>  Request::server('REQUEST_METHOD'),
-            'from' => Request::server('REMOTE_ADDR'),
+            'type' =>  (string)Request::server('REQUEST_METHOD'),
+            'from' => (string)Request::server('REMOTE_ADDR'),
 
-            'endpoint' =>  Request::path(),
-            'token' => Request::header('token'),
+            'endpoint' => (string) Request::path(),
+            'token' => (string) Request::header('token'),
 
             'get' =>  $_GET,
             'post' =>  Request::except(array_keys($_GET)),
