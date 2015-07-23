@@ -16,10 +16,10 @@ class LogResponse
         if(!$log)
             return false;
 
-        $log->response = [
+        $log->response = json_encode([
             'timestamp' => microtime(true),
             'body' => $event->response
-        ];
+        ]);
 
         return $log->save();
     }
