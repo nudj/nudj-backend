@@ -23,25 +23,24 @@ class LogRequest
         $mongoHandler->setFormatter(new ApiMongoFormatter());
 
         $logger = new Logger('requests');
-        $logger->pushProcessor(new WebProcessor($_SERVER));
+        $logger->pushHandler($mongoHandler);
+        $logger->addInfo('Incomming request', [
+            'id' => Request::server('REQUEST_TIME_FLOAT'),
+
+            'type' =>  Request::server('REQUEST_METHOD'),
+            'from' => Request::server('REMOTE_ADDR'),
+
+            'endpoint' =>  Request::path(),
+            'token' => Request::header('token'),
+
+            'get' =>  $_GET,
+            'post' =>  Request::except(array_keys($_GET)),
+
+//            'headers' => getalheaders(),
 
 
-//        $status = $logger->addInfo('Incomming request', [
-//            'id' => Request::server('REQUEST_TIME_FLOAT'),
-//
-//            'type' =>  Request::server('REQUEST_METHOD'),
-//            'from' => Request::server('REMOTE_ADDR'),
-//
-//            'endpoint' =>  Request::path(),
-//            'token' => Request::header('token'),
-//
-//            'get' =>  $_GET,
-//            'post' =>  Request::except(array_keys($_GET)),
-//
-////            'headers' => getallheaders(),
-//        ]);
+        ]);
 
-       
 
 //        $logger->pushHandler($handler);
 
