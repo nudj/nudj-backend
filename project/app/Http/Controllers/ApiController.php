@@ -67,12 +67,13 @@ class ApiController extends \Illuminate\Routing\Controller {
 
 	public function returnResponse($data, $headers = [])
 	{
-		if(Config::get('cfg.request_timestamp'))
-			$data['timestamp'] = Request::server('REQUEST_TIME_FLOAT');
 
 		if(Config::get('cfg.response_log')) {
 			Event::fire(new ReturnResponseEvent($data));
 		}
+
+		if(Config::get('cfg.request_timestamp'))
+			$data['timestamp'] = Request::server('REQUEST_TIME_FLOAT');
 
 		return Response::json($data, $this->getStatusCode(), $headers);
 	}
