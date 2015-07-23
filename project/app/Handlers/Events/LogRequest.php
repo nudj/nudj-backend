@@ -24,7 +24,6 @@ class LogRequest
             'post' =>  Request::except(array_keys($_GET)),
         ]);
 
-
 //        Deprecated file logging with Monolog
 //
 //        $handler = new RotatingFileHandler(storage_path().'/logs/requests.log', 0, Logger::INFO);

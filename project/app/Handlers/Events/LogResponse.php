@@ -1,12 +1,9 @@
 <?php namespace App\Handlers\Events;
 
-use App\Events\IncomingRequestEvent;
-use App\Events\ReturnResponseEvent;
-use App\Utility\Logger\ApiFormatter;
 
+use App\Events\ReturnResponseEvent;
+use App\Utility\Logger\Log;
 use Illuminate\Support\Facades\Request;
-use Monolog\Handler\RotatingFileHandler;
-use Monolog\Logger;
 
 class LogResponse
 {
@@ -14,19 +11,14 @@ class LogResponse
     public function handle(ReturnResponseEvent $event)
     {
 
-        return true;
+        $log = Log::find(Request::server('REQUEST_TIME_FLOAT'));
 
-        $handler = new RotatingFileHandler(storage_path().'/logs/responses.log', 0, Logger::INFO);
-        $handler->setFormatter(new ApiFormatter());
-
-        $logger = new Logger('responses');
-        $logger->pushHandler($handler);
-        $logger->addInfo('Response', [
-            'id' => Request::server('REQUEST_TIME_FLOAT'),
+        $log->response = [
             'timestamp' => microtime(true),
-            'response' => $event->response
-        ]);
+            'body' => $event->response
+        ];
 
+        $log->save();
     }
 
 }

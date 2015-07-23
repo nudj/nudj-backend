@@ -12,11 +12,11 @@ class Log extends Moloquent
 
     public function display()
     {
-        return json_encode([
-            'id' => $this->id,
-            'token' => $this->token,
-            'response' => $this->response
-        ]);
+        $response = [];
+        foreach ($this->fillable as $field)
+            $response[$field] = $this->{$field};
+
+        return json_encode($response);
     }
 
 }
