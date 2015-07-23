@@ -73,15 +73,19 @@ class User extends ApiModel implements ShieldAuthServiceContract
     /* CRUD
     ----------------------------------------------------- */
 
-    public static function add($data, $mobile)
+    public static function add($input, $mobile)
     {
         $user = new User();
-        $user->phone = (string) $data->number;
-        $user->country_code = (string) $data->code;
+        $user->phone = (string)$input['phone'];
+        $user->country_code = (string)$input['country_code'];
         $user->mobile = (bool)$mobile;
         $user->token = (string)str_random(60);
         $user->verification = 1111; //(int)mt_rand(1000, 9999);
         $user->settings = json_encode(config('default.user_settings'));
+
+        if(isset($input['name']))
+            $user->name = (string)$input['name'];
+
         $user->save();
 
         return $user;
@@ -94,10 +98,13 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         $user = User::where('phone', '=', $phoneData->number)->first();
 
-        if (!$user)
-            return self::add($phoneData, $mobile);
+        if ($user)
+            return $user;
 
-        return $user;
+        $input['phone'] = $phoneData->number;
+        $input['country_code'] = $phoneData->code;
+
+        return self::add($input, $mobile);
 
     }
 

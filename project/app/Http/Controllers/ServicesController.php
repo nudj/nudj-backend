@@ -25,10 +25,7 @@ class ServicesController extends ApiController
     public function test()
     {
 
-        $data =  Util::unifyPhoneNumber('0‭7946390510‬', 'GB');
 
-        print_r($data);
-        die();
 //        $skill = new Skill;
 //        $skill->name = 'John';
 //        $status = $skill->save();
