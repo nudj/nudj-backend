@@ -13,12 +13,16 @@ class LogResponse
 
         $log = Log::find(Request::server('REQUEST_TIME_FLOAT'));
 
-        $log->response = [
-            'timestamp' => microtime(true),
-            'body' => $event->response
-        ];
-
-        $log->save();
+        if($log){
+            print_r($log);
+        }
+        
+//        $log->response = json_encode([
+//            'timestamp' => microtime(true),
+//            'body' => $event->response
+//        ]);
+//
+//        $log->save();
     }
 
 }
