@@ -25,12 +25,9 @@ class ServicesController extends ApiController
 
     public function test()
     {
-        $log = new Log();
-        $log->date = time();
-        $log->save();
+//        $logs = DB::connection('mongodb')->collection('logs')->get();
 
-        $logs = DB::connection('mongodb')->collection('logs')->get();
-
+        $logs = Log::all();
         print_r($logs);
     }
 

@@ -6,7 +6,7 @@ namespace App\Utility\Logger;
 
 use Monolog\Formatter\FormatterInterface;
 
-class ApiFormatter implements FormatterInterface
+class ApiFileFormatter implements FormatterInterface
 {
 
     public function format(array $record)
