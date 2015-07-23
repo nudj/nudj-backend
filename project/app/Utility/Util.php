@@ -41,7 +41,7 @@ class  Util
         $phoneUtil = PhoneNumberUtil::getInstance();
 
         try {
-            $phoneProto = $phoneUtil->parse($phoneNumber, $defaultCountry);
+            $phoneProto = $phoneUtil->parse(ltrim($phoneNumber, 0), $defaultCountry);
             $code = $phoneUtil->getRegionCodeForNumber($phoneProto);
             $number = $phoneUtil->format($phoneProto, PhoneNumberFormat::E164);
         } catch (\libphonenumber\NumberParseException $e) {

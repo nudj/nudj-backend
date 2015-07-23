@@ -72,24 +72,33 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     /* CRUD
     ----------------------------------------------------- */
+
+    public static function add($data, $mobile)
+    {
+        $user = new User();
+        $user->phone = (string) $data->number;
+        $user->country_code = (string) $data->code;
+        $user->mobile = (bool)$mobile;
+        $user->token = (string)str_random(60);
+        $user->verification = 1111; //(int)mt_rand(1000, 9999);
+        $user->settings = json_encode(config('default.user_settings'));
+        $user->save();
+
+        return $user;
+    }
+
     public static function login($input, $mobile = true)
     {
-        $user = User::where('phone', '=', $input['phone'])->first();
 
         $phoneData = Util::unifyPhoneNumber($input['phone'], $input['country_code']);
 
-        if (!$user) {
-            $user = new User;
-            $user->phone = (string) $phoneData->number;
-            $user->country_code = (string) $input['country_code'];
-            $user->token = (string)str_random(60);
-            $user->verification = 1111; //(int)mt_rand(1000, 9999);
-            $user->mobile = (bool)$mobile;
-            $user->settings = json_encode(Config::get('cfg.user_default_settings'));
-            $user->save();
-        }
+        $user = User::where('phone', '=', $phoneData->number)->first();
+
+        if (!$user)
+            return self::add($phoneData, $mobile);
 
         return $user;
+
     }
 
     public static function verify($input)
@@ -239,7 +248,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
         $referrals = Referral::where('job_id', '=', $jobId)->with('referrer')->get();
 
         $userIds = [];
-        foreach($referrals as $referral) {
+        foreach ($referrals as $referral) {
             if (count($referral->referrer->user))
                 $userIds[] = $referral->referrer->user->id;
         }
@@ -254,7 +263,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
         return false;
 
     }
-
 
 
     /* Imposed by Contract in ApiUserRepository

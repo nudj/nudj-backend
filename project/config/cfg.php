@@ -53,16 +53,7 @@ return [
     'verification_code_length' => 4,
     'default_hash_length' => 4,
 
-    // User default settings
-    'user_default_settings' => [
-        'notifications' => [
-            '1' => true,
-            '2' => true,
-            '3' => true,
-            '4' => true,
-            '5' => true,
-        ]
-    ],
+
 
 
 

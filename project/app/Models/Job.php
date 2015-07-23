@@ -70,7 +70,7 @@ class Job extends ApiModel
         foreach($contacts as $contact)
             $ids[] = $contact->user_id;
 
-        
+
         if(isset($_GET['debug']) && $_GET['debug'] = 'contacts')
             print_r($ids);
 
