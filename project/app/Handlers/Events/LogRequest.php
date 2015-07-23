@@ -22,7 +22,7 @@ class LogRequest
         $handler->setFormatter(new ApiMongoFormatter());
 
         $logger = new Logger('requests');
-        $logger->addInfo('Incomming request', [
+        $status = $logger->addInfo('Incomming request', [
             'id' => Request::server('REQUEST_TIME_FLOAT'),
 
             'type' =>  Request::server('REQUEST_METHOD'),
@@ -35,9 +35,9 @@ class LogRequest
             'post' =>  Request::except(array_keys($_GET)),
 
 //            'headers' => getallheaders(),
-
         ]);
 
+        var_dump($status);
 
 //        $logger->pushHandler($handler);
 
