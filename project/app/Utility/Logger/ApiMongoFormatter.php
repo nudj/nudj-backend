@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Utility\Logger;
-
 
 use Monolog\Formatter\FormatterInterface;
 

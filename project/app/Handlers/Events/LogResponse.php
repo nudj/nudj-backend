@@ -14,6 +14,8 @@ class LogResponse
     public function handle(ReturnResponseEvent $event)
     {
 
+        return true;
+        
         $handler = new RotatingFileHandler(storage_path().'/logs/responses.log', 0, Logger::INFO);
         $handler->setFormatter(new ApiFormatter());
 
