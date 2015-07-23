@@ -21,7 +21,6 @@ class LogRequest
             'token' => Request::header('token'),
 
             'get' =>  $_GET,
-            'asd' =>  'asdasdasd',
             'post' =>  Request::except(array_keys($_GET)),
         ]);
 

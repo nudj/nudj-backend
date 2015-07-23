@@ -28,7 +28,9 @@ class ServicesController extends ApiController
 //        $logs = DB::connection('mongodb')->collection('logs')->get();
 
         $logs = Log::all();
-        print_r($logs);
+
+        foreach($logs as $log)
+            $log->display();
     }
 
 
