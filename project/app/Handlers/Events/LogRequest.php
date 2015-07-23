@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Request;
 use MongoClient;
 use Monolog\Handler\MongoDBHandler;
 use Monolog\Logger;
-use Monolog\Processor\WebProcessor;
 
 class LogRequest
 {
@@ -36,7 +35,7 @@ class LogRequest
             'get' =>  $_GET,
             'post' =>  Request::except(array_keys($_GET)),
 
-//            'headers' => getalheaders(),
+//          'headers' => getalheaders(),
 
 
         ]);
