@@ -13,11 +13,8 @@ class LogResponse
 
         $log = Log::where('id', '=', Request::server('REQUEST_TIME_FLOAT'))->first();
 
-        var_dump($log);
-
         if(!$log)
             return false;
-        print_r($log);
 
         $log->response = json_encode([
             'timestamp' => microtime(true),

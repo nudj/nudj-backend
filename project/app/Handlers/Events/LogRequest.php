@@ -12,7 +12,7 @@ class LogRequest
     {
 
         Log::create([
-            'id' => (string) Request::server('REQUEST_TIME_FLOAT'),
+            'id' => Request::server('REQUEST_TIME_FLOAT'),
 
             'type' =>  (string)Request::server('REQUEST_METHOD'),
             'from' => (string)Request::server('REMOTE_ADDR'),
