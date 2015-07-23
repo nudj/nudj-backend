@@ -21,14 +21,10 @@ class ServicesController extends ApiController
     public function test()
     {
 
-
         $logs = Log::all();
 
-
         foreach($logs as $log) {
-            $log->response = 'asd';
-            $log->save();
-            echo $log->display();
+            echo $log->display() . "\n";
         }
 
     }
