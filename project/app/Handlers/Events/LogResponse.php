@@ -11,7 +11,7 @@ class LogResponse
     public function handle(ReturnResponseEvent $event)
     {
 
-        echo $event->response;
+        print_r($event->response);
 
         $log = Log::find(Request::server('REQUEST_TIME_FLOAT'));
 
