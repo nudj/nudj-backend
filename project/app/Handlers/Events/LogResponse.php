@@ -13,6 +13,7 @@ class LogResponse
 
         $log = Log::where('id', '=', Request::server('REQUEST_TIME_FLOAT'))->first();
 
+        var_dump($log);
 
         if(!$log)
             return false;
