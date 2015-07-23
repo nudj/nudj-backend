@@ -14,7 +14,7 @@ use Illuminate\Contracts\Queue\ShouldBeQueued;
 use Illuminate\Support\Facades\Config;
 
 
-class StartChat //implements ShouldBeQueued
+class StartChat implements ShouldBeQueued
 {
 
 

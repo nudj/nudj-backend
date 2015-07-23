@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Config;
 use League\Flysystem\Exception;
 use Services_Twilio;
 
-class SendSms //implements ShouldBeQueued
+class SendSms implements ShouldBeQueued
 {
 
     public function send($event)
