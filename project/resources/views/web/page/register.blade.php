@@ -18,7 +18,7 @@
         </div>
     </nav>
 
-    <form id="login" method="post" action="{{web_url('validate')}}?debug=1" >
+    <form id="login" method="post" action="{{web_url('validate')}}" >
 
         <div id="name" class="container">
             <div class="col-xs-12 col-centered col-max">
