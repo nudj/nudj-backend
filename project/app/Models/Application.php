@@ -48,10 +48,11 @@ class Application extends ApiModel
         $application = new Application();
         $application->job_id = $jobId;
         $application->candidate_id = $userId;
+
         if($referrerId)
             $application->referrer_id = $referrerId;
-        $application->save();
 
+        $application->save();
 
         // Create notification
         $meta = [

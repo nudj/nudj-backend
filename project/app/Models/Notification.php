@@ -119,7 +119,7 @@ class Notification extends ApiModel
 
     public static function createAppApplicationNotification($recipientId, $senderId, $meta = null, $referrer = null)
     {
-        if (!Util::arrayIsValid($meta, 'job_id,job_title,position,candidate'))
+        if (!Util::arrayIsValid($meta, 'job_id,job_title,position'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
         $type = NotificationType::$APP_APPLICATION_NOREF;
