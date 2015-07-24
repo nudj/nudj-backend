@@ -76,7 +76,6 @@ class WebController extends \Illuminate\Routing\Controller
         }
 
         $job = Job::findorFail($jobId);
-        echo json_encode($job);die();
 
         $user = User::find(Shield::getUserId());
 
