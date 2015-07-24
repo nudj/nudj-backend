@@ -15,6 +15,7 @@ Route::get('/', 'Web\HomeController@index');
 Route::group(['prefix' => '/'], function () {
 
     Route::get('register/{type}/{hash}', 'Web\WebController@login');
+    
     Route::post('validate', 'Web\WebController@validate');
     Route::get('job/{jobId}/{hash}', 'Web\WebController@job');
 
