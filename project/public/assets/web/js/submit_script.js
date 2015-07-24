@@ -22,25 +22,7 @@ $("#btn-submit").click(function(e){
         failMessage();
     }
     else{
-        var phone = $("#phone_num").val().trim();
-        var country_code = $("#country_code").val().trim();
 
-        var put_data = {phone:phone,verification:verific,country_code:country_code};
-        $.post( base_path +"/verify", put_data,function(data) {})
-            .done(function( data ) {
-                if(data.success){
-                    if($("#reqfrom").val() == "refer")
-                         window.location.href = base_path +"/job/"+$("#job_id").val()+"/"+$("#hash").val();
-                    else
-                         window.location.href = base_path +"/job/"+$("#job_id").val()+"/"+$("#hash").val();
-                }
-                else{
-                    failMessage();
-                }
-            })
-            .fail(function(){
-                failMessage();
-            })
     }
 
 });
