@@ -3,6 +3,7 @@
 
 use App\Events\LoginUserEvent;
 use App\Http\Requests\Web\VerifyUserRequest;
+use App\Http\Requests\Web\WebLoginRequest;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Job;
@@ -21,9 +22,8 @@ class WebController extends \Illuminate\Routing\Controller
     const TYPE_REFER = 'refer';
 
 
-    public function register($type = null, $hash = null)
+    public function login($type = null, $hash = null)
     {
-
         switch ($type) {
             case self::TYPE_NUDGE :
                 $action = Nudge::findByHash($hash);
@@ -46,14 +46,14 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
-    public function validate()
+    public function validate(WebLoginRequest $request)
     {
         $data = [
-            'phone' => Request::get('phone'),
-            'country_code' => Request::get('country_code'),
-            'name' => Request::get('name')
+            'phone' => $request->phone,
+            'country_code' => $request->country_code,
+            'name' => $request->name
         ];
-
+        
         $user = User::login($data, false);
 
         Event::fire(new LoginUserEvent($user->phone, $user->verification));
@@ -74,7 +74,7 @@ class WebController extends \Illuminate\Routing\Controller
         }
 
         $job = Job::findorFail($jobId);
-       
+
         $user = User::find(Shield::getUserId());
 
         if(!$user || !$job)
