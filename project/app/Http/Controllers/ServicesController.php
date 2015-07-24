@@ -21,7 +21,7 @@ class ServicesController extends ApiController
     public function test()
     {
 
-        $logs = Log::all();
+        $logs = Log::orderBy('id', 'asc')->take(10)->get();
 
         foreach($logs as $log) {
             echo $log->display() . "\n";

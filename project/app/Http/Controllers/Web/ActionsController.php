@@ -61,8 +61,8 @@ class ActionsController extends \Illuminate\Routing\Controller
 
     public function apply(ApplyRequest $request)
     {
-        if(!Shield::validate('session'))
-            return response()->json(['success' => false]);
+//        if(!Shield::validate('session'))
+//            return response()->json(['success' => false]);
 
         Application::applyForJob(Shield::getUserId(), $request->job_id);
 
