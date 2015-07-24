@@ -47,7 +47,7 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
-    public function validate(WebLoginRequest $request)
+    public function validate(WebloginRequest $request)
     {
         $data = [
             'phone' => $request->phone,
