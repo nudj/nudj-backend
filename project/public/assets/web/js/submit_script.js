@@ -30,9 +30,9 @@ $("#btn-submit").click(function(e){
             .done(function( data ) {
                 if(data.success){
                     if($("#reqfrom").val() == "refer")
-                         window.location.href = base_path +"/job/"+$("#jobid").val();
+                         window.location.href = base_path +"/job/"+$("#job_id").val()+"/"+$("#hash").val();
                     else
-                        window.location.href = base_path +"/job/"+$("#jobid").val();
+                         window.location.href = base_path +"/job/"+$("#job_id").val()+"/"+$("#hash").val();
                 }
                 else{
                     failMessage();

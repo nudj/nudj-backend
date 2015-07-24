@@ -40,6 +40,7 @@ class WebController extends \Illuminate\Routing\Controller
 
         return view('web/page/register', [
             'type' => $type,
+            'hash' => $hash,
             'job' => $action->job,
             'user' => $action->referrer,
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
@@ -60,11 +61,12 @@ class WebController extends \Illuminate\Routing\Controller
 
         return view('web/page/validate', [
             'user' => $user,
-            'job' => Request::get('job_id')
+            'job' => Request::get('job_id'),
+            'hash' => Request::get('hash')
         ]);
     }
 
-    public function job($jobId = null)
+    public function job($jobId = null , $hash = null)
     {
 
         try {
@@ -74,6 +76,7 @@ class WebController extends \Illuminate\Routing\Controller
         }
 
         $job = Job::findorFail($jobId);
+        echo json_encode($job);die();
 
         $user = User::find(Shield::getUserId());
 
@@ -89,6 +92,7 @@ class WebController extends \Illuminate\Routing\Controller
         return view('web/page/job', [
             'user' => $user,
             'type' => $type,
+            'hash' => $hash,
             'job' => $job,
             'employer' => $job->company,
             'skills' => $job->skills,

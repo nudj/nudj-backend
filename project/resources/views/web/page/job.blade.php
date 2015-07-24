@@ -33,6 +33,7 @@
                 <span class="span-title">{{$job->title}}</span>
                 <input type="hidden" id="refer" name="refer" value="{{$type}}" />
                 <input type="hidden" id="job_id" name="job_id" value="{{$job->id}}" />
+                <input type="hidden" id="hash" name="hash" value="{{$hash}}" />
             </div>
             <div id="job-from" class="container-fluids margins-top-small span-grey">
                 Posted from: {{$employer}}
@@ -85,7 +86,7 @@
         </div>
     </div>
 
-    @if($type == 1)
+    @if($type == 'refer')
         <div id="status" class="container-fluid">
             <div class="col-xs-12 col-centered col-max" style="font-size: 20px; padding: 30px;">
                 Referral Bonus: <span style="color: #1293BD;">&pound;{{$job->bonus}}</span>

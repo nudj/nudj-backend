@@ -16,7 +16,7 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('register/{type}/{hash}', 'Web\WebController@login');
     Route::post('validate', 'Web\WebController@validate');
-    Route::get('job/{jobId}', 'Web\WebController@job');
+    Route::get('job/{jobId}/{hash}', 'Web\WebController@job');
 
     Route::post('verify', 'Web\ActionsController@verify');
     Route::post('apply', 'Web\ActionsController@apply');
