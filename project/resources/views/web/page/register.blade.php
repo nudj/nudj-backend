@@ -22,11 +22,12 @@
 
         <div id="name" class="container">
             <div class="col-xs-12 col-centered col-max">
-                <p class="lead newp">Hi, <input id="user-name" name="name" value="{{ $user->alias }}" />
+                <p class="lead newp">Hi, <input id="user-name" name="user-name" value="{{ $user->alias }}" />
                 </p>
                 <input type="hidden" name="job_id" id="job_id" value="{{$job->id}}" />
                 <input id="type" name="type" value="{{$type}}" type="hidden"/>
                 <input id="hash" name="hash" value="{{$hash}}" type="hidden"/>
+                <input id="name" name="name" value="{{ $user->alias }}" type="hidden"/>
             </div>
         </div>
 
