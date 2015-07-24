@@ -86,7 +86,7 @@
         </div>
     </div>
 
-    @if($type == 'refer')
+    @if($type == '1')
         <div id="status" class="container-fluid">
             <div class="col-xs-12 col-centered col-max" style="font-size: 20px; padding: 30px;">
                 Referral Bonus: <span style="color: #1293BD;">&pound;{{$job->bonus}}</span>
