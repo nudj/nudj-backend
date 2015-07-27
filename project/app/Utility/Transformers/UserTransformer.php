@@ -65,7 +65,7 @@ class UserTransformer extends Transformer
                 return $tranform->transformCollection($item->contacts);
 
             case 'contact':
-                $contact = $item->getBelongingContact($this->user->id);
+                $contact = $item->getBelongingContact($item->id);
 
                 if (!$contact)
                     return null;
