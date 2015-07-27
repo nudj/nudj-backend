@@ -3,8 +3,7 @@
 return [
 
     // API Logging
-    'request_log' => true,
-    'response_log' => true,
+    'request_log' => false,
     'request_timestamp' => true,
 
     // Directories

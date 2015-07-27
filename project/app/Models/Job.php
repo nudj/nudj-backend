@@ -41,10 +41,6 @@ class Job extends ApiModel
         return $this->belongsToMany('App\Models\User', 'job_likes');
     }
 
-    public function referrals()
-    {
-        return $this->belongsToMany('App\Models\Referral', 'referrals', 'referrer_id');
-    }
 
     /* Scopes
    ----------------------------------------------------- */

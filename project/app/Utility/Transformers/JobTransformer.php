@@ -1,6 +1,7 @@
 <?php namespace App\Utility\Transformers;
 
 
+use App\Models\Referral;
 use App\Utility\Facades\Shield;
 use Carbon\Carbon;
 
@@ -45,8 +46,11 @@ class JobTransformer extends Transformer {
                 return  (bool) $item->likes->contains(Shield::getUserId());
 
             case 'applied':
-                return  (bool) $item->referrals->contains(Shield::getUserId());
-
+                $referrer = Referral::select('id')
+                    ->where('job_id', '=', $item->job_id)
+                    ->where('referrer_id', '=', Shield::getUserId())
+                    ->count();
+                return  (bool) $referrer;
             case 'user':
                 $tranform = new UserTransformer();
                 return $tranform->transform($item->user);

@@ -30,7 +30,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 	function __construct()
 	{
 
-		if(Config::get('cfg.request_log')) {
+		if(env('LOGGING')) {
 			Event::fire(new IncomingRequestEvent());
 		}
 
@@ -68,7 +68,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 	public function returnResponse($data, $headers = [])
 	{
 
-		if(Config::get('cfg.response_log')) {
+		if(env('LOGGING')) {
 			Event::fire(new ReturnResponseEvent($data));
 		}
 
