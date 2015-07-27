@@ -1,6 +1,7 @@
 <?php namespace App\Utility\Transformers;
 
 
+use App\Models\Contact;
 use App\Utility\Facades\Shield;
 
 class UserTransformer extends Transformer

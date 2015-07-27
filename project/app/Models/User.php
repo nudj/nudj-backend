@@ -21,7 +21,8 @@ class User extends ApiModel implements ShieldAuthServiceContract
     protected $table = 'users';
     protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'settings', 'company'];
 
-    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'settings', 'company', 'status', 'skills', 'contacts', 'favourite'];
+    protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'settings', 'company',
+        'status', 'skills', 'contacts', 'favourite', 'contact'];
     protected $defaultFields = ['name'];
 
     protected $prefix = 'user.';

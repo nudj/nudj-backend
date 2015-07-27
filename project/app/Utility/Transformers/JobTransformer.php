@@ -51,7 +51,9 @@ class JobTransformer extends Transformer {
                     ->where('referrer_id', '=', Shield::getUserId())
                     ->count();
                 return  (bool) $referrer;
+
             case 'user':
+                echo $item->user->name;
                 $tranform = new UserTransformer();
                 return $tranform->transform($item->user);
 

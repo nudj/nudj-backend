@@ -14,6 +14,7 @@ class LoginUserEvent extends Event {
 
 	public function __construct($userPhone, $verificationCode)
 	{
+
 		$this->phone = $userPhone;
 		$this->message =  Lang::get('sms.verification', [
 			'code' => $verificationCode
