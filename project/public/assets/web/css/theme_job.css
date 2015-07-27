@@ -255,6 +255,7 @@ input{
 #btn-ok{
     display: table-cell;
     vertical-align: middle;
+    font-weight: 400;
 }
 
 #success-head{
@@ -358,7 +359,7 @@ input{
     border: thin solid #EBEBEB;
     width: 212px;
     padding: 7px;
-
+    color: #3F3F3F;
 }
 
 .refMsg-phone{
