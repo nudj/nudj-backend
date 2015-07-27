@@ -67,7 +67,7 @@ class Application extends ApiModel
             $referrer = User::findoRFail($referrerId);
         }
 
-        Notification::createAppApplicationNotification($job->user_id, $userId, $meta, $referrer);
+        Notification::appApllication($job->user_id, $userId, $meta, $referrer);
 
     }
 

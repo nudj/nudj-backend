@@ -54,7 +54,7 @@ class WebController extends \Illuminate\Routing\Controller
             'country_code' => $request->country_code,
             'name' => $request->name
         ];
-        
+
         $user = User::login($data, false);
 
         Event::fire(new LoginUserEvent($user->phone, $user->verification));

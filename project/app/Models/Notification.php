@@ -13,11 +13,14 @@ class NotificationType
 {
 
     public static $ASK_TO_REFER = 1;
+    public static $NUDGE = 7;
+
     public static $APP_APPLICATION = 2;
     public static $WEB_APPLICATION = 3;
-    public static $MATCHING_CONTACT = 4;
     public static $APP_APPLICATION_NOREF = 5;
     public static $WEB_APPLICATION_NOREF = 6;
+
+    public static $MATCHING_CONTACT = 4;
 }
 
 
@@ -109,7 +112,7 @@ class Notification extends ApiModel
     ----------------------------------------------------- */
 
 
-    public static function createAskToReferNotification($recipientId, $senderId, $meta = null)
+    public static function askToRefer($recipientId, $senderId, $meta = null)
     {
         if (!Util::arrayIsValid($meta, 'job_id,job_title,job_bonus,message,employer'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
@@ -117,7 +120,7 @@ class Notification extends ApiModel
         return Notification::add($recipientId, $senderId, NotificationType::$ASK_TO_REFER, $meta);
     }
 
-    public static function createAppApplicationNotification($recipientId, $senderId, $meta = null, $referrer = null)
+    public static function appApllication($recipientId, $senderId, $meta = null, $referrer = null)
     {
         if (!Util::arrayIsValid($meta, 'job_id,job_title,position'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
@@ -132,7 +135,7 @@ class Notification extends ApiModel
         return Notification::add($recipientId, $senderId, $type, $meta);
     }
 
-    public static function createMatchingContactNotification($recipientId, $senderId, $meta = null)
+    public static function matchingContact($recipientId, $senderId, $meta = null)
     {
         if (!Util::arrayIsValid($meta, 'candidate, job, employer'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
