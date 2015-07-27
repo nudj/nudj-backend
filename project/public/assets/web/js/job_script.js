@@ -98,8 +98,9 @@ function failedResult(){
 
 function resApply(){
     var job_id = $("#job_id").val();
+    var hash = $("#hash").val();
     $( "#btn-apply" ).css({"background-color":"#FFF","color":"#00A187","border":"thin solid #00A187"});
-        var put_data = {job_id:job_id};
+        var put_data = {job_id:job_id,hash:hash};
         $.post( base_path +"/apply", put_data,function(data) {})
             .done(function( data ) {
                 successResult();
