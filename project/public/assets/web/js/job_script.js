@@ -136,4 +136,9 @@ $("#nudjModal").on('hidden.bs.modal', function(){
     $( "#btn-refer" ).css({"background-color":"#1293BD","color":"#FFF","border":"thin solid transparent"});
     $( "#btn-ok" ).css({"background-color":"#1293BD","color":"#FFF","border":"thin solid transparent"});
      body.html(original);
+    $("#countr").val("United Kingdom-44-GB");
+});
+
+$(window).load(function(){
+    $("#countr").val("United Kingdom-44-GB");
 });
