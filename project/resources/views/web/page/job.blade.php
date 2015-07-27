@@ -81,18 +81,21 @@
                 <img class="status-check" src="{{ asset('assets/web/img/suitcase.png') }}"/>Job Status
             </div>
             <div id="right-cell">
-                <img class="status-check" src="{{ asset('assets/web/img/check.png') }}"/><span style="color: #00A187;">Active</span>
+                @if($job->active)
+                    <img class="status-check" src="{{ asset('assets/web/img/check.png') }}"/><span style="color: #00A187;">Active</span>
+                @else
+                    <span style="color: #60697D;">Inactive</span>
+                @endif
             </div>
         </div>
     </div>
-
+    @if($job->active)
     @if($type === 'refer')
         <div id="status" class="container-fluid">
             <div class="col-xs-12 col-centered col-max" style="font-size: 20px; padding: 30px;">
                 Referral Bonus: <span style="color: #1293BD;">&pound;{{$job->bonus}}</span>
             </div>
         </div>
-        <div id="push" class="container">
             @else
                 <div id="push" class="container from-top">
                     @endif
@@ -109,7 +112,7 @@
                         @endif
                     </div>
                 </div>
-
+    @endif
                 @endsection
 
             @section('scripts')
