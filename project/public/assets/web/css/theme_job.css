@@ -431,7 +431,8 @@ input{
     border-color: #EBEBEB;
     border-radius: 5px;
     max-width: 210px;
-    font-weight: 100;
+    font-weight: 200;
+    color: #3F3F3F;
 }
 
 .sms-sent{
