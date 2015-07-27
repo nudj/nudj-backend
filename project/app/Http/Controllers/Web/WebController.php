@@ -27,9 +27,11 @@ class WebController extends \Illuminate\Routing\Controller
         switch ($type) {
             case self::TYPE_NUDGE :
                 $action = Nudge::findByHash($hash);
+                $user = $action->candidate;
                 break;
             case self::TYPE_REFER :
                 $action = Referral::findByHash($hash);
+                $user = $action->referrer;
                 break;
             default :
                 $action = false;
@@ -42,7 +44,7 @@ class WebController extends \Illuminate\Routing\Controller
             'type' => $type,
             'hash' => $hash,
             'job' => $action->job,
-            'referrer' => $action->referrer,
+            'user' => $user,
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
