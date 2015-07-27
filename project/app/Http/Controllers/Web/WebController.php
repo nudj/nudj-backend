@@ -94,6 +94,7 @@ class WebController extends \Illuminate\Routing\Controller
             'job' => $job,
             'employer' => $job->company,
             'skills' => $job->skills,
+            'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
 

@@ -27,6 +27,7 @@
 </head>
 
 <body>
+@section('modal')
 <div id="nudjModal" class="modal">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -41,6 +42,7 @@
         </div>
     </div>
 </div>
+@show
 
 @yield('page')
 

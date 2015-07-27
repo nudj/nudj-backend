@@ -5,6 +5,41 @@ var title = $("#titleModal");
 var body = $("#bodyModal");
 var modal = $("#nudjModal");
 var footer = $("#footerModal");
+var original = "";
+
+function spoter(){
+    var btnSMS =  $( "#btn-ok" );
+
+    btnSMS.css({"background-color":"#FFF","color":"#1293BD","border":"thin solid #1293BD"});
+    var chkr = 0;
+    var refPhone = $("#refphone");
+    var refCode = $("#refcode");
+    var refName = $("#refname");
+    var refMsg = $("#themsg");
+
+    if(refPhone.val().length == 0){
+        chkr = chkr +1;
+        refPhone.css("border-color","red");
+    }
+    if(refName.val().length == 0){
+        chkr =chkr + 1;
+        refName.css("border-color","red");
+    }
+    if(refMsg.val().length == 0){
+        chkr =chkr + 1;
+        refMsg.css("border-color","red");
+    }
+
+    if(chkr == 0){
+        var isPhone = refCode.val() + refPhone.val();
+        resRefer(refMsg.val(),refName.val(),isPhone);
+    }
+    else{
+        btnSMS.css({"background-color":"#1293BD","color":"#FFF","border":"thin solid transparent"});
+    }
+
+
+}
 
 function down_modal(){
     modal.modal('hide');
@@ -28,12 +63,14 @@ var msgSpoter =
 
 
 function successSpoter(){
+    original = body.html();
     title.html("Success !");
     body.html("<p>SMS sent!</p>");
     modal.modal('show');
 }
 
 function successResult(){
+    original = body.html();
     title.html("Success !");
     body.html("<p>The hirer has been notified about your application.</p>");
     footer.css("display","block");
@@ -41,14 +78,15 @@ function successResult(){
 }
 
 function refResult(){
+    original = body.html();
     $( "#btn-refer" ).css({"background-color":"#FFF","color":"#1293BD","border":"thin solid #1293BD"});
     title.html("Refer Someone");
-    body.html(msgRefer);
     footer.css("display","none");
     modal.modal('show');
 }
 
 function failedResult(){
+    original = body.html();
     title.html("Failed !");
     body.html("<p style='color: red;'>Something went wrong.Please try again.</p>");
     footer.css("display","block");
@@ -93,3 +131,9 @@ function resRefer(msg,name,contact){
         })
 }
 
+$("#nudjModal").on('hidden.bs.modal', function(){
+    $( "#btn-apply" ).css({"background-color":"#00A187","color":"#FFF","border":"thin solid transparent"});
+    $( "#btn-refer" ).css({"background-color":"#1293BD","color":"#FFF","border":"thin solid transparent"});
+    $( "#btn-ok" ).css({"background-color":"#1293BD","color":"#FFF","border":"thin solid transparent"});
+     body.html(original);
+});

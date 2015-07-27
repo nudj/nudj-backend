@@ -10,11 +10,36 @@
     <link href="{{ asset('assets/web/css/theme_job.css') }}" rel="stylesheet">
 @endsection
 
-@section('scriptses')
-    @parent
-    <script src="{{ asset('assets/web/js/job_help.js') }}"></script>
+@section('modal')
+    @if($job->active)
+    <div id="nudjModal" class="modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header header-new">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 id="titleModal" class="modal-title"></h4>
+                </div>
+                <div id="bodyModal" class="modal-body modal-body-new">
+                    <div id="inn">
+                        <div class="holdMsg" ><textarea id="themsg" placeholder="Write your referral message" cols="30" rows="4" onfocus="runFocus(this.id);"></textarea></div>
+                        <div id="ref-content"><input class="refMsg" id="refname" name="refname" value="" placeholder="Name"  onfocus="runFocus(this.id);"/>
+                            <select id="countr" class="form-control" style="margin-top: 14px;" onchange="myFunction();">
+                                @foreach ($countries as $country)
+                                    <option value="{{$country->name}}-{{$country->code}}-{{$country->iso2}}">{{$country->name}} (+ {{$country->code}} )</option>
+                                @endforeach
+                            </select>
+                            <input style="margin-top: 14px;" class="refcoda" id="refcode" name="refcode" value="+44" placeholder="" readonly/>
+                            <input class="refMsg-phone" id="refphone" name="refphone" style="  float: left;width: 158px;  margin-top: 14px;" value="" placeholder="Phone Number" onfocus="runFocus(this.id);"/> </div>
+                        <div id="refs-btn"><div id="btn-ok" onclick="spoter();" >SEND SMS</div></div></div>
+                </div>
+                <div id="footerModal" class="modal-footer">
+                    <button type="button" class="btn btn-default btn-new btn-flash" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 @endsection
-
 
 @section('page')
 
@@ -117,5 +142,7 @@
 
             @section('scripts')
                 @parent
+                @if($job->active)
                 <script src="{{ asset('assets/web/js/job_script.js') }}"></script>
+                @endif
 @endsection
