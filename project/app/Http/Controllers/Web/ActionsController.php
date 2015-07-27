@@ -19,10 +19,6 @@ class ActionsController extends \Illuminate\Routing\Controller
 
     }
 
-    public function countries(){
-        return Country::web()->orderBy('name', 'asc')->get();
-    }
-
 
     public function verify(VerifyUserRequest $request)
     {
@@ -64,7 +60,15 @@ class ActionsController extends \Illuminate\Routing\Controller
         if(!Shield::validate('session'))
             return response()->json(['success' => false]);
 
-        Application::applyForJob(Shield::getUserId(), $request->job_id);
+        $referrerId = null;
+        if($request->hash) {
+            $nudge = Nudge::findByHash($request->hash);
+
+            if($nudge)
+                $referrerId = $nudge->referrer_id;
+        }
+
+        Application::applyForJob(Shield::getUserId(), $request->job_id, $referrerId);
 
         return response()->json(['success' => true]);
     }

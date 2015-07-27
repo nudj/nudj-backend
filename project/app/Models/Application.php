@@ -40,6 +40,13 @@ class Application extends ApiModel
     {
 
         //@TODO check for previous application
+        $application = self::select('id')
+            ->where('candidate_id', '=', $userId)
+            ->where('job_id', '=', $jobId)
+            ->count();
+
+        if($application)
+            return true;
 
         $job = Job::with('user')->findOrFail($jobId);
         $candidate = User::findoRFail($userId);
@@ -49,7 +56,7 @@ class Application extends ApiModel
         $application->job_id = $jobId;
         $application->candidate_id = $userId;
 
-        if($referrerId)
+        if ($referrerId)
             $application->referrer_id = $referrerId;
 
         $application->save();
@@ -69,6 +76,7 @@ class Application extends ApiModel
 
         Notification::appApllication($job->user_id, $userId, $meta, $referrer);
 
+        return true;
     }
 
 
