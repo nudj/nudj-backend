@@ -43,6 +43,7 @@ function spoter(){
 
 function down_modal(){
     modal.modal('hide');
+    $( "#btn-ok" ).css({"background-color":"#1293BD","color":"#FFF","border":"thin solid transparent"});
 }
 
 function runFocus(thisElement){
