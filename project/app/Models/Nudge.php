@@ -28,6 +28,11 @@ class Nudge extends ApiModel
 
     /* Relations
     ----------------------------------------------------- */
+    public function job()
+    {
+        return $this->belongsTo('App\Models\Job', 'job_id');
+    }
+
     public function employer()
     {
         return $this->belongsTo('App\Models\User', 'employer_id');

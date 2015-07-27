@@ -34,15 +34,15 @@ class WebController extends \Illuminate\Routing\Controller
             default :
                 $action = false;
         }
-
-        if (!$action)
+   
+        if (!$action  || !$action->job || !$action->referrer)
             return redirect('/');
 
         return view('web/page/register', [
             'type' => $type,
             'hash' => $hash,
             'job' => $action->job,
-            'user' => $action->referrer,
+            'referrer' => $action->referrer,
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
