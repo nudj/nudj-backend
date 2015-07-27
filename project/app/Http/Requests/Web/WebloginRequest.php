@@ -5,7 +5,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Validation\Validator;
 
-class WebloginRequest extends FormRequest {
+class WebLoginRequest extends FormRequest {
 
 
 	public function authorize()

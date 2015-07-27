@@ -14,7 +14,7 @@ class Job extends ApiModel
     protected $table = 'jobs';
     protected $visible = ['id', 'title', 'description', 'salary', 'active', 'bonus', 'company', 'location', 'user_id', 'created_at'];
 
-    protected $gettableFields = ['title', 'description', 'salary', 'active', 'bonus', 'company', 'location', 'skills', 'user', 'liked', 'created'];
+    protected $gettableFields = ['title', 'description', 'salary', 'active', 'bonus', 'company', 'location', 'skills', 'user', 'liked', 'applied', 'created'];
     protected $defaultFields = ['title', 'user'];
 
     protected $prefix = 'job.';
@@ -39,6 +39,11 @@ class Job extends ApiModel
     public function likes()
     {
         return $this->belongsToMany('App\Models\User', 'job_likes');
+    }
+
+    public function refferals()
+    {
+        return $this->belongsToMany('App\Models\Referral', 'referrals', 'referrer_id');
     }
 
     /* Scopes

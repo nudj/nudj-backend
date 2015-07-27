@@ -44,6 +44,9 @@ class JobTransformer extends Transformer {
             case 'liked':
                 return  (bool) $item->likes->contains(Shield::getUserId());
 
+            case 'applied':
+                return  (bool) $item->referrals->contains(Shield::getUserId());
+
             case 'user':
                 $tranform = new UserTransformer();
                 return $tranform->transform($item->user);

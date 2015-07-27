@@ -47,15 +47,14 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
-    public function validate(WebloginRequest $request)
+    public function validate(WebLoginRequest $request)
     {
-        $data = [
+
+        $user = User::login([
             'phone' => $request->phone,
             'country_code' => $request->country_code,
             'name' => $request->name
-        ];
-
-        $user = User::login($data, false);
+        ], false);
 
         Event::fire(new LoginUserEvent($user->phone, $user->verification));
 
