@@ -9,6 +9,7 @@ class UserTransformer extends Transformer
     public static $aliases = [
         'sender' => 'user',
         'candidate' => 'user',
+        'participant' => 'user',
     ];
 
     public function transformMap($item, $column)
