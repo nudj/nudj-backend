@@ -41,9 +41,15 @@ class  Util
         $phoneUtil = PhoneNumberUtil::getInstance();
 
         try {
+
             $phoneProto = $phoneUtil->parse(ltrim($phoneNumber, 0), $defaultCountry);
-            $code = $phoneUtil->getRegionCodeForNumber($phoneProto);
+
             $number = $phoneUtil->format($phoneProto, PhoneNumberFormat::E164);
+            $code = $phoneUtil->getRegionCodeForNumber($phoneProto);
+
+            if(!$code)
+                $code = $defaultCountry;
+
         } catch (\libphonenumber\NumberParseException $e) {
             return (object)['number' => $phoneNumber, 'code' => $defaultCountry, 'suspicious' => true];
         }
