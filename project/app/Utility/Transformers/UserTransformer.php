@@ -46,6 +46,12 @@ class UserTransformer extends Transformer
             case 'completed':
                 return (bool)$item->completed;
 
+            case 'facebook':
+                return (bool)$item->facebook_token;
+
+            case 'linkedin':
+                return (bool)$item->linkedin_token;
+
             case 'favourite':
                 return (bool) $item->favourites->contains(Shield::getUserId());
 

@@ -19,10 +19,10 @@ class User extends ApiModel implements ShieldAuthServiceContract
     use Social;
 
     protected $table = 'users';
-    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'settings', 'company'];
+    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'status', 'about', 'settings', 'company', 'facebook_token', 'linkedin_token'];
 
     protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'settings', 'company',
-        'status', 'skills', 'contacts', 'favourite', 'contact'];
+        'facebook', 'linkedin', 'status', 'skills', 'contacts', 'favourite', 'contact'];
     protected $defaultFields = ['name'];
 
     protected $prefix = 'user.';
