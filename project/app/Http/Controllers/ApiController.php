@@ -34,7 +34,6 @@ class ApiController extends \Illuminate\Routing\Controller {
 			Event::fire(new IncomingRequestEvent());
 		}
 
-
 		if(!in_array(Request::route()->getActionName(), $this->nonTokenMethods)) {
 			Shield::validate();
 		}
