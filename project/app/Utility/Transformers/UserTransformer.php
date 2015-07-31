@@ -12,6 +12,12 @@ class UserTransformer extends Transformer
         'participant' => 'user',
     ];
 
+    public static $dependencies = [
+        'facebook' => 'facebook_token',
+        'linkedin' => 'linkedin_token',
+    ];
+
+
     public function transformMap($item, $column)
     {
 

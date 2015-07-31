@@ -31,6 +31,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
     public function __construct()
     {
         $this->aliases = UserTransformer::$aliases;
+        $this->dependencies = UserTransformer::$dependencies;
     }
 
     /* Relations
