@@ -25,6 +25,9 @@ class SocialController extends ApiController
         $user = Shield::getUserModel();
         $user->importFromFacebook($data);
 
+        $user->facebook_token = $networkToken;
+        $user->save();
+
         return $this->respondWithStatus(true);
     }
 
@@ -41,6 +44,9 @@ class SocialController extends ApiController
 
         $user = Shield::getUserModel();
         $user->importFromLinkedIn($data);
+
+        $user->linkedin_token = $networkToken;
+        $user->save();
 
         return $this->respondWithStatus(true);
     }

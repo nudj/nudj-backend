@@ -26,6 +26,7 @@ trait Social {
         if(!$this->about && isset($incomingData->bio))
             $import['about'] = $incomingData->bio;
 
+
         $this->edit($import);
     }
 
