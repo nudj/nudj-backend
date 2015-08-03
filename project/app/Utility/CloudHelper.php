@@ -56,6 +56,7 @@ class CloudHelper
             $container = $this->client->getContainer($container);
         } catch (Exception $e) {
             // container doesn't exist ... just continue
+            return true;
         }
 
         try {
