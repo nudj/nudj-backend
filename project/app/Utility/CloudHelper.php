@@ -1,5 +1,6 @@
 <?php namespace App\Utility;
 
+use Guzzle\Http\Exception\ClientErrorResponseException;
 use League\Flysystem\Exception;
 use OpenCloud\Rackspace;
 
@@ -53,8 +54,9 @@ class CloudHelper
             $container = implode('/', $container);
 
         try {
+
             $container = $this->client->getContainer($container);
-        } catch (Exception $e) {
+        } catch (ClientErrorResponseException $e) {
             // container doesn't exist ... just continue
             return true;
         }

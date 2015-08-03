@@ -3,8 +3,9 @@
 
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
+use App\Utility\CloudHelper;
 use App\Utility\Facades\Shield;
-use App\Utility\Logger\Log;
+use Illuminate\Support\Facades\Config;
 
 class ServicesController extends ApiController
 {
@@ -21,11 +22,15 @@ class ServicesController extends ApiController
     public function test()
     {
 
-        $logs = Log::orderBy('id', 'asc')->take(10)->get();
+        $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
 
-        foreach($logs as $log) {
-            echo $log->display() . "\n";
-        }
+        $cloudHelper->emptyContainer('UserImage/2');
+
+//        $logs = Log::orderBy('id', 'asc')->take(10)->get();
+//
+//        foreach($logs as $log) {
+//            echo $log->display() . "\n";
+//        }
 
     }
 
