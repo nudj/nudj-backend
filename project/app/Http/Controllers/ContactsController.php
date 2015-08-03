@@ -18,14 +18,17 @@ class ContactsController extends ApiController
         $me = Shield::getUserId();
 
         switch ($filter) {
+            case 'mine' :
+                $items =  Contact::where('contact_of', '=', $me)->api()->orderBy('alias', 'asc')->get();
+                break;
             case 'favourited' :
                 $items =  Contact::where('favourite', '=', true)
                         ->where('contact_of', '=', $me)
                         ->api()->orderBy('alias', 'asc')->get();
                 break;
             default:
-                $items =  Contact::where('contact_of', '=', $me)
-                    ->api()->orderBy('alias', 'asc')->get();
+                throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
+
         }
 
         return $this->respondWithItems($items, new ContactTransformer());
