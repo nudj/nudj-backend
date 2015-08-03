@@ -55,7 +55,7 @@ class CloudHelper
         try {
             $container = $this->client->getContainer($container);
         } catch (Exception $e) {
-            throw new ApiException(new ApiExceptionType::$RACKSPACE_ERROR);
+            // container doesn't exist ... just continue
         }
 
         try {
