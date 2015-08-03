@@ -4,6 +4,7 @@
 use App\Utility\Contracts\SocialInterface;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
+use League\Flysystem\Exception;
 
 class LinkedInHelper implements SocialInterface
 {
@@ -30,8 +31,7 @@ class LinkedInHelper implements SocialInterface
 
     public function getUser()
     {
-        return $this->request('/people/~:(id,first-name,last-name,picture-url)');
-//        return $this->request('/people/~:(id,first-name,last-name,skills,picture-url)');
+        return $this->request('/people/~:(id,first-name,last-name,email-address,skills,picture-url)');
     }
 
 
@@ -44,7 +44,12 @@ class LinkedInHelper implements SocialInterface
         ]);
 
         $url = self::API_URL . $query . '?' . $params;
-        $request = $this->client->get($url);
+
+        try {
+            $request = $this->client->get($url);
+        } catch (Exception $e) {
+            throw new ApiException(ApiExceptionType::$LINKEDIN_ERROR, $e->getMessage());
+        }
 
         switch($this->format) {
             case 'json' :

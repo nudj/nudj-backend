@@ -35,6 +35,10 @@ class Contact extends ApiModel
         return $this->belongsTo('App\Models\User', 'contact_of');
     }
 
+    /* Scopes
+    ----------------------------------------------------- */
+
+
     /* CRUD
     ----------------------------------------------------- */
 

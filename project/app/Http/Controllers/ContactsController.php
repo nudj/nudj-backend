@@ -13,10 +13,20 @@ use Illuminate\Support\Facades\Input;
 class ContactsController extends ApiController
 {
 
-    public function index()
+    public function index($filter = null)
     {
-        $id = Shield::getUserId();
-        $items = Contact::where('contact_of', '=', $id)->api()->orderBy('alias', 'asc')->get();
+        $me = Shield::getUserId();
+
+        switch ($filter) {
+            case 'favourited' :
+                $items =  Contact::where('favourite', '=', true)
+                        ->where('contact_of', '=', $me)
+                        ->api()->orderBy('alias', 'asc')->get();
+                break;
+            default:
+                $items =  Contact::where('contact_of', '=', $me)
+                    ->api()->orderBy('alias', 'asc')->get();
+        }
 
         return $this->respondWithItems($items, new ContactTransformer());
     }

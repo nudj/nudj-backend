@@ -29,6 +29,7 @@ class ApiExceptionType {
     public static $TWILIO_ERROR         = ['errorCode' => 13101, 'code' => 400, 'notify' => true];
     public static $FACEBOOK_ERROR       = ['errorCode' => 13201, 'code' => 400, 'notify' => false];
     public static $CHAT_ERROR           = ['errorCode' => 13301, 'code' => 400, 'notify' => false];
+    public static $LINKEDIN_ERROR       = ['errorCode' => 13401, 'code' => 400, 'notify' => false];
 
     // Nudge Errors
     public static $VERIFICATION_ERROR   = ['errorCode' => 14101, 'code' => 400, 'notify' => false];
