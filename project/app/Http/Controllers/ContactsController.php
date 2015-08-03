@@ -22,7 +22,7 @@ class ContactsController extends ApiController
                 $items =  Contact::where('contact_of', '=', $me)->api()->orderBy('alias', 'asc')->get();
                 break;
             case 'favourited' :
-                $items =  Contact::where('favourite', '=', true)
+                $items =  Contact::where('favorite', '=', true)
                         ->where('contact_of', '=', $me)
                         ->api()->orderBy('alias', 'asc')->get();
                 break;
