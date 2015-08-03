@@ -171,7 +171,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
         if (isset($input['settings']))
             $this->settings = $this->syncSettings($input['settings']);
 
-
         if (isset($input['image'])) {
             $images = $this->updateImage($input['image']);
 

@@ -44,6 +44,10 @@ trait Imageable {
         return $result;
     }
 
+    public function getResourceCloudImageDir()
+    {
+        return $this->getConfigItem('imageDir') . '/' . $this->id;
+    }
 
     public function updateImage($imageSource = null)
     {
@@ -52,7 +56,7 @@ trait Imageable {
         $images = $imageHelper->saveSizes($imageSource, $this->getConfigItem('imageSizes'));
 
         $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
-        $cloudHelper->emptyContainer($this->getConfigItem('imageDir'));
+        $cloudHelper->emptyContainer($this->getResourceCloudImageDir($this->id));
 
         foreach($images as $size => $image) {
             $imageParts = [$this->id, $size, $image];
