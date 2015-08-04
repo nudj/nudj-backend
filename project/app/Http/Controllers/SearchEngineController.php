@@ -59,6 +59,7 @@ class SearchEngineController extends ApiController
                     'user_id' => $item->user_id,
                     'bonus' => $item->bonus,
                     'active' => $item->active,
+                    'deleted' => $item->deleted_at ? 1 : 0,
                     'skills' => array_column($item->skills->toArray(), 'name')
                 ]
             ];

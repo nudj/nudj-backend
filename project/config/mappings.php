@@ -48,6 +48,12 @@ return [
                 'include_in_all' => false
             ],
 
+            'deleted' => [
+                'type' => 'integer',
+                'index' => 'not_analyzed',
+                'include_in_all' => false
+            ],
+
             'user_id' => [
                 'type' => 'integer',
                 'index' => 'not_analyzed',

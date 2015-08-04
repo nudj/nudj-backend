@@ -87,6 +87,7 @@ class JobsController extends ApiController
         if (!$job)
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
 
+
         $status = $job->delete();
 
         return $this->respondWithStatus($status);

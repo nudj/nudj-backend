@@ -51,6 +51,25 @@ trait Indexable {
         $this->searchEngineClient->update($data);
     }
 
+    public function deleteFromIndex($type, $id)
+    {
+       $this->updateToIndex($type, $id, ['deleted' => 1]);
+    }
+
+    public function softDeleteFromIndex($type, $id)
+    {
+        $this->connect();
+
+        $data = [
+            'index' => $this->searchEngineIndex,
+            'type' => $type,
+            'id' => $id,
+        ];
+
+        $this->searchEngineClient->delete($data);
+    }
+
+
     public function suggestFromIndex($term, $type, $field)
     {
         $this->connect();
@@ -80,11 +99,13 @@ trait Indexable {
         $this->connect();
 
         $query['query']['match']['_all'] = $term;
+        $filter['filter']['bool']['must'][]['term'] = ['active' => 1];
 
         $results = $this->searchEngineClient->search([
             'index' => $this->searchEngineIndex,
             'type' => $type,
-            'body' => $query
+            'body' => $query,
+            'filter' => $filter
             ]);
 
 

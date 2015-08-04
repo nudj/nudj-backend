@@ -215,6 +215,18 @@ class Job extends ApiModel
         return true;
     }
 
+    public function delete()
+    {
+
+        if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this))) {
+            $this->softDeleteFromIndex('job', $this->id);
+        } else {
+            $this->deleteFromIndex('job', $this->id);
+        }
+
+        parent::delete();
+    }
+
 
 
     /* Checks
