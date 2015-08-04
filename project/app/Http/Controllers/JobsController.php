@@ -68,6 +68,17 @@ class JobsController extends ApiController
         return $this->respondWithStatus($status);
     }
 
+    public function search($term = null)
+    {
+        if(!$term)
+            throw new ApiException(ApiExceptionType::$INVALID_INPUT);
+
+        $job = new Job();
+        $items = $job->search($term);
+
+        return $this->respondWithItems($items, new JobTransformer());
+    }
+
 
     public function destroy($id)
     {

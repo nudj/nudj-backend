@@ -36,7 +36,6 @@ class Skill extends ApiModel
     public function suggest($term)
     {
         return $this->suggestFromIndex($term, 'skill', 'name');
-
     }
 
     /* CRUD

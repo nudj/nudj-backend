@@ -79,6 +79,19 @@ class Job extends ApiModel
     }
 
 
+    /* GET
+    ----------------------------------------------------- */
+    public function search($term)
+    {
+        $ids = $this->searchIndex('job',$term);
+
+        if(!$ids)
+            return [];
+
+       return self::whereIn('id', $ids)->get();
+    }
+
+
     /* CRUD
    ----------------------------------------------------- */
     public function edit($input)
@@ -201,6 +214,7 @@ class Job extends ApiModel
 
         return true;
     }
+
 
 
     /* Checks

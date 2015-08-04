@@ -12,6 +12,9 @@ abstract class Transformer
 
     public function transformCollection($items)
     {
+        if(!$items)
+            return [];
+
         return array_map([$this, 'transform'], $items->all());
     }
 

@@ -56,6 +56,7 @@ Route::group(['prefix' => 'html'], function () {
 Route::group(['prefix' => 'api/v1'], function () {
 
     // JOBS
+    Route::get('jobs/search/{term?}', 'JobsController@search');
     Route::get('jobs/{filter}', 'JobsController@index');
     Route::get('jobs/{id}', 'JobsController@show');
     Route::post('jobs', 'JobsController@store');
@@ -63,6 +64,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::delete('jobs/{id}', 'JobsController@destroy');
     Route::put('jobs/{id}/like', 'JobsController@like');
     Route::delete('jobs/{id}/like', 'JobsController@unlike');
+
 
     // USERS
     Route::get('users', 'UsersController@index');

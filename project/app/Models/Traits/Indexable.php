@@ -75,4 +75,23 @@ trait Indexable {
         return $suggestions;
     }
 
+    public function searchIndex($type, $term)
+    {
+        $this->connect();
+
+        $query['query']['match']['_all'] = $term;
+
+        $results = $this->searchEngineClient->search([
+            'index' => $this->searchEngineIndex,
+            'type' => $type,
+            'body' => $query
+            ]);
+
+
+        if (!isset($results['hits']['hits']) || empty($results['hits']['hits']))
+            return [];
+
+        return array_column($results['hits']['hits'], '_id');
+    }
+
 }
