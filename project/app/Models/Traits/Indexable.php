@@ -99,13 +99,12 @@ trait Indexable {
         $this->connect();
 
         $query['query']['match']['_all'] = $term;
-        $filter['filter']['bool']['must'][]['term'] = ['active' => 1];
+        $query['filter']['bool']['must'][]['term'] = ['active' => 1, 'deleted' => 0];
 
         $results = $this->searchEngineClient->search([
             'index' => $this->searchEngineIndex,
             'type' => $type,
-            'body' => $query,
-            'filter' => $filter
+            'body' => $query
             ]);
 
 

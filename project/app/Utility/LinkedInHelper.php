@@ -52,7 +52,7 @@ class LinkedInHelper implements SocialInterface
             throw new ApiException(ApiExceptionType::$LINKEDIN_ERROR, $e->getMessage());
         }
 
-        switch($this->format) {
+        switch ($this->format) {
             case 'json' :
                 return $request->json(['object' => true]);
             case 'xml' :
