@@ -132,11 +132,7 @@ class UsersController extends ApiController
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
-
-        $user = User::min()->find($id);
-
-        if (!$user)
-            throw new ApiException(ApiExceptionType::$USER_MISSING);
+        $user = User::min()->findOrFail($id);
 
         $items = $user->favourites()->api()->paginate($this->limit);
         return $this->respondWithPagination($items, new JobTransformer());

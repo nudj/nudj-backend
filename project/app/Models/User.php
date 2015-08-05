@@ -60,7 +60,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     public function favourites()
     {
-        return $this->belongsToMany('App\Models\User', 'user_favourites', 'favourite_id', 'user_id');
+        return $this->belongsToMany('App\Models\User', 'user_favourites', 'user_id', 'favourite_id');
     }
 
     public function notifications()
@@ -225,16 +225,19 @@ class User extends ApiModel implements ShieldAuthServiceContract
     ----------------------------------------------------- */
     public static function favourite($id, $userId, $remove = false)
     {
+        
+        //@TODO: refactor
+        $favouritedUser = self::findOrFail($id);
+        $currentUser = self::findOrFail($userId);
 
-        $user = self::findOrFail($id);
 
-        if (!$user)
+        if (!$favouritedUser)
             throw new ApiException(ApiExceptionType::$USER_MISSING);
 
         if (!$remove)
-            $user->favourites()->sync([$userId], false);
+            $currentUser->favourites()->sync([$favouritedUser->id], false);
         else
-            $user->favourites()->detach($userId);
+            $currentUser->favourites()->detach($id);
 
         return true;
     }
