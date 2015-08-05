@@ -11,7 +11,7 @@ class  UserSortedTransformer  extends  UserTransformer
 
         $groups = array();
         foreach ($items as $item) {
-            $letter = mb_substr(mb_strtoupper($item->alias), 0 ,1);
+            $letter = mb_substr(mb_strtoupper($item->name), 0 ,1);
             $groups[$letter][] = $this->transform($item);
         }
 
