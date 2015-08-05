@@ -52,8 +52,6 @@ class Shield implements ApiAuthenticable
     protected $userRoles;
 
 
-
-
     public function __construct($authService)
     {
 
@@ -121,6 +119,15 @@ class Shield implements ApiAuthenticable
     public function createSession($token)
     {
         Session::put('token', $token);
+
+    }
+
+    public function getUserValue($value)
+    {
+        if ( isset($this->user->{$value} ))
+            return $this->user->{$value};
+
+        return false;
     }
 
 

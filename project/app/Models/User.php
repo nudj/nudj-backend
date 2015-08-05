@@ -282,7 +282,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
     ----------------------------------------------------- */
     public function findByToken($token = null)
     {
-        return $this->select(['id', 'roles'])->where('token', '=', $token)->first();
+        return $this->select(['id', 'roles', 'name'])->where('token', '=', $token)->first();
     }
 
 }

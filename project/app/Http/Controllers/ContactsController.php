@@ -1,13 +1,16 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Events\SendMessageToContactEvent;
 use App\Models\Contact;
 use App\Http\Requests;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
 use App\Utility\Transformers\ContactTransformer;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Lang;
 
 
 class ContactsController extends ApiController
@@ -60,12 +63,15 @@ class ContactsController extends ApiController
 
     public function invite($id = null)
     {
+
         $contact = Contact::findIfOwnedBy($id, Shield::getUserId());
 
         if (!$contact)
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
 
-        //@TODO sendsms with message
+        $message = Lang::get('sms.invite', ['name' => Shield::getUserValue('name'), 'link' => 'http://api.nudj.co']);
+
+        Event::fire(new SendMessageToContactEvent($contact->phone, $message));
 
         return $this->respondWithStatus(true);
     }
