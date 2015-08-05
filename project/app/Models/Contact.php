@@ -113,7 +113,7 @@ class Contact extends ApiModel
     public static function findIfOwnedBy($contactId, $ownerId)
     {
 
-        $contact = Contact::find($contactId);
+        $contact = Contact::find ($contactId);
 
         if ($ownerId == $contact->contact_of)
             return $contact;
