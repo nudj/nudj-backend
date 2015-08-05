@@ -3,6 +3,8 @@
 
 use App\Models\Traits\Imageable;
 use App\Models\Traits\Social;
+use App\Utility\ApiException;
+use App\Utility\ApiExceptionType;
 use App\Utility\Authenticator\Contracts\ShieldAuthServiceContract;
 use App\Utility\Transformers\UserTransformer;
 use App\Utility\Util;
@@ -58,7 +60,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     public function favourites()
     {
-        return $this->belongsToMany('App\Models\User', 'user_favourites');
+        return $this->belongsToMany('App\Models\User', 'user_favourites', 'favourite_id', 'user_id');
     }
 
     public function notifications()
@@ -224,15 +226,15 @@ class User extends ApiModel implements ShieldAuthServiceContract
     public static function favourite($id, $userId, $remove = false)
     {
 
-        $user = self::find($id);
+        $user = self::findOrFail($id);
 
         if (!$user)
-            return false;
+            throw new ApiException(ApiExceptionType::$USER_MISSING);
 
         if (!$remove)
             $user->favourites()->sync([$userId], false);
         else
-            $user->favourites()->detach($id);
+            $user->favourites()->detach($userId);
 
         return true;
     }

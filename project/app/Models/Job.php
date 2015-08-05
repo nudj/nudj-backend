@@ -1,6 +1,8 @@
 <?php namespace App\Models;
 
 use App\Models\Traits\Indexable;
+use App\Utility\ApiException;
+use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\JobTransformer;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -205,7 +207,7 @@ class Job extends ApiModel
         $job = self::find($id);
 
         if (!$job)
-            return false;
+            throw new ApiException(ApiExceptionType::$JOB_MISSING);
 
         if (!$remove)
             $job->likes()->sync([$userId], false);
