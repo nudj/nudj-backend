@@ -11,6 +11,7 @@ use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
 use App\Utility\Transformers\ContactTransformer;
 use App\Utility\Transformers\JobTransformer;
+use App\Utility\Transformers\UserSortedTransformer;
 use App\Utility\Transformers\UserTransformer;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
@@ -136,7 +137,7 @@ class UsersController extends ApiController
 
         $items = $user->favourites()->api()->paginate($this->limit);
 
-        return $this->respondWithPagination($items, new UserTransformer());
+        return $this->respondWithPagination($items, new UserSortedTransformer());
     }
 
 
