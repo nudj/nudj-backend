@@ -58,4 +58,16 @@ class ContactsController extends ApiController
         return $this->respondWithStatus($status);
     }
 
+    public function invite($id = null)
+    {
+        $contact = Contact::findIfOwnedBy($id, Shield::getUserId());
+
+        if (!$contact)
+            throw new ApiException(ApiExceptionType::$NOT_FOUND);
+
+        //@TODO sendsms with message
+
+        return $this->respondWithStatus(true);
+    }
+
 }

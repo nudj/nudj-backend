@@ -90,6 +90,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('contacts/{filter}', 'ContactsController@index');
     Route::put('contacts/{id}', 'ContactsController@update');
     Route::delete('contacts/{id}', 'ContactsController@destroy');
+    Route::post('contacts/{id}/invite', 'ContactsController@invite');
 
     //CHAT
     Route::get('chat', 'ChatController@index');
