@@ -225,7 +225,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
     ----------------------------------------------------- */
     public static function favourite($id, $userId, $remove = false)
     {
-        
+
         //@TODO: refactor
         $favouritedUser = self::findOrFail($id);
         $currentUser = self::findOrFail($userId);

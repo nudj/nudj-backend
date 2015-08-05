@@ -135,7 +135,8 @@ class UsersController extends ApiController
         $user = User::min()->findOrFail($id);
 
         $items = $user->favourites()->api()->paginate($this->limit);
-        return $this->respondWithPagination($items, new JobTransformer());
+
+        return $this->respondWithPagination($items, new UserTransformer());
     }
 
 
