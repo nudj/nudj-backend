@@ -3,8 +3,9 @@
 return [
 
     'status' => [
-        0 => 'inactive',
-        1 => 'hiring'
+        1 => 'Hiring',
+        2 => 'Available',
+        3 => 'Do not disturb',
     ],
 
 ];
