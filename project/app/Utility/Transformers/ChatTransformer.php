@@ -27,7 +27,7 @@ class ChatTransformer extends Transformer
                 return null;
 
             case 'created':
-                return $item->created_at;
+                return strtotime($item->created_at);
 
             case 'participants':
                 if ($item->participants) {
