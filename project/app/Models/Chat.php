@@ -14,9 +14,9 @@ class Chat extends ApiModel
     protected $table = 'chats';
     protected $prefix = 'chat.';
 
-    protected $visible = ['id', 'job_id'];
+    protected $visible = ['id', 'job_id', 'created_at'];
 
-    protected $gettableFields = ['id', 'job', 'participants', 'muted'];
+    protected $gettableFields = ['id', 'job', 'participants', 'muted', 'created'];
     protected $defaultFields = [];
 
 

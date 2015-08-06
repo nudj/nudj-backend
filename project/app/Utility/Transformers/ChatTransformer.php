@@ -9,6 +9,8 @@ class ChatTransformer extends Transformer
 
     public static $dependencies = [
         'job' => 'job_id',
+        'created' => 'created_at',
+
     ];
 
     public function transformMap($item, $column)
@@ -23,6 +25,9 @@ class ChatTransformer extends Transformer
                     return $tranform->transform($item->job);
                 }
                 return null;
+
+            case 'created':
+                return $item->created_at;
 
             case 'participants':
                 if ($item->participants) {
