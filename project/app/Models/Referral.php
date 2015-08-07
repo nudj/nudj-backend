@@ -58,8 +58,6 @@ class Referral extends ApiModel
 
             $referral = self::addNewReferral($job->id, $contact->id);
 
-            Snafu::show($contact->user_id, 'refer');
-
             if (!$referral)
                 continue;
 
