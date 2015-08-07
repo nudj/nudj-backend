@@ -5,7 +5,7 @@ use App\Events\StartChatEvent;
 use App\Models\Traits\Hashable;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
-use app\Utility\Snafu;
+use App\Utility\Snafu;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
@@ -55,7 +55,7 @@ class Referral extends ApiModel
         $message = $message ?: Lang::get('messages.refer', ['position' => $job->title]);
 
         foreach ($contacts as $contact) {
-            
+
             $referral = self::addNewReferral($job->id, $contact->id);
 
             Snafu::show($referral, 'refer');

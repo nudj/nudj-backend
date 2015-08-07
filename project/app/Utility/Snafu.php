@@ -1,12 +1,12 @@
 <?php
 
 
-namespace app\Utility;
+namespace App\Utility;
 
 
 class Snafu {
 
-    public static  function show($data, $type = null)
+    public static function show($data, $type = null)
     {
         if(!isset($_GET['debug']))
             return false;
