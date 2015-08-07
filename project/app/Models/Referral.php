@@ -85,18 +85,19 @@ class Referral extends ApiModel
 
     private function askUserToRefer($job, $contact, $message)
     {
+        // Start chat
+        $chat = Chat::add($job->id, [$job->user_id, $contact->user_id]);
+        Event::fire(new StartChatEvent($chat->id, $job->user_id, $contact->user_id, $message));
+
         // Create notification
         Notification::askToRefer($contact->user_id, $job->user_id, [
             'job_id' => $job->id,
             'job_title' => $job->title,
             'job_bonus' => $job->bonus,
+            'chat_id' => $chat->id,
             'message' => $message,
             'employer' => $job->user->name,
         ]);
-
-        // Start chat
-        $chat = Chat::add($job->id, [$job->user_id, $contact->user_id]);
-        Event::fire(new StartChatEvent($chat->id, $job->user_id, $contact->user_id, $message));
     }
 
 
