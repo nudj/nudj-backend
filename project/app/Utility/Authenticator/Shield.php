@@ -63,7 +63,7 @@ class Shield implements ApiAuthenticable
 
     public function getUserId()
     {
-        return 17;
+        return 4;
         return $this->userId;
     }
 
