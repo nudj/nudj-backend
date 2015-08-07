@@ -5,6 +5,7 @@ use App\Events\StartChatEvent;
 use App\Models\Traits\Hashable;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
+use app\Utility\Snafu;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
@@ -46,7 +47,7 @@ class Referral extends ApiModel
         $contacts = Contact::findOrFail($contactList);
 
 
-        if($userId != $job->user_id)
+        if ($userId != $job->user_id)
             throw new ApiException(ApiExceptionType::$JOB_OWNER_MISMATCH);
 
 
@@ -54,10 +55,12 @@ class Referral extends ApiModel
         $message = $message ?: Lang::get('messages.refer', ['position' => $job->title]);
 
         foreach ($contacts as $contact) {
+            
+            $referral = self::addNewReferral($job->id, $contact->id);
 
-           $referral = self::addNewReferral($job->id, $contact->id);
+            Snafu::show($referral, 'refer');
 
-          if (!$referral)
+            if (!$referral)
                 continue;
 
             if ($contact->user_id)
