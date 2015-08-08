@@ -3,7 +3,6 @@
 use App\Events\NotifyUserEvent;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
-use App\Utility\Snafu;
 use App\Utility\Transformers\NotificationTransformer;
 use App\Utility\Util;
 use Illuminate\Support\Facades\Event;

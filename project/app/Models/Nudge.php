@@ -55,6 +55,7 @@ class Nudge extends ApiModel
         $job = Job::with('user')->findOrFail($jobId);
         $contacts = Contact::findOrFail($contactList);
 
+        $message = $message ?: Lang::get('messages.nudge');
         foreach ($contacts as $contact) {
 
             $nudge = self::addNewNudge($job->id, $job->user_id, $userId, $contact->id);
@@ -62,7 +63,6 @@ class Nudge extends ApiModel
             if (!$nudge)
                 continue;
 
-            $message = $message ?: Lang::get('messages.nudge');
             $referrer = User::find($userId);
 
             if ($contact->user_id)

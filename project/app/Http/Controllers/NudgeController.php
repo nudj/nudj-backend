@@ -1,13 +1,17 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Events\StartChatEvent;
 use App\Http\Requests\ApplyRequest;
 use App\Http\Requests\AskForReferralsRequest;
 use App\Http\Requests\NudgeRequest;
+use App\Http\Requests\StartChatRequest;
 use App\Models\Application;
+use App\Models\Chat;
 use App\Models\Nudge;
 use App\Models\Referral;
 use App\Utility\Facades\Shield;
+use Illuminate\Support\Facades\Event;
 
 class NudgeController extends ApiController {
 
@@ -34,5 +38,13 @@ class NudgeController extends ApiController {
 		return $this->respondWithStatus(true);
 	}
 
+	public function chat(StartChatRequest $request)
+	{
+
+		$chat = Chat::add($request->job_id, [Shield::getUserId(), $request->user_id]);
+		Event::fire(new StartChatEvent($chat->id, Shield::getUserId(),$request->user_id, $request->message));
+
+		return $this->respondWithStatus(true);
+	}
 
 }
