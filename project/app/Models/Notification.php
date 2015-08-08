@@ -141,7 +141,6 @@ class Notification extends ApiModel
         if (!Util::arrayIsValid($meta, 'job_id,job_title,position'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
-        Snafu::show([$recipientId, $senderId, $referrer]);
 
         $type = NotificationType::$WEB_APPLICATION_NOREF;
         if ($referrer) {
@@ -150,7 +149,6 @@ class Notification extends ApiModel
             $meta['referrer'] = $referrer->name;
         }
 
-        Snafu::show([$type, $meta], null, true);
 
         return Notification::add($recipientId, $senderId, $type, $meta);
     }

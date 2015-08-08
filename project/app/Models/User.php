@@ -248,10 +248,10 @@ class User extends ApiModel implements ShieldAuthServiceContract
     {
         $settings = (object)json_decode($this->settings);
 
-        if (isset($settings->notifications->$notificationTypeId))
-            return $settings->notifications->$notificationTypeId;
+        if (isset($settings->notifications->$notificationTypeId) && !$settings->notifications->$notificationTypeId)
+            return false;
 
-        return false;
+        return true;
     }
 
     public function isAskedToRefer($jobId)
