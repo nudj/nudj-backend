@@ -150,7 +150,7 @@ class Notification extends ApiModel
             $meta['referrer'] = $referrer->name;
         }
 
-        Snafu::show([$type, $meta]);
+        Snafu::show([$type, $meta], null, true);
 
         return Notification::add($recipientId, $senderId, $type, $meta);
     }

@@ -6,12 +6,12 @@ namespace App\Utility;
 
 class Snafu {
 
-    public static function show($data, $type = null)
+    public static function show($data, $type = null, $always = false)
     {
-        if(!isset($_GET['debug']))
+        if(!$always && !isset($_GET['debug']))
             return false;
 
-        if($type  && $type != $_GET['debug'])
+        if(!$always && $type  && $type != $_GET['debug'])
             return false;
 
         var_dump($data);
