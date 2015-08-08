@@ -62,7 +62,7 @@ class ActionsController extends \Illuminate\Routing\Controller
                 $referrerId = $nudge->referrer_id;
         }
 
-        Application::applyForJob(Shield::getUserId(), $request->job_id, $referrerId);
+        Application::applyForJob(Shield::getUserId(), $request->job_id, $referrerId, true);
 
         return response()->json(['success' => true]);
     }
