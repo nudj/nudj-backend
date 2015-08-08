@@ -37,6 +37,10 @@ trait Social {
         if(!$this->name && (isset($incomingData->firstName) || isset($incomingData->lastName)))
             $import['name'] = isset($incomingData->firstName) ? $incomingData->firstName : '' . ' ' . isset($incomingData->lastName) ? $incomingData->lastName : '';
 
+        if(!$this->email && isset($incomingData->email))
+            $import['email'] = $incomingData->email;
+
+
         if(isset($incomingData->skills->values)) {
             $skillList = [];
             foreach ($incomingData->skills->values as $skill) {
