@@ -36,7 +36,7 @@ class Application extends ApiModel
     ----------------------------------------------------- */
 
 
-    public static function applyForJob($userId, $jobId, $referrerId = null)
+    public static function applyForJob($userId, $jobId, $referrerId = null, $web = false)
     {
 
         //@TODO check for previous application
@@ -45,7 +45,7 @@ class Application extends ApiModel
             ->where('job_id', '=', $jobId)
             ->count();
 
-        if($application)
+        if ($application)
             return true;
 
         $job = Job::with('user')->findOrFail($jobId);
@@ -74,7 +74,10 @@ class Application extends ApiModel
             $referrer = User::findoRFail($referrerId);
         }
 
-        Notification::appApllication($job->user_id, $userId, $meta, $referrer);
+        if (!$web)
+            Notification::appApllication($job->user_id, $userId, $meta, $referrer);
+        else
+            Notification::webApllication($job->user_id, $userId, $meta, $referrer);
 
         return true;
     }

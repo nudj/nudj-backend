@@ -135,6 +135,21 @@ class Notification extends ApiModel
         return Notification::add($recipientId, $senderId, $type, $meta);
     }
 
+    public static function webApllication($recipientId, $senderId, $meta = null, $referrer = null)
+    {
+        if (!Util::arrayIsValid($meta, 'job_id,job_title,position'))
+            throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
+
+        $type = NotificationType::$WEB_APPLICATION_NOREF;
+        if ($referrer) {
+            $type = NotificationType::$WEB_APPLICATION;
+            $meta['referrer_id'] = $referrer->id;
+            $meta['referrer'] = $referrer->name;
+        }
+
+        return Notification::add($recipientId, $senderId, $type, $meta);
+    }
+
     public static function matchingContact($recipientId, $senderId, $meta = null)
     {
         if (!Util::arrayIsValid($meta, 'candidate, job, employer'))
