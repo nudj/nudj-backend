@@ -3,6 +3,7 @@
 use App\Events\NotifyUserEvent;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
+use App\Utility\Snafu;
 use App\Utility\Transformers\NotificationTransformer;
 use App\Utility\Util;
 use Illuminate\Support\Facades\Event;
@@ -140,12 +141,16 @@ class Notification extends ApiModel
         if (!Util::arrayIsValid($meta, 'job_id,job_title,position'))
             throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
 
+        Snafu::show([$recipientId, $senderId, $referrer]);
+
         $type = NotificationType::$WEB_APPLICATION_NOREF;
         if ($referrer) {
             $type = NotificationType::$WEB_APPLICATION;
             $meta['referrer_id'] = $referrer->id;
             $meta['referrer'] = $referrer->name;
         }
+
+        Snafu::show([$type, $meta]);
 
         return Notification::add($recipientId, $senderId, $type, $meta);
     }
