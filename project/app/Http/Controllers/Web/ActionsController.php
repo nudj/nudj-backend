@@ -14,12 +14,6 @@ use App\Utility\Facades\Shield;
 class ActionsController extends \Illuminate\Routing\Controller
 {
 
-    public function __construct()
-    {
-
-    }
-
-
     public function verify(VerifyUserRequest $request)
     {
 
@@ -39,8 +33,8 @@ class ActionsController extends \Illuminate\Routing\Controller
     public function nudge(NudgeRequest $request)
     {
 
-//        if(!Shield::validate('session'))
-//            return response()->json(['success' => false]);
+        if(!Shield::validate('session'))
+            return response()->json(['success' => false]);
 
         $userId = Shield::getUserId();
 
@@ -57,8 +51,8 @@ class ActionsController extends \Illuminate\Routing\Controller
 
     public function apply(ApplyRequest $request)
     {
-//        if(!Shield::validate('session'))
-//            return response()->json(['success' => false]);
+        if(!Shield::validate('session'))
+            return response()->json(['success' => false]);
 
         $referrerId = null;
         if($request->hash) {
