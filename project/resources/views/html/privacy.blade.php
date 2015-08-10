@@ -1478,9 +1478,7 @@
 
     <p class=MsoNormal style='margin-bottom:6.0pt;text-align:justify;line-height:
 normal'><b style='mso-bidi-font-weight:normal'><span lang=EN-GB
-                                                     style='font-size:14.0pt;font-family:"Arial","sans-serif"'>Privacy Policy</span></b><b
-                style='mso-bidi-font-weight:normal'><span lang=EN-GB style='font-size:9.0pt;
-font-family:"Arial","sans-serif"'>(Version 1)<o:p></o:p></span></b></p>
+                                                     style='font-size:14.0pt;font-family:"Arial","sans-serif"'>Privacy Policy</span></b></p>
 
     <p class=MsoNormal style='margin-bottom:6.0pt;text-align:justify;line-height:
 normal'><span lang=EN-GB style='font-size:9.0pt;font-family:"Arial","sans-serif"'>Welcome
