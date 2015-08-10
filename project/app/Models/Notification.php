@@ -110,18 +110,12 @@ class Notification extends ApiModel
 
 	public static function updateNotificationMeta($notificationId, $meta) {
 
-		try {
-			$notification = Notification::findOrFail($notificationId);
-			$oldMeta = json_decode($notification->meta);
-			$notification->meta = array_merge($oldMeta, $meta);
+		$notification = Notification::findOrFail($notificationId);
+		die('here');
+		$oldMeta = json_decode($notification->meta);
+		$notification->meta = array_merge($oldMeta, $meta);
 
-			return $notification->save();
-
-		} catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-			die('Strange? Nothing\'s there!');
-		}
-
-		return false;
+		return $notification->save();
 	}
 
     /* Create different Notification types
