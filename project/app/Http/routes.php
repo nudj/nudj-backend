@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin'], function () {
 // HTML sources accessed from the app
 Route::group(['prefix' => 'html'], function () {
     Route::get('terms', 'HtmlController@terms');
+    Route::get('privacy', 'HtmlController@privacy');
 });
 
 
