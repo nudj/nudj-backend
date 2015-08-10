@@ -68,7 +68,10 @@ $("#user-name").on({
         },
     focusout:function(){
         $(this).css('background-image','url("../../assets/web/img/edit_icon.png")');
-        $("#name").val( $(this).val());
+        $("input[name=name]").val($(this).val());
+    },
+    change:function(){
+        $("input[name=name]").val($(this).val());
     }
 });
 
