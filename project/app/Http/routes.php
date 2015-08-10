@@ -24,6 +24,10 @@ Route::group(['prefix' => '/'], function () {
     Route::post('refer', 'Web\ActionsController@nudge');
     Route::get('countries', 'Web\ActionsController@countries');
 
+// Privacy policy & terms pages
+    Route::get('privacy', 'Web\WebController@privacy');
+    Route::get('terms', 'Web\WebController@terms');
+
 });
 
 

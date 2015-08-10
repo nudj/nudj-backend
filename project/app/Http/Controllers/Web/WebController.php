@@ -100,5 +100,16 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
+// Privacy policy & terms pages
+    public function privacy()
+    {
+        return view('web/page/privacy', []);
+    }
+
+    public function terms()
+    {
+        return view('web/page/terms', []);
+    }
+
 }
 
