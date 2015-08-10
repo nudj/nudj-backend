@@ -111,8 +111,8 @@ class Notification extends ApiModel
 	public static function updateNotificationMeta($notificationId, $meta) {
 
 		$notification = Notification::findOrFail($notificationId);
-		die('here');
 		$oldMeta = json_decode($notification->meta);
+		die('here2');
 		$notification->meta = array_merge($oldMeta, $meta);
 
 		return $notification->save();
