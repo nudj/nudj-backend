@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'html'], function () {
     Route::get('terms', 'HtmlController@terms');
     Route::get('privacy', 'HtmlController@privacy');
+    Route::get('cookies', 'HtmlController@cookies');
 });
 
 

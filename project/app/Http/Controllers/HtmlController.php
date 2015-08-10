@@ -12,7 +12,9 @@ class HtmlController extends \Illuminate\Routing\Controller
     {
         return view('html/privacy');
     }
-
-
+    public function cookies()
+    {
+        return view('html/cookies');
+    }
 
 }
