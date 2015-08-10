@@ -44,9 +44,9 @@ class NudgeController extends ApiController {
 
 		$chat = Chat::add($request->job_id, [Shield::getUserId(), $request->user_id]);
 
-		Notification::updateNotificationMeta($request->notification_id, array(
-			'chat_id' => $chat->id
-		));
+//		Notification::updateNotificationMeta($request->notification_id, array(
+//			'chat_id' => $chat->id
+//		));
 
 		Event::fire(new StartChatEvent($chat->id, Shield::getUserId(),$request->user_id, $request->message));
 
