@@ -99,17 +99,5 @@ class WebController extends \Illuminate\Routing\Controller
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
-
-// Privacy policy & terms pages
-    public function privacy()
-    {
-        return view('web/page/privacy', []);
-    }
-
-    public function terms()
-    {
-        return view('web/page/terms', []);
-    }
-
 }
 
