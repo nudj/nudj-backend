@@ -1517,64 +1517,56 @@ Privacy Policy sets out information on the following matters:<o:p></o:p></span><
     <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
 margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB
                                                                 style='font-size:9.0pt;font-family:"Arial","sans-serif"'>1. </span><span
-                lang=EN-GB><a href="#one"><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
+                lang=EN-GB><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
 color:windowtext;text-decoration:none;text-underline:none'>Who controls the
-collection and processing of Data?</span></a></span><span lang=EN-GB
-                                                          style='font-size:9.0pt;font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
+collection and processing of Data?</span></span><span lang=EN-GB
+                                                      style='font-size:9.0pt;font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
 
     <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
-margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><a
-                    href="#two"><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
+margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
 color:windowtext;text-decoration:none;text-underline:none'>2. The Data we
-collect</span></a></span><span lang=EN-GB style='font-size:9.0pt;font-family:
+collect</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:
 "Arial","sans-serif"'><o:p></o:p></span></p>
 
     <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
-margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><a
-                    href="#three"><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
-color:windowtext;text-decoration:none;text-underline:none'>3. The use of Cookies</span></a></span><span
+margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
+color:windowtext;text-decoration:none;text-underline:none'>3. The use of Cookies</span></span><span
                 lang=EN-GB style='font-size:9.0pt;font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
 
     <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
-margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><a
-                    href="#four"><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
-color:windowtext;text-decoration:none;text-underline:none'>4. How we use Data</span></a></span><span
+margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
+color:windowtext;text-decoration:none;text-underline:none'>4. How we use Data</span></span><span
                 lang=EN-GB style='font-size:9.0pt;font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
 
     <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
-margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><a
-                    href="#five"><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
-color:windowtext;text-decoration:none;text-underline:none'>5. When Data</span></a></span><span
-                class=MsoHyperlink><span lang=EN-GB style='font-size:9.0pt;font-family:"Arial","sans-serif";
+margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
+color:windowtext;text-decoration:none;text-underline:none'>5. When Data</span></span><span
+                ><span lang=EN-GB style='font-size:9.0pt;font-family:"Arial","sans-serif";
 color:windowtext;text-decoration:none;text-underline:none'> may be disclosed</span></span><span
                 lang=EN-GB style='font-size:9.0pt;font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
 
     <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
-margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><a
-                    href="#six"><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
+margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
 color:windowtext;text-decoration:none;text-underline:none'>6. How Data is
-stored</span></a></span><span lang=EN-GB style='font-size:9.0pt;font-family:
+stored</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:
 "Arial","sans-serif"'><o:p></o:p></span></p>
 
     <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
-margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><a
-                    href="#seven"><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
+margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
 color:windowtext;text-decoration:none;text-underline:none'>7. Hyperlinks and
-links to other websites</span></a></span><span lang=EN-GB style='font-size:
+links to other websites</span></span><span lang=EN-GB style='font-size:
 9.0pt;font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
 
     <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
-margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><a
-                    href="#eight"><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
+margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
 color:windowtext;text-decoration:none;text-underline:none'>8. Accessing,
-amending and deleting Personal Data</span></a></span><span lang=EN-GB
-                                                           style='font-size:9.0pt;font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
+amending and deleting Personal Data</span></span><span lang=EN-GB
+                                                       style='font-size:9.0pt;font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
 
     <p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:3.0pt;
-margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><a
-                    href="#nine"><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
+margin-left:36.0pt;text-align:justify;line-height:normal'><span lang=EN-GB><span style='font-size:9.0pt;font-family:"Arial","sans-serif";
 color:windowtext;text-decoration:none;text-underline:none'>9.Amendments to this
-Privacy Policy</span></a></span><span lang=EN-GB style='font-size:9.0pt;
+Privacy Policy</span></span><span lang=EN-GB style='font-size:9.0pt;
 font-family:"Arial","sans-serif"'><o:p></o:p></span></p>
 
     <p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
