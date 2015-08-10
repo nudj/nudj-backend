@@ -66,7 +66,8 @@ class Application extends ApiModel
             'job_id' => $job->id,
             'job_title' => $job->title,
             'position' => $job->title,
-            'candidate' => $candidate->name
+            'candidate' => $candidate->name,
+	        'phone' => $candidate->phone
         ];
 
         $referrer = null;
