@@ -67,5 +67,10 @@ class ActionsController extends \Illuminate\Routing\Controller
         return response()->json(['success' => true]);
     }
 
+    public function countries()
+    {
+        return response()->json(Country::web()->orderBy('name', 'asc')->get());
+    }
+
 }
 
