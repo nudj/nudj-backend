@@ -53,6 +53,8 @@ class StartChat implements ShouldBeQueued
             ->setNickName($initiatorUsername);
         $client->send($channel);
 
+	    sleep(2);
+
         // Write your message
         $message = new Message;
         $message->setMessage($event->message)
