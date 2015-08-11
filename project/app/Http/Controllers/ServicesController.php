@@ -64,7 +64,7 @@ class ServicesController extends ApiController
 
 		$channel = new Presence;
 		$channel->setTo($roomFullName)
-			->setNickName($initiatorUsername);
+			->setNickName($initiatorUsername . '123');
 		$client->send($channel);
 
 		$messageText = "Test Message: " . rand(1, PHP_INT_MAX);
