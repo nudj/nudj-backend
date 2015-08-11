@@ -46,8 +46,8 @@ class ServicesController extends ApiController
     }
 
 	public function message() {
-// Connect trough XMPP
-		$initiator = User::findOrFail("3");
+		// Connect trough XMPP
+		$initiator = User::findOrFail(3);
 		$initiatorUsername = "3" . '@chat.nudj.co';
 		$interlocutorUsername = "5" . '@chat.nudj.co'; // WTF! (lacho)
 
@@ -62,30 +62,19 @@ class ServicesController extends ApiController
 		// Join the room
 		$roomFullName = '25' . Config::get('cfg.chat_conference_domain');
 
-		Log::info('RPC connection to the server established');
-
 		$channel = new Presence;
 		$channel->setTo($roomFullName)
 			->setNickName($initiatorUsername);
 		$client->send($channel);
 
-		Log::info('Joined the room: ' . $roomFullName);
+		$messageText = "Test Message: " . rand(1, PHP_INT_MAX);
 
 		// Write your message
 		$message = new Message;
-		$message->setMessage("Test Message")
+		$message->setMessage($messageText)
 			->setTo($roomFullName)
 			->setType(Message::TYPE_GROUPCHAT);
 		$client->send($message);
-
-		Log::info('Sent Group Message: ' . "Test Message");
-
-		$message = new Message;
-		$message->setMessage("Test Message2")
-			->setTo($roomFullName);
-		$client->send($message);
-
-		Log::info('Sent Message: ' . "Test Message2");
 
 		// Bye bye
 		$client->disconnect();

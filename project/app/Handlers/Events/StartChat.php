@@ -77,13 +77,6 @@ class StartChat implements ShouldBeQueued
 
 	    Log::info('Sent Group Message: ' . $event->message);
 
-	    $message = new Message;
-	    $message->setMessage($event->message)
-		    ->setTo($roomFullName);
-	    $client->send($message);
-
-	    Log::info('Sent Message: ' . $event->message);
-
         // Bye bye
         $client->disconnect();
     }
