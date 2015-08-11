@@ -64,7 +64,7 @@ class ServicesController extends ApiController
 
 		$channel = new Presence;
 		$channel->setTo($roomFullName)
-			->setNickName($initiatorUsername . '123');
+			->setNickName('System');
 		$client->send($channel);
 
 		$messageText = "Test Message: " . rand(1, PHP_INT_MAX);
@@ -77,15 +77,6 @@ class ServicesController extends ApiController
 		$client->send($message);
 
 		Log::info('Sent Group Message: ' . $messageText);
-
-		$messageText .= "2";
-
-		$message = new Message;
-		$message->setMessage($messageText)
-			->setTo($roomFullName);
-		$client->send($message);
-
-		Log::info('Sent Message: ' . $messageText);
 
 		// Bye bye
 		$client->disconnect();
