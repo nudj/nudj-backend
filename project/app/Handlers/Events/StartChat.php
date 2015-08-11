@@ -45,6 +45,8 @@ class StartChat implements ShouldBeQueued
         $inviteStatus = $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername]);
 	    Log::info('Invite Created: ' . $inviteStatus);
 
+	    sleep(5);
+
         // Connect trough XMPP
         $options = new Options(Config::get('cfg.chat_server_tcp'));
         $options->setUsername($initiator->id)
