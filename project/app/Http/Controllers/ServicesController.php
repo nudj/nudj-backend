@@ -46,8 +46,8 @@ class ServicesController extends ApiController
     }
 
 	public function message() {
-		// Connect trough XMPP
-		$initiator = User::findOrFail(3);
+// Connect trough XMPP
+		$initiator = User::findOrFail("3");
 		$initiatorUsername = "3" . '@chat.nudj.co';
 		$interlocutorUsername = "5" . '@chat.nudj.co'; // WTF! (lacho)
 
@@ -75,6 +75,17 @@ class ServicesController extends ApiController
 			->setTo($roomFullName)
 			->setType(Message::TYPE_GROUPCHAT);
 		$client->send($message);
+
+		Log::info('Sent Group Message: ' . $messageText);
+
+		$messageText .= "2";
+
+		$message = new Message;
+		$message->setMessage($messageText)
+			->setTo($roomFullName);
+		$client->send($message);
+
+		Log::info('Sent Message: ' . $messageText);
 
 		// Bye bye
 		$client->disconnect();
