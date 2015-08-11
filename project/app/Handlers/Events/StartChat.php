@@ -35,6 +35,7 @@ class StartChat implements ShouldBeQueued
         $rpc->createRoom((string) $event->chatId);
         $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername]);
 
+	    sleep(1);
 
         // Connect trough XMPP
         $options = new Options(Config::get('cfg.chat_server_tcp'));
@@ -44,6 +45,7 @@ class StartChat implements ShouldBeQueued
         $client = new Client($options);
         $client->connect();
 
+	    sleep(1);
 
         // Join the room
         $roomFullName = $event->chatId . Config::get('cfg.chat_conference_domain');
@@ -53,6 +55,8 @@ class StartChat implements ShouldBeQueued
             ->setNickName($initiatorUsername);
         $client->send($channel);
 
+	    sleep(1);
+
         // Write your message
         $message = new Message;
         $message->setMessage($event->message)
@@ -60,6 +64,7 @@ class StartChat implements ShouldBeQueued
             ->setType(Message::TYPE_GROUPCHAT);
         $client->send($message);
 
+	    sleep(10);
 
         // Bye bye
         $client->disconnect();
