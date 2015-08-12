@@ -50,7 +50,7 @@ class ServicesController extends ApiController
 //		$initiator = User::findOrFail("3");
 
 		$options = new Options(Config::get('cfg.chat_server_tcp'));
-		$options->setUsername("3")
+		$options->setUsername("3@chat.nudj.co")
 			->setPassword("CO74MZZtmGdM7ygUj0alJ5JZphwppsBWQKtRyPC3ArG8nVJQxPcDQfsuWJjy")
 			->setLogger(Log::getMonolog());
 
