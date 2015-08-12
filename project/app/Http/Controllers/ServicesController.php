@@ -47,11 +47,13 @@ class ServicesController extends ApiController
 
 	public function message() {
 // Connect trough XMPP
-//		$initiator = User::findOrFail("3");
+		$initiator = User::findOrFail("3");
+		$initiatorUsername = "3" . '@chat.nudj.co';
+		$interlocutorUsername = "5" . '@chat.nudj.co'; // WTF! (lacho)
 
 		$options = new Options(Config::get('cfg.chat_server_tcp'));
-		$options->setUsername("3@chat.nudj.co")
-			->setPassword("CO74MZZtmGdM7ygUj0alJ5JZphwppsBWQKtRyPC3ArG8nVJQxPcDQfsuWJjy")
+		$options->setUsername($initiator->id)
+			->setPassword($initiator->token)
 			->setLogger(Log::getMonolog());
 
 		$client = new Client($options);
