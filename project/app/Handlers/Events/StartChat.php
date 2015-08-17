@@ -24,7 +24,8 @@ class StartChat implements ShouldBeQueued
 
         $initiator = User::findOrFail($event->initiatorId);
         $initiatorUsername = $initiator->id . '@chat.nudj.co';
-        $interlocutorUsername = $event->interlocutorId . '@chat.nudj.co'; // WTF! (lacho)
+        $interlocutorUsername = $event->interlocutorId . '@chat.nudj.co';
+        $sysUsername = '1@chat.nudj.co';
 
 
         // Create room and invite people
@@ -36,7 +37,7 @@ class StartChat implements ShouldBeQueued
 
 
         $rpc->createRoom((string) $event->chatId);
-        $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername]);
+        $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername, $sysUsername]);
 
 	    sleep(5);
 
