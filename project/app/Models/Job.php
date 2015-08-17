@@ -64,6 +64,7 @@ class Job extends ApiModel
         $contacts = DB::table('contacts')
             ->select('user_id')
             ->where('contact_of', '=', $userId)
+            ->where('active', '=', 1)
             ->whereNotNull('user_id')
             ->get();
 

@@ -97,7 +97,7 @@ class Contact extends ApiModel
             }
 
             $user = User::select('id')->where('phone', '=', $phoneData->number)->first();
-            if($user) {
+            if ($user) {
                 $contact->user_id = $user->id;
                 $contact->save();
             }
@@ -113,7 +113,7 @@ class Contact extends ApiModel
     public static function findIfOwnedBy($contactId, $ownerId)
     {
 
-        $contact = Contact::find ($contactId);
+        $contact = Contact::find($contactId);
 
         if ($ownerId == $contact->contact_of)
             return $contact;
