@@ -3,6 +3,7 @@
 use App\Models\Traits\Indexable;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
+use App\Utility\Snafu;
 use App\Utility\Transformers\JobTransformer;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -86,8 +87,10 @@ class Job extends ApiModel
     ----------------------------------------------------- */
     public function search($term)
     {
-        $ids = $this->searchIndex('job',$term);
+        $ids = $this->searchIndex('job', $term);
 
+        Snafu::show($ids, 'search');
+        
         if(!$ids)
             return [];
 
