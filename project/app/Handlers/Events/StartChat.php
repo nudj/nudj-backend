@@ -11,7 +11,6 @@ use Fabiang\Xmpp\Protocol\Presence;
 use GameNet\Jabber\RpcClient;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
-use Log;
 
 use Illuminate\Support\Facades\Config;
 
@@ -27,7 +26,6 @@ class StartChat implements ShouldBeQueued
         $initiatorUsername = $initiator->id . '@chat.nudj.co';
         $interlocutorUsername = $event->interlocutorId . '@chat.nudj.co'; // WTF! (lacho)
 
-	    Log::info('Chat Creation started: '. $initiatorUsername . ' :: ' . $interlocutorUsername);
 
         // Create room and invite people
         $rpc = new RpcClient([
@@ -36,22 +34,19 @@ class StartChat implements ShouldBeQueued
             'debug' => false,
         ]);
 
-	    Log::info('RPC connection to the server established');
 
-        $createRoomStatus = $rpc->createRoom((string) $event->chatId);
-
-	    Log::info('Room Created: ' . $createRoomStatus);
-
-        $inviteStatus = $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername]);
-	    Log::info('Invite Created: ' . $inviteStatus);
+        $rpc->createRoom((string) $event->chatId);
+        $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername]);
 
 	    sleep(5);
 
         // Connect trough XMPP
         $options = new Options(Config::get('cfg.chat_server_tcp'));
-        $options->setUsername($initiator->id)
-            ->setPassword($initiator->token)
-            ->setLogger(Log::getMonolog());
+//        $options->setUsername($initiator->id)
+//            ->setPassword($initiator->token)
+
+        $options->setUsername(1)
+                 ->setPassword('sys-7xngvxq1uGF8BWpEwjmmg1NfAqxdYHL4xqgXBCtxwYcxJH3un1Foh0nz');
 
         $client = new Client($options);
         $client->connect();
@@ -59,14 +54,11 @@ class StartChat implements ShouldBeQueued
         // Join the room
         $roomFullName = $event->chatId . Config::get('cfg.chat_conference_domain');
 
-	    Log::info('RPC connection to the server established');
-
         $channel = new Presence;
         $channel->setTo($roomFullName)
             ->setNickName($initiatorUsername);
         $client->send($channel);
 
-	    Log::info('Joined the room: ' . $roomFullName);
 
         // Write your message
         $message = new Message;
@@ -75,7 +67,6 @@ class StartChat implements ShouldBeQueued
             ->setType(Message::TYPE_GROUPCHAT);
         $client->send($message);
 
-	    Log::info('Sent Group Message: ' . $event->message);
 
         // Bye bye
         $client->disconnect();
