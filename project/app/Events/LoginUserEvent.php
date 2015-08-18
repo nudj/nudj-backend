@@ -12,10 +12,11 @@ class LoginUserEvent extends Event {
 	public $phone = null;
 	public $message = null;
 
-	public function __construct($userPhone, $verificationCode)
+	public function __construct($userPhone, $countryCode, $verificationCode)
 	{
 
 		$this->phone = $userPhone;
+		$this->countryCode = $countryCode;
 		$this->message =  Lang::get('sms.verification', [
 			'code' => $verificationCode
 		]);

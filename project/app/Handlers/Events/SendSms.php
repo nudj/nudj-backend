@@ -14,13 +14,20 @@ class SendSms implements ShouldBeQueued
 
     public function send($event)
     {
+        $availablePhones =  config('phones');
+
+        if(!isset($availablePhones[$event->countryCode]))
+            throw new ApiException(ApiExceptionType::$TWILIO_ERROR);
+
+
+        $sendPhone = $availablePhones[$event->countryCode];
 
         try {
             $client = new Services_Twilio(Config::get('cfg.twilio_sid'), Config::get('cfg.twilio_token'));
 
             $client->account->messages->create(array(
                 'To' => $event->phone,
-                'From' => Config::get('cfg.twilio_number'),
+                'From' => $sendPhone,
                 'Body' => $event->message,
             ));
         } catch (Exception $e) {

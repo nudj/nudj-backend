@@ -110,7 +110,7 @@ class Nudge extends ApiModel
             'message' => $message,
             'link' => web_url('register/nudge/' . $this->hash)
         ]);
-        Event::fire(new SendMessageToContactEvent($contact->phone, $message));
+        Event::fire(new SendMessageToContactEvent($contact->phone, $contact->country_code, $message));
     }
 
 

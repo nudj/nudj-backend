@@ -58,7 +58,7 @@ class ContactsController extends ApiController
 
         $message = Lang::get('sms.invite', ['name' => Shield::getUserValue('name'), 'link' => 'http://api.nudj.co']);
 
-        Event::fire(new SendMessageToContactEvent($contact->phone, $message));
+        Event::fire(new SendMessageToContactEvent($contact->phone, $contact->country_code, $message));
 
         return $this->respondWithStatus(true);
     }

@@ -58,7 +58,7 @@ class WebController extends \Illuminate\Routing\Controller
             'name' => $request->name
         ], false);
 
-        Event::fire(new LoginUserEvent($user->phone, $user->verification));
+        Event::fire(new LoginUserEvent($user->phone, $user->country_code, $user->verification));
 
         return view('web/page/validate', [
             'user' => $user,

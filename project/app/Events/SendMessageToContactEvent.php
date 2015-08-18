@@ -12,9 +12,10 @@ class SendMessageToContactEvent extends Event {
 	public $phone = null;
 	public $message = null;
 
-	public function __construct($userPhone, $message)
+	public function __construct($userPhone, $countryCode, $message)
 	{
 		$this->phone = $userPhone;
+		$this->countryCode = $countryCode;
 		$this->message =  $message;
 	}
 

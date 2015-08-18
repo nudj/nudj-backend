@@ -34,6 +34,7 @@ class ServicesController extends ApiController
     public function test()
     {
 
+
 		$notifier = new PushNotification();
 		$notifier->app('NudgeIOS')
 			->to('7fa239ee5afa03d1951e6e1081769b20ba1dc0a85002101ecc1b61a47db1fbcf')

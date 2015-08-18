@@ -45,7 +45,7 @@ class UsersController extends ApiController
 
         $user = User::login($request->all());
 
-        Event::fire(new LoginUserEvent($user->phone, $user->verification));
+        Event::fire(new LoginUserEvent($user->phone, $user->country_code, $user->verification));
 
         return $this->respondWithStatus($user->id, ['code' => $user->verification]);
     }

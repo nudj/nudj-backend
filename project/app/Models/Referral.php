@@ -113,7 +113,7 @@ class Referral extends ApiModel
         ]);
 
 
-        Event::fire(new SendMessageToContactEvent($contact->phone, $message));
+        Event::fire(new SendMessageToContactEvent($contact->phone, $contact->country_code, $message));
     }
 
 }
