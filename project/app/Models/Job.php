@@ -220,7 +220,7 @@ class Job extends ApiModel
 
     public function delete()
     {
-
+        Snafu::show('start', 'delete');
         try {
 
             if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this)))
@@ -231,6 +231,8 @@ class Job extends ApiModel
         } catch (Missing404Exception $e) {
             throw new ApiException(ApiExceptionType::$ELASTIC_MISSING);
         }
+
+        Snafu::show('start', 'delete');
 
         return parent::delete();
     }
