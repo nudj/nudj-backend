@@ -40,18 +40,15 @@ class StartChat implements ShouldBeQueued
         $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername, $sysUsername]);
 
         if($event->message)
-            $this->sendInitialMessage($event);
+            $this->sendInitialMessage($event, $initiatorUsername);
 
     }
 
-    private function sendInitialMessage(StartChatEvent $event)
+    private function sendInitialMessage(StartChatEvent $event, $fromUsername)
     {
 
         // Connect trough XMPP
         $options = new Options(Config::get('cfg.chat_server_tcp'));
-
-        //$options->setUsername($initiator->id)
-        //->setPassword($initiator->token)
 
         $options->setUsername(config('cfg.sys_id'))
             ->setPassword(config('cfg.sys_token'));
@@ -64,7 +61,7 @@ class StartChat implements ShouldBeQueued
 
         $channel = new Presence;
         $channel->setTo($roomFullName)
-            ->setNickName(config('cfg.sys_name'));
+            ->setNickName(config('cfg.sys_name') . ':' . $fromUsername);
 
         $client->send($channel);
 
