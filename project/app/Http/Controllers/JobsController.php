@@ -86,11 +86,8 @@ class JobsController extends ApiController
 
         $job = Job::findIfOwnedBy($id, Shield::getUserId());
 
-
         if (!$job)
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
-
-
 
         $status = $job->delete();
 
