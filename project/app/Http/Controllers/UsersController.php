@@ -47,7 +47,7 @@ class UsersController extends ApiController
 
         Event::fire(new LoginUserEvent($user->phone, $user->country_code, $user->verification));
 
-        return $this->respondWithStatus($user->id, ['code' => $user->verification]);
+        return $this->respondWithStatus($user->id);
     }
 
 
