@@ -231,11 +231,7 @@ class Job extends ApiModel
             throw new ApiException(ApiExceptionType::$ELASTIC_MISSING);
         }
 
-
-         if(parent::delete() === true)
-             return true;
-
-        return false;
+        return true;
     }
 
 
