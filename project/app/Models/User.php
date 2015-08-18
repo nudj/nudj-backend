@@ -281,7 +281,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
     {
         $user = self::find($userId);
 
-        return (bool) $user->favourites->containts($this->id);
+        return (bool) $user->favourites->contains($this->id);
 
     }
 
