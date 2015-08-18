@@ -5,6 +5,7 @@ use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\CloudHelper;
 use App\Utility\Facades\Shield;
+use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Support\Facades\Config;
 
 use App\Models\User;
@@ -33,15 +34,11 @@ class ServicesController extends ApiController
     public function test()
     {
 
-        $cloudHelper = new CloudHelper(Config::get('cfg.rackspace'));
+		$notifier = new PushNotification();
+		$notifier->app('NudgeIOS')
+			->to('7fa239ee5afa03d1951e6e1081769b20ba1dc0a85002101ecc1b61a47db1fbcf')
+			->send('message');
 
-        $cloudHelper->emptyContainer('UserImage/2');
-
-//        $logs = Log::orderBy('id', 'asc')->take(10)->get();
-//
-//        foreach($logs as $log) {
-//            echo $log->display() . "\n";
-//        }
 
     }
 

@@ -5,6 +5,6 @@ return [
     'verification' => "Your Nudj verification code is :code",
     'refer' => ":name has messaged you via Nudj: \n :message \n :link",
     'nudge' => ":name has messaged you via Nudj: \n :message \n :link",
-    'invite' => ":name is inviting you to Nudj \n :link",
+    'invite' => "Hey! :name wants you to check out nudj. The app lets you hire, refer and even apply for jobs in a couple of clicks. Take a look! \n :link",
 
 ];
