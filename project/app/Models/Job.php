@@ -89,8 +89,6 @@ class Job extends ApiModel
     {
         $ids = $this->searchIndex('job', $term);
 
-        Snafu::show($ids, 'search');
-        
         if(!$ids)
             return [];
 
@@ -198,7 +196,9 @@ class Job extends ApiModel
                 'description' => $job->description,
                 'bonus' => $job->bonus,
                 'skills' => array_column($job->skills->toArray(), 'name'),
-                'user_id' => $job->user_id
+                'user_id' => $job->user_id,
+                'active' => 1,
+                'deleted' => 1,
             ]);
         }
 

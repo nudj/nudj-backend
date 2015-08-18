@@ -3,6 +3,7 @@
 namespace App\Models\Traits;
 
 use App\Utility\Server;
+use App\Utility\Snafu;
 use Elasticsearch\Client;
 use Illuminate\Support\Facades\Config;
 
@@ -101,12 +102,15 @@ trait Indexable {
         $query['query']['match']['_all'] = $term;
         $query['filter']['bool']['must'][]['term'] = ['active' => 1, 'deleted' => 0];
 
+        Snafu::show($query, 'searchQuery');
+
         $results = $this->searchEngineClient->search([
             'index' => $this->searchEngineIndex,
             'type' => $type,
             'body' => $query
             ]);
 
+        Snafu::show($results, 'searchResults');
 
         if (!isset($results['hits']['hits']) || empty($results['hits']['hits']))
             return [];
