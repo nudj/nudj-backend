@@ -65,7 +65,6 @@ class Job extends ApiModel
         $contacts = DB::table('contacts')
             ->select('user_id')
             ->where('contact_of', '=', $userId)
-            ->where('active', '=', 1)
             ->whereNotNull('user_id')
             ->get();
 
@@ -76,9 +75,7 @@ class Job extends ApiModel
             $ids[] = $contact->user_id;
 
 
-        if(isset($_GET['debug']) && $_GET['debug'] = 'contacts')
-            print_r($ids);
-
+        $query->where('active', '=', 1);
         return $query->whereIn('user_id', $ids);
     }
 
