@@ -11,6 +11,7 @@ class SendMessageToContactEvent extends Event {
 
 	public $phone = null;
 	public $message = null;
+	public $countryCode = null;
 
 	public function __construct($userPhone, $countryCode, $message)
 	{
