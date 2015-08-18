@@ -84,16 +84,13 @@ class JobsController extends ApiController
     public function delete($id)
     {
 
-        Snafu::show($id, 'delete');
-
         $job = Job::findIfOwnedBy($id, Shield::getUserId());
 
-        Snafu::show($job, 'delete');
 
         if (!$job)
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
 
-        Snafu::show('pre delete controller', 'delete');
+
 
         $status = $job->delete();
 

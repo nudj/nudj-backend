@@ -220,7 +220,6 @@ class Job extends ApiModel
 
     public function delete()
     {
-        Snafu::show('start', 'delete');
         try {
 
             if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this)))
@@ -232,9 +231,11 @@ class Job extends ApiModel
             throw new ApiException(ApiExceptionType::$ELASTIC_MISSING);
         }
 
-        Snafu::show('start', 'delete');
 
-        return parent::delete();
+         if(parent::delete() === true)
+             return true;
+
+        return false;
     }
 
 
@@ -245,8 +246,7 @@ class Job extends ApiModel
     {
         $job = Job::with('user')->find($jobId);
 
-        Snafu::show($job->user->id, 'delete');
-        Snafu::show($ownerId, 'delete');
+
         if (isset($job->user->id) && $ownerId == $job->user->id)
             return $job;
 
