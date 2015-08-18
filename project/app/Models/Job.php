@@ -245,6 +245,8 @@ class Job extends ApiModel
     {
         $job = Job::with('user')->find($jobId);
 
+        Snafu::show($job->user->id, 'delete');
+        Snafu::show($ownerId, 'delete');
         if (isset($job->user->id) && $ownerId == $job->user->id)
             return $job;
 
