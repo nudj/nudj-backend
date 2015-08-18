@@ -111,7 +111,7 @@ class Job extends ApiModel
 
         if (isset($input['active'])) {
             $this->active = (bool)$input['active'];
-            $searchEngineUpdate['active'] = (bool)$input['active'];
+            $searchEngineUpdate['active'] = (int)$input['active'];
         }
 
         if (isset($input['bonus'])) {
