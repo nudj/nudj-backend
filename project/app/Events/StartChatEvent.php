@@ -14,7 +14,7 @@ class StartChatEvent extends Event {
 	public $interlocutorId;
 	public $message;
 
-	public function __construct($chatId, $initiatorId, $interlocutorId, $message = '')
+	public function __construct($chatId, $initiatorId, $interlocutorId, $message = null)
 	{
 		$this->chatId = $chatId;
 		$this->initiatorId = $initiatorId;

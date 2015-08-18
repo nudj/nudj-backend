@@ -13,6 +13,7 @@ return [
     // Chat Server
     'chat_server_ip' => '162.13.187.75:4560',
     'chat_server_host' => 'chat.nudj.co',
+    'chat_server_at' => '@chat.nudj.co',
     'chat_server_tcp' => 'tcp://chat.nudj.co:5222',
     'chat_conference_domain' => '@conference.chat.nudj.co',
 
@@ -52,7 +53,10 @@ return [
     'verification_code_length' => 4,
     'default_hash_length' => 4,
 
-
+    // System User
+    'sys_id' => 1,
+    'sys_name' => 'sys',
+    'sys_token' => 'sys-7xngvxq1uGF8BWpEwjmmg1NfAqxdYHL4xqgXBCtxwYcxJH3un1Foh0nz'
 
 
 

@@ -23,9 +23,10 @@ class StartChat implements ShouldBeQueued
     {
 
         $initiator = User::findOrFail($event->initiatorId);
-        $initiatorUsername = $initiator->id . '@chat.nudj.co';
-        $interlocutorUsername = $event->interlocutorId . '@chat.nudj.co';
-        $sysUsername = '1@chat.nudj.co';
+
+        $initiatorUsername = $this->returnUsername($initiator->id);
+        $interlocutorUsername = $this->returnUsername($event->interlocutorId);
+        $sysUsername = $this->returnUsername(config('cfg.sys_id'));
 
 
         // Create room and invite people
@@ -39,27 +40,34 @@ class StartChat implements ShouldBeQueued
         $rpc->createRoom((string) $event->chatId);
         $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername, $sysUsername]);
 
-	    sleep(5);
+        if($event->message)
+            $this->sendInitialMessage($event);
+
+    }
+
+    private function sendInitialMessage(StartChatEvent $event)
+    {
 
         // Connect trough XMPP
         $options = new Options(Config::get('cfg.chat_server_tcp'));
-//        $options->setUsername($initiator->id)
-//            ->setPassword($initiator->token)
 
-        $options->setUsername(1)
-                 ->setPassword('sys-7xngvxq1uGF8BWpEwjmmg1NfAqxdYHL4xqgXBCtxwYcxJH3un1Foh0nz');
+        //$options->setUsername($initiator->id)
+        //->setPassword($initiator->token)
+
+        $options->setUsername(config('cfg.sys_id'))
+            ->setPassword(config('cfg.sys_token'));
 
         $client = new Client($options);
         $client->connect();
 
         // Join the room
-        $roomFullName = $event->chatId . Config::get('cfg.chat_conference_domain');
+        $roomFullName = $event->chatId . config('cfg.chat_conference_domain');
 
         $channel = new Presence;
         $channel->setTo($roomFullName)
-            ->setNickName('sys');
-        $client->send($channel);
+            ->setNickName(config('cfg.sys_name'));
 
+        $client->send($channel);
 
         // Write your message
         $message = new Message;
@@ -71,6 +79,11 @@ class StartChat implements ShouldBeQueued
 
         // Bye bye
         $client->disconnect();
+    }
+
+    private function returnUsername($id)
+    {
+        return $id . config('cfg.chat_server_at');
     }
 
 }

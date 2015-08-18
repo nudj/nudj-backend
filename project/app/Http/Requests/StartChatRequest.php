@@ -17,7 +17,6 @@ class StartChatRequest extends ApiRequest {
 			'job_id' => 'required',
 			'notification_id' => 'required',
 			'user_id' => 'required',
-			'message' => 'required',
 		];
 	}
 
