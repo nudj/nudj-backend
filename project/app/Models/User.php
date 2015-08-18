@@ -277,6 +277,14 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     }
 
+    public function isFavouritedBy($userId)
+    {
+        $user = self::find($userId);
+
+        return (bool) $user->favourites->containts($this->id);
+
+    }
+
 
     /* Imposed by Contract in ApiUserRepository
     ----------------------------------------------------- */

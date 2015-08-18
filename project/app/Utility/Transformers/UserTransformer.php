@@ -59,7 +59,7 @@ class UserTransformer extends Transformer
                 return (bool)$item->linkedin_token;
 
             case 'favourite':
-                return (bool) $item->favourites->contains(Shield::getUserId());
+                return (bool) $item->isFavouritedBy(Shield::getUserId());
 
             case 'settings':
                 return json_decode($item->settings);
