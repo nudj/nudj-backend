@@ -49,7 +49,7 @@ class NudgeController extends ApiController
             'chat_id' => $chat->id
         ));
 
-        Event::fire(new StartChatEvent($chat->id, Shield::getUserId(), $request->user_id));
+        Event::fire(new StartChatEvent($chat->id, Shield::getUserId(), $request->user_id, $request->message));
 
         return $this->respondWithStatus(true);
     }

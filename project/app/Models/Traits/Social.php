@@ -36,7 +36,6 @@ trait Social {
 
         $import = [];
 
-
         if(!$this->name && (isset($incomingData->firstName) || isset($incomingData->lastName)))
             $import['name'] = isset($incomingData->firstName) ? $incomingData->firstName : '' . ' ' . isset($incomingData->lastName) ? $incomingData->lastName : '';
 

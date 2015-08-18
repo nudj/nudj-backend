@@ -36,7 +36,6 @@ class StartChat implements ShouldBeQueued
             'debug' => false,
         ]);
 
-
         $rpc->createRoom((string) $event->chatId);
         $rpc->inviteToRoom($event->chatId, null, null, [$initiatorUsername, $interlocutorUsername, $sysUsername]);
 
@@ -74,6 +73,7 @@ class StartChat implements ShouldBeQueued
         $message->setMessage($event->message)
             ->setTo($roomFullName)
             ->setType(Message::TYPE_GROUPCHAT);
+
         $client->send($message);
 
 
