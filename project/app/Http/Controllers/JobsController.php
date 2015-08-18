@@ -81,10 +81,10 @@ class JobsController extends ApiController
     }
 
 
-    public function destroy($id)
+    public function delete($id)
     {
 
-        Snafu::show('start controller', 'delete');
+        Snafu::show($id, 'delete');
 
         $job = Job::findIfOwnedBy($id, Shield::getUserId());
 
