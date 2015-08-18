@@ -5,6 +5,7 @@ use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Snafu;
 use App\Utility\Transformers\JobTransformer;
+use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use League\Flysystem\Exception;
@@ -221,15 +222,15 @@ class Job extends ApiModel
     {
 
         try {
-            if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this))) {
-                $this->softDeleteFromIndex('job', $this->id);
-            } else {
-                $this->deleteFromIndex('job', $this->id);
-            }
-        } catch (Exception $e) {
-            throw new ApiException(ApiExceptionType::$ELASTIC_ERROR);
-        }
 
+            if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this)))
+                $this->softDeleteFromIndex('job', $this->id);
+            else
+                $this->deleteFromIndex('job', $this->id);
+
+        } catch (Missing404Exception $e) {
+            throw new ApiException(ApiExceptionType::$ELASTIC_MISSING);
+        }
 
         return parent::delete();
     }

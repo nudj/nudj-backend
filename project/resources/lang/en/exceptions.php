@@ -30,6 +30,7 @@ return [
     ApiExceptionType::$CHAT_ERROR['errorCode'] => "Chat Error",
     ApiExceptionType::$LINKEDIN_ERROR['errorCode'] => "LinkedIn Error",
     ApiExceptionType::$ELASTIC_ERROR['errorCode'] => "Elastic Error",
+    ApiExceptionType::$ELASTIC_MISSING['errorCode'] => "Elastic Error : Missing record",
 
     // Nudge Errors
     ApiExceptionType::$VERIFICATION_ERROR['errorCode'] => "Wrong Verification Code",

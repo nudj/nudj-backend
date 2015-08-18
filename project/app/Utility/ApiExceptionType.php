@@ -31,6 +31,7 @@ class ApiExceptionType {
     public static $CHAT_ERROR           = ['errorCode' => 13301, 'code' => 400, 'notify' => false];
     public static $LINKEDIN_ERROR       = ['errorCode' => 13401, 'code' => 400, 'notify' => false];
     public static $ELASTIC_ERROR        = ['errorCode' => 13501, 'code' => 400, 'notify' => false];
+    public static $ELASTIC_MISSING        = ['errorCode' => 13502, 'code' => 400, 'notify' => false];
 
     // Nudge Errors
     public static $VERIFICATION_ERROR   = ['errorCode' => 14101, 'code' => 400, 'notify' => false];
