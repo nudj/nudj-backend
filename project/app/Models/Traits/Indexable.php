@@ -52,12 +52,12 @@ trait Indexable {
         $this->searchEngineClient->update($data);
     }
 
-    public function deleteFromIndex($type, $id)
+    public function softDeleteFromIndex($type, $id)
     {
        $this->updateToIndex($type, $id, ['deleted' => 1]);
     }
 
-    public function softDeleteFromIndex($type, $id)
+    public function deleteFromIndex($type, $id)
     {
         $this->connect();
 
