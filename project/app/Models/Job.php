@@ -221,8 +221,8 @@ class Job extends ApiModel
     public function delete()
     {
         try {
-
-            $this->softDeleteFromIndex('job', $this->id);
+                            $this->deleteFromIndex('job', $this->id);
+//            $this->softDeleteFromIndex('job', $this->id);
 
 //            if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this)))
 //            else
