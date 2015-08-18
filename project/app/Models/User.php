@@ -135,7 +135,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
     public function edit($input)
     {
 
-
         if (isset($input['email']))
             $this->email = (string)$input['email'];
 

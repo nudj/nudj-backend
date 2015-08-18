@@ -36,11 +36,12 @@ trait Social {
 
         $import = [];
 
+
         if(!$this->name && (isset($incomingData->firstName) || isset($incomingData->lastName)))
             $import['name'] = isset($incomingData->firstName) ? $incomingData->firstName : '' . ' ' . isset($incomingData->lastName) ? $incomingData->lastName : '';
 
-        if(!$this->email && isset($incomingData->email))
-            $import['email'] = $incomingData->email;
+        if(!$this->email && isset($incomingData->emailAddress))
+            $import['email'] = $incomingData->emailAddress;
 
 
         if(isset($incomingData->skills->values)) {
