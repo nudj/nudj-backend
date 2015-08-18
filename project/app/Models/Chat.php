@@ -76,10 +76,12 @@ class Chat extends ApiModel
 
     public function archive($remove = false)
     {
+
         if($remove)
             $this->archived_at = null;
         else
             $this->archived_at = Carbon::now();
+
 
         return $this->save();
 

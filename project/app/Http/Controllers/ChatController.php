@@ -53,16 +53,16 @@ class ChatController extends ApiController
     }
 
     public function archive($id = null)
-    {
-        $chat = Chat::find($id);
+        {
+            $chat = Chat::find($id);
 
-        if (!$chat)
-            throw new ApiException(ApiExceptionType::$CHAT_MISSING);
+            if (!$chat)
+                throw new ApiException(ApiExceptionType::$CHAT_MISSING);
 
-        $status = $chat->archive($id);
+            $status = $chat->archive();
 
-        return $this->respondWithStatus($status);
-    }
+            return $this->respondWithStatus($status);
+        }
 
     public function restore($id = null)
     {
@@ -72,7 +72,7 @@ class ChatController extends ApiController
         if (!$chat)
             throw new ApiException(ApiExceptionType::$CHAT_MISSING);
 
-        $status = $chat->restore($id);
+        $status = $chat->restore(true);
 
         return $this->respondWithStatus($status);
     }
