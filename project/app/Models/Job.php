@@ -7,6 +7,7 @@ use App\Utility\Snafu;
 use App\Utility\Transformers\JobTransformer;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
+use League\Flysystem\Exception;
 
 
 class Job extends ApiModel
@@ -54,8 +55,7 @@ class Job extends ApiModel
 
     public function scopeLiked($query, $userId = null)
     {
-        return $query->whereHas('likes', function($q) use ($userId)
-        {
+        return $query->whereHas('likes', function ($q) use ($userId) {
             $q->where('job_likes.user_id', '=', $userId);
         });
     }
@@ -69,9 +69,8 @@ class Job extends ApiModel
             ->get();
 
 
-
         $ids = [$userId];
-        foreach($contacts as $contact)
+        foreach ($contacts as $contact)
             $ids[] = $contact->user_id;
 
 
@@ -86,10 +85,10 @@ class Job extends ApiModel
     {
         $ids = $this->searchIndex('job', $term);
 
-        if(!$ids)
+        if (!$ids)
             return [];
 
-       return self::whereIn('id', $ids)->get();
+        return self::whereIn('id', $ids)->get();
     }
 
 
@@ -158,7 +157,7 @@ class Job extends ApiModel
     {
 
         $job = new Job;
-        $job->user_id = (int) $userId;
+        $job->user_id = (int)$userId;
         $job->title = (string)$input['title'];
         $job->description = (string)$input['description'];
         $job->active = true;
@@ -221,15 +220,19 @@ class Job extends ApiModel
     public function delete()
     {
 
-        if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this))) {
-            $this->softDeleteFromIndex('job', $this->id);
-        } else {
-            $this->deleteFromIndex('job', $this->id);
+        try {
+            if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this))) {
+                $this->softDeleteFromIndex('job', $this->id);
+            } else {
+                $this->deleteFromIndex('job', $this->id);
+            }
+        } catch (Exception $e) {
+            throw new ApiException(ApiExceptionType::$ELASTIC_ERROR);
         }
 
-        parent::delete();
-    }
 
+        return parent::delete();
+    }
 
 
     /* Checks

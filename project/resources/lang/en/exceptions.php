@@ -28,6 +28,8 @@ return [
     ApiExceptionType::$TWILIO_ERROR['errorCode'] => "Twilio Error",
     ApiExceptionType::$FACEBOOK_ERROR['errorCode'] => "Facebook Error",
     ApiExceptionType::$CHAT_ERROR['errorCode'] => "Chat Error",
+    ApiExceptionType::$LINKEDIN_ERROR['errorCode'] => "LinkedIn Error",
+    ApiExceptionType::$ELASTIC_ERROR['errorCode'] => "Elastic Error",
 
     // Nudge Errors
     ApiExceptionType::$VERIFICATION_ERROR['errorCode'] => "Wrong Verification Code",
