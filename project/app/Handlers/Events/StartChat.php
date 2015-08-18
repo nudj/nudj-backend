@@ -57,7 +57,7 @@ class StartChat implements ShouldBeQueued
 
         $channel = new Presence;
         $channel->setTo($roomFullName)
-            ->setNickName('sys');
+            ->setNickName($initiatorUsername);
         $client->send($channel);
 
 
