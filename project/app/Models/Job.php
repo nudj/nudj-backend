@@ -220,19 +220,18 @@ class Job extends ApiModel
 
     public function delete()
     {
-        try {
-                            $this->deleteFromIndex('job', $this->id);
-//            $this->softDeleteFromIndex('job', $this->id);
-
+//        try {
+//
 //            if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this)))
+//                $this->softDeleteFromIndex('job', $this->id);
 //            else
 //                $this->deleteFromIndex('job', $this->id);
-
-        } catch (Missing404Exception $e) {
-            throw new ApiException(ApiExceptionType::$ELASTIC_MISSING);
-        } catch (Exception $e) {
-            throw new ApiException(ApiExceptionType::$ELASTIC_ERROR);
-        }
+//
+//        } catch (Missing404Exception $e) {
+//            throw new ApiException(ApiExceptionType::$ELASTIC_MISSING);
+//        } catch (Exception $e) {
+//            throw new ApiException(ApiExceptionType::$ELASTIC_ERROR);
+//        }
 
 
         return parent::delete();
