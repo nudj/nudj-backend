@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
+use App\Utility\Snafu;
 use App\Utility\Transformers\JobTransformer;
 use Illuminate\Support\Facades\Input;
 
