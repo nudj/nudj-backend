@@ -16,23 +16,10 @@ use Illuminate\Support\Facades\Lang;
 class ContactsController extends ApiController
 {
 
-    public function index($filter = null)
+    public function index()
     {
         $me = Shield::getUserId();
-
-        switch ($filter) {
-            case 'mine' :
-                $items =  Contact::where('contact_of', '=', $me)->api()->orderBy('alias', 'asc')->get();
-                break;
-            case 'favourited' :
-                $items =  Contact::where('favorite', '=', true)
-                        ->where('contact_of', '=', $me)
-                        ->api()->orderBy('alias', 'asc')->get();
-                break;
-            default:
-                throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
-
-        }
+        $items =  Contact::where('contact_of', '=', $me)->api()->orderBy('alias', 'asc')->get();
 
         return $this->respondWithItems($items, new ContactTransformer());
     }
