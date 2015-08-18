@@ -6,6 +6,7 @@ use App\Models\Traits\Social;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Authenticator\Contracts\ShieldAuthServiceContract;
+use App\Utility\Snafu;
 use App\Utility\Transformers\UserTransformer;
 use App\Utility\Util;
 use Illuminate\Auth\Authenticatable;
@@ -133,6 +134,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     public function edit($input)
     {
+
 
         if (isset($input['email']))
             $this->email = (string)$input['email'];

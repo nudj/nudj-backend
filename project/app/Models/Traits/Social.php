@@ -3,6 +3,7 @@
 namespace App\Models\Traits;
 
 
+use App\Utility\Snafu;
 use League\Flysystem\Exception;
 
 trait Social {
@@ -11,6 +12,7 @@ trait Social {
     {
         $import = [];
 
+
         if(!$this->name && isset($incomingData->name))
             $import['name'] = $incomingData->name;
 
@@ -18,10 +20,10 @@ trait Social {
             $import['email'] = $incomingData->email;
 
         if(!$this->location && isset($incomingData->location->name))
-            $import['location'] = $incomingData->location->name;
+            $import['address'] = $incomingData->location->name;
 
-        if(!$this->image && isset($incomingData->picture->url))
-            $import['image'] = $incomingData->picture->url;
+        if(!$this->image && isset($incomingData->picture->data->url))
+            $import['image'] = $incomingData->picture->data->url;
 
         if(!$this->about && isset($incomingData->bio))
             $import['about'] = $incomingData->bio;
