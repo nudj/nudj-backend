@@ -3,17 +3,20 @@
 
 use App\Events\NotifyUserEvent;
 use App\Models\User;
+use App\Utility\Snafu;
 use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
 
-class SendApn implements ShouldBeQueued
+class SendApn //implements ShouldBeQueued
 {
 
     public function handle(NotifyUserEvent $event)
     {
 
         $devices = User::min()->find($event->recipientId)->devices()->get();
+
+        Snafu::show($devices, 'devices');
 
         foreach($devices as $device) {
 
