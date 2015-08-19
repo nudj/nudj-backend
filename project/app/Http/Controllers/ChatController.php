@@ -7,15 +7,11 @@ use App\Http\Requests;
 
 use App\Http\Requests\NotifyOfflineUserRequest;
 use App\Models\Chat;
-use App\Models\Notification;
+use App\Models\NotificationType;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
 use App\Utility\Transformers\ChatTransformer;
-use Fabiang\Xmpp\Client;
-use Fabiang\Xmpp\Options;
-use Fabiang\Xmpp\Protocol\Message;
-use Fabiang\Xmpp\Protocol\Presence;
 use GameNet\Jabber\RpcClient;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
@@ -95,7 +91,7 @@ class ChatController extends ApiController
 
         $meta = [
             'chat_id' => $request->chat_id,
-            'type_id' => Notification::$CHAT_MESSAGE
+            'type_id' => NotificationType::$CHAT_MESSAGE
         ];
         Event::fire(new NotifyUserEvent($request->user_id, $request->message, $meta));
 

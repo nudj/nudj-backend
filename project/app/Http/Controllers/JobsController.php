@@ -81,7 +81,7 @@ class JobsController extends ApiController
     }
 
 
-    public function delete($id)
+    public function destroy($id)
     {
 
         $job = Job::findIfOwnedBy($id, Shield::getUserId());

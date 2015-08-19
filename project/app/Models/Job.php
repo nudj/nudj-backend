@@ -14,7 +14,8 @@ use League\Flysystem\Exception;
 class Job extends ApiModel
 {
 
-    use SoftDeletes, Indexable;
+    use SoftDeletesl
+    use Indexable;
 
     protected $table = 'jobs';
     protected $visible = ['id', 'title', 'description', 'salary', 'active', 'bonus', 'company', 'location', 'user_id', 'created_at'];
