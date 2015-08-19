@@ -2,7 +2,7 @@
 
 return [
     'NudgeIOS' => [
-        'environment' => 'production',
+        'environment' => 'development',
         'certificate' => base_path('resources/certificates/development.pem'),
         'passPhrase' => 'power123',
         'service' => 'apns'
