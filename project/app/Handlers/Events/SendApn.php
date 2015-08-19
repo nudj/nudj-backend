@@ -8,7 +8,7 @@ use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
 
-class SendApn //implements ShouldBeQueued
+class SendApn implements ShouldBeQueued
 {
 
     public function handle(NotifyUserEvent $event)
@@ -16,14 +16,12 @@ class SendApn //implements ShouldBeQueued
 
         $devices = User::min()->find($event->recipientId)->devices()->get();
 
-        Snafu::show($devices, 'devices');
-
         foreach($devices as $device) {
 
             $notifier = new PushNotification();
             $notifier->app('NudgeIOS')
                 ->to($device->token)
-                ->send($event->message);
+                ->send($event->message, $event->meta);
 
         }
     }
