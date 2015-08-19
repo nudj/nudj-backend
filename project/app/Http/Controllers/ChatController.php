@@ -1,9 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Events\NotifyUserEvent;
 use App\Events\StartChatEvent;
 use App\Http\Requests;
 
+use App\Http\Requests\NotifyOfflineUserRequest;
 use App\Models\Chat;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
