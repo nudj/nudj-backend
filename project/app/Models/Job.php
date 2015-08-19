@@ -233,7 +233,6 @@ class Job extends ApiModel
 //            throw new ApiException(ApiExceptionType::$ELASTIC_ERROR);
 //        }
 
-
         return parent::delete();
     }
 
