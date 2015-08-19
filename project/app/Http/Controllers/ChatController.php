@@ -74,7 +74,7 @@ class ChatController extends ApiController
         if (!$chat)
             throw new ApiException(ApiExceptionType::$CHAT_MISSING);
 
-        $status = $chat->restore(true);
+        $status = $chat->archive(true);
 
         return $this->respondWithStatus($status);
     }
