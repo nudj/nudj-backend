@@ -14,7 +14,7 @@ use League\Flysystem\Exception;
 class Job extends ApiModel
 {
 
-    use SoftDeletesl
+    use SoftDeletes;
     use Indexable;
 
     protected $table = 'jobs';
