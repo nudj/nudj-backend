@@ -77,7 +77,6 @@ class ChatController extends ApiController
         return $this->respondWithStatus($status);
     }
 
-
     public function mute($id = null)
     {
         return $this->respondWithStatus(Chat::mute($id, Shield::getUserId()));
@@ -88,6 +87,15 @@ class ChatController extends ApiController
         return $this->respondWithStatus(Chat::mute($id, Shield::getUserId()));
     }
 
+    public function notify(NotifyOfflineUserRequest $request)
+    {
+
+        $meta = ['chat_id' => $request->chat_id];
+        Event::fire(new NotifyUserEvent($request->user_id, $request->message, $meta));
+
+        return $this->respondWithStatus(true);
+
+    }
 
 
     /* Test Purposes

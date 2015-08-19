@@ -103,6 +103,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::delete('chat/{id}archive', 'ChatController@restore');
     Route::put('chat/{id}/mute', 'ChatController@mute');
     Route::delete('chat/{id}/mute', 'ChatController@unmute');
+    Route::put('chat/notification', 'ChatController@notify');
 
 
     //NOTIFICATION
