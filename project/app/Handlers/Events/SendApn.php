@@ -20,7 +20,7 @@ class SendApn implements ShouldBeQueued
             $notifier = new PushNotification();
             $notifier->app('NudgeIOS')
                 ->to($device->token)
-                ->send($event->message, $this->meta);
+                ->send($event->message, $event->meta);
 
         }
     }
