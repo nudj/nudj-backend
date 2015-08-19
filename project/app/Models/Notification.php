@@ -21,6 +21,7 @@ class NotificationType
     public static $WEB_APPLICATION_NOREF = 6;
 
     public static $MATCHING_CONTACT = 4;
+    public static $CHAT_MESSAGE = 8;
 }
 
 

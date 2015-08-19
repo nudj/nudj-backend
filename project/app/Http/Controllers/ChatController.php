@@ -7,6 +7,7 @@ use App\Http\Requests;
 
 use App\Http\Requests\NotifyOfflineUserRequest;
 use App\Models\Chat;
+use App\Models\Notification;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
@@ -55,16 +56,16 @@ class ChatController extends ApiController
     }
 
     public function archive($id = null)
-        {
-            $chat = Chat::find($id);
+    {
+        $chat = Chat::find($id);
 
-            if (!$chat)
-                throw new ApiException(ApiExceptionType::$CHAT_MISSING);
+        if (!$chat)
+            throw new ApiException(ApiExceptionType::$CHAT_MISSING);
 
-            $status = $chat->archive();
+        $status = $chat->archive();
 
-            return $this->respondWithStatus($status);
-        }
+        return $this->respondWithStatus($status);
+    }
 
     public function restore($id = null)
     {
@@ -92,7 +93,10 @@ class ChatController extends ApiController
     public function notify(NotifyOfflineUserRequest $request)
     {
 
-        $meta = ['chat_id' => $request->chat_id];
+        $meta = [
+            'chat_id' => $request->chat_id,
+            'type_id' => Notification::$CHAT_MESSAGE
+        ];
         Event::fire(new NotifyUserEvent($request->user_id, $request->message, $meta));
 
 
@@ -113,7 +117,8 @@ class ChatController extends ApiController
         return $this->respondWithStatus('true');
     }
 
-    public function deleteAllRooms() {
+    public function deleteAllRooms()
+    {
 
         $rpc = new RpcClient([
             'server' => Config::get('cfg.chat_server_ip'),
@@ -129,8 +134,6 @@ class ChatController extends ApiController
         }
 
     }
-
-
 
 
 }

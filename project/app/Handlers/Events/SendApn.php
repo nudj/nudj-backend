@@ -20,7 +20,7 @@ class SendApn implements ShouldBeQueued
         if($event->meta) {
             $meta = ['custom' => ['meta' => $event->meta]];
         }
-        
+
         foreach($devices as $device) {
 
             $notifier = new PushNotification();
