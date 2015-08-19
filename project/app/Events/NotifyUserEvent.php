@@ -17,5 +17,6 @@ class NotifyUserEvent extends Event {
 		$this->recipientId = $recipientId;
 		$this->message = $message;
 		$this->meta = $meta;
+
 	}
 }

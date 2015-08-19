@@ -95,6 +95,7 @@ class ChatController extends ApiController
         $meta = ['chat_id' => $request->chat_id];
         Event::fire(new NotifyUserEvent($request->user_id, $request->message, $meta));
 
+
         return $this->respondWithStatus(true);
 
     }

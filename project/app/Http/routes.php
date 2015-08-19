@@ -100,7 +100,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('chat/{id}', 'ChatController@show');
     Route::get('chat/archive', 'ChatController@archived');
     Route::put('chat/{id}/archive', 'ChatController@archive');
-    Route::delete('chat/{id}archive', 'ChatController@restore');
+    Route::delete('chat/{id}/archive', 'ChatController@restore');
     Route::put('chat/{id}/mute', 'ChatController@mute');
     Route::delete('chat/{id}/mute', 'ChatController@unmute');
     Route::put('chat/notification', 'ChatController@notify');
