@@ -96,9 +96,8 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::post('contacts/{id}/invite', 'ContactsController@invite');
 
     //CHAT
-    Route::get('chat', 'ChatController@index');
+    Route::get('chat/{filter}', 'ChatController@index');
     Route::get('chat/{id}', 'ChatController@show');
-    Route::get('chat/archive', 'ChatController@archived');
     Route::put('chat/{id}/archive', 'ChatController@archive');
     Route::delete('chat/{id}/archive', 'ChatController@restore');
     Route::put('chat/{id}/mute', 'ChatController@mute');

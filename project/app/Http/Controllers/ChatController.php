@@ -20,12 +20,23 @@ use Illuminate\Support\Facades\Event;
 class ChatController extends ApiController
 {
 
-    public function index()
+    public function index($filter = null)
     {
+        $me = Shield::getUserId();
 
-        $userId = Shield::getUserId();
-
-        $items = Chat::api()->mine($userId)->live()->desc()->paginate($this->limit);
+        switch ($filter) {
+            case 'active' :
+                $items = Chat::api()->mine($me)->live()->desc()->paginate($this->limit);
+                break;
+            case 'archived' :
+                $items = Chat::api()->mine($me)->archive()->paginate($this->limit);
+                break;
+            case 'all' :
+                $items = Job::api()->mine($me)->desc()->paginate($this->limit);
+                break;
+            default:
+                throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
+        }
 
         return $this->respondWithPagination($items, new ChatTransformer());
     }
@@ -42,14 +53,6 @@ class ChatController extends ApiController
         return $this->respondWithItem($item, new ChatTransformer());
     }
 
-    public function archived()
-    {
-        $userId = Shield::getUserId();
-
-        $items = Chat::api()->mine($userId)->archive()->paginate($this->limit);
-
-        return $this->respondWithPagination($items, new ChatTransformer());
-    }
 
     public function archive($id = null)
     {
