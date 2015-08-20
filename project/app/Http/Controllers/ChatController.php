@@ -32,7 +32,7 @@ class ChatController extends ApiController
                 $items = Chat::api()->mine($me)->archive()->paginate($this->limit);
                 break;
             case 'all' :
-                $items = Job::api()->mine($me)->desc()->paginate($this->limit);
+                $items = Chat::api()->mine($me)->desc()->paginate($this->limit);
                 break;
             default:
                 throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
