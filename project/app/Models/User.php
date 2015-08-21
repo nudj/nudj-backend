@@ -122,6 +122,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         $user = User::where('phone', '=', $phoneData->number)
             ->where('verification', '=', $input['verification'])
+            ->whereNull('deleted_at')
             ->first();
 
         if ($user) {
