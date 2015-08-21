@@ -74,6 +74,13 @@ class User extends ApiModel implements ShieldAuthServiceContract
         return $this->hasMany('App\Models\Device', 'user_id');
     }
 
+    /* Scopes
+  ----------------------------------------------------- */
+    public function scopeActive($query)
+    {
+        return $query->whereNull('deleted_at');
+    }
+
 
     /* CRUD
     ----------------------------------------------------- */
@@ -101,7 +108,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         $phoneData = Util::unifyPhoneNumber($input['phone'], $input['country_code']);
 
-        $user = User::where('phone', '=', $phoneData->number)->first();
+        $user = User::where('phone', '=', $phoneData->number)->active()->first();
 
         if ($user)
             return $user;
