@@ -74,12 +74,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
         return $this->hasMany('App\Models\Device', 'user_id');
     }
 
-    /* Scopes
-  ----------------------------------------------------- */
-    public function scopeActive($query)
-    {
-        return $query->whereNull('deleted_at');
-    }
+
 
 
     /* CRUD

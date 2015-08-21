@@ -30,6 +30,13 @@ class ApiModel extends Model
         return $query->select($columns);
     }
 
+    /* Scopes
+   ----------------------------------------------------- */
+    public function scopeActive($query)
+    {
+        return $query->whereNull('deleted_at');
+    }
+
     public function scopeMin($query)
     {
         return $query->select($this->primaryKey);

@@ -26,13 +26,13 @@ class ChatController extends ApiController
 
         switch ($filter) {
             case 'active' :
-                $items = Chat::api()->mine($me)->live()->desc()->paginate($this->limit);
+                $items = Chat::api()->mine($me)->live()->active()->desc()->paginate($this->limit);
                 break;
             case 'archived' :
-                $items = Chat::api()->mine($me)->archive()->paginate($this->limit);
+                $items = Chat::api()->mine($me)->archive()->active()->paginate($this->limit);
                 break;
             case 'all' :
-                $items = Chat::api()->mine($me)->desc()->paginate($this->limit);
+                $items = Chat::api()->mine($me)->active()->desc()->paginate($this->limit);
                 break;
             default:
                 throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
@@ -53,6 +53,18 @@ class ChatController extends ApiController
         return $this->respondWithItem($item, new ChatTransformer());
     }
 
+    public function destroy($id)
+    {
+
+        $chat = Chat::findIfOwnedBy($id, Shield::getUserId());
+
+        if (!$chat)
+            throw new ApiException(ApiExceptionType::$NOT_FOUND);
+
+        $status = $chat->delete();
+
+        return $this->respondWithStatus($status);
+    }
 
     public function archive($id = null)
     {

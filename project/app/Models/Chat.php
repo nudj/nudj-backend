@@ -25,6 +25,8 @@ class Chat extends ApiModel
         $this->dependencies = ChatTransformer::$dependencies;
     }
 
+
+
     /* Relations
     ----------------------------------------------------- */
     public function job()
@@ -99,6 +101,21 @@ class Chat extends ApiModel
 
         return true;
 
+    }
+
+    /* Checks
+   ----------------------------------------------------- */
+    public static function findIfOwnedBy($chatId, $participantId)
+    {
+
+        $chat = Chat::with('participants')->find($chatId);
+
+        foreach ($chat->participants as $participant) {
+            if($participant->id == $participantId)
+                return $chat;
+        }
+
+        return null;
     }
 
 }
