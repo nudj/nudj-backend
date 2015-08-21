@@ -8,4 +8,6 @@ return [
         3 => 'Do not disturb',
     ],
 
+    'linkedin_permission' => "r_basicprofile",
+
 ];
