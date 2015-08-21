@@ -74,6 +74,10 @@ class User extends ApiModel implements ShieldAuthServiceContract
         return $this->hasMany('App\Models\Device', 'user_id');
     }
 
+    public function chats()
+    {
+        return $this->belongsToMany('App\Models\Chat', 'chat_participants')->withPivot('mute');
+    }
 
 
 
@@ -298,6 +302,14 @@ class User extends ApiModel implements ShieldAuthServiceContract
             ->where('token', '=', $token)
             ->whereNull('deleted_at')
             ->first();
+    }
+
+    // @TODO refactor and don;t overwrite parent, just use it
+    public static function destroy($id)
+    {
+        Chat::deleteByParticipant($id);
+
+        return parent::destroy($id);
     }
 
 }

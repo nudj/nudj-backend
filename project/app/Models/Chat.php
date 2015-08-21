@@ -103,6 +103,14 @@ class Chat extends ApiModel
 
     }
 
+    public static function deleteByParticipant($participantId)
+    {
+        $chats = Chat::api()->mine($participantId)->active()->desc()->get();
+
+        foreach ($chats as $chat)
+            $chat->delete();
+    }
+
     /* Checks
    ----------------------------------------------------- */
     public static function findIfOwnedBy($chatId, $participantId)
