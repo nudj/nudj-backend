@@ -2,6 +2,7 @@
 
 
 use App\Events\NotifyUserEvent;
+use App\Models\Notification;
 use App\Models\User;
 use App\Utility\Snafu;
 use Davibennun\LaravelPushNotification\PushNotification;
@@ -15,10 +16,14 @@ class SendApn implements ShouldBeQueued
     {
 
         $devices = User::min()->find($event->recipientId)->devices()->get();
+        $notificationCount = Notification::getNewNotificationsCount($event->recipientId);
 
         $meta = [];
         if($event->meta) {
-            $meta = ['custom' => ['meta' => $event->meta]];
+            $meta = [
+                'badge' => $notificationCount,
+                'custom' => ['meta' => $event->meta]
+            ];
         }
 
         foreach($devices as $device) {
