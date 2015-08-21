@@ -61,6 +61,7 @@ class ChatController extends ApiController
         if (!$chat)
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
 
+        
         $status = $chat->delete();
 
         return $this->respondWithStatus($status);
