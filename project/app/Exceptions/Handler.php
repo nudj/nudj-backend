@@ -9,6 +9,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -76,6 +77,11 @@ class Handler extends ExceptionHandler
                 $response['error']['message'] = $response['error']['message'] . ' :: ' . $e->getErrorInfo();
 
             return $this->respond($response, $e->getCode(), $e->shouldNotify());
+        }
+
+        // throw api exception for wrong endpoints
+        if ($e instanceof NotFoundHttpException ) {
+            throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
         }
 
         // map framework exceptions to ApiException
