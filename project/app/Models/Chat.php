@@ -107,6 +107,9 @@ class Chat extends ApiModel
     {
         $chats = Chat::api()->mine($participantId)->active()->desc()->get();
 
+        if(!$chats)
+            return false;
+        
         foreach ($chats as $chat)
             $chat->delete();
     }
