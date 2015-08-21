@@ -57,8 +57,8 @@ class Notification extends ApiModel
 
     /* CRUD
     ----------------------------------------------------- */
-    public static function getNewNotificationsCount($recipientId) {
-
+    public static function getNewNotificationsCount($recipientId)
+    {
         return self::where('recipient_id', '=', $recipientId)->where('read', '=', 0)->count();
     }
 
