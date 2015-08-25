@@ -24,7 +24,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 		'App\Http\Controllers\UsersController@store',
 		'App\Http\Controllers\UsersController@verify',
 		'App\Http\Controllers\UsersController@exists',
-		'App\Http\Controllers\ConfigController@countries',
+		'App\Http\Controllers\CoCountriesController@index',
 
 		'App\Http\Controllers\ServicesController@test',
 	];
