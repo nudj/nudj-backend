@@ -118,6 +118,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     //CONFIG
     Route::get('config', 'ConfigController@index');
+    Route::get('config/countries', 'ConfigController@countries');
     Route::get('config/{key}', 'ConfigController@show');
 
 
