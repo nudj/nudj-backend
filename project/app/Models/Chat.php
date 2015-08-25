@@ -26,7 +26,6 @@ class Chat extends ApiModel
     }
 
 
-
     /* Relations
     ----------------------------------------------------- */
     public function job()
@@ -43,20 +42,25 @@ class Chat extends ApiModel
     ----------------------------------------------------- */
     public function scopeMine($query, $userId = null)
     {
-        return $query->whereHas('participants', function($q) use ($userId)
-        {
-          $q->where('chat_participants.user_id', '=', $userId);
+        return $query->whereHas('participants', function ($q) use ($userId) {
+            $q->where('chat_participants.user_id', '=', $userId);
         });
     }
 
-    public function scopeLive($query)
+    public function scopeLive($query, $userId = null)
     {
-        return $query->whereNull('archived_at');
+        return $query->whereHas('participants', function ($q) use ($userId) {
+            $q->where('user_id', '=', $userId)->whereNull('chat_participants.archived_at');
+        });
+
     }
 
-    public function scopeArchive($query)
+    public function scopeArchive($query, $userId = null)
     {
-        return $query->whereNotNull('archived_at');
+        return $query->whereHas('participants', function ($q) use ($userId) {
+            $q->where('user_id', '=', $userId)->whereNotNull('chat_participants.archived_at');
+        });
+
     }
 
 
@@ -76,17 +80,18 @@ class Chat extends ApiModel
         return $chat;
     }
 
-    public function archive($remove = false)
+    public function archive($participantId, $remove = false)
     {
 
-        if($remove)
-            $this->archived_at = null;
+        if ($remove)
+            $archived_at = null;
         else
-            $this->archived_at = Carbon::now();
+            $archived_at = Carbon::now();
 
 
-        return $this->save();
+        $this->participants()->updateExistingPivot($participantId, ['archived_at' => $archived_at]);
 
+        return true;
     }
 
     public static function mute($id, $userId, $remove = false)
@@ -107,7 +112,7 @@ class Chat extends ApiModel
     {
         $chats = Chat::api()->mine($participantId)->active()->desc()->get();
 
-        if(!$chats)
+        if (!$chats)
             return false;
 
         foreach ($chats as $chat)
@@ -122,7 +127,7 @@ class Chat extends ApiModel
         $chat = Chat::with('participants')->find($chatId);
 
         foreach ($chat->participants as $participant) {
-            if($participant->id == $participantId)
+            if ($participant->id == $participantId)
                 return $chat;
         }
 

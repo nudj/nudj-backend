@@ -26,10 +26,10 @@ class ChatController extends ApiController
 
         switch ($filter) {
             case 'active' :
-                $items = Chat::api()->mine($me)->live()->active()->desc()->paginate($this->limit);
+                $items = Chat::api()->mine($me)->live($me)->active()->desc()->paginate($this->limit);
                 break;
             case 'archived' :
-                $items = Chat::api()->mine($me)->archive()->active()->paginate($this->limit);
+                $items = Chat::api()->mine($me)->archive($me)->active()->desc()->paginate($this->limit);
                 break;
             case 'all' :
                 $items = Chat::api()->mine($me)->active()->desc()->paginate($this->limit);
@@ -69,12 +69,13 @@ class ChatController extends ApiController
 
     public function archive($id = null)
     {
+
         $chat = Chat::find($id);
 
         if (!$chat)
             throw new ApiException(ApiExceptionType::$CHAT_MISSING);
 
-        $status = $chat->archive();
+        $status = $chat->archive(Shield::getUserId());
 
         return $this->respondWithStatus($status);
     }
@@ -87,7 +88,7 @@ class ChatController extends ApiController
         if (!$chat)
             throw new ApiException(ApiExceptionType::$CHAT_MISSING);
 
-        $status = $chat->archive(true);
+        $status = $chat->archive(Shield::getUserId(), true);
 
         return $this->respondWithStatus($status);
     }

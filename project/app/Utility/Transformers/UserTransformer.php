@@ -1,6 +1,7 @@
 <?php namespace App\Utility\Transformers;
 
 
+use App\Models\Chat;
 use App\Utility\Facades\Shield;
 
 class UserTransformer extends Transformer
@@ -85,6 +86,13 @@ class UserTransformer extends Transformer
                 $tranform = new ContactTransformer();
                 return $tranform->transform($contact);
 
+            case 'counters':
+                $counters = [
+                  'saved_jobs' => $item->likes->count(),
+                  'posted_jobs' => $item->jobs->count(),
+                  'archived_chats' => Chat::mine($item->id)->archive($item->id)->count(),
+                ];
+                return $counters;
         }
 
     }
