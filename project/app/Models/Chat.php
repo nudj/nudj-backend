@@ -109,7 +109,7 @@ class Chat extends ApiModel
 
         if(!$chats)
             return false;
-        
+
         foreach ($chats as $chat)
             $chat->delete();
     }

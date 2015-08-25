@@ -70,6 +70,7 @@ class Job extends ApiModel
             ->whereNotNull('user_id')
             ->get();
 
+        Snafu::show($contacts, 'contacts');
 
         $ids = [$userId];
         foreach ($contacts as $contact)
