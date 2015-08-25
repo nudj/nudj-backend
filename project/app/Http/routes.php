@@ -118,11 +118,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     //CONFIG
     Route::get('config', 'ConfigController@index');
-    Route::get('config/countries', 'ConfigController@countries');
     Route::get('config/{key}', 'ConfigController@show');
 
 
     //MISC
+    Route::get('countries', 'CountriesController@index');
     Route::put('devices', 'DevicesController@register');
     Route::post('feedback', 'FeedbackController@send');
     Route::get('skills/suggest/{term?}', 'SkillsController@suggest');

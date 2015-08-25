@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 
-use App\Models\Country;
 use Illuminate\Support\Facades\Config;
 
 class ConfigController extends ApiController {
@@ -20,9 +19,5 @@ class ConfigController extends ApiController {
 	}
 
 
-	public function countries()
-	{
-		return $this->returnResponse(Country::web()->orderBy('name', 'asc')->get());
-	}
 
 }
