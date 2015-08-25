@@ -96,7 +96,7 @@ class Contact extends ApiModel
                 $contactIds[] = $contact->id;
             }
 
-            $user = User::select('id')->where('phone', '=', $phoneData->number)->first();
+            $user = User::select('id')->where('phone', '=', $phoneData->number)->active()->first();
             if ($user) {
                 $contact->user_id = $user->id;
                 $contact->save();
