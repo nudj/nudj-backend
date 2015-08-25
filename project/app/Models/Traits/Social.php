@@ -28,6 +28,17 @@ trait Social {
         if(!$this->about && isset($incomingData->bio))
             $import['about'] = $incomingData->bio;
 
+        if(isset($incomingData->work) && !empty($incomingData->work)) {
+
+            $workDetails = current($incomingData->work);
+
+            if(!$this->company)
+                $import['company'] = $workDetails->employer->name;
+
+            if(!$this->position)
+                $import['position'] = $workDetails->position->name;
+        }
+
         $this->edit($import);
     }
 
