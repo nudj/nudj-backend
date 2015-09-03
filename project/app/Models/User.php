@@ -223,9 +223,27 @@ class User extends ApiModel implements ShieldAuthServiceContract
     {
 
         if ($this->settings)
-            $settingsList = array_replace(json_decode($this->settings, true), $settingsList);
+            $currentSettings = json_decode($this->settings, true);
+        else
+            $currentSettings = config('default.user_settings');
 
-        return json_encode($settingsList);
+        foreach ($settingsList as $key => $settings) {
+
+            if(!isset($currentSettings[$key])) {
+                $currentSettings[$key] = $settings;
+                continue;
+            }
+            
+            if(is_array($settings)) {
+                array_replace($currentSettings[$key], $settings);
+            } else {
+                $currentSettings[$key] = $settings;
+            }
+        }
+
+        dd($currentSettings);
+
+        return json_encode($currentSettings);
     }
 
 

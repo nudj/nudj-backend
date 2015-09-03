@@ -13,6 +13,11 @@ return [
             '3' => true,
             '4' => true,
             '5' => true,
+        ],
+        'tutorial' => [
+            'open_job' => true,
+            'create_job' => true,
+            'post_job' => true,
         ]
     ],
 
