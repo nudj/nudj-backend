@@ -235,7 +235,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
             }
 
             if(is_array($settings)) {
-                array_replace($currentSettings[$key], $settings);
+                $currentSettings[$key] = array_replace($currentSettings[$key], $settings);
             } else {
                 $currentSettings[$key] = $settings;
             }
