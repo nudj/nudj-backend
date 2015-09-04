@@ -241,7 +241,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
             }
         }
 
-      
+      	Snafu::show($currentSettings, 'settings');
 
         return json_encode($currentSettings);
     }
