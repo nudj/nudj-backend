@@ -233,7 +233,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
                 $currentSettings[$key] = $settings;
                 continue;
             }
-            
+
             if(is_array($settings)) {
                 array_replace($currentSettings[$key], $settings);
             } else {
@@ -241,7 +241,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
             }
         }
 
-        dd($currentSettings);
+      
 
         return json_encode($currentSettings);
     }
