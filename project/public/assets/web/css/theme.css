@@ -475,3 +475,9 @@ iPad 3
 @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
     /* Styles */
 }
+
+
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+    z-index: 0;
+}
