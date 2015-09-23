@@ -91,7 +91,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
         $user->country_code = (string)$input['country_code'];
         $user->mobile = (bool)$mobile;
         $user->token = (string)str_random(60);
-        $user->verification = 1111; //(int)mt_rand(1000, 9999);
+        $user->verification = (int)mt_rand(1000, 9999);
         $user->settings = json_encode(config('default.user_settings'));
 
         if(isset($input['name']))
