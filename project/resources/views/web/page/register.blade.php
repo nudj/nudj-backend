@@ -14,7 +14,7 @@
 
 @section('page')
 
-    <nav class="navbar navbar-inverse navbar-fixed-top coloredhead">
+    <nav class="navbar navbar-inverse coloredhead">
         <div class="container">
             <img class="logo" src="{{ asset('assets/web/img/nudj_logo.png') }}"/>
         </div>
