@@ -2,12 +2,14 @@
 
 @section('title')
     <title>Login</title>
+    <meta name="apple-itunes-app" content="app-id=1027993202, app-argument=https://itunes.apple.com/app/id1027993202">
 @endsection
 
 @section('styles')
     @parent
     <link href="{{ asset('assets/web/css/theme.css') }}" rel="stylesheet">
 @endsection
+
 
 
 @section('page')
