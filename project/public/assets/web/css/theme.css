@@ -297,9 +297,6 @@ iPad 3
         font-size: 16px;
     }
 
-    body {
-        padding-top: 95px;
-    }
 
     .copy{
         position: relative;
@@ -324,9 +321,7 @@ iPad 3
         padding: 5px;
         margin-top: -18px;
     }
-    body {
-        padding-top: 95px;
-    }
+
 }
 
 /* iPhone 6 ----------- */
