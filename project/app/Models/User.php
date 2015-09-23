@@ -124,6 +124,9 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         $phoneData = Util::unifyPhoneNumber($input['phone'], $input['country_code']);
 
+        Snafu::show($phoneData);
+        Snafu::show($input['verification']);
+
         $user = User::where('phone', '=', $phoneData->number)
             ->where('verification', '=', $input['verification'])
             ->whereNull('deleted_at')
