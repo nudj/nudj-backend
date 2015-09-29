@@ -22,12 +22,17 @@ class WebController extends \Illuminate\Routing\Controller
     const TYPE_REFER = 'refer';
 
 
+    public function download()
+    {
+        return view('web/page/downloads');
+    }
+
     public function login($type = null, $hash = null)
     {
 
         if(Agent::is('iPhone') || Agent::is('OS X'))
             return redirect('https://itunes.apple.com/app/id1027993202');
-     
+
 
         switch ($type) {
             case self::TYPE_NUDGE :

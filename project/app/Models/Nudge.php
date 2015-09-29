@@ -81,8 +81,9 @@ class Nudge extends ApiModel
     private static function addNewNudge($jobId, $employerId, $referrerId, $candidateId)
     {
 
-        if (Nudge::min()->where(['job_id' => $jobId, 'referrer_id' => $referrerId, 'candidate_id' => $candidateId])->first())
-            return false;
+        $nudge = Nudge::min()->where(['job_id' => $jobId, 'referrer_id' => $referrerId, 'candidate_id' => $candidateId])->first();
+        if ($nudge)
+            return $nudge;
 
         $nudge = new Nudge();
         $nudge->job_id = $jobId;
