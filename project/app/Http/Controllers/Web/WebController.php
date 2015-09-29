@@ -2,9 +2,7 @@
 
 
 use App\Events\LoginUserEvent;
-use App\Http\Requests\Web\VerifyUserRequest;
 use App\Http\Requests\Web\WebloginRequest;
-use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Job;
 use App\Models\Nudge;
@@ -14,6 +12,8 @@ use App\Utility\ApiException;
 use App\Utility\Facades\Shield;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
+use Jenssegers\Agent\Facades\Agent;
+
 
 class WebController extends \Illuminate\Routing\Controller
 {
@@ -24,6 +24,11 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function login($type = null, $hash = null)
     {
+
+        if(Agent::is('iPhone') || Agent::is('OS X'))
+            redirect('https://itunes.apple.com/app/id1027993202');
+
+
         switch ($type) {
             case self::TYPE_NUDGE :
                 $action = Nudge::findByHash($hash);
@@ -48,6 +53,8 @@ class WebController extends \Illuminate\Routing\Controller
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
+
+
 
     public function validate(WebLoginRequest $request)
     {

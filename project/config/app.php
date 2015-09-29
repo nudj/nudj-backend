@@ -135,6 +135,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		'Jenssegers\Agent\AgentServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -204,6 +205,7 @@ return [
 
 		'Image' 	=> 'Intervention\Image\Facades\Image',
 		'Shield' 	=> 'App\Utility\Authenticate\ShieldFacade',
+		'Agent' 	=> 'Jenssegers\Agent\Facades\Agent',
 	],
 
 ];

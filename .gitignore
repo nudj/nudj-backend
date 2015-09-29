@@ -1,2 +1,4 @@
 /kibana
 .idea/
+project/composer.lock
+*.lock
