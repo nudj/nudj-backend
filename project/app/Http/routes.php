@@ -24,6 +24,8 @@ Route::group(['prefix' => '/'], function () {
     Route::post('refer', 'Web\ActionsController@nudge');
     Route::get('countries', 'Web\ActionsController@countries');
 
+    Route::get('downloads', 'Web\HomeController@index');
+
 });
 
 
