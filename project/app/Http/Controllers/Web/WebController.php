@@ -25,9 +25,9 @@ class WebController extends \Illuminate\Routing\Controller
     public function login($type = null, $hash = null)
     {
 
-//        if(Agent::is('iPhone') || Agent::is('OS X'))
-            redirect('https://itunes.apple.com/app/id1027993202');
-            die('a'):
+        if(Agent::is('iPhone') || Agent::is('OS X'))
+            return redirect('https://itunes.apple.com/app/id1027993202');
+     
 
         switch ($type) {
             case self::TYPE_NUDGE :
