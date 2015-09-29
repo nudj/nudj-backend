@@ -27,7 +27,7 @@ class WebController extends \Illuminate\Routing\Controller
 
 //        if(Agent::is('iPhone') || Agent::is('OS X'))
             redirect('https://itunes.apple.com/app/id1027993202');
-
+            die('a'):
 
         switch ($type) {
             case self::TYPE_NUDGE :
