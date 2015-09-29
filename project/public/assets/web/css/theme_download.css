@@ -138,8 +138,11 @@ iPad 3
 
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
     /* Styles */
-    .img-resp{
+    .img-resp-phone{
         max-width: 65%;
+        }
+    .img-resp-app{
+        max-width: 55%;
         }
     .paragraph{
         font-size:18px;
@@ -156,8 +159,12 @@ iPad 3
 
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
     /* Styles */
-    .img-resp{
+    .img-resp-phone{
         max-width: 65%;
+        max-height:50%;
+        }
+    .img-resp-app{
+        max-width: 55%;
         }
     .paragraph{
         font-size:24px;
@@ -173,8 +180,12 @@ iPad 3
 
 @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait){
     /* Styles */
-    .img-resp{
+    .img-resp-phone{
         max-width: 65%;
+        max-height:50%;
+        }
+    .img-resp-app{
+        max-width: 55%;
         }
     .paragraph{
         font-size:24px;
