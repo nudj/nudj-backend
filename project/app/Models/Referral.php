@@ -72,8 +72,9 @@ class Referral extends ApiModel
     private static function addNewReferral($jobId, $referrerId)
     {
 
-        if (Referral::where(['job_id' => $jobId, 'referrer_id' => $referrerId])->first())
-            return false;
+        $referral = Referral::where(['job_id' => $jobId, 'referrer_id' => $referrerId])->first();
+        if ($referral)
+            return $referral;
 
         $referral = new Referral();
         $referral->job_id = $jobId;
