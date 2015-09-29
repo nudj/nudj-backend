@@ -31,7 +31,8 @@ class WebController extends \Illuminate\Routing\Controller
     {
 
         if(Agent::is('iPhone') || Agent::is('OS X'))
-            return redirect('https://itunes.apple.com/app/id1027993202');
+            return redirect('download');
+            //return redirect('https://itunes.apple.com/app/id1027993202');
 
 
         switch ($type) {
