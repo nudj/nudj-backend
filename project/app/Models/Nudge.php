@@ -6,6 +6,7 @@ use App\Models\Traits\Hashable;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
+use App\Utility\Snafu;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
@@ -82,6 +83,9 @@ class Nudge extends ApiModel
     {
 
         $nudge = Nudge::min()->where(['job_id' => $jobId, 'referrer_id' => $referrerId, 'candidate_id' => $candidateId])->first();
+
+        Snafu::show($nudge);
+        
         if ($nudge)
             return $nudge;
 
@@ -106,6 +110,8 @@ class Nudge extends ApiModel
 
     private function nudgeContact($job, $referrer, $contact, $message)
     {
+
+        Snafu::show($this);
         $message = Lang::get('sms.nudge', [
             'name' => $referrer->name,
             'message' => $message,
