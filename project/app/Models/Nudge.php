@@ -82,9 +82,9 @@ class Nudge extends ApiModel
     private static function addNewNudge($jobId, $employerId, $referrerId, $candidateId)
     {
 
-        $nudge = Nudge::min()->where(['job_id' => $jobId, 'referrer_id' => $referrerId, 'candidate_id' => $candidateId])->first();
+        $nudge = Nudge::where(['job_id' => $jobId, 'referrer_id' => $referrerId, 'candidate_id' => $candidateId])->first();
 
-        Snafu::show($nudge->hash);
+        Snafu::show($nudge->hash, 'nudge');
 
         if ($nudge)
             return $nudge;
@@ -111,7 +111,7 @@ class Nudge extends ApiModel
     private function nudgeContact($job, $referrer, $contact, $message)
     {
 
-        Snafu::show($this);
+
         $message = Lang::get('sms.nudge', [
             'name' => $referrer->name,
             'message' => $message,
