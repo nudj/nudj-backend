@@ -52,12 +52,20 @@ body {
     padding: 20px;
     display: inherit;
     margin: 0 auto;
-    line-height:24px;
+    line-height:35px;
+    height: 100%;
+    }
+
+.img-holder{
+    padding: 20px;
+    display: inherit;
+    margin: 0 auto;
+    line-height:35px;
     height: 100%;
     }
 
 .paragraph{
-    color:#01a187;font-size:26px;
+    color:#01a187;font-size:35px;
     }
 
 .img-resp-phone, .img-resp-app{

@@ -24,13 +24,13 @@
     </nav>
 
     <div class="container">
-        <div class="logo">
+        <div class="img-holder">
            <img class="img-resp-phone" src="{{ asset('assets/web/img/iPhone.png') }}">
         </div>
     </div>
 
     <div class="container">
-        <div class="logo">
+        <div class="img-holder">
             <a href="https://itunes.apple.com/app/id1027993202" target="_self" ><img class="img-resp-app" src="{{ asset('assets/web/img/app-store.png') }}"></a>
         </div>
     </div>
