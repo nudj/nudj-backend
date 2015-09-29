@@ -25,7 +25,7 @@
 
     <div class="container">
         <div class="img-holder">
-           <img class="img-resp-phone" src="{{ asset('assets/web/img/iPhone.png') }}">
+           <img class="img-resp-phone" src="{{ asset('assets/web/img/iPhone_line.png') }}">
         </div>
     </div>
 
