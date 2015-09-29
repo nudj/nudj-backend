@@ -156,6 +156,9 @@ iPad 3
         font-size:18px;
         font-weight:600;
         }
+    .logo{
+        line-height:20px;
+        }
 
     }
 
@@ -178,6 +181,9 @@ iPad 3
         font-size:24px;
         font-weight:600;
         }
+    .logo{
+        line-height:20px;
+        }
     }
 
 /* iPhone 6+ ----------- */
@@ -198,6 +204,9 @@ iPad 3
     .paragraph{
         font-size:24px;
         font-weight:600;
+        }
+    .logo{
+        line-height:20px;
         }
     }
 
