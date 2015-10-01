@@ -84,7 +84,7 @@ class Nudge extends ApiModel
 
         $nudge = Nudge::where(['job_id' => $jobId, 'referrer_id' => $referrerId, 'candidate_id' => $candidateId])->first();
 
-        Snafu::show($nudge->hash, 'nudge');
+        Snafu::show($nudge, 'nudge');
 
         if ($nudge)
             return $nudge;
