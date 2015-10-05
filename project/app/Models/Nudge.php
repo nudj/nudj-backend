@@ -66,7 +66,7 @@ class Nudge extends ApiModel
 
             $referrer = User::find($userId);
 
-            if ($contact->user_id)
+            if ($contact->isMobileUser())
                 $nudge->nudgeUser($job, $referrer, $contact, $message);
             else
                 $nudge->nudgeContact($job, $referrer, $contact, $message);

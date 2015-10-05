@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Models\Contact;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\CloudHelper;
@@ -34,8 +35,9 @@ class ServicesController extends ApiController
     public function test()
     {
 
+		$contact = Contact::findOrFail($_GET['id']);
 
-	
+		var_dump($contact->isMobileUser());
 
 	}
 
