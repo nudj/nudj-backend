@@ -65,6 +65,7 @@ class Application extends ApiModel
         $meta = [
             'job_id' => $job->id,
             'job_title' => $job->title,
+            'job_bonus' => $job->bonus,
             'position' => $job->title,
             'candidate' => $candidate->name,
 	        'phone' => $candidate->phone
