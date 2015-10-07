@@ -29,25 +29,6 @@ Route::group(['prefix' => '/'], function () {
 });
 
 
-// Admin panel routes
-Route::group(['prefix' => 'admin'], function () {
-
-
-    Route::get('/', 'Admin\AuthController@getLogin');
-    Route::get('auth/login', 'Admin\AuthController@getLogin');
-    Route::get('auth/logout', 'Admin\AuthController@getLogout');
-    Route::post('auth/login', 'Admin\AuthController@postLogin');
-
-    Route::get('/dashboard', 'Admin\DashboardController@index');
-    Route::get('/repair', 'Admin\RepairController@index');
-    Route::get('/logs', 'Admin\LogsController@index');
-
-    Route::get('/logs/line', 'Admin\LogsController@getLines');
-
-    Route::get('/command/composer/update', 'Admin\CommandsController@composerUpdate');
-
-});
-
 // HTML sources accessed from the app
 Route::group(['prefix' => 'html'], function () {
     Route::get('terms', 'HtmlController@terms');
