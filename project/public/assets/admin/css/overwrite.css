@@ -1,0 +1,37 @@
+/* Core
+------------------------------------------------- */
+html, body {
+    height: 100%;
+}
+
+/* Login Screen
+------------------------------------------------- */
+.login-page, .login-box {
+    height: 100%;
+}
+
+.login-box, .register-box {
+    margin: 0 auto;
+    padding: 10% 0 0 0;
+}
+
+/* Additional elements
+------------------------------------------------- */
+#console {
+    width: 100%;
+    min-height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.correct-circle{
+   padding: 11px;
+}
+
+/* Google map div
+------------------------------------------------*/
+#map_canvas{
+    height:300px;
+    width:300px;
+    margin: 0 auto;
+}
