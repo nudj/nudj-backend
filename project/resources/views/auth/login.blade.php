@@ -7,7 +7,7 @@
         <div class="login-box">
 
             <div class="login-logo">
-                <a href="#"><b>Trip</b>Wire</a>
+                <a href="#"><b>Nudj</b></a>
             </div>
             <!-- /.login-logo -->
 
@@ -28,7 +28,7 @@
 
                 <form action="{{url('auth/login')}}" method="post">
 
-                    {!! csrf_field() !!}
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="form-group has-feedback">
                         <input name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">

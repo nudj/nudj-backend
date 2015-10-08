@@ -126,6 +126,25 @@ Route::group(['prefix' => 'api/v1'], function () {
 });
 
 
+// ADMINISTRATION
+$adminRoutes = function() {
+
+    // AUTHENTICATION
+    Route::get('auth/login', 'Desk\Auth\AuthController@getLogin');
+    Route::post('auth/login', 'Desk\Auth\AuthController@postLogin');
+    Route::get('auth/logout', 'Desk\Auth\AuthController@getLogout');
+
+    //DASHBOARD
+    Route::get('/', 'Desk\DashboardController@index');
+    Route::get('dashboard', 'Desk\DashboardController@index');
+
+};
+
+
+Route::group(['domain' => 'desk.nudje.co'], $adminRoutes);
+Route::group(['prefix' => '/'], $adminRoutes);
+
+
 // Listen for some stuff
 //if (env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {
 if (env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {
