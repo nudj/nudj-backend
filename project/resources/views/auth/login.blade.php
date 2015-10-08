@@ -6,8 +6,8 @@
 
         <div class="login-box">
 
-            <div class="login-logo">
-                <a href="#"><b>Nudj</b></a>
+            <div class="login-logo bg-nudj">
+                <span class="white-nudj"><b>Nudj</b></span>
             </div>
             <!-- /.login-logo -->
 
@@ -48,7 +48,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                            <button type="submit" class="btn btn-success btn-block btn-flat bg-nudj">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>

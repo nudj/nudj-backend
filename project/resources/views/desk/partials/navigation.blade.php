@@ -25,8 +25,8 @@
             <li><a href="#">Create New</a></li>
         </ul>
     </li>
-    <li><a href="{{ url('logs') }}"><span>Logs</span></a></li>
-    <li><a href="{{ url('repair') }}"><span>Repair</span></a></li>
+{{--    <li><a href="{{ url('logs') }}"><span>Logs</span></a></li>
+    <li><a href="{{ url('repair') }}"><span>Repair</span></a></li>--}}
 
 
     <li class="header">USER</li>

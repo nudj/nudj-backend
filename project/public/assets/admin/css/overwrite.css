@@ -28,6 +28,23 @@ html, body {
    padding: 11px;
 }
 
+.borderless-box{
+    border-color:transparent;
+    }
+
+.tmp-hidden{
+    display:none;
+    }
+.color-nudj{
+    color:#00A187;
+    }
+.white-nudj{
+    color:#FFFFFF;
+    }
+.bg-nudj{
+    background-color:#00A187;
+    }
+
 /* Google map div
 ------------------------------------------------*/
 #map_canvas{
