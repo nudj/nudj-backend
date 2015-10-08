@@ -43,8 +43,9 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    @if(isset($mage))
-                    <img class="profile-user-img img-responsive img-circle" src="{{$image}}" alt="User profile picture">
+                    @if(isset($image))
+                        <?php $img = json_decode($image); ?>
+                    <img class="profile-user-img img-responsive img-circle" src="{{ Config::get('models.users.imageUrl') }}{{ $id }}/profile/{{ $img->profile }}" alt="Profile picture">
                     @else
                        <div class="profile-user-img img-circle text-center correct-circle">
                          <i class="fa fa-user fa-5x"></i>
