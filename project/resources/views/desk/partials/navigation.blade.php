@@ -6,58 +6,13 @@
         <a href="#"><span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
             <li><a href="{{ url('user') }}">List All</a></li>
-            <li><a href="{{ url('user/create') }}">Create New</a></li>
+            <li><a href="#">Create New</a></li>
         </ul>
     </li>
     <li class="treeview">
-        <a href="#"><span>Amenities</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <a href="#"><span>Jobs</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
             <li><a href="{{ url('amenities') }}">List All</a></li>
-            <li><a href="#">Create New</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="#"><span>Destinations</span> <i class="fa fa-angle-left pull-right"></i></a>
-         <ul class="treeview-menu">
-            <li><a href="{{ url('destinations') }}">List All</a></li>
-            <li><a href="#">Create New</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="#"><span>Notes</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-            <li><a href="{{ url('notes') }}">List All</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="#"><span>Questions</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-            <li><a href="{{ url('questions') }}">List All</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="#"><span>Reviews</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-            <li><a href="{{ url('reviews') }}">List All</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="#"><span>Reports</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-            <li><a href="{{ url('reports') }}">List All</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="#"><span>Offers</span> <i class="fa fa-angle-left pull-right"></i></a>
-         <ul class="treeview-menu">
-            <li><a href="#">List All</a></li>
-            <li><a href="#">Create New</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="#"><span>Perks</span> <i class="fa fa-angle-left pull-right"></i></a>
-         <ul class="treeview-menu">
-            <li><a href="#">List All</a></li>
             <li><a href="#">Create New</a></li>
         </ul>
     </li>

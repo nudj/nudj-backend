@@ -151,7 +151,8 @@ return [
 		 */
 		'Intervention\Image\ImageServiceProvider',
 		'Jenssegers\Mongodb\MongodbServiceProvider',
-		'App\Utility\Providers\ShieldServiceProvider'
+		'App\Utility\Providers\ShieldServiceProvider',
+		'yajra\Datatables\DatatablesServiceProvider',
 
 
 	],
@@ -206,6 +207,7 @@ return [
 		'Image' 	=> 'Intervention\Image\Facades\Image',
 		'Shield' 	=> 'App\Utility\Authenticate\ShieldFacade',
 		'Agent' 	=> 'Jenssegers\Agent\Facades\Agent',
+		'Datatables' => 'yajra\Datatables\Datatables',
 	],
 
 ];

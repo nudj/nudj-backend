@@ -27,24 +27,7 @@
                 <h3 class="box-title">List of Users</h3>
             </div>
             <div class="box-body">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Filters</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form id="search-form" class="form-inline" role="form">
-                            <div class="form-group">
-                                <label for="email">Filter by&nbsp: </label>
-                                <select name="operator" id="operator" class="form-control">
-                                    <option value="" selected>All</option>
-                                    <option value="4">Top tripper</option>
-                                    <option value="5">Reported</option>
-                                    <option value="7">Disabled</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <!-- Filters -->
                 <div id="users_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="row">
                         <div class="col-sm-12">
@@ -53,12 +36,11 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th>Username</th>
                                     <th>Email</th>
-                                    <th>Top Tripper</th>
-                                    <th>Reported</th>
+                                    <th>Phone</th>
+                                    <th>Company</th>
+                                    <th>Position</th>
                                     <th>Created At</th>
-                                    <th>Disabled</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -67,12 +49,11 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th>Username</th>
                                     <th>Email</th>
-                                    <th>Top Tripper</th>
-                                    <th>Reported</th>
+                                    <th>Phone</th>
+                                    <th>Company</th>
+                                    <th>Position</th>
                                     <th>Created At</th>
-                                    <th>Disabled</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
@@ -124,44 +105,16 @@
                             }
                             return "";
                         }
-                    },
-                    {
-                        "aTargets" : [4],
-                        "mRender": function ( data, type, full ) {
-                            if(data && data >0){
-                                return '<span class="label label-success">Top Tripper</span>';
-                            }
-                            return "";
-                        }
-                    },
-                    {
-                        "aTargets" : [5],
-                        "mRender": function ( data, type, full ) {
-                            if(data == 1){
-                                return '<span class="label label-warning">Reported</span>';
-                            }
-                            return "";
-                        }
-                    },
-                    {
-                        "aTargets" : [7],
-                        "mRender": function ( data, type, full ) {
-                            if(data){
-                                return '<span class="label label-danger">Disabled</span>';
-                            }
-                            return "";
-                        }
                     }
                 ],
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },
-                    { data: 'username', name: 'username' },
                     { data: 'email', name: 'email' },
-                    { data: 'top', name: 'top' },
-                    { data: 'reported', name: 'reported' },
+                    { data: 'phone', name: 'phone' },
+                    { data: 'position', name: 'position' },
+                    { data: 'company', name: 'company' },
                     { data: 'created_at', name: 'created_at' },
-                    { data: 'disabled', name: 'disabled'},
                     { data: 'action', name: 'action', orderable: false, searchable: false}
                 ],
                 "order": [[ 0, "desc" ]]
@@ -183,7 +136,7 @@
                 var ident = $(this).attr('id');
                 switch (ident){
                     case "show":
-                        window.location.href="user/"+data['id'];
+//                        window.location.href="user/"+data['id'];
                         break;
                     case "update":
                         break;

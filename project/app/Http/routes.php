@@ -138,10 +138,17 @@ $adminRoutes = function() {
     Route::get('/', 'Desk\DashboardController@index');
     Route::get('dashboard', 'Desk\DashboardController@index');
 
+    //USERS
+    Route::get('/user', 'Desk\UsersController@index');
+    Route::get('/user/{id}', 'Desk\UsersController@show');
+
+    //DATATABLES
+    Route::get('/datatables/{who}', 'Desk\DeskController@tableData');
+
 };
 
 
-Route::group(['domain' => 'desk.nudje.co'], $adminRoutes);
+Route::group(['domain' => 'desk.nudj.co'], $adminRoutes);
 Route::group(['prefix' => '/'], $adminRoutes);
 
 
