@@ -61,7 +61,7 @@ class Referral extends ApiModel
             if (!$referral)
                 continue;
 
-            if ($contact->isMobileUser())
+            if (0)
                 $referral->askUserToRefer($job, $contact, $message);
             else
                 $referral->askContactToRefer($job, $contact, $message);
