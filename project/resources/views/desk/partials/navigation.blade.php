@@ -5,14 +5,14 @@
     <li class="treeview">
         <a href="#"><span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-            <li><a href="{{ url('user') }}">List All</a></li>
+            <li><a href="{{ url('users') }}">List All</a></li>
             <li><a href="#">Create New</a></li>
         </ul>
     </li>
     <li class="treeview">
         <a href="#"><span>Jobs</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-            <li><a href="{{ url('amenities') }}">List All</a></li>
+            <li><a href="{{ url('jobs') }}">List All</a></li>
             <li><a href="#">Create New</a></li>
         </ul>
     </li>
@@ -21,8 +21,8 @@
     <li class="treeview">
         <a href="#"><span>Admins</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-            <li><a href="{{ url('admin') }}">List Admins</a></li>
-            <li><a href="{{ url('admin/create') }}">Create a New Admin</a></li>
+            <li><a href="{{ url('admins') }}">List Admins</a></li>
+            <li><a href="#">Create New</a></li>
         </ul>
     </li>
     <li><a href="{{ url('logs') }}"><span>Logs</span></a></li>

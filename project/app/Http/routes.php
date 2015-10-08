@@ -139,8 +139,16 @@ $adminRoutes = function() {
     Route::get('dashboard', 'Desk\DashboardController@index');
 
     //USERS
-    Route::get('/user', 'Desk\UsersController@index');
-    Route::get('/user/{id}', 'Desk\UsersController@show');
+    Route::get('/users', 'Desk\UsersController@index');
+    Route::get('/users/{id}', 'Desk\UsersController@show');
+
+    //JOBS
+    Route::get('/jobs', 'Desk\JobsController@index');
+    Route::get('/jobs/{id}', 'Desk\JobsController@show');
+
+    //ADMINS
+    Route::get('/admins', 'Desk\AdminsController@index');
+    Route::get('/admins/{id}', 'Desk\AdminsController@show');
 
     //DATATABLES
     Route::get('/datatables/{who}', 'Desk\DeskController@tableData');
