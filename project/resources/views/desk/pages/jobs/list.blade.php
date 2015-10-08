@@ -148,7 +148,7 @@
                 var ident = $(this).attr('id');
                 switch (ident){
                     case "show":
-//                        window.location.href="user/"+data['id'];
+                       window.location.href="jobs/"+data['id'];
                         break;
                     case "update":
                         break;

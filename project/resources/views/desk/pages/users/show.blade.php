@@ -62,7 +62,8 @@
                                     <span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Verified">Verified</span>
                                 @else
                                     <span data-toggle="tooltip" title="" class="badge bg-red pull-right" data-original-title="Unverified">Unverified</span>
-                                @endif</a>
+                                @endif
+                            </a>
                         </li>
                         <li class="list-group-item">
                             <b>Completed</b>
