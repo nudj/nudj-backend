@@ -118,10 +118,6 @@
                                             <input type="text" class="form-control" id="company" name="company" placeholder="Company" value="{{$company or null}}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="{{$password or null}}">
-                                        </div>
-                                        <div class="form-group">
                                             <label>About</label>
                                             <textarea class="form-control" id="about" name="about" placeholder="About">{{$about or null}}</textarea>
                                         </div>
