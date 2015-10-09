@@ -22,7 +22,7 @@
     <section class="content">
 
         <!-- Default box -->
-        <div class="box">
+        <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">List of Users</h3>
             </div>

@@ -22,11 +22,13 @@
     <section class="content">
 
         <!-- Default box -->
-        <div class="box">
+        <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">List of Jobs</h3>
             </div>
+
             <div class="box-body">
+                <!-- Filters -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Filters</h3>
@@ -44,6 +46,7 @@
                         </form>
                     </div>
                 </div>
+                <!-- Filters -->
                 <div id="users_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="row">
                         <div class="col-sm-12">
