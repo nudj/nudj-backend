@@ -106,7 +106,7 @@
                                             <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{$email or null}}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Username</label>
+                                            <label>Phone</label>
                                             <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{$phone or null}}">
                                         </div>
                                         <div class="form-group">
