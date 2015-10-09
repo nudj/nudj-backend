@@ -149,6 +149,7 @@ $adminRoutes = function() {
     //ADMINS
     Route::get('/admins', 'Desk\AdminsController@index');
     Route::get('/admins/{id}', 'Desk\AdminsController@show');
+    Route::post('/admins/{id}', 'Desk\AdminsController@update');
 
     //DATATABLES
     Route::get('/datatables/{who}', 'Desk\DeskController@tableData');
