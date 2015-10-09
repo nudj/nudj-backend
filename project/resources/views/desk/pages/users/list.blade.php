@@ -28,6 +28,24 @@
             </div>
             <div class="box-body">
                 <!-- Filters -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Filters</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form id="search-form" class="form-inline" role="form">
+                            <div class="form-group">
+                                <label for="email">Filter by&nbsp: </label>
+                                <select name="operator" id="operator" class="form-control">
+                                    <option value="">All</option>
+                                    <option value="1">Mobile</option>
+                                    <option value="0">Web</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Filters -->
                 <div id="users_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="row">
                         <div class="col-sm-12">
@@ -40,6 +58,7 @@
                                     <th>Phone</th>
                                     <th>Company</th>
                                     <th>Position</th>
+                                    <th>Mobile / Web</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -53,6 +72,7 @@
                                     <th>Phone</th>
                                     <th>Company</th>
                                     <th>Position</th>
+                                    <th>Mobile / Web</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -99,6 +119,15 @@
                     {
                         "aTargets" : [6],
                         "mRender": function ( data, type, full ) {
+                            if(data > 0){
+                                return '<span class="label label-success">Mobile</span>';
+                            }
+                            return '<span class="label label-primary">Web</span>';
+                        }
+                    },
+                    {
+                        "aTargets" : [7],
+                        "mRender": function ( data, type, full ) {
                             if(data){
                                 var mDate = moment(data);
                                 return (mDate && mDate.isValid()) ? mDate.format("YYYY-MM-DD") : "";
@@ -114,6 +143,7 @@
                     { data: 'phone', name: 'phone' },
                     { data: 'position', name: 'position' },
                     { data: 'company', name: 'company' },
+                    { data: 'mobile', name: 'mobile' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'action', name: 'action', orderable: false, searchable: false}
                 ],
@@ -121,14 +151,8 @@
             });
 
             $("#operator").on('change',function(){
-                var original="";
-                table.columns([4,5,7]).search(original ? original : '', true, false).draw();
-
-                if($(this).val().length > 0){
-                            original ="1";
-                            var val = $.fn.dataTable.util.escapeRegex(original);
-                            table.columns([$(this).val()]).search(val ? val : '', true, false).draw();
-                }
+                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                table.columns([6]).search(val ? val : '', true, false).draw();
             });
 
             tbl_el.on( 'click', 'a', function () {
