@@ -49,7 +49,7 @@ class Admin extends Model implements AuthenticatableContract, CanResetPasswordCo
         if (isset($data['email']))
             $this->email = (string)$data['email'];
 
-        if (isset($data['password']))
+        if (strlen($data['password']) > 0)
             $this->password = (string)Hash::make($data['password']);
 
         $this->save();
