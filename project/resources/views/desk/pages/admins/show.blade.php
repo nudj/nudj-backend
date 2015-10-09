@@ -21,7 +21,7 @@
 <section class="content">
 
     <!-- Default box -->
-    <div class="box">
+    <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">Admin</h3>
         </div>

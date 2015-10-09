@@ -41,23 +41,36 @@
         <div class="col-md-3">
 
             <!-- Image -->
-            <div class="box box-primary">
+            <div class="box box-success">
                 <div class="box-body box-profile">
-
                     <h3 class="profile-username text-center">Job</h3>
-                    <p class="text-muted text-center">Id : <span class="label label-success">{{ $id }}</span></p>
-                    <p class="text-muted text-center">Creation date : <span class="label label-success">{{ date('Y-m-d', strtotime($created_at)) }}</span></p>
+                    <div class="container-fluid">
+                        <div class="row row-centered">
+                            <div class="col-xs-4 col-centered">
+                                <span class="info-box-icon bg-green">
+                                   <i class="ion ion-ios-briefcase"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted text-center"></p>
+                    <p class="text-muted text-center">Id : <span class="label label-success">{{ $job->id }}</span></p>
+                    <p class="text-muted text-center">Creation date : <span class="label label-success">{{ date('Y-m-d', strtotime($job->created_at)) }}</span></p>
 
                     <p class="text-muted text-center"></p>
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
                             <b>Active</b>
-                            @if($active > 0)
+                            @if($job->active > 0)
                                 <span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Active">Verified</span>
                             @else
                                 <span data-toggle="tooltip" title="" class="badge bg-red pull-right" data-original-title="Inactive">Inactive</span>
                             @endif
+                        </li>
+                        <li class="list-group-item">
+                            <b>User</b>
+                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user->name }}</span></a>
                         </li>
                     </ul>
                 </div><!-- /.box-body -->
@@ -71,7 +84,7 @@
                 <div class="tab-content">
                     <div class="active tab-pane" id="settings">
 
-                        <form class="form-horizontal" method="POST" action="{{ url('/jobs') }}/{{$id}}" >
+                        <form class="form-horizontal" method="POST" action="{{ url('/jobs') }}/{{$job->id}}" >
 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -82,27 +95,27 @@
 
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{$title or null}}">
+                                            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{$job->title or null}}">
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea data-autoresize rows="10" class="form-control" id="message" name="message" placeholder="Description">{!! $description or null !!}</textarea>
+                                            <textarea data-autoresize rows="10" class="form-control" id="message" name="message" placeholder="Description">{!! $job->description or null !!}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Location</label>
-                                            <input type="text" class="form-control" id="location" name="location" placeholder="Location" value="{{$location or null}}">
+                                            <input type="text" class="form-control" id="location" name="location" placeholder="Location" value="{{$job->location or null}}">
                                         </div>
                                         <div class="form-group">
                                             <label>Company</label>
-                                            <input type="text" class="form-control" id="company" name="company" placeholder="Company" value="{{$company or null}}">
+                                            <input type="text" class="form-control" id="company" name="company" placeholder="Company" value="{{$job->company or null}}">
                                         </div>
                                         <div class="form-group">
                                             <label>Salary</label>
-                                            <input type="text" class="form-control" id="salary" name="salary" placeholder="Salary" value="{{$salary or null}}">
+                                            <input type="text" class="form-control" id="salary" name="salary" placeholder="Salary" value="{{$job->salary or null}}">
                                         </div>
                                         <div class="form-group">
                                             <label>Bonus</label>
-                                            <input type="text" class="form-control" id="bonus" name="bonus" placeholder="Bonus" value="{{$bonus or null}}">
+                                            <input type="text" class="form-control" id="bonus" name="bonus" placeholder="Bonus" value="{{$job->bonus or null}}">
                                         </div>
 
                                     </form>

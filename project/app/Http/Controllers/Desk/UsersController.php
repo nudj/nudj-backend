@@ -18,6 +18,11 @@ class UsersController extends DeskController
     {
         $records = User::findOrFail($id);
 
-        return view('desk/pages/users/show', $records);
+        $params = [
+            "user" => $records,
+            "jobs" => $records->jobs()->count()
+        ];
+
+        return view('desk/pages/users/show', $params);
     }
 }
