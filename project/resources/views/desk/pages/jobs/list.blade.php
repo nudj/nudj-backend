@@ -10,10 +10,10 @@
 
             <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Users</h1>
+        <h1>Jobs</h1>
         <ol class="breadcrumb">
             <li><a href="{{ url() }}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Users</a></li>
+            <li><a href="#">Jobs</a></li>
             <li class="active">List</li>
         </ol>
     </section>
@@ -24,10 +24,26 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">List of Users</h3>
+                <h3 class="box-title">List of Jobs</h3>
             </div>
             <div class="box-body">
-                <!-- Filters -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Filters</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form id="search-form" class="form-inline" role="form">
+                            <div class="form-group">
+                                <label for="email">Filter by&nbsp: </label>
+                                <select name="operator" id="operator" class="form-control">
+                                    <option value="">All</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div id="users_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                     <div class="row">
                         <div class="col-sm-12">
@@ -133,14 +149,17 @@
             });
 
             $("#operator").on('change',function(){
-                var original="";
-                table.columns([4,5,7]).search(original ? original : '', true, false).draw();
+//                var original="";
+//                table.columns([6]).search(original ? original : '', true, false).draw();
+//
+//                if($(this).val().length > 0){
+//                            original ="1";
+//                            var val = $.fn.dataTable.util.escapeRegex(original);
+//                            table.columns([$(this).val()]).search(val ? val : '', true, false).draw();
+//                }
 
-                if($(this).val().length > 0){
-                            original ="1";
-                            var val = $.fn.dataTable.util.escapeRegex(original);
-                            table.columns([$(this).val()]).search(val ? val : '', true, false).draw();
-                }
+                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                table.columns([6]).search(val ? val : '', true, false).draw();
             });
 
             tbl_el.on( 'click', 'a', function () {
