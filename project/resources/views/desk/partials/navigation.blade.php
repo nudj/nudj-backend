@@ -22,7 +22,7 @@
         <a href="#"><span>Admins</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
             <li><a href="{{ url('admins') }}">List Admins</a></li>
-            <li><a href="#">Create New</a></li>
+            <li><a href="{{ url('admins/create') }}">Create New</a></li>
         </ul>
     </li>
 {{--    <li><a href="{{ url('logs') }}"><span>Logs</span></a></li>

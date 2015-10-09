@@ -31,7 +31,6 @@ class Admin extends Model implements AuthenticatableContract, CanResetPasswordCo
           $admin->name = (string)$request->name;
           $admin->email = (string)$request->email;
           $admin->password = (string)Hash::make($request->password);
-          $admin->roles = "['admin']";
 
 
         $admin->save();

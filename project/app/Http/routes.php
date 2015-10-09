@@ -148,6 +148,8 @@ $adminRoutes = function() {
 
     //ADMINS
     Route::get('/admins', 'Desk\AdminsController@index');
+    Route::get('/admins/create', 'Desk\AdminsController@create');
+    Route::post('/admins', 'Desk\AdminsController@store');
     Route::get('/admins/{id}', 'Desk\AdminsController@show');
     Route::post('/admins/{id}', 'Desk\AdminsController@update');
 

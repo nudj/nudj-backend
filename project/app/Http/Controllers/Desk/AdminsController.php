@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Desk;
 
 
 use App\Models\Admin;
-use Illuminate\Http\Request;
+use App\Http\Requests\Desk\AdminCreateRequest;
 use App\Http\Requests\Desk\AdminUpdateRequest;
 
 class AdminsController extends DeskController
@@ -23,10 +23,21 @@ class AdminsController extends DeskController
         return view('desk/pages/admins/show', $records);
     }
 
+    public function create()
+    {
+        return view('desk/pages/admins/create');
+    }
+
+
+    public function store(AdminCreateRequest $request)
+    {
+        $newAdmin = Admin::add($request);
+
+        return redirect('/admins/create')->with('status', $newAdmin->email);
+    }
+
     public function update($id, AdminUpdateRequest $request)
     {
-
-//        var_dump($request);die();
 
         $record = Admin::findOrFail($id);
 

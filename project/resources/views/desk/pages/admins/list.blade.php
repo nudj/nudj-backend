@@ -10,10 +10,10 @@
 
             <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Users</h1>
+        <h1>Admins</h1>
         <ol class="breadcrumb">
             <li><a href="{{ url() }}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Users</a></li>
+            <li><a href="#">Admins</a></li>
             <li class="active">List</li>
         </ol>
     </section>
@@ -24,7 +24,7 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">List of Users</h3>
+                <h3 class="box-title">List of Admins</h3>
             </div>
             <div class="box-body">
                 <!-- Filters -->
