@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Desk;
 
 
 use App\Models\Job;
-use Illuminate\Support\Facades\DB;
 
 class JobsController extends DeskController
 {
@@ -20,7 +19,7 @@ class JobsController extends DeskController
         $records = Job::findOrFail($id);
         $details = [
             "job" => $records,
-            "user" => DB::table('users')->whereId( $records->user_id)->first()
+            "user" => \App\Models\User::find($records->user_id)
         ];
 
         return view('desk/pages/jobs/show', $details);
