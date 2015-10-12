@@ -91,6 +91,7 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#settings" data-toggle="tab">Details</a></li>
+                    <li><a href="#jobs" data-toggle="tab">Jobs</a></li>
                 </ul>
                 <div class="tab-content">
 
@@ -144,6 +145,25 @@
 
                     </div><!-- /.tab-pane -->
 
+                    <div class="tab-pane" id="jobs">
+                        <div class="box-body">
+                            <div class="col-md-12">
+                                <ul class="list-group list-group-unbordered">
+                                @if(isset($user_job))
+                                    @foreach($user_job as $job)
+                                        <li class="list-group-item">
+                                            <b>{{ $job->title }}</b>
+                                            <a href="{{ url('/jobs') }}/{{ $job->id }}" class="pull-right">
+                                                    <span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Job"><i class="fa fa-external-link"></i></span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
                 </div><!-- /.tab-content -->
             </div><!-- /.nav-tabs-custom -->
