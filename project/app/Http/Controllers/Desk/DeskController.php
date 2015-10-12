@@ -18,7 +18,19 @@ class DeskController extends \Illuminate\Routing\Controller {
 
     public function tableData($who)
     {
-        $data = DB::table($who)->select();
+
+        switch ($who){
+            case "users":
+                         $data = DB::table($who)
+                            ->leftJoin('jobs', 'users.id', '=', 'jobs.user_id')
+                            ->select(DB::raw('users.*, count(jobs.id) as jobs'))
+                            ->groupBy('users.id');
+                         break;
+            default :
+                     $data = DB::table($who)->select();
+                     break;
+        }
+
 
         return Datatables::of($data)->make(true);
     }

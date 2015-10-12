@@ -59,6 +59,7 @@
                                     <th>Company</th>
                                     <th>Position</th>
                                     <th>Mobile / Web</th>
+                                    <th>Jobs</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -73,6 +74,7 @@
                                     <th>Company</th>
                                     <th>Position</th>
                                     <th>Mobile / Web</th>
+                                    <th>Jobs</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -124,9 +126,18 @@
                             }
                             return '<span class="label label-primary">Web</span>';
                         }
-                    },
+                    } ,
                     {
                         "aTargets" : [7],
+                        "mRender": function ( data, type, full ) {
+                            if(data > 0){
+                                return '<span class="label label-success">'+data+'</span>';
+                            }
+                            return '<span class="label bg-red">'+data+'</span>';
+                        }
+                    },
+                    {
+                        "aTargets" : [8],
                         "mRender": function ( data, type, full ) {
                             if(data){
                                 var mDate = moment(data);
@@ -144,6 +155,7 @@
                     { data: 'position', name: 'position' },
                     { data: 'company', name: 'company' },
                     { data: 'mobile', name: 'mobile' },
+                    { data: 'jobs', name: 'jobs' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'action', name: 'action', orderable: false, searchable: false}
                 ],

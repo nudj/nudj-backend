@@ -92,6 +92,7 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#settings" data-toggle="tab">Details</a></li>
                     <li><a href="#jobs" data-toggle="tab">Jobs</a></li>
+                    <li><a href="#applications" data-toggle="tab">Applications</a></li>
                 </ul>
                 <div class="tab-content">
 
@@ -149,18 +150,46 @@
                         <div class="box-body">
                             <div class="col-md-12">
                                 <ul class="list-group list-group-unbordered">
-                                @if(isset($user_job))
-                                    @foreach($user_job as $job)
-                                        <li class="list-group-item">
-                                            <b>{{ $job->title }}</b>
-                                            <a href="{{ url('/jobs') }}/{{ $job->id }}" class="pull-right">
-                                                    <span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Job"><i class="fa fa-external-link"></i></span>
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                @endif
-
+                                    @if(isset($user_job))
+                                        @foreach($user_job as $job)
+                                            <li class="list-group-item">
+                                                <b>{{ $job->title }}</b>
+                                                <a href="{{ url('/jobs') }}/{{ $job->id }}" class="pull-right">
+                                                        <span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Job"><i class="fa fa-external-link"></i></span>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    @endif
                                 </ul>
+                                <div class="form-group">
+                                    <a href="{{ url('/users') }}">
+                                        <button type="button" class="btn btn-default btn-flat"><i class="fa fa-list"></i>  List </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="applications">
+                        <div class="box-body">
+                            <div class="col-md-12">
+                                <ul class="list-group list-group-unbordered">
+                                    @if(isset($applications))
+                                        @foreach($applications as $app)
+                                            <li class="list-group-item">
+                                                <b>Application for Job Id[ {{ $app->job_id }} ]</b>
+                                                <a href="{{ url('/jobs') }}/{{ $app->job_id }}" class="pull-right">
+                                                    <span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Job"><i class="fa fa-external-link"></i></span>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                                <div class="form-group">
+                                    <a href="{{ url('/users') }}">
+                                        <button type="button" class="btn btn-default btn-flat"><i class="fa fa-list"></i>  List </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -21,7 +21,8 @@ class UsersController extends DeskController
         $params = [
             "user" => $records,
             "jobs" => $records->jobs()->count(),
-            "user_job" => \App\Models\Job::where('user_id', '=', $id)->get()
+            "user_job" => \App\Models\Job::where('user_id', '=', $id)->get(),
+            "applications" => \App\Models\Application::where('candidate_id', '=', $id)->get()
         ];
 
         return view('desk/pages/users/show', $params);
