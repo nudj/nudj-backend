@@ -52,7 +52,7 @@ class Referral extends ApiModel
 
 
         // prepare message
-        $message = $message ?: Lang::get('messages.refer', ['position' => $job->title]);
+        $message = $message ?: Lang::get('messages.refer');
 
         foreach ($contacts as $contact) {
 
