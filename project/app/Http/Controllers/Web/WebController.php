@@ -30,7 +30,7 @@ class WebController extends \Illuminate\Routing\Controller
     public function login($type = null, $hash = null)
     {
 
-        if(Agent::is('iPhone') || Agent::is('OS X'))
+        if(Agent::is('iPhone'))
             return redirect('download');
             //return redirect('https://itunes.apple.com/app/id1027993202');
 
