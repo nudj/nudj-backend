@@ -53,5 +53,7 @@
 
     </div>
     </div>
-
+    <footer class="main-footer login-copyright">
+        <strong>Powered by E-Man Desk. &copy; Copyright 2014 E-Man.</strong> All Rights Reserved.
+    </footer>
 @endsection

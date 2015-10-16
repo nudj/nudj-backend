@@ -15,6 +15,10 @@ html, body {
     padding: 10% 0 0 0;
 }
 
+.login-copyright{
+    font-size:10px;
+    }
+
 /* Additional elements
 ------------------------------------------------- */
 #console {

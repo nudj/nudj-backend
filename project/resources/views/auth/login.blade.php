@@ -54,7 +54,12 @@
                     </div>
                 </form>
 
-
+                <div class="row">
+                    <hr/>
+                    <div class="col-xs-12 text-center login-copyright">
+                        <strong>Powered by E-Man Desk. &copy; Copyright 2014 E-Man.</strong> All Rights Reserved.
+                    </div>
+                </div>
             </div>
             <!-- /.login-box-body -->
         </div>
