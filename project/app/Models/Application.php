@@ -39,7 +39,6 @@ class Application extends ApiModel
     public static function applyForJob($userId, $jobId, $referrerId = null, $web = false)
     {
 
-        //@TODO check for previous application
         $application = self::select('id')
             ->where('candidate_id', '=', $userId)
             ->where('job_id', '=', $jobId)

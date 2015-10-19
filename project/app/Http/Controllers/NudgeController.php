@@ -53,7 +53,7 @@ class NudgeController extends ApiController
 
         $referrer_id = null;
         if (count($nudges) == 1) {
-            $nudge = current($nudges);
+            $nudge =    $nudges->first();
             $referrer_id = $nudge->referrer_id;
         }
         /* End of TEMP solution */
