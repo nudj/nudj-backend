@@ -41,14 +41,16 @@ class NudgeController extends ApiController
 
         $myContactIds = Contact::where('user_id', '=', $me)->lists('id');
 
-        $nudge = Nudge::select('referrer_id')
+        $nudges = Nudge::select('referrer_id')
             ->where('job_id', '=', $request->job_id)
             ->whereIn('candidate_id', $myContactIds)
             ->get();
 
+        Snafu::show($nudges);
+        die();
         $referrer_id = null;
-        if (count($nudge) == 1) {
-            $nudge = current($nudge);
+        if (count($nudges) == 1) {
+            $nudge = current($nudges);
             $referrer_id = $nudge->referrer_id;
         }
 
