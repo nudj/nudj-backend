@@ -39,20 +39,24 @@ class NudgeController extends ApiController
     {
         $me = Shield::getUserId();
 
+        /**
+         * Below is a temporary solution to choose a referrer when applying for a job
+         * When there is only one referrer, select him, In case there are more than one
+         * referrer pass null. An additional solution will be implemented in future
+         * adn the referrer will be passed with the ApplyRequest
+         */
         $myContactIds = Contact::where('user_id', '=', $me)->lists('id');
-
         $nudges = Nudge::select('referrer_id')
             ->where('job_id', '=', $request->job_id)
             ->whereIn('candidate_id', $myContactIds)
             ->get();
 
-        Snafu::show($nudges);
-        die();
         $referrer_id = null;
         if (count($nudges) == 1) {
             $nudge = current($nudges);
             $referrer_id = $nudge->referrer_id;
         }
+        /* End of TEMP solution */
 
         Application::applyForJob($me, $request->job_id, $referrer_id);
 
