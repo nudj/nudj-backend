@@ -117,6 +117,7 @@ class Contact extends ApiModel
 
         return (bool) $this->user->mobile;
     }
+
     public static function findIfOwnedBy($contactId, $ownerId)
     {
 

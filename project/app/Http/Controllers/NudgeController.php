@@ -8,10 +8,12 @@ use App\Http\Requests\NudgeRequest;
 use App\Http\Requests\StartChatRequest;
 use App\Models\Application;
 use App\Models\Chat;
+use App\Models\Contact;
 use App\Models\Notification;
 use App\Models\Nudge;
 use App\Models\Referral;
 use App\Utility\Facades\Shield;
+use App\Utility\Snafu;
 use Illuminate\Support\Facades\Event;
 
 class NudgeController extends ApiController
@@ -35,7 +37,20 @@ class NudgeController extends ApiController
 
     public function apply(ApplyRequest $request)
     {
-        Application::applyForJob(Shield::getUserId(), $request->job_id, $request->referrer_id);
+        $me = Shield::getUserId();
+
+        $myContactIds = Contact::where('user_id', '=', $me)->list('id')->get();
+        Snafu::show($myContactIds);
+        $nudge = Nudge::select('referrer_id')
+            ->where('job_id', '=', $request->job_id)
+            ->whereIn('candidate_id', $myContactIds)
+            ->get();
+
+        if ($nudge)
+            $referrer_id = $nudge->referrer_id;
+
+        die();
+        Application::applyForJob($me, $request->job_id, $referrer_id);
 
         return $this->respondWithStatus(true);
     }

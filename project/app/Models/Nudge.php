@@ -104,7 +104,6 @@ class Nudge extends ApiModel
 
     private function nudgeUser($job, $referrer, $contact, $message)
     {
-
         //@TODO if referrer->mobile = false send a notification instead of chat message
         $chat = Chat::add($job->id, [$referrer->id, $contact->user_id]);
         Event::fire(new StartChatEvent($chat->id, $referrer->id, $contact->user_id, $message));
@@ -112,8 +111,6 @@ class Nudge extends ApiModel
 
     private function nudgeContact($job, $referrer, $contact, $message)
     {
-
-
         $message = Lang::get('sms.nudge', [
             'name' => $referrer->name,
             'message' => $message,
