@@ -39,7 +39,7 @@ class NudgeController extends ApiController
     {
         $me = Shield::getUserId();
 
-        $myContactIds = Contact::where('user_id', '=', $me)->list('id')->get();
+        $myContactIds = Contact::where('user_id', '=', $me)->lists('id');
         Snafu::show($myContactIds);
         $nudge = Nudge::select('referrer_id')
             ->where('job_id', '=', $request->job_id)
