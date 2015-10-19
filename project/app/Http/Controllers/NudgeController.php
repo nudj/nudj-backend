@@ -40,16 +40,18 @@ class NudgeController extends ApiController
         $me = Shield::getUserId();
 
         $myContactIds = Contact::where('user_id', '=', $me)->lists('id');
-        Snafu::show($myContactIds);
+
         $nudge = Nudge::select('referrer_id')
             ->where('job_id', '=', $request->job_id)
             ->whereIn('candidate_id', $myContactIds)
             ->get();
 
-        if ($nudge)
+        $referrer_id = null;
+        if (count($nudge) == 1) {
+            $nudge = current($nudge);
             $referrer_id = $nudge->referrer_id;
+        }
 
-        die();
         Application::applyForJob($me, $request->job_id, $referrer_id);
 
         return $this->respondWithStatus(true);
