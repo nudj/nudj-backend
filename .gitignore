@@ -1,4 +1,1 @@
-/kibana
-.idea/
-project/composer.lock
-*.lock
+.DS_Store
