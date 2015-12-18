@@ -1,17 +1,16 @@
 <?php
 
-
 // Define patterns for expected parameters
 $router->pattern('id', '([0-9]+)');
 $router->pattern('userid', '([0-9]+)|(me)');
 $router->pattern('filter', '([a-z]+)');
 
-
 // Default view
+// This route is being superseded by the Admin section
 Route::get('/', 'Web\HomeController@index');
 
-
 // Web view
+// This route is being superseded by the Admin section
 Route::group(['prefix' => '/'], function () {
 
     Route::get('register/{type}/{hash}', 'Web\WebController@login');
@@ -28,14 +27,12 @@ Route::group(['prefix' => '/'], function () {
 
 });
 
-
 // HTML sources accessed from the app
 Route::group(['prefix' => 'html'], function () {
     Route::get('terms', 'HtmlController@terms');
     Route::get('privacy', 'HtmlController@privacy');
     Route::get('cookies', 'HtmlController@cookies');
 });
-
 
 // API V1 routes
 Route::group(['prefix' => 'api/v1'], function () {
@@ -50,7 +47,6 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('jobs/{id}/like', 'JobsController@like');
     Route::delete('jobs/{id}/like', 'JobsController@unlike');
 
-
     // USERS
     Route::get('users', 'UsersController@index');
     Route::get('users/{userid}', 'UsersController@show');
@@ -64,21 +60,19 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('users/{userid}/favourite', 'UsersController@favourite');
     Route::delete('users/{userid}/favourite', 'UsersController@unfavourite');
 
-
-    //NUDGE
+    // NUDGE
     Route::put('nudge', 'NudgeController@nudge');
     Route::put('nudge/ask', 'NudgeController@ask');
     Route::put('nudge/apply', 'NudgeController@apply');
     Route::put('nudge/chat', 'NudgeController@chat');
 
-
-    //CONTACTS
+    // CONTACTS
     Route::get('contacts/mine', 'ContactsController@index');
     Route::put('contacts/{id}', 'ContactsController@update');
     Route::delete('contacts/{id}', 'ContactsController@destroy');
     Route::post('contacts/{id}/invite', 'ContactsController@invite');
 
-    //CHAT
+    // CHAT
     Route::get('chat/{filter}', 'ChatController@index');
     Route::get('chat/{id}', 'ChatController@show');
     Route::delete('chat/{id}', 'ChatController@destroy');
@@ -88,35 +82,31 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::delete('chat/{id}/mute', 'ChatController@unmute');
     Route::put('chat/notification', 'ChatController@notify');
 
-
-    //NOTIFICATION
+    // NOTIFICATION
     Route::get('notifications', 'NotificationsController@index');
     Route::put('notifications/{id}/read', 'NotificationsController@read');
 
-    //SOCIAL
+    // SOCIAL
     Route::put('connect/facebook', 'SocialController@facebook');
     Route::put('connect/linkedin', 'SocialController@linkedin');
     Route::delete('connect/facebook', 'SocialController@disconnectFacebook');
     Route::delete('connect/linkedin', 'SocialController@disconnectLinkedIn');
 
-    //CONFIG
+    // CONFIG
     Route::get('config', 'ConfigController@index');
     Route::get('config/{key}', 'ConfigController@show');
 
-
-    //MISC
+    // MISC
     Route::get('countries', 'CountriesController@index');
     Route::put('devices', 'DevicesController@register');
     Route::post('feedback', 'FeedbackController@send');
     Route::get('skills/suggest/{term?}', 'SkillsController@suggest');
 
-
-    //SERVICE
+    // SERVICE
     Route::get('elastic/repair', 'SearchEngineController@repair');
     Route::get('cloud/empty', 'CloudController@emptyAllContainers');
 
-
-    //TEMP
+    // TEMP
     Route::get('services/test', 'ServicesController@test');
 	Route::get('services/message', 'ServicesController@message');
 
@@ -124,7 +114,6 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::delete('chat/all', 'ChatController@deleteAllRooms');
 
 });
-
 
 // ADMINISTRATION
 $adminRoutes = function() {
@@ -134,34 +123,32 @@ $adminRoutes = function() {
     Route::post('auth/login', 'Desk\Auth\AuthController@postLogin');
     Route::get('auth/logout', 'Desk\Auth\AuthController@getLogout');
 
-    //DASHBOARD
+    // DASHBOARD
     Route::get('/', 'Desk\DashboardController@index');
     Route::get('dashboard', 'Desk\DashboardController@index');
 
-    //USERS
+    // USERS
     Route::get('/users', 'Desk\UsersController@index');
     Route::get('/users/{id}', 'Desk\UsersController@show');
 
-    //JOBS
+    // JOBS
     Route::get('/jobs', 'Desk\JobsController@index');
     Route::get('/jobs/{id}', 'Desk\JobsController@show');
 
-    //ADMINS
+    // ADMINS
     Route::get('/admins', 'Desk\AdminsController@index');
     Route::get('/admins/create', 'Desk\AdminsController@create');
     Route::post('/admins', 'Desk\AdminsController@store');
     Route::get('/admins/{id}', 'Desk\AdminsController@show');
     Route::post('/admins/{id}', 'Desk\AdminsController@update');
 
-    //DATATABLES
+    // DATATABLES
     Route::get('/datatables/{who}', 'Desk\DeskController@tableData');
 
 };
 
-
 Route::group(['domain' => 'desk.nudj.co'], $adminRoutes);
 Route::group(['prefix' => '/'], $adminRoutes);
-
 
 // Listen for some stuff
 if (env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {
