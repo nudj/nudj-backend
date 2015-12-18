@@ -36,7 +36,6 @@ class Handler extends ExceptionHandler
         return parent::report($e);
     }
 
-
     private function respond($response, $code, $notify = false)
     {
 
@@ -53,7 +52,6 @@ class Handler extends ExceptionHandler
 
         return response($response, $code);
     }
-
 
     /**
      * Render an exception into an HTTP response.
@@ -90,13 +88,11 @@ class Handler extends ExceptionHandler
             $modelName = explode('\\', $e->getModel());
             $resourceMissing = strtoupper(array_pop($modelName) . '_MISSING');
 
-
             if(property_exists(new ApiExceptionType(), $resourceMissing))
                 throw new ApiException(ApiExceptionType::$$resourceMissing);
             else
                 throw new ApiException(ApiExceptionType::$GENERAL_ERROR, $e->getMessage());
         }
-
 
         // handle all other thrown exception
         // when in local env show stack trace page
@@ -112,6 +108,5 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $e);
     }
-
 
 }

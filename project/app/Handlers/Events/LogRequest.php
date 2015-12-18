@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Request;
 	PASCAL: 
 		Where is the logging happening ? (Mongo ?)
 		What fires it ?
+			-> ApiController::__construct() 
 */
 
 class LogRequest

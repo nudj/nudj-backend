@@ -21,7 +21,6 @@ class WebController extends \Illuminate\Routing\Controller
     const TYPE_NUDGE = 'nudge';
     const TYPE_REFER = 'refer';
 
-
     public function download()
     {
         return view('web/page/downloads');
@@ -33,7 +32,6 @@ class WebController extends \Illuminate\Routing\Controller
         if(Agent::is('iPhone'))
             return redirect('download');
             //return redirect('https://itunes.apple.com/app/id1027993202');
-
 
         switch ($type) {
             case self::TYPE_NUDGE :
@@ -59,8 +57,6 @@ class WebController extends \Illuminate\Routing\Controller
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
-
-
 
     public function validate(WebLoginRequest $request)
     {
@@ -100,7 +96,6 @@ class WebController extends \Illuminate\Routing\Controller
             $type = self::TYPE_NUDGE;
         else
             $type = self::TYPE_REFER;
-
 
         return view('web/page/job', [
             'user' => $user,

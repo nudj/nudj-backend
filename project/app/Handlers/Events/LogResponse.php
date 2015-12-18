@@ -5,6 +5,13 @@ use App\Events\ReturnResponseEvent;
 use App\Utility\Logger\Log;
 use Illuminate\Support\Facades\Request;
 
+/*
+	This handler receives ReturnResponseEvent
+	PASCAL: 
+		What fires it ?
+			-> ApiController::returnResponse
+*/
+
 class LogResponse
 {
 
