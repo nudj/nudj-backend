@@ -8,5 +8,4 @@ class IncomingRequestEvent extends Event {
 
 	use SerializesModels;
 
-
 }
