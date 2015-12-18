@@ -24,7 +24,6 @@ class EventServiceProvider extends ServiceProvider {
 		'App\Events\StartChatEvent' => [
 			'App\Handlers\Events\StartChat',
 		],
-
 	];
 
 	/**

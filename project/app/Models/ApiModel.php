@@ -86,5 +86,4 @@ class ApiModel extends Model
         return Config::get("models.{$this->table}.{$item}");
     }
 
-
 }

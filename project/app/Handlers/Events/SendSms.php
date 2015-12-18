@@ -19,12 +19,10 @@ class SendSms implements ShouldBeQueued
         if(!isset($availablePhones[$event->countryCode]))
             throw new ApiException(ApiExceptionType::$TWILIO_ERROR);
 
-
         $sendPhone = $availablePhones[$event->countryCode];
 
         try {
             $client = new Services_Twilio(Config::get('cfg.twilio_sid'), Config::get('cfg.twilio_token'));
-
             $client->account->messages->create(array(
                 'To' => $event->phone,
                 'From' => $sendPhone,
@@ -33,17 +31,12 @@ class SendSms implements ShouldBeQueued
         } catch (Exception $e) {
             throw new ApiException(ApiExceptionType::$TWILIO_ERROR);
         }
-
     }
 
     public function subscribe($events)
     {
         $events->listen('App\Events\LoginUserEvent', 'App\Handlers\Events\SendSms@send');
-
         $events->listen('App\Events\SendMessageToContactEvent', 'App\Handlers\Events\SendSms@send');
     }
-
-
-
 
 }

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 
 class User extends ApiModel implements ShieldAuthServiceContract
 {
+
     use SoftDeletes;
     use Imageable;
     use Authenticatable;
@@ -29,7 +30,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
     protected $defaultFields = ['name'];
 
     protected $prefix = 'user.';
-
 
     public function __construct()
     {
@@ -78,8 +78,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
     {
         return $this->belongsToMany('App\Models\Chat', 'chat_participants')->withPivot('mute');
     }
-
-
 
     /* CRUD
     ----------------------------------------------------- */
@@ -195,7 +193,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
         return $this;
     }
 
-
     /* GET
     ----------------------------------------------------- */
     public function getBelongingContact($belongsTo = null)
@@ -204,7 +201,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
             ->where('contact_of', $belongsTo)
             ->first();
     }
-
 
     /* Sync
     ----------------------------------------------------- */
@@ -248,7 +244,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         return json_encode($currentSettings);
     }
-
 
     /* Modify actions
     ----------------------------------------------------- */
@@ -314,7 +309,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     }
 
-
     /* Imposed by Contract in ApiUserRepository
     ----------------------------------------------------- */
     public function findByToken($token = null)
@@ -325,7 +319,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
             ->first();
     }
 
-    // @TODO refactor and don;t overwrite parent, just use it
+    // PASCAL: @TODO refactor and don;t overwrite parent, just use it
     public static function destroy($id)
     {
         Chat::deleteByParticipant($id);

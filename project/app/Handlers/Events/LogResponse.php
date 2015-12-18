@@ -5,6 +5,13 @@ use App\Events\ReturnResponseEvent;
 use App\Utility\Logger\Log;
 use Illuminate\Support\Facades\Request;
 
+/*
+	This handler receives ReturnResponseEvent
+	PASCAL: 
+		What fires it ?
+			-> ApiController::returnResponse
+*/
+
 class LogResponse
 {
 
@@ -16,6 +23,13 @@ class LogResponse
         if(!$log)
             return false;
 
+        /*
+			PASCAL: 
+				Looks like this event is either fired possibly several times,
+				Or there is a non trivial probability to of having two requests 
+				sharing the same REQUEST_TIME_FLOAT
+        */
+
         $log->response = json_encode([
             'timestamp' => microtime(true),
             'body' => $event->response
@@ -23,6 +37,5 @@ class LogResponse
 
         return $log->save();
     }
-
 
 }

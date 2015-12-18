@@ -4,43 +4,31 @@ use App\Events\IncomingRequestEvent;
 use App\Utility\Logger\Log;
 use Illuminate\Support\Facades\Request;
 
+/*
+	This handler receives IncomingRequestEvent
+	PASCAL: 
+		Where is the logging happening ? (Mongo ?)
+		What fires it ?
+			-> ApiController::__construct() 
+*/
 
 class LogRequest
 {
 
     public function handle(IncomingRequestEvent $event)
     {
-
         Log::create([
-            'id' => Request::server('REQUEST_TIME_FLOAT'),
+            'id'       => Request::server('REQUEST_TIME_FLOAT'),
 
-            'type' =>  (string)Request::server('REQUEST_METHOD'),
-            'from' => (string)Request::server('REMOTE_ADDR'),
+            'type'     => (string)Request::server('REQUEST_METHOD'),
+            'from'     => (string)Request::server('REMOTE_ADDR'),
 
-            'endpoint' => (string) Request::path(),
-            'token' => (string) Request::header('token'),
+            'endpoint' => (string)Request::path(),
+            'token'    => (string)Request::header('token'),
 
-            'get' =>  $_GET,
-            'post' =>  Request::except(array_keys($_GET)),
+            'get'      => $_GET,
+            'post'     => Request::except(array_keys($_GET)),
         ]);
-
-//        Deprecated file logging with Monolog
-//
-//        $handler = new RotatingFileHandler(storage_path().'/logs/requests.log', 0, Logger::INFO);
-//        $logger = new Logger('requests');
-//        $logger->pushHandler($handler);
-//        $logger->addInfo('Incomming request', [
-//            'id' => Request::server('REQUEST_TIME_FLOAT'),
-//            'timestamp' => Request::server('REQUEST_TIME_FLOAT'),
-//            'type' =>  Request::server('REQUEST_METHOD'),
-//            'from' => Request::server('REMOTE_ADDR'),
-//            'endpoint' =>  Request::path(),
-//            'get' =>  $_GET,
-//            'post' =>  Request::except(array_keys($_GET)),
-//            'token' => Request::header('token'),
-//            'headers' => getallheaders()
-//        ]);
-
     }
 
 }
