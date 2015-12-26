@@ -140,7 +140,6 @@ class Job extends ApiModel
 
         $saved = $this->save();
 
-
         if ($saved && $searchEngineUpdate) {
             $this->updateToIndex('job', $this->id, $searchEngineUpdate);
         }
@@ -222,19 +221,6 @@ class Job extends ApiModel
 
     public function delete()
     {
-//        try {
-//
-//            if (in_array('Illuminate\Database\Eloquent\SoftDeletes', class_uses($this)))
-//                $this->softDeleteFromIndex('job', $this->id);
-//            else
-//                $this->deleteFromIndex('job', $this->id);
-//
-//        } catch (Missing404Exception $e) {
-//            throw new ApiException(ApiExceptionType::$ELASTIC_MISSING);
-//        } catch (Exception $e) {
-//            throw new ApiException(ApiExceptionType::$ELASTIC_ERROR);
-//        }
-
         return parent::delete();
     }
 
@@ -245,7 +231,6 @@ class Job extends ApiModel
     public static function findIfOwnedBy($jobId, $ownerId)
     {
         $job = Job::with('user')->find($jobId);
-
 
         if (isset($job->user->id) && $ownerId == $job->user->id)
             return $job;

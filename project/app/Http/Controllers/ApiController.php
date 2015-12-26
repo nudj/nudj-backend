@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 use App\Events\IncomingRequestEvent;
 use App\Events\ReturnResponseEvent;
 use App\Utility\Facades\Shield;
@@ -10,7 +9,6 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\URL;
-
 
 class ApiController extends \Illuminate\Routing\Controller {
 
@@ -117,9 +115,9 @@ class ApiController extends \Illuminate\Routing\Controller {
 		$response = [
 			'data' => $transformer->transformCollection($items),
 			'pagination' => [
-				'total' => $items->total(),
-				'count' => $items->count(),
-				'next' => $items->nextPageUrl() ? str_replace($baseUrl,'',$items->nextPageUrl()) : false,
+				'total'    => $items->total(),
+				'count'    => $items->count(),
+				'next'     => $items->nextPageUrl() ? str_replace($baseUrl,'',$items->nextPageUrl()) : false,
 				'previous' => $items->previousPageUrl() ? str_replace($baseUrl,'',$items->previousPageUrl()) : false,
 			]
 		];

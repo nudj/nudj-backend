@@ -16,11 +16,8 @@ use App\Utility\Transformers\UserTransformer;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
 
-
 class UsersController extends ApiController
 {
-
-
 
     public function index()
     {
@@ -29,16 +26,34 @@ class UsersController extends ApiController
         return $this->respondWithPagination($items, new UserTransformer());
     }
 
-
     public function show($id = null)
     {
         $id = $this->getPreparedId($id);
+        // Note: This function is defined in ApiController and returns the id of the current user
+        // The given parameter $id could be null of equal to 'me'
+        // In either case, the current user id needs to be extracted by Shield::getUserId()
 
         $item = User::api()->findOrFail($id);
+        // Ok so at this point we have a user we are going to send it back to the client, but before
+        // doing so we need to transform it becuase as at it currently is we cannot directly JSON serialize it.
+
+        // To convert/transform a user into a json object we use a class called UserTransformer()
+        // in App\Utility\Transformers\UserTransformer;
+        // In other circumstances one would make this functionality a method of the User class, but it
+        // is far better to make it as a separate class.
+
+		// respondWithItem is defined in ApiController
+		// It takes an $item and the transformer associated with that item
+		// and returns the json serialization of
+		/*
+			[
+				"data" => $transformer->transform($item)
+			]
+		*/
 
         return $this->respondWithItem($item, new UserTransformer());
-    }
 
+    }
 
     public function store(CreateUserRequest $request)
     {
@@ -49,7 +64,6 @@ class UsersController extends ApiController
 
         return $this->respondWithStatus($user->id);
     }
-
 
     public function update($id = null)
     {
@@ -69,7 +83,6 @@ class UsersController extends ApiController
         return $this->respondWithStatus((bool) $info);
     }
 
-
     public function destroy($id = null)
     {
         if (is_int($id) && !Shield::hasRole('admin'))
@@ -81,7 +94,6 @@ class UsersController extends ApiController
 
         return $this->respondWithStatus($status);
     }
-
 
     public function verify(VerifyUserRequest $request)
     {
@@ -100,7 +112,6 @@ class UsersController extends ApiController
 
     }
 
-
     public function exists($id = null)
     {
 
@@ -108,7 +119,6 @@ class UsersController extends ApiController
 
         return $this->respondWithStatus($item);
     }
-
 
     public function contacts($id = null)
     {
@@ -126,7 +136,6 @@ class UsersController extends ApiController
         return $this->respondWithPagination($items, new ContactTransformer());
     }
 
-
     public function favourites($id = null)
     {
         if (is_int($id) && !Shield::hasRole('admin'))
@@ -140,12 +149,10 @@ class UsersController extends ApiController
         return $this->respondWithPagination($items, new UserSortedTransformer());
     }
 
-
     public function favourite($id)
     {
         return $this->respondWithStatus(User::favourite($id, Shield::getUserId()));
     }
-
 
     public function unfavourite($id)
     {

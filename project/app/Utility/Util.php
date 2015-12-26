@@ -57,6 +57,9 @@ class  Util
         return (object)['number' => $number, 'code' => $code, 'suspicious' => false];
     }
 
+    // $dictionary, ($array or $string) -> boolean
+    // This function ensures that a given dictionary has a given set of keys.
+    // The set of required keys can be given as an array or a comma separated string.
 
     public static function arrayIsValid($array, $requiredFields)
     {

@@ -35,6 +35,31 @@ Route::group(['prefix' => 'html'], function () {
 });
 
 // API V1 routes
+/*
+
+	{
+		Origin: Routes documentation at nudj-backend-documentation
+	}
+
+	Note: All the controllers in the api/v1 group inherit from ApiController, which specifies that
+	the only "non token methods" are:
+
+		'App\Http\Controllers\UsersController@store',
+		'App\Http\Controllers\UsersController@verify',
+		'App\Http\Controllers\UsersController@exists',
+		'App\Http\Controllers\CountriesController@index',
+		'App\Http\Controllers\ServicesController@test',
+
+	They correspond to
+		Route::post('users', 'UsersController@store');
+		Route::put('users/verify', 'UsersController@verify');
+		Route::get('users/exists/{userid}', 'UsersController@exists');
+		Route::get('countries', 'CountriesController@index');
+		Route::get('services/test', 'ServicesController@test');
+
+	If a route is not "non token" then it must Shield::validate()
+
+*/
 Route::group(['prefix' => 'api/v1'], function () {
 
     // JOBS
@@ -81,6 +106,8 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('chat/{id}/mute', 'ChatController@mute');
     Route::delete('chat/{id}/mute', 'ChatController@unmute');
     Route::put('chat/notification', 'ChatController@notify');
+    Route::put('chat', 'ChatController@spawn');
+    Route::delete('chat/all', 'ChatController@deleteAllRooms');
 
     // NOTIFICATION
     Route::get('notifications', 'NotificationsController@index');
@@ -100,18 +127,14 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('countries', 'CountriesController@index');
     Route::put('devices', 'DevicesController@register');
     Route::post('feedback', 'FeedbackController@send');
-    Route::get('skills/suggest/{term?}', 'SkillsController@suggest');
 
-    // SERVICE
+    Route::get('skills/suggest/{term?}', 'SkillsController@suggest');
     Route::get('elastic/repair', 'SearchEngineController@repair');
     Route::get('cloud/empty', 'CloudController@emptyAllContainers');
 
-    // TEMP
+    // SERVICE
     Route::get('services/test', 'ServicesController@test');
 	Route::get('services/message', 'ServicesController@message');
-
-    Route::put('chat', 'ChatController@spawn');
-    Route::delete('chat/all', 'ChatController@deleteAllRooms');
 
 });
 
