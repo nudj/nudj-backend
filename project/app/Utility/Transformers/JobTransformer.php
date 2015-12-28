@@ -1,6 +1,5 @@
 <?php namespace App\Utility\Transformers;
 
-
 use App\Models\Referral;
 use App\Utility\Facades\Shield;
 use Carbon\Carbon;
@@ -59,8 +58,6 @@ class JobTransformer extends Transformer {
             case 'skills':
                 $tranform = new SkillTransformer();
                 return $tranform->transformCollection($item->skills);
-
-
 
         }
 

@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 class HtmlController extends \Illuminate\Routing\Controller
 {
 
@@ -13,6 +12,5 @@ class HtmlController extends \Illuminate\Routing\Controller
     {
         return view('html/privacy');
     }
-
 
 }

@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Desk;
 
-
 use App\Models\Admin;
 use App\Http\Requests\Desk\AdminCreateRequest;
 use App\Http\Requests\Desk\AdminUpdateRequest;
 
 class AdminsController extends DeskController
 {
-
 
     public function index()
     {
@@ -28,7 +26,6 @@ class AdminsController extends DeskController
         return view('desk/pages/admins/create');
     }
 
-
     public function store(AdminCreateRequest $request)
     {
         $newAdmin = Admin::add($request);
@@ -38,11 +35,11 @@ class AdminsController extends DeskController
 
     public function update($id, AdminUpdateRequest $request)
     {
-
         $record = Admin::findOrFail($id);
 
         $record->edit($request->all());
 
         return redirect('/admins/'. $id)->with('status', $record->email);
     }
+
 }

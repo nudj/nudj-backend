@@ -2,7 +2,6 @@
 
 use App\Models\User;
 
-
 use App\Utility\Authenticator\Shield;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,8 +19,5 @@ class ShieldServiceProvider extends ServiceProvider {
             return new Shield(new User());
         });
 
-
-
     }
 }
-?>

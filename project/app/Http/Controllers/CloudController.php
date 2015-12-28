@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\CloudHelper;
@@ -14,7 +13,6 @@ class CloudController extends ApiController
 
     public function emptyAllContainers()
     {
-
         if (!Shield::hasRole('admin'))
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
@@ -29,9 +27,6 @@ class CloudController extends ApiController
         }
 
         echo "Finished emptying containers ... <br/>";
-
     }
-
-
 
 }

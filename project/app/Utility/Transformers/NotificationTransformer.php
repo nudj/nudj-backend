@@ -1,6 +1,5 @@
 <?php namespace App\Utility\Transformers;
 
-
 class NotificationTransformer extends Transformer
 {
 
@@ -10,7 +9,6 @@ class NotificationTransformer extends Transformer
         'created' => 'created_at',
         'message' => 'meta',
     ];
-
 
     public function transformMap($item, $column)
     {

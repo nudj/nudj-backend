@@ -2,7 +2,6 @@
 
 namespace App\Models\Traits;
 
-
 use App\Utility\Snafu;
 use League\Flysystem\Exception;
 
@@ -11,7 +10,6 @@ trait Social {
     public function importFromFacebook($incomingData)
     {
         $import = [];
-
 
         if(!$this->name && isset($incomingData->name))
             $import['name'] = $incomingData->name;
@@ -44,7 +42,6 @@ trait Social {
 
     public function importFromLinkedIn($incomingData)
     {
-
         $import = [];
 
         if(!$this->name && (isset($incomingData->firstName) || isset($incomingData->lastName)))

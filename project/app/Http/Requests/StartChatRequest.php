@@ -1,15 +1,11 @@
 <?php namespace App\Http\Requests;
 
-
-
 class StartChatRequest extends ApiRequest {
-
 
 	public function authorize()
 	{
 		return true;
 	}
-
 
 	public function rules()
 	{
@@ -20,6 +16,5 @@ class StartChatRequest extends ApiRequest {
 			'message' => 'required',
 		];
 	}
-
 
 }

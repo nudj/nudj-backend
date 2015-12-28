@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Utility\Logger;
-
 
 use Monolog\Formatter\FormatterInterface;
 
@@ -61,6 +59,5 @@ class ApiFileFormatter implements FormatterInterface
     {
         return json_encode($records);
     }
-
 
 }

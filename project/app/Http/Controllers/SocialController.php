@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 use App\Models\User;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -31,7 +30,6 @@ class SocialController extends ApiController
         return $this->respondWithStatus(true);
     }
 
-
     public function linkedin()
     {
         $networkToken = Request::get('token');
@@ -51,7 +49,6 @@ class SocialController extends ApiController
         return $this->respondWithStatus(true);
     }
 
-
     public function disconnectFacebook()
     {
         $user = User::find(Shield::getUserId());
@@ -69,6 +66,5 @@ class SocialController extends ApiController
 
         return $this->respondWithStatus(true);
     }
-
 
 }

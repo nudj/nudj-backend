@@ -1,6 +1,5 @@
 <?php namespace App\Utility\Transformers;
 
-
 use App\Models\Chat;
 use App\Utility\Facades\Shield;
 
@@ -17,7 +16,6 @@ class UserTransformer extends Transformer
         'facebook' => 'facebook_token',
         'linkedin' => 'linkedin_token',
     ];
-
 
     public function transformMap($item, $column)
     {

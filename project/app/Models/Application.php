@@ -1,14 +1,11 @@
 <?php namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 
 class Application extends ApiModel
 {
 
     use SoftDeletes;
-
 
     protected $table = 'applications';
     protected $visible = ['id', 'job_id', 'candidate'];
@@ -17,7 +14,6 @@ class Application extends ApiModel
     protected $defaultFields = ['id', 'job_id', 'candidate'];
 
     protected $prefix = 'application.';
-
 
     /* Relations
     ----------------------------------------------------- */
@@ -31,10 +27,8 @@ class Application extends ApiModel
         return $this->belongsTo('App\Models\User', 'candidate_id');
     }
 
-
     /* Actions
     ----------------------------------------------------- */
-
 
     public static function applyForJob($userId, $jobId, $referrerId = null, $web = false)
     {
@@ -82,7 +76,6 @@ class Application extends ApiModel
 
         return true;
     }
-
 
 }
 

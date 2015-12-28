@@ -14,7 +14,6 @@ trait Indexable {
 
     private function connect()
     {
-
         $this->searchEngineIndex = Config::get('cfg.elastic_index');
 
         if(!Server::getServerStatus(Config::get('cfg.elastic_ip'), Config::get('cfg.elastic_port')))
@@ -69,7 +68,6 @@ trait Indexable {
 
         $this->searchEngineClient->delete($data);
     }
-
 
     public function suggestFromIndex($term, $type, $field)
     {

@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Web;
 
-
 use App\Events\LoginUserEvent;
 use App\Http\Requests\Web\WebloginRequest;
 use App\Models\Country;
@@ -13,7 +12,6 @@ use App\Utility\Facades\Shield;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
 use Jenssegers\Agent\Facades\Agent;
-
 
 class WebController extends \Illuminate\Routing\Controller
 {
@@ -28,7 +26,6 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function login($type = null, $hash = null)
     {
-
         if(Agent::is('iPhone'))
             return redirect('download');
             //return redirect('https://itunes.apple.com/app/id1027993202');
@@ -60,7 +57,6 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function validate(WebLoginRequest $request)
     {
-
         $user = User::login([
             'phone' => $request->phone,
             'country_code' => $request->country_code,
@@ -107,5 +103,6 @@ class WebController extends \Illuminate\Routing\Controller
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
+
 }
 

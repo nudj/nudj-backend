@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 use App\Events\NotifyUserEvent;
 use App\Events\StartChatEvent;
 use App\Http\Requests;
@@ -15,7 +14,6 @@ use App\Utility\Transformers\ChatTransformer;
 use GameNet\Jabber\RpcClient;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
-
 
 class ChatController extends ApiController
 {
@@ -55,7 +53,6 @@ class ChatController extends ApiController
 
     public function destroy($id)
     {
-
         $chat = Chat::findIfOwnedBy($id, Shield::getUserId());
 
         if (!$chat)
@@ -69,7 +66,6 @@ class ChatController extends ApiController
 
     public function archive($id = null)
     {
-
         $chat = Chat::find($id);
 
         if (!$chat)
@@ -82,7 +78,6 @@ class ChatController extends ApiController
 
     public function restore($id = null)
     {
-
         $chat = Chat::find($id);
 
         if (!$chat)
@@ -105,7 +100,6 @@ class ChatController extends ApiController
 
     public function notify(NotifyOfflineUserRequest $request)
     {
-
         $meta = [
             'chat_id' => $request->chat_id,
             'type_id' => NotificationType::$CHAT_MESSAGE
@@ -114,9 +108,7 @@ class ChatController extends ApiController
 
 
         return $this->respondWithStatus(true);
-
     }
-
 
     /* Test Purposes
     --------------------------------------------- */
@@ -132,7 +124,6 @@ class ChatController extends ApiController
 
     public function deleteAllRooms()
     {
-
         $rpc = new RpcClient([
             'server' => Config::get('cfg.chat_server_ip'),
             'host' => Config::get('cfg.chat_server_host'),
@@ -145,8 +136,6 @@ class ChatController extends ApiController
             list($roomName) = explode('@', $room);
             $rpc->deleteRoom($roomName);
         }
-
     }
-
 
 }

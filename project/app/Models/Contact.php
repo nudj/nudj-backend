@@ -1,6 +1,5 @@
 <?php namespace App\Models;
 
-
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\ContactTransformer;
@@ -38,7 +37,6 @@ class Contact extends ApiModel
     /* Scopes
     ----------------------------------------------------- */
 
-
     /* CRUD
     ----------------------------------------------------- */
 
@@ -66,7 +64,6 @@ class Contact extends ApiModel
 
     public static function addMissing($userId, $contactsList, $userCountryCode)
     {
-
         $contactIds = [];
 
         foreach ($contactsList as $record) {
@@ -107,7 +104,6 @@ class Contact extends ApiModel
         return $contactIds;
     }
 
-
     /* Checks
     ----------------------------------------------------- */
     public function isMobileUser()
@@ -128,6 +124,5 @@ class Contact extends ApiModel
 
         return null;
     }
-
 
 }

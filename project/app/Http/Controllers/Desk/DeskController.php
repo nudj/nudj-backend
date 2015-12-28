@@ -8,8 +8,8 @@ use yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
 
 class DeskController extends \Illuminate\Routing\Controller {
-    use DispatchesCommands, ValidatesRequests;
 
+    use DispatchesCommands, ValidatesRequests;
 
     public function __construct()
     {
@@ -18,7 +18,6 @@ class DeskController extends \Illuminate\Routing\Controller {
 
     public function tableData($who)
     {
-
         switch ($who){
             case "users":
                          $data = DB::table($who)
@@ -31,9 +30,7 @@ class DeskController extends \Illuminate\Routing\Controller {
                      break;
         }
 
-
         return Datatables::of($data)->make(true);
     }
-
 
 }

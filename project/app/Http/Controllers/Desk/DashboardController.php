@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers\Desk;
 
-
 class DashboardController extends DeskController {
-
-
 
     public function index()
     {
@@ -15,4 +12,5 @@ class DashboardController extends DeskController {
         ];
         return view('desk/pages/dashboard',$sumInfo);
     }
+
 }

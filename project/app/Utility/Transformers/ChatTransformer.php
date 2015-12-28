@@ -1,16 +1,13 @@
 <?php namespace App\Utility\Transformers;
 
-
 use App\Utility\Facades\Shield;
 
 class ChatTransformer extends Transformer
 {
 
-
     public static $dependencies = [
         'job' => 'job_id',
         'created' => 'created_at',
-
     ];
 
     public function transformMap($item, $column)
@@ -49,7 +46,5 @@ class ChatTransformer extends Transformer
         }
 
     }
-
-
 
 }

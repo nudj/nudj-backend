@@ -8,7 +8,6 @@ use App\Utility\Util;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
 
-
 class NotificationType
 {
 
@@ -23,7 +22,6 @@ class NotificationType
     public static $MATCHING_CONTACT = 4;
     public static $CHAT_MESSAGE = 8;
 }
-
 
 class Notification extends ApiModel
 {
@@ -41,7 +39,6 @@ class Notification extends ApiModel
         $this->dependencies = NotificationTransformer::$dependencies;
     }
 
-
     /* Relations
     ----------------------------------------------------- */
     public function recipient()
@@ -53,7 +50,6 @@ class Notification extends ApiModel
     {
         return $this->belongsTo('App\Models\User', 'sender_id');
     }
-
 
     /* CRUD
     ----------------------------------------------------- */
@@ -94,14 +90,11 @@ class Notification extends ApiModel
         return Lang::get('notifications.' . $this->type_id, $meta);
     }
 
-
-
     /* Actions
    ----------------------------------------------------- */
 
     public static function markRead($id)
     {
-
         $notification = self::find($id);
 
         if (!$notification)
@@ -124,7 +117,6 @@ class Notification extends ApiModel
 
     /* Create different Notification types
     ----------------------------------------------------- */
-
 
     public static function askToRefer($recipientId, $senderId, $meta = null)
     {
@@ -173,6 +165,5 @@ class Notification extends ApiModel
 
         return Notification::add($recipientId, $senderId, NotificationType::$MATCHING_CONTACT, $meta);
     }
-
 
 }

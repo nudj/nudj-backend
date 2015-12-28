@@ -46,7 +46,6 @@ class ApiMongoFormatter implements FormatterInterface
         return $formatted;
     }
 
-
     public function formatBatch(array $records)
     {
         $formatted = [];
@@ -57,6 +56,5 @@ class ApiMongoFormatter implements FormatterInterface
 
         return $formatted;
     }
-
 
 }

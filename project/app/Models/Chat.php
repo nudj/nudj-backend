@@ -25,7 +25,6 @@ class Chat extends ApiModel
         $this->dependencies = ChatTransformer::$dependencies;
     }
 
-
     /* Relations
     ----------------------------------------------------- */
     public function job()
@@ -62,7 +61,6 @@ class Chat extends ApiModel
         });
 
     }
-
 
     /* CRUD
    ----------------------------------------------------- */

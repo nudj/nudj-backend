@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Lang;
 
-
 class ApiException extends \Exception
 {
 
@@ -35,6 +34,5 @@ class ApiException extends \Exception
     public  function shouldNotify() {
         return (bool) $this->notify;
     }
-
 
 }

@@ -2,14 +2,12 @@
 
 interface ApiAuthenticable {
 
-
     /*
      * Validates a request
      *
      * @return bool
      */
     public function validate($driverType);
-
 
     /*
     * Check if a role belongs to a user

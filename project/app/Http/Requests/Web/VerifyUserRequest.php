@@ -1,12 +1,10 @@
 <?php namespace App\Http\Requests\Web;
 
-
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Validation\Validator;
 
 class VerifyUserRequest extends FormRequest {
-
 
 	public function authorize()
 	{
@@ -21,11 +19,9 @@ class VerifyUserRequest extends FormRequest {
 		];
 	}
 
-
 	protected function failedValidation(Validator $validator)
 	{
 		die(json_encode($this->formatErrors($validator)));
 	}
-
 
 }

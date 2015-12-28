@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use League\Flysystem\Exception;
 
-
 class Job extends ApiModel
 {
 
@@ -47,7 +46,6 @@ class Job extends ApiModel
         return $this->belongsToMany('App\Models\User', 'job_likes');
     }
 
-
     /* Scopes
    ----------------------------------------------------- */
     public function scopeMine($query, $userId = null)
@@ -81,7 +79,6 @@ class Job extends ApiModel
         return $query->whereIn('user_id', $ids);
     }
 
-
     /* GET
     ----------------------------------------------------- */
     public function search($term)
@@ -93,7 +90,6 @@ class Job extends ApiModel
 
         return self::whereIn('id', $ids)->get();
     }
-
 
     /* CRUD
    ----------------------------------------------------- */
@@ -224,7 +220,6 @@ class Job extends ApiModel
         return parent::delete();
     }
 
-
     /* Checks
    ----------------------------------------------------- */
 
@@ -242,7 +237,6 @@ class Job extends ApiModel
     {
         return true;
     }
-
 
 }
 

@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
 
-
 class Referral extends ApiModel
 {
 
@@ -24,7 +23,6 @@ class Referral extends ApiModel
     protected $defaultFields = ['hash'];
 
     protected $prefix = 'referral.';
-
 
     /* Relations
     ----------------------------------------------------- */
@@ -101,7 +99,6 @@ class Referral extends ApiModel
             'employer' => $job->user->name,
         ]);
     }
-
 
     private function askContactToRefer($job, $contact, $message)
     {

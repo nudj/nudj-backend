@@ -1,13 +1,11 @@
 <?php namespace App\Handlers\Events;
 
-
 use App\Events\NotifyUserEvent;
 use App\Models\Notification;
 use App\Models\User;
 use App\Utility\Snafu;
 use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
-
 
 class SendApn implements ShouldBeQueued
 {

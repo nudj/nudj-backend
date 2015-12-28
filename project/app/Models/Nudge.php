@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
 
-
 class Nudge extends ApiModel
 {
 
@@ -25,7 +24,6 @@ class Nudge extends ApiModel
     protected $defaultFields = ['hash'];
 
     protected $prefix = 'nudge.';
-
 
     /* Relations
     ----------------------------------------------------- */
@@ -76,9 +74,6 @@ class Nudge extends ApiModel
 
     }
 
-
-
-
     /* Private Methods
     ----------------------------------------------------- */
     private static function addNewNudge($jobId, $employerId, $referrerId, $candidateId)
@@ -118,8 +113,6 @@ class Nudge extends ApiModel
         ]);
         Event::fire(new SendMessageToContactEvent($contact->phone, $contact->country_code, $message));
     }
-
-
 
 }
 

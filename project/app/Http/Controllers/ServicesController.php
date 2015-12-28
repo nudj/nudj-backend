@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 use App\Models\Contact;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -23,7 +22,6 @@ use Log;
 class ServicesController extends ApiController
 {
 
-
     public function clean()
     {
         if (!Shield::hasRole('admin'))
@@ -31,18 +29,15 @@ class ServicesController extends ApiController
 
     }
 
-
     public function test()
     {
-
 		$contact = Contact::findOrFail($_GET['id']);
 
 		var_dump($contact->isMobileUser());
-
 	}
 
 	public function message() {
-// Connect trough XMPP
+		// Connect trough XMPP
 		Log::info('Start Sending: 3');
 
 		$initiator = User::findOrFail("3");
@@ -79,9 +74,5 @@ class ServicesController extends ApiController
 		// Bye bye
 		$client->disconnect();
 	}
-
-
-
-
 
 }

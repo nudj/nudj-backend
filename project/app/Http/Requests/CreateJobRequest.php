@@ -1,15 +1,11 @@
 <?php namespace App\Http\Requests;
 
-
-
 class CreateJobRequest extends ApiRequest {
-
 
 	public function authorize()
 	{
 		return true;
 	}
-
 
 	public function rules()
 	{
@@ -21,6 +17,5 @@ class CreateJobRequest extends ApiRequest {
 			'skills' => 'required',
 		];
 	}
-
 
 }

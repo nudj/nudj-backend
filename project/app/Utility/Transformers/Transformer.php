@@ -17,7 +17,6 @@ abstract class Transformer
 
         return array_map([$this, 'transform'], $items->all());
     }
-
     
     public function transform($item) {
 
@@ -40,6 +39,5 @@ abstract class Transformer
 
         return $response;
     }
-
 
 }

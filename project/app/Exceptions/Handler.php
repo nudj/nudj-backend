@@ -1,6 +1,5 @@
 <?php namespace App\Exceptions;
 
-
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use Exception;

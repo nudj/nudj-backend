@@ -1,15 +1,11 @@
 <?php namespace App\Http\Requests;
 
-
-
 class NotifyOfflineUserRequest extends ApiRequest {
-
 
 	public function authorize()
 	{
 		return true;
 	}
-
 
 	public function rules()
 	{
@@ -19,6 +15,5 @@ class NotifyOfflineUserRequest extends ApiRequest {
 			'user_id' => 'required',
 		];
 	}
-
 
 }

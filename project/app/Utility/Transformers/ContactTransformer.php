@@ -1,6 +1,5 @@
 <?php namespace App\Utility\Transformers;
 
-
 class ContactTransformer extends Transformer {
 
     public static $dependencies = [
@@ -39,10 +38,8 @@ class ContactTransformer extends Transformer {
 
     }
 
-
     public function transformCollection($items)
     {
-
         $groups = array();
         foreach ($items as $item) {
             $letter = mb_substr(mb_strtoupper($item->alias), 0 ,1);

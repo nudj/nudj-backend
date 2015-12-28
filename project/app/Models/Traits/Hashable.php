@@ -2,7 +2,6 @@
 
 namespace App\Models\Traits;
 
-
 trait Hashable {
 
     public static function findByHash($hash = null, $field = 'hash')

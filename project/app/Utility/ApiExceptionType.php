@@ -2,7 +2,6 @@
 
 namespace App\Utility;
 
-
 class ApiExceptionType {
 
     //General Errors
@@ -31,7 +30,7 @@ class ApiExceptionType {
     public static $CHAT_ERROR           = ['errorCode' => 13301, 'code' => 400, 'notify' => false];
     public static $LINKEDIN_ERROR       = ['errorCode' => 13401, 'code' => 400, 'notify' => false];
     public static $ELASTIC_ERROR        = ['errorCode' => 13501, 'code' => 400, 'notify' => false];
-    public static $ELASTIC_MISSING        = ['errorCode' => 13502, 'code' => 400, 'notify' => false];
+    public static $ELASTIC_MISSING      = ['errorCode' => 13502, 'code' => 400, 'notify' => false];
 
     // Nudge Errors
     public static $VERIFICATION_ERROR   = ['errorCode' => 14101, 'code' => 400, 'notify' => false];
@@ -42,6 +41,5 @@ class ApiExceptionType {
     public static $CONTACT_MISSING      = ['errorCode' => 14501, 'code' => 404, 'notify' => false];
     public static $REFERRAL_MISSING     = ['errorCode' => 14601, 'code' => 404, 'notify' => false];
     public static $NUDGE_MISSING        = ['errorCode' => 14701, 'code' => 404, 'notify' => false];
-
 
 }

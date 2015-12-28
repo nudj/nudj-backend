@@ -1,6 +1,5 @@
 <?php namespace App\Utility;
 
-
 use App\Utility\Contracts\SocialInterface;
 use Facebook\FacebookRequest;
 use Facebook\FacebookRequestException;
@@ -30,7 +29,6 @@ class FacebookHelper implements SocialInterface
 
     private function request($query = null, $type = 'GET')
     {
-
         if (!$query)
             return false;
 

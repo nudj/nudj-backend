@@ -1,12 +1,10 @@
 <?php namespace App\Utility;
 
-
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumberUtil;
 
 class  Util
 {
-
 
     public static function extractParams($params, $prefix = null, $aliases = [])
     {
@@ -34,7 +32,6 @@ class  Util
 
         return $columns;
     }
-
 
     public static function unifyPhoneNumber($phoneNumber, $defaultCountry)
     {

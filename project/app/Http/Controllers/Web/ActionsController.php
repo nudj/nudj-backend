@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Web;
 
-
 use App\Http\Requests\ApplyRequest;
 use App\Http\Requests\Web\NudgeRequest;
 use App\Http\Requests\Web\VerifyUserRequest;
@@ -29,7 +28,6 @@ class ActionsController extends \Illuminate\Routing\Controller
         ]);
     }
 
-
     public function nudge(NudgeRequest $request)
     {
 
@@ -47,7 +45,6 @@ class ActionsController extends \Illuminate\Routing\Controller
 
         return response()->json(['success' => true]);
     }
-
 
     public function apply(ApplyRequest $request)
     {

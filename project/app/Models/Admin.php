@@ -15,14 +15,11 @@ class Admin extends Model implements AuthenticatableContract, CanResetPasswordCo
 {
     use Authenticatable, CanResetPassword, HasRoles;
 
-
-
     protected $table = 'admins';
 
     protected $fillable = ['name', 'email', 'password', 'roles'];
 
     protected $hidden = ['password', 'remember_token'];
-
 
     public static function add($request){
 
@@ -37,8 +34,6 @@ class Admin extends Model implements AuthenticatableContract, CanResetPasswordCo
 
         return $admin;
     }
-
-
 
     public function edit($data)
     {

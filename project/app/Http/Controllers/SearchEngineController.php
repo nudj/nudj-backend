@@ -90,5 +90,4 @@ class SearchEngineController extends ApiController
 
     }
 
-
 }

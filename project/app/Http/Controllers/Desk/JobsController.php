@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Desk;
 
-
 use App\Models\Job;
 
 class JobsController extends DeskController
 {
-
 
     public function index()
     {
@@ -24,4 +22,5 @@ class JobsController extends DeskController
 
         return view('desk/pages/jobs/show', $details);
     }
+
 }

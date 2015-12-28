@@ -25,8 +25,6 @@ class CloudHelper
         }
     }
 
-
-
     public function save($filename, $source, $container)
     {
         if(is_array($filename))

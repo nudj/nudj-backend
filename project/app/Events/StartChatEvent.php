@@ -8,7 +8,6 @@ class StartChatEvent extends Event {
 
 	use SerializesModels;
 
-
 	public $chatId;
 	public $initiatorId;
 	public $interlocutorId;

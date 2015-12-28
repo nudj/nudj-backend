@@ -10,10 +10,8 @@ use App\Utility\Snafu;
 use App\Utility\Transformers\JobTransformer;
 use Illuminate\Support\Facades\Input;
 
-
 class JobsController extends ApiController
 {
-
 
     public function index($filter = null)
     {
@@ -36,10 +34,8 @@ class JobsController extends ApiController
         return $this->respondWithPagination($items, new JobTransformer());
     }
 
-
     public function show($id)
     {
-
         $item = Job::api()->find($id);
 
         if (!$item)
@@ -48,14 +44,12 @@ class JobsController extends ApiController
         return $this->respondWithItem($item, new JobTransformer());
     }
 
-
     public function store(CreateJobRequest $request)
     {
         $job = Job::add(Shield::getUserId(), $request->all());
 
         return $this->respondWithId($job->id);
     }
-
 
     public function update($id)
     {
@@ -80,10 +74,8 @@ class JobsController extends ApiController
         return $this->respondWithItems($items, new JobTransformer());
     }
 
-
     public function destroy($id)
     {
-
         $job = Job::findIfOwnedBy($id, Shield::getUserId());
 
         if (!$job)
@@ -93,7 +85,6 @@ class JobsController extends ApiController
 
         return $this->respondWithStatus($status);
     }
-
 
     public function like($id)
     {

@@ -1,6 +1,5 @@
 <?php namespace App\Models\Traits;
 
-
 use App\Utility\CloudHelper;
 use App\Utility\ImageHelper;
 use Illuminate\Support\Facades\Config;
@@ -8,7 +7,6 @@ use Illuminate\Support\Facades\Config;
 trait Imageable {
 
     public abstract function getConfigItem($item);
-
 
     public function getImagePath($path = '')
     {
@@ -26,7 +24,6 @@ trait Imageable {
 
         return asset('/') .  Config::get('cfg.dir_upload') . '/' . $this->getConfigItem('imageDir') . '/' . $path;
     }
-
 
     public function getCloudImageUrls($id, $images, $sizes = null)
     {
@@ -67,6 +64,5 @@ trait Imageable {
 
         return $images;
     }
-
 
 }

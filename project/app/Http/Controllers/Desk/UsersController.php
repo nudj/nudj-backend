@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Desk;
 
-
 use App\Models\User;
 
 class UsersController extends DeskController
 {
-
 
     public function index()
     {
@@ -27,4 +25,5 @@ class UsersController extends DeskController
 
         return view('desk/pages/users/show', $params);
     }
+
 }

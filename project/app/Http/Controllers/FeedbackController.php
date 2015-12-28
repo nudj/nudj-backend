@@ -11,7 +11,6 @@ class FeedbackController extends ApiController
 
     public function send()
     {
-
         $user = User::find(Shield::getUserId());
 
         $data = [

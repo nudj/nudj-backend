@@ -1,15 +1,11 @@
 <?php namespace App\Http\Requests;
 
-
-
 class CreateUserRequest extends ApiRequest {
-
 
 	public function authorize()
 	{
 		return true;
 	}
-
 
 	public function rules()
 	{
@@ -18,6 +14,5 @@ class CreateUserRequest extends ApiRequest {
 			'country_code' => 'required'
 		];
 	}
-
 
 }

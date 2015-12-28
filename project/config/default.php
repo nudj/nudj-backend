@@ -2,7 +2,6 @@
 
 return [
 
-
     'country_code' => 'GB',
 
 
@@ -20,6 +19,5 @@ return [
             'post_job' => true,
         ]
     ],
-
 
 ];

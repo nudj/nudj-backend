@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 use App\Events\SendMessageToContactEvent;
 use App\Models\Contact;
 use App\Http\Requests;
@@ -11,7 +10,6 @@ use App\Utility\Transformers\ContactTransformer;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
-
 
 class ContactsController extends ApiController
 {

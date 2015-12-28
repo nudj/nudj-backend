@@ -1,6 +1,5 @@
 <?php namespace App\Models;
 
-
 use App\Models\Traits\Indexable;
 
 class Skill extends ApiModel

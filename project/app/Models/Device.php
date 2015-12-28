@@ -1,6 +1,5 @@
 <?php namespace App\Models;
 
-
 class Device extends ApiModel
 {
     public $timestamps = false;
@@ -13,7 +12,6 @@ class Device extends ApiModel
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
-
 
     /* CRUD
     ----------------------------------------------------- */

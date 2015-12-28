@@ -1,6 +1,5 @@
 <?php namespace App\Utility;
 
-
 use Intervention\Image\Facades\Image;
 
 class ImageHelper {
@@ -106,8 +105,5 @@ class ImageHelper {
         else
             return false;
     }
-
-
-
 
 }

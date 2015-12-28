@@ -1,17 +1,13 @@
 <?php namespace App\Http\Requests\Web;
 
-
-
 use App\Http\Requests\ApiRequest;
 
 class NudgeRequest extends ApiRequest {
-
 
 	public function authorize()
 	{
 		return true;
 	}
-
 
 	public function rules()
 	{
@@ -23,6 +19,5 @@ class NudgeRequest extends ApiRequest {
 			'message' => 'required',
 		];
 	}
-
 
 }

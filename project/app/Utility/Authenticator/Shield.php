@@ -7,14 +7,12 @@ use App\Utility\Authenticator\Contracts\ShieldAuthServiceContract;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
-
 class Shield implements ApiAuthenticable
 {
 
     private $driverTypes = ['session', 'header'];
 
     private $defaultDriverType = 'header';
-
 
     /*
      * User Repository used for authentication
@@ -50,7 +48,6 @@ class Shield implements ApiAuthenticable
      * @property array $userRoles
      */
     protected $userRoles;
-
 
     public function __construct($authService)
     {
@@ -129,6 +126,5 @@ class Shield implements ApiAuthenticable
 
         return false;
     }
-
 
 }

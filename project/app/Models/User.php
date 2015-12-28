@@ -1,6 +1,5 @@
 <?php namespace App\Models;
 
-
 use App\Models\Traits\Imageable;
 use App\Models\Traits\Social;
 use App\Utility\ApiException;

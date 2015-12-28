@@ -1,6 +1,5 @@
 <?php namespace App\Handlers\Events;
 
-
 use App\Events\StartChatEvent;
 use App\Models\User;
 
@@ -11,17 +10,13 @@ use Fabiang\Xmpp\Protocol\Presence;
 use GameNet\Jabber\RpcClient;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
-
 use Illuminate\Support\Facades\Config;
-
 
 class StartChat implements ShouldBeQueued
 {
 
-
     public function handle(StartChatEvent $event)
     {
-
         $initiator = User::findOrFail($event->initiatorId);
 
         $initiatorUsername = $this->returnUsername($initiator->id);
@@ -41,12 +36,10 @@ class StartChat implements ShouldBeQueued
 
         if($event->message)
             $this->sendInitialMessage($event, $initiatorUsername);
-
     }
 
     private function sendInitialMessage(StartChatEvent $event, $fromUsername)
     {
-
         // Connect trough XMPP
         $options = new Options(Config::get('cfg.chat_server_tcp'));
 
@@ -72,7 +65,6 @@ class StartChat implements ShouldBeQueued
             ->setType(Message::TYPE_GROUPCHAT);
 
         $client->send($message);
-
 
         // Bye bye
         $client->disconnect();

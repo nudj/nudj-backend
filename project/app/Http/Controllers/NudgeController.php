@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 use App\Events\StartChatEvent;
 use App\Http\Requests\ApplyRequest;
 use App\Http\Requests\AskForReferralsRequest;
@@ -19,7 +18,6 @@ use Illuminate\Support\Facades\Event;
 class NudgeController extends ApiController
 {
 
-
     public function ask(AskForReferralsRequest $request)
     {
         Referral::askContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
@@ -33,7 +31,6 @@ class NudgeController extends ApiController
 
         return $this->respondWithStatus(true);
     }
-
 
     public function apply(ApplyRequest $request)
     {

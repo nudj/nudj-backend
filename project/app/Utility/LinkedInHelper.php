@@ -1,6 +1,5 @@
 <?php namespace App\Utility;
 
-
 use App\Utility\Contracts\SocialInterface;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
@@ -26,19 +25,16 @@ class LinkedInHelper implements SocialInterface
 
         $this->appId = Config::get('cfg.linkedin_app_id');
         $this->appSecret = Config::get('cfg.linkedin_app_secret');
-
     }
 
     public function getUser()
     {
         return $this->request('/people/~:(id,first-name,last-name,email-address)');
-//        return $this->request('/people/~:(id,first-name,last-name,email-address,skills,picture-url)');
+        //return $this->request('/people/~:(id,first-name,last-name,email-address,skills,picture-url)');
     }
-
 
     private function request($query = null)
     {
-
         $params = http_build_query([
             'oauth2_access_token' => $this->userToken,
             'format' => $this->format,
