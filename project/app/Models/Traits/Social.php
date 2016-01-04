@@ -5,6 +5,12 @@ namespace App\Models\Traits;
 use App\Utility\Snafu;
 use League\Flysystem\Exception;
 
+/*
+	The functions defined in this trait make the assumption that the Trait is added
+	to an instance of User, which sort of defeat the purpose of a trait. 
+	They might as well have been defined in the user class itself....
+*/
+
 trait Social {
 
     public function importFromFacebook($incomingData)
@@ -40,6 +46,9 @@ trait Social {
         $this->edit($import);
     }
 
+    // ---------------------------------------------------------------------
+    // TODO: The below is commented out waiting to be deleted
+    /*
     public function importFromLinkedIn($incomingData)
     {
         $import = [];
@@ -49,7 +58,6 @@ trait Social {
 
         if(!$this->email && isset($incomingData->emailAddress))
             $import['email'] = $incomingData->emailAddress;
-
 
         if(isset($incomingData->skills->values)) {
             $skillList = [];
@@ -61,5 +69,6 @@ trait Social {
 
         $this->edit($import);
     }
+    */
 
 }

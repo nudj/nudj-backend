@@ -1,5 +1,7 @@
 <?php namespace App\Utility;
-
+// ---------------------------------------------------------------------
+// TODO: The below is commented out waiting to be deleted
+/*
 use App\Utility\Contracts\SocialInterface;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
@@ -60,3 +62,5 @@ class LinkedInHelper implements SocialInterface
     }
 
 }
+
+*/

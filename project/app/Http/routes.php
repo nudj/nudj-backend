@@ -115,9 +115,13 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     // SOCIAL
     Route::put('connect/facebook', 'SocialController@facebook');
-    Route::put('connect/linkedin', 'SocialController@linkedin');
     Route::delete('connect/facebook', 'SocialController@disconnectFacebook');
-    Route::delete('connect/linkedin', 'SocialController@disconnectLinkedIn');
+
+    // ---------------------------------------------------------------------
+    // TODO: The below is commented out waiting to be deleted
+    // Route::put('connect/linkedin', 'SocialController@linkedin');
+    // Route::delete('connect/linkedin', 'SocialController@disconnectLinkedIn');
+    // ---------------------------------------------------------------------
 
     // CONFIG
     Route::get('config', 'ConfigController@index');

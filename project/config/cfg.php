@@ -28,13 +28,16 @@ return [
         'location' => 'LON',
     ],
 
-    //Facebook
+    // Facebook
     'facebook_app_id'     => '436716026489484',
     'facebook_app_secret' => 'fb7575dae2525ca8301c74c7b87ed26d',
 
-    //LinkedIn
-    'linkedin_app_id'     => '77l67v0flc6leq',
-    'linkedin_app_secret' => 'PLOAmXuwsl1sSooc',
+    // ---------------------------------------------------------------------
+    // TODO: The below is commented out waiting to be deleted
+    // LinkedIn
+    // 'linkedin_app_id'     => '77l67v0flc6leq',
+    // 'linkedin_app_secret' => 'PLOAmXuwsl1sSooc',
+    // ---------------------------------------------------------------------    
 
     // SMS Messaging
     'twilio_sid'    => 'AC5417072b3b78fe9375f2f8f795a26e74',
