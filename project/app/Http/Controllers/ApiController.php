@@ -23,7 +23,7 @@ class ApiController extends \Illuminate\Routing\Controller {
 		'App\Http\Controllers\UsersController@verify',
 		'App\Http\Controllers\UsersController@exists',
 		'App\Http\Controllers\CountriesController@index',
-		'App\Http\Controllers\ServicesController@test',
+		'App\Http\Controllers\ServicesController@test'
 	];
 
 	function __construct()

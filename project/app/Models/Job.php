@@ -83,6 +83,12 @@ class Job extends ApiModel
     ----------------------------------------------------- */
     public function search($term)
     {
+    	/*
+			This function returns either an empty array
+			or ... TODO: 
+    	*/
+
+
         $ids = $this->searchIndex('job', $term);
 
         if (!$ids)

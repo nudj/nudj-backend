@@ -296,7 +296,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
     public function isNudged($jobId)
     {
-        return false;
+        return false; 
 
     }
 

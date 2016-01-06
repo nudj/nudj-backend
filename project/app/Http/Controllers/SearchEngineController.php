@@ -8,6 +8,10 @@ use App\Utility\Facades\Shield;
 use Elasticsearch\Client;
 use Illuminate\Support\Facades\Config;
 
+/*
+	This controller performs the update of the ... TODO: 
+*/
+
 class SearchEngineController extends ApiController
 {
 

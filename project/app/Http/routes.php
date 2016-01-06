@@ -1,14 +1,19 @@
 <?php
 
+// -------------------------------------------------------------------------------
 // Define patterns for expected parameters
 $router->pattern('id', '([0-9]+)');
 $router->pattern('userid', '([0-9]+)|(me)');
 $router->pattern('filter', '([a-z]+)');
 
+
+// -------------------------------------------------------------------------------
 // Default view
 // This route is being superseded by the Admin section
 Route::get('/', 'Web\HomeController@index');
 
+
+// -------------------------------------------------------------------------------
 // Web view
 // This route is being superseded by the Admin section
 Route::group(['prefix' => '/'], function () {
@@ -27,6 +32,8 @@ Route::group(['prefix' => '/'], function () {
 
 });
 
+
+// -------------------------------------------------------------------------------
 // HTML sources accessed from the app
 Route::group(['prefix' => 'html'], function () {
     Route::get('terms', 'HtmlController@terms');
@@ -34,12 +41,10 @@ Route::group(['prefix' => 'html'], function () {
     Route::get('cookies', 'HtmlController@cookies');
 });
 
+
+// -------------------------------------------------------------------------------
 // API V1 routes
 /*
-
-	{
-		Origin: Routes documentation at nudj-backend-documentation
-	}
 
 	Note: All the controllers in the api/v1 group inherit from ApiController, which specifies that
 	the only "non token methods" are:
@@ -142,6 +147,8 @@ Route::group(['prefix' => 'api/v1'], function () {
 
 });
 
+
+// -------------------------------------------------------------------------------
 // ADMINISTRATION
 $adminRoutes = function() {
 
@@ -174,9 +181,13 @@ $adminRoutes = function() {
 
 };
 
+
+// -------------------------------------------------------------------------------
 Route::group(['domain' => 'desk.nudj.co'], $adminRoutes);
 Route::group(['prefix' => '/'], $adminRoutes);
 
+
+// -------------------------------------------------------------------------------
 // Listen for some stuff
 if (env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {
     Event::listen('illuminate.query', function ($query) {
