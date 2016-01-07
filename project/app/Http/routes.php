@@ -9,18 +9,16 @@ $router->pattern('filter', '([a-z]+)');
 
 // -------------------------------------------------------------------------------
 // Default view
-// This route is being superseded by the Admin section
 Route::get('/', 'Web\HomeController@index');
 
 
 // -------------------------------------------------------------------------------
 // Web view
-// This route is being superseded by the Admin section
 Route::group(['prefix' => '/'], function () {
 
     Route::get('register/{type}/{hash}', 'Web\WebController@login');
 
-    Route::post('validate', 'Web\WebController@validate');
+    Route::post('validate', 'Web\WebController@validate'); // next step after 'register/{type}/{hash}'
     Route::get('job/{jobId}/{hash?}', 'Web\WebController@job');
 
     Route::post('verify', 'Web\ActionsController@verify');
