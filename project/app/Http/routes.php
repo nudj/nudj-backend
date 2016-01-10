@@ -17,6 +17,7 @@ Route::get('/', 'Web\HomeController@index');
 Route::get('/pascal/hello', 'PascalController@hello');
 Route::get('/pascal/operation1', 'PascalController@operation1');
 
+
 // -------------------------------------------------------------------------------
 // Web view
 Route::group(['prefix' => '/'], function () {
@@ -34,6 +35,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('download', 'Web\WebController@download');
 
 });
+
 
 // -------------------------------------------------------------------------------
 // HTML sources accessed from the app
@@ -70,7 +72,7 @@ Route::group(['prefix' => 'html'], function () {
 Route::group(['prefix' => 'api/v1'], function () {
 
     // JOBS
-    Route::get('jobs/search/{term?}', 'JobsController@search');
+    Route::get('jobs/search/{term?}', 'JobsController@search');                // documented: local + wiki
     Route::get('jobs/{filter}', 'JobsController@index');
     Route::get('jobs/{id}', 'JobsController@show');
     Route::post('jobs', 'JobsController@store');
@@ -80,12 +82,12 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::delete('jobs/{id}/like', 'JobsController@unlike');
 
     // USERS
-    Route::get('users', 'UsersController@index');
-    Route::get('users/{userid}', 'UsersController@show');
+    Route::get('users', 'UsersController@index');                              // documented: local + wiki
+    Route::get('users/{userid}', 'UsersController@show');                      // documented: local + wiki
     Route::post('users', 'UsersController@store');
     Route::put('users/{userid?}', 'UsersController@update');
     Route::delete('users/{userid}', 'UsersController@destroy');
-    Route::put('users/verify', 'UsersController@verify');
+    Route::put('users/verify', 'UsersController@verify');                      // documented: local + wiki
     Route::get('users/exists/{userid}', 'UsersController@exists');
     Route::get('users/{userid}/contacts', 'UsersController@contacts');
     Route::get('users/{userid}/favourites', 'UsersController@favourites');
@@ -148,6 +150,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 	Route::get('services/message', 'ServicesController@message');
 
 });
+
 
 // -------------------------------------------------------------------------------
 // Listen for some stuff

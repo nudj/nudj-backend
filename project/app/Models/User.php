@@ -119,6 +119,8 @@ class User extends ApiModel implements ShieldAuthServiceContract
     public static function verify($input)
     {
 
+    	// For the context of this function see: documentation 030030ce-d51b-4355-b50f-e021fb3b37b2
+
         $phoneData = Util::unifyPhoneNumber($input['phone'], $input['country_code']);
 
         Snafu::show($phoneData);
@@ -132,7 +134,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
         if ($user) {
             $user->verified = true;
             $user->save();
-
             return $user;
         }
 

@@ -35,7 +35,7 @@ class UsersController extends ApiController
 
         $item = User::api()->findOrFail($id);
         // Ok so at this point we have a user we are going to send it back to the client, but before
-        // doing so we need to transform it becuase as at it currently is we cannot directly JSON serialize it.
+        // doing so we need to transform it because as at it currently is we cannot directly JSON serialize it.
 
         // To convert/transform a user into a json object we use a class called UserTransformer()
         // in App\Utility\Transformers\UserTransformer;
@@ -97,6 +97,9 @@ class UsersController extends ApiController
 
     public function verify(VerifyUserRequest $request)
     {
+
+    	// For the context of this function see: documentation 030030ce-d51b-4355-b50f-e021fb3b37b2
+
         $user = User::verify($request->all());
 
         if (!$user)
