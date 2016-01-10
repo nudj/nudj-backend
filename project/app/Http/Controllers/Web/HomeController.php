@@ -4,7 +4,7 @@ class HomeController extends \Illuminate\Routing\Controller {
 
 	public function index()
 	{
-		return "Hello world!";
+		return redirect('http://nudj.co');
 	}
 
 }
