@@ -22,16 +22,16 @@ Route::get('/pascal/operation1', 'PascalController@operation1');
 // Web view
 Route::group(['prefix' => '/'], function () {
 
+	// Relevant Information: 2c4e861f-be97-49a2-ad53-2d9c2f6a7f74
+
+    Route::get('jobpreview/{jobId}/{hash?}', 'Web\WebController@jobpreview');
     Route::get('register/{type}/{hash}', 'Web\WebController@login');
-
-    Route::post('validate', 'Web\WebController@validate'); // next step after 'register/{type}/{hash}'
+    Route::post('validate', 'Web\WebController@validate');
     Route::get('job/{jobId}/{hash?}', 'Web\WebController@job');
-
     Route::post('verify', 'Web\ActionsController@verify');
     Route::post('apply', 'Web\ActionsController@apply');
     Route::post('refer', 'Web\ActionsController@nudge');
     Route::get('countries', 'Web\ActionsController@countries');
-
     Route::get('download', 'Web\WebController@download');
 
 });

@@ -104,5 +104,22 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
+    public function jobpreview($jobId = null , $hash = null)
+    {
+
+        $job = Job::findorFail($jobId);
+
+        if(!$job)
+            return redirect('/');
+
+        return view('web/page/jobpreview', [
+            'hash' => $hash,
+            'job' => $job,
+            'employer' => $job->company,
+            'skills' => $job->skills,
+            'countries' => Country::web()->orderBy('name', 'asc')->get(),
+        ]);
+    }
+
 }
 
