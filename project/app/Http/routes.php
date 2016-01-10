@@ -13,6 +13,12 @@ Route::get('/', 'Web\HomeController@index');
 
 
 // -------------------------------------------------------------------------------
+// Pascal
+Route::get('/pascal/hello', 'PascalController@hello');
+Route::get('/pascal/operation1', 'PascalController@operation1');
+Route::get('/pascal/operation2', 'PascalController@operation2');
+
+// -------------------------------------------------------------------------------
 // Web view
 Route::group(['prefix' => '/'], function () {
 

@@ -46,9 +46,9 @@ return [
 
     // Elastic
     'elastic_index' => 'nudge',
-    'elastic_port'  => '9200',
-    'elastic_ip'    => '134.213.153.40',
-    'elastic_hosts' => ['134.213.153.40:9200'],
+    'elastic_port'  => env('ELASTIC_PORT', '9200'),
+    'elastic_ip'    => env('ELASTIC_IP', '127.0.0.1'),
+    'elastic_hosts' => [''.env('ELASTIC_IP', '127.0.0.1').':'.env('ELASTIC_PORT', '9200').''],
 
     // Random settings
     'verification_code_length' => 4,

@@ -9,6 +9,7 @@ use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use League\Flysystem\Exception;
+use Log;
 
 class Job extends ApiModel
 {
@@ -84,10 +85,9 @@ class Job extends ApiModel
     public function search($term)
     {
     	/*
-			This function returns either an empty array
-			or ... TODO: 
+			This function returns either an array of Jobs 
+			(identified by the result of the search)
     	*/
-
 
         $ids = $this->searchIndex('job', $term);
 
@@ -95,6 +95,7 @@ class Job extends ApiModel
             return [];
 
         return self::whereIn('id', $ids)->get();
+
     }
 
     /* CRUD

@@ -1,30 +1,30 @@
 <?php namespace App\Http\Controllers;
 
+/*
+	This controller was introduced mostly 
+	to allow me to run specific commands using curl
+	while by passing the normal authentication.
+*/
+
 use App\Models\Job;
 use App\Models\Skill;
-use App\Utility\ApiException;
-use App\Utility\ApiExceptionType;
-use App\Utility\Facades\Shield;
 use Elasticsearch\Client;
 use Illuminate\Support\Facades\Config;
 
-/*
+class PascalController extends \Illuminate\Routing\Controller {
 
-	This controller performs the population and update of the elastic search data set
+	function __construct()
+	{	
 
-	Documentation: Elasticsearch@Nudj.md (c965fca0-d0ad-47fa-a280-0d8e325e02c8)
+	}
 
-*/
+	function hello(){
+		return "Hello World!\n";
+	}
 
-class SearchEngineController extends ApiController
-{
+	function operation1(){
 
-    protected $types = ['skill', 'job'];
-
-    public function repair()
-    {
-        if (!Shield::hasRole('admin'))
-            throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
+		$this->types = ['skill', 'job'];
 
         echo "Connectiong to Search Engine server ... <br/>";
         $client = new Client(['hosts' => Config::get('cfg.elastic_hosts')]);
@@ -47,7 +47,7 @@ class SearchEngineController extends ApiController
 
         echo "Finished! <br/>";
 
-    }
+	}
 
     private function job($client, $index)
     {
@@ -97,5 +97,11 @@ class SearchEngineController extends ApiController
         }
 
     }
+
+	function operation2(){
+        $job = new Job();
+        $items = $job->search('Casting instructor');
+        return json_encode($items);
+	}
 
 }

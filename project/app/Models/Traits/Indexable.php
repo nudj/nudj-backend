@@ -6,6 +6,7 @@ use App\Utility\Server;
 use App\Utility\Snafu;
 use Elasticsearch\Client;
 use Illuminate\Support\Facades\Config;
+use Log;
 
 trait Indexable {
 
@@ -95,25 +96,91 @@ trait Indexable {
 
     public function searchIndex($type, $term)
     {
+
+    	// marker: 306f0fa3-3e64-4744-90bb-bda6c6c708ee
+
         $this->connect();
 
-        $query['query']['match']['_all'] = $term;
-        $query['filter']['bool']['must'][]['term'] = ['active' => 1, 'deleted' => 0];
+        $body['query']['bool']['must'][]['match'] = ['title' => $term];
+        $body['query']['bool']['filter'][]['term'] = ['active' => 1];
+        $body['query']['bool']['filter'][]['term'] = ['deleted' => 0];
 
-        Snafu::show($query, 'searchQuery');
+        // Log::debug(json_encode($body));
+
+        /*
+			{
+				"query": {
+					"bool": {
+						"must": [{
+							"match": {
+								"title": "Casting instructor"
+							}
+						}],
+						"filter": [{
+							"term": {
+								"active": 1
+							}
+						}, {
+							"term": {
+								"deleted": 0
+							}
+						}]
+					}
+				}
+			}
+        */
+
+        Snafu::show($body, 'searchQuery');
 
         $results = $this->searchEngineClient->search([
             'index' => $this->searchEngineIndex,
             'type' => $type,
-            'body' => $query
-            ]);
+            'body' => $body
+        ]);
+
+        // Log::debug(json_encode($results));
+
+        /*
+			{
+				"took": 2,
+				"timed_out": false,
+				"_shards": {
+					"total": 5,
+					"successful": 5,
+					"failed": 0
+				},
+				"hits": {
+					"total": 1,
+					"max_score": 4.2286663,
+					"hits": [{
+						"_index": "nudge",
+						"_type": "job",
+						"_id": "3",
+						"_score": 4.2286663,
+						"_source": {
+							"title": "Casting instructor ",
+							"description": "Man who advises and guide the candidates for a film ",
+							"user_id": 3,
+							"bonus": 500,
+							"active": 1,
+							"deleted": 0,
+							"skills": ["\u200bgardening", "\u200bacting", "\u200bfilming"]
+						}
+					}]
+				}
+			}
+        */
 
         Snafu::show($results, 'searchResults');
 
         if (!isset($results['hits']['hits']) || empty($results['hits']['hits']))
             return [];
 
-        return array_column($results['hits']['hits'], '_id');
+        $answer = array_column($results['hits']['hits'], '_id');
+        return $answer;
+
+        // $answer : ["3"] # array of identifiers
+
     }
 
 }
