@@ -1,43 +1,64 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 use App\Models\Job;
 use App\Models\Skill;
-use App\Utility\ApiException;
-use App\Utility\ApiExceptionType;
-use App\Utility\Facades\Shield;
 use Elasticsearch\Client;
 use Illuminate\Support\Facades\Config;
 
-/*
+class LoadElasticSearch extends Command {
 
-	This controller performs the population and update of the elastic search data set
+	/**
+	 * The console command name.
+	 *
+	 * @var string
+	 */
+	protected $name = 'elasticsearch:load';
 
-	Documentation: Elasticsearch@Nudj.md (c965fca0-d0ad-47fa-a280-0d8e325e02c8)
+	/**
+	 * The console command description.
+	 *
+	 * @var string
+	 */
+	protected $description = 'Performs loading of the Elasticsearch dataset.';
 
-*/
+	/**
+	 * Create a new command instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+	}
 
-class SearchEngineController extends ApiController
-{
+	/**
+	 * Execute the console command.
+	 *
+	 * @return mixed
+	 */
+	public function fire()
+	{
 
-    /*
-        This code is essentially a copy of the similar code
-        found in App\Console\Commands\LoadElasticSearch.
-    */
+        /* 
+            This code is essentially a copy of the similar code 
+            found in SearchEngineController repair.
+        */
 
-    protected $types = ['skill', 'job'];
+		$this->types = ['skill', 'job'];
 
-    public function repair()
-    {
-        if (!Shield::hasRole('admin'))
-            throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
+        $this->info('Connectiong to Search Engine server ... ');
 
-        echo "Connectiong to Search Engine server ... <br/>";
         $client = new Client(['hosts' => Config::get('cfg.elastic_hosts')]);
 
         if ($client->indices()->exists(['index' => Config::get('cfg.elastic_index')]))
             $client->indices()->delete(['index' => Config::get('cfg.elastic_index')]);
 
-        echo "Preparing mappings and creating index ... <br/>";
+        $this->info('Preparing mappings and creating index ... ');
+
         $insert['index'] = Config::get('cfg.elastic_index');
         foreach ($this->types as $type) {
             $insert['body']['mappings'][$type] = Config::get("mappings.$type");
@@ -45,14 +66,39 @@ class SearchEngineController extends ApiController
 
         $client->indices()->create($insert);
 
-        echo "Populating the Search Engine with data from the DB ... <br/>";
+        $this->info('Populating the Search Engine with data from the DB ... ');
+
         foreach ($this->types as $type) {
             $this->$type($client, Config::get('cfg.elastic_index'));
         }
 
-        echo "Finished! <br/>";
+        $this->info('Finished!');
 
-    }
+	}
+
+	/**
+	 * Get the console command arguments.
+	 *
+	 * @return array
+	 */
+	protected function getArguments()
+	{
+		return [
+			// ['example', InputArgument::REQUIRED, 'An example argument.'],
+		];
+	}
+
+	/**
+	 * Get the console command options.
+	 *
+	 * @return array
+	 */
+	protected function getOptions()
+	{
+		return [
+			// ['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
+		];
+	}
 
     private function job($client, $index)
     {
