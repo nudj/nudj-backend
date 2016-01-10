@@ -10,8 +10,6 @@
     <link href="{{ asset('assets/web/css/theme.css') }}" rel="stylesheet">
 @endsection
 
-
-
 @section('page')
 
     <nav class="navbar navbar-inverse coloredhead">

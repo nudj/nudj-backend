@@ -1,7 +1,5 @@
 @extends('web.app')
 
-
-
 @section('title')
     <title>Submit</title>
 @endsection
@@ -13,11 +11,13 @@
 
 @section('page')
 
+	<!-- 
     <nav class="navbar navbar-inverse navbar-fixed-top coloredhead">
         <div class="container">
             <img class="logo" src="{{ asset('assets/web/img/nudj_logo.png') }}"/>
         </div>
     </nav>
+    -->
 
     <div id="name" class="container">
         <div class="col-xs-12 col-centered col-max">
@@ -35,10 +35,8 @@
         </div>
     </div>
 
-
-
     <div id="phone-code" class="container">
-        <div class="col-xs-12 col-centered col-max" >Please this code below</div>
+        <div class="col-xs-12 col-centered col-max" >Please enter this code below</div>
         <div class="col-xs-12 col-centered col-max">
             <div id="mobile-holder">
                 <div class="mobile-box mobile-border-left">
@@ -56,7 +54,6 @@
             </div>
         </div>
     </div>
-
 
     <div id="push" class="container">
         <div class="col-xs-12 col-centered col-max">
