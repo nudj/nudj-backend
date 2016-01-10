@@ -93,15 +93,13 @@ class Handler extends ExceptionHandler
                 throw new ApiException(ApiExceptionType::$GENERAL_ERROR, $e->getMessage());
         }
 
-        // handle all other thrown exception
-        // when in local env show stack trace page
-        if ('local' != env('APP_ENV') && Request::get('debug') != true) {
+        // Handles all other exceptions
 
+        if ( env('APP_ENV')!='production' && Input::get('debug') ) {
             $response['error'] = [
                 'message' => $e->getMessage(),
                 'code' => 10001
             ];
-
             return $this->respond($response, 400);
         }
 
