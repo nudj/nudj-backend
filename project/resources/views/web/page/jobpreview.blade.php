@@ -115,15 +115,21 @@
     <div id="push" class="container from-top">
         <div class="col-xs-12 col-centered col-max best-alg">
             <div id="submit-area" class="div-apply">
-                <div id="btn-apply" data-type="" onclick="resApply();">
+                <div id="btn-apply" data-type="" onclick="navigate_1407();">
                     APPLY
                 </div>
             </div>
-            <div id="btn-refer" data-type="" onclick="refResult();">
+            <div id="btn-refer" data-type="" onclick="navigate_1407();">
                 REFER
             </div>
         </div>
     </div>
+
+<script>
+	function navigate_1407(){
+		location.href = '/register/nudge/{{$hash}}'
+	}
+</script>
 
 @endsection
 
