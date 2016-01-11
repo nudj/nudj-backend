@@ -1,0 +1,15 @@
+.DS_Store
+
+/.idea
+
+/vendor
+/storage
+/bootstrap/compiled.php
+
+.env
+*.lock
+
+/public/upload/
+
+certificates
+

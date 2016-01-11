@@ -1,0 +1,70 @@
+/* Core
+------------------------------------------------- */
+html, body {
+    height: 100%;
+}
+
+/* Login Screen
+------------------------------------------------- */
+.login-page, .login-box {
+    height: 100%;
+}
+
+.login-box, .register-box {
+    margin: 0 auto;
+    padding: 10% 0 0 0;
+}
+
+.login-copyright{
+    font-size:10px;
+    }
+
+/* Additional elements
+------------------------------------------------- */
+#console {
+    width: 100%;
+    min-height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.correct-circle{
+   padding: 11px;
+}
+
+.borderless-box{
+    border-color:transparent;
+    }
+
+.tmp-hidden{
+    display:none;
+    }
+.color-nudj{
+    color:#00A187;
+    }
+.white-nudj{
+    color:#FFFFFF;
+    }
+.bg-nudj{
+    background-color:#00A187;
+    }
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+    }
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    }
+/* Google map div
+------------------------------------------------*/
+#map_canvas{
+    height:300px;
+    width:300px;
+    margin: 0 auto;
+}

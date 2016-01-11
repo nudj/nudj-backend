@@ -1,0 +1,477 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext,cyrillic);
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 20px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 20px;
+    background-color: transparent;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 4px;
+    text-align: center;
+}
+
+
+body {
+    padding-top: 100px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+*:focus {
+    outline: 0;
+}
+
+.newp{
+    font-size: 18px;
+    margin: 0;
+}
+
+.green{
+    color:#00A187
+}
+
+.boldest{
+  font-weight: 500;
+}
+
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.coloredhead {
+    background-color: #00A187;
+    border-color:transparent ;
+}
+
+.tel-span{
+    color: #00A187;
+}
+
+.logo{
+    padding: 20px;
+    display: inherit;
+    margin: 0 auto;
+    width: 50%;
+    max-width: 145px;
+    height: 100%;
+}
+
+#name,#paragraph{
+    text-align: center;
+    padding: 10px;
+}
+
+.btnsubmit{
+    width: 100%;
+    height: 45px;
+    max-width: 330px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+    background-color: #00A187;
+    color:#FFFFFF;
+    display: table;
+    border-radius: 3px;
+}
+
+.copy{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: smaller;
+    font-weight: lighter;
+}
+.caret{
+    color:#00A187;
+}
+
+.btn-default{
+    border-color: #EBEBEB;
+}
+
+#btn-submit{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+#country{
+    text-align: center;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+}
+
+#mobile-holder{
+    display: table;
+    max-width: 330px;
+    width: 100%;
+    overflow: hidden;
+    height: 35px;
+    text-align: center;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+    border: thin solid #EBEBEB;
+}
+
+.mobile{
+/*    border: thin solid #EBEBEB;
+    border-radius: 3px;*/
+    height: 35px;
+    max-width: 330px;
+    width: 100%;
+    text-align: center;
+    border: none;
+}
+.mobile-box{
+    display: table-cell;
+    vertical-align: middle;
+    width: 50px;
+}
+
+.mobile-border-left{
+    border-left: thin solid #EBEBEB;
+}
+.mobile-border-right{
+    border-right: thin solid #EBEBEB;
+}
+
+.hit{
+    max-width: 330px;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-edit{
+    width: 71px;
+    position: absolute;
+
+}
+
+#user-name{
+    color:#00A187;
+}
+
+.labels{
+    float: left;
+    padding-left: 18px;
+}
+
+
+/*Modal css*/
+#success-btn{
+    width: 100%;
+    height: 45px;
+    max-width: 170px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;text-align: center;
+    overflow: hidden;
+    background-color: #00A187;
+    color:#FFFFFF;
+    font-size: 16px;
+    font-weight: 100;
+    display: table;
+    border-radius: 3px;
+    position: absolute;
+    bottom:30px;
+    right: 0;
+    left:0;
+    cursor: pointer;
+}
+
+#btn-ok{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#success-head{
+    color:#00A187;
+    font-size: 16px;
+    font-weight: 100;
+    position: absolute;
+    top:30px;
+    right: 0;
+    left:0;
+    width: 100%;
+    text-align: center;
+}
+
+#failed-head{
+    color:red;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    top:30px;
+    right: 0;
+    left:0;
+    width: 100%;
+    text-align: center;
+}
+
+#success-content{
+    color:#000;
+    font-size: 16px;
+    font-weight: 100;
+    position: absolute;
+    top:70px;
+    right: 0;
+    left:0;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+}
+
+#failed-content{
+    color: #000;
+    font-size: 16px;
+    font-weight: 100;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    left: 8px;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+    max-width: 220px;
+}
+/*Modal css*/
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+    /* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+    /* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    /* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    /* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    /* Styles */
+}
+/**********
+iPad 3
+**********/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+}
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+    /* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+    /* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+    /* Styles */
+}
+
+/* iPhone 5 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    .btn-edit{
+        width: 41px;
+        top: 0;
+    }
+    .labels{
+        padding: 0;
+    }
+    .newp{
+        font-size: 16px;
+    }
+
+    #name{
+        margin-top: 15px;
+    }
+
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    .btn-edit{
+        width: 41px;
+        top: 0;
+    }
+    .labels{
+        padding: 0;
+    }
+    .newp{
+        font-size: 16px;
+    }
+
+    #name{
+        margin-top: 35px;
+    }
+}
+
+/* iPhone 6 ----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    .btn-edit{
+        width: 41px;
+        top: 0;
+    }
+    .labels{
+        padding: 0;
+    }
+    #name{
+        margin-top: 15px;
+    }
+    #push{
+        margin-top: 5px;
+    }
+    #mobile-holder{
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+    .btn-edit{
+        width: 41px;
+        top: 0;
+    }
+    .labels{
+        padding: 0;
+    }
+    #name{
+        margin-top: 50px;
+    }
+    #push{
+        margin-top: 5px;
+    }
+
+    #name{
+        margin-top: 15px;
+    }
+
+    #mobile-holder{
+        margin-top: 25px;
+    }
+}
+
+/* iPhone 6+ ----------- */
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape){
+    /* Styles */
+    #name{
+        margin-top: 50px;
+    }
+    #push{
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait){
+    /* Styles */
+    #name{
+        margin-top: 50px;
+    }
+    #push{
+        margin-top: 20px;
+    }
+
+    #name{
+        margin-top: 90px;
+    }
+
+    #mobile-holder{
+        margin-top: 50px;
+    }
+}
+
+/* Samsung Galaxy S3 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+    /* Styles */
+}
+
+/* Samsung Galaxy S4 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+}
+
+/* Samsung Galaxy S5 ----------- */
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+    /* Styles */
+}
