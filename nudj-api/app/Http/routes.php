@@ -73,8 +73,8 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     // JOBS
     Route::get('jobs/search/{term?}', 'JobsController@search');                // documented: local + wiki
-    Route::get('jobs/{filter}', 'JobsController@index');
-    Route::get('jobs/{id}', 'JobsController@show');
+    Route::get('jobs/{filter}', 'JobsController@index');                       // documented: local + wiki
+    Route::get('jobs/{id}', 'JobsController@show');                            // documented: local + wiki
     Route::post('jobs', 'JobsController@store');
     Route::put('jobs/{id}', 'JobsController@update');
     Route::delete('jobs/{id}', 'JobsController@destroy');
@@ -88,10 +88,10 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('users/{userid?}', 'UsersController@update');
     Route::delete('users/{userid}', 'UsersController@destroy');
     Route::put('users/verify', 'UsersController@verify');                      // documented: local + wiki
-    Route::get('users/exists/{userid}', 'UsersController@exists');
-    Route::get('users/{userid}/contacts', 'UsersController@contacts');
-    Route::get('users/{userid}/favourites', 'UsersController@favourites');
-    Route::put('users/{userid}/favourite', 'UsersController@favourite');
+    Route::get('users/exists/{userid}', 'UsersController@exists');             // documented: local + wiki
+    Route::get('users/{userid}/contacts', 'UsersController@contacts');         // documented: local + wiki
+    Route::get('users/{userid}/favourites', 'UsersController@favourites');     // documented: local + wiki
+    Route::put('users/{userid}/favourite', 'UsersController@favourite');       // documented: local + wiki (to be finished)
     Route::delete('users/{userid}/favourite', 'UsersController@unfavourite');
 
     // NUDGE
@@ -101,7 +101,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('nudge/chat', 'NudgeController@chat');
 
     // CONTACTS
-    Route::get('contacts/mine', 'ContactsController@index');
+    Route::get('contacts/mine', 'ContactsController@index');                   // documented: local + wiki
     Route::put('contacts/{id}', 'ContactsController@update');
     Route::delete('contacts/{id}', 'ContactsController@destroy');
     Route::post('contacts/{id}/invite', 'ContactsController@invite');
