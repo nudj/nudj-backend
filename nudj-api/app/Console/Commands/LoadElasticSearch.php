@@ -104,7 +104,7 @@ class LoadElasticSearch extends Command {
     {
         $items = Job::all();
 
-        echo "Found" . count($items) ." jobs. <br/>";
+        echo "Found" . count($items) ." jobs. \n";
 
         foreach ($items as $item) {
 
@@ -132,7 +132,7 @@ class LoadElasticSearch extends Command {
     {
         $items = Skill::all();
 
-        echo "Found" . count($items) ." skills. <br/>";
+        echo "Found" . count($items) ." skills. \n";
         foreach ($items as $item) {
 
             $data = [
