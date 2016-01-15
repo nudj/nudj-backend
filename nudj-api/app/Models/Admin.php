@@ -5,6 +5,23 @@
 	the attributes of an existing admin.
 */
 
+/*
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `api_token` varchar(64) DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+*/
+
 namespace App\Models;
 
 use App\Models\Contracts\HasRolesContract;
