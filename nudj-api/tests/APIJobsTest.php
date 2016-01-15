@@ -114,4 +114,39 @@ class APIJobsTest extends TestCase {
 		$this->assertArrayHasKey('message', $xp1['error']);
 		$this->assertArrayHasKey('code', $xp1['error']);
 	}
+	public function test4()
+	{
+		$uri = 'api/v1/jobs/1';
+		$method = 'GET';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			See documentation: d29d44fd-96ad-41ba-b28a-5417a80697cb
+			{
+				"data": {
+					"id": "1",
+					"title": "Web Developer",
+					"user": {
+						"id": "2",
+						"name": "Lacho"
+					}
+				},
+				"timestamp": 1452710226.551
+			}
+		*/
+		$this->assertArrayHasKey('data', $xp1);
+		$this->assertArrayHasKey('id', $xp1['data']);
+		$this->assertArrayHasKey('title', $xp1['data']);
+		$this->assertArrayHasKey('user', $xp1['data']);
+	}
 }
