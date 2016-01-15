@@ -10,11 +10,14 @@ use App\Utility\Snafu;
 use App\Utility\Transformers\JobTransformer;
 use Illuminate\Support\Facades\Input;
 
+use Log;
+
 class JobsController extends ApiController
 {
 
     public function index($filter = null)
     {
+
         $me = Shield::getUserId();
 
         switch ($filter) {
