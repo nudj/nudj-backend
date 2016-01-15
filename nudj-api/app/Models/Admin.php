@@ -1,5 +1,10 @@
 <?php
 
+/*
+	This class provides facilities to add new admins and edit (more exactly update)
+	the attributes of an existing admin.
+*/
+
 namespace App\Models;
 
 use App\Models\Contracts\HasRolesContract;
@@ -13,6 +18,7 @@ use Illuminate\Support\Facades\Hash;
 
 class Admin extends Model implements AuthenticatableContract, CanResetPasswordContract, HasRolesContract
 {
+
     use Authenticatable, CanResetPassword, HasRoles;
 
     protected $table = 'admins';
@@ -22,16 +28,11 @@ class Admin extends Model implements AuthenticatableContract, CanResetPasswordCo
     protected $hidden = ['password', 'remember_token'];
 
     public static function add($request){
-
-          $admin = new Admin();
-
-          $admin->name = (string)$request->name;
-          $admin->email = (string)$request->email;
-          $admin->password = (string)Hash::make($request->password);
-
-
+        $admin = new Admin();
+        $admin->name = (string)$request->name;
+        $admin->email = (string)$request->email;
+        $admin->password = (string)Hash::make($request->password);
         $admin->save();
-
         return $admin;
     }
 
