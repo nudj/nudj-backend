@@ -1,0 +1,8 @@
+CREATE TABLE `user_skill` (
+  `user_id` int(11) NOT NULL,
+  `skill_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`skill_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+Mapping between users and skills.
+

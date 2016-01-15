@@ -1,0 +1,13 @@
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `recipient_id` int(11) NOT NULL,
+  `sender_id` int(11) DEFAULT NULL,
+  `type_id` int(11) NOT NULL,
+  `meta` text,
+  `read` tinyint(1) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=240 DEFAULT CHARSET=utf8;
+
+What exactly are notifications ?

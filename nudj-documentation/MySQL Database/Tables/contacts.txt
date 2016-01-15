@@ -1,0 +1,23 @@
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `contact_of` int(11) DEFAULT NULL,
+  `alias` varchar(60) NOT NULL,
+  `phone` varchar(60) NOT NULL,
+  `country_code` varchar(2) DEFAULT NULL,
+  `suspicious` tinyint(1) DEFAULT NULL,
+  `native` tinyint(1) DEFAULT NULL,
+  `favorite` tinyint(1) DEFAULT NULL,
+  `mute` tinyint(1) DEFAULT NULL,
+  `apple_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=43457 DEFAULT CHARSET=utf8;
+
+
+The value of 'contact_of' is always set this seems to be the value of users/id
+
+favorite ?
+
+mute ?
+
+apple id ?

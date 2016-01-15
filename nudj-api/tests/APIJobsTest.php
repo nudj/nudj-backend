@@ -1,5 +1,7 @@
 <?php
 
+// https://phpunit.de/manual/current/en/phpunit-book.html
+
 class APIJobsTest extends TestCase {
 
 	/*
@@ -7,19 +9,6 @@ class APIJobsTest extends TestCase {
 	 */
 	public function testJobsControllerSearch()
 	{
-
-		/*
-			Note, the standard way to make HTTP requests in Laravel
-
-				$this->call($method, $uri, $parameters = [], $cookies = [], $files = [], $server = [], $content = null)
-
-			doesn't support setting of HTTP headers. The solution is to build a HTTP request manually and do
-
-				$request->headers->set
-
-			to set them. 
-		*/
-	
 		$uri = 'api/v1/jobs/search/Casting+instructor';
 		$method = 'GET';
 		$parameters = [];
@@ -32,7 +21,27 @@ class APIJobsTest extends TestCase {
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
-
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			See documentation: d29d44fd-96ad-41ba-b28a-5417a80697cb
+			{
+			    "data": [{
+			        "id": "3",
+			        "title": "Casting instructor ",
+			        "user": {
+			            "id": "3",
+			            "name": "Lachezar Todorov"
+			        }
+			    }],
+			    "count": 1,
+			    "timestamp": 1452417473.1581
+			}
+		*/
+		$this->assertArrayHasKey('data', $xp1);
+		$this->assertArrayHasKey('id', $xp1['data'][0]);
+		$this->assertArrayHasKey('title', $xp1['data'][0]);
+		$this->assertArrayHasKey('user', $xp1['data'][0]);
 	}
 
 }

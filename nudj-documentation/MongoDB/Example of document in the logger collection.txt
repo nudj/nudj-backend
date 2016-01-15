@@ -1,0 +1,15 @@
+{ 
+	"_id" : ObjectId("55b1168e20bc8885228b4579"), 
+	"id" : 1437669006.89, 
+	"type" : "GET", 
+	"from" : "185.19.208.71", 
+	"endpoint" : "api/v1/jobs/1", 
+	"token" : "MVl49Xq7if11xeyOqghiRGxLaXjuQJxy5JLSFGpJkLJpTGivKDMOakPHFKr1", 
+	"get" : { 
+		"params" : "job.title,job.company,job.liked,job.salary,job.active,job.description,job.skills,job.bonus,job.user,job.location,user.image,user.name,user.contact" 
+		}, 
+	"post" : [ ], 
+	"updated_at" : ISODate("2015-07-23T16:30:06.985Z"), 
+	"created_at" : ISODate("2015-07-23T16:30:06.965Z"), 
+	"response" : "{\"timestamp\":1437669006.9856,\"body\":{\"data\":{\"id\":\"1\",\"title\":\"Web designer \",\"company\":\"Tight limited\",\"liked\":false,\"salary\":\"1 per hour \",\"description\":\"Create websites\",\"skills\":[{\"id\":\"56\",\"name\":\"Photoshop\"},{\"id\":\"93\",\"name\":\"PHP\"},{\"id\":\"97\",\"name\":\"HTML\"}],\"bonus\":50,\"user\":{\"id\":\"2\",\"image\":{\"profile\":\"http:\\/\\/usr-img.nudj.co\\/2\\/profile\\/6DgVidoJtj.png\",\"cover\":\"http:\\/\\/usr-img.nudj.co\\/2\\/cover\\/6DgVidoJtj.jpg\"},\"name\":\"Antonio\"},\"location\":\"England\"}}}" 
+}

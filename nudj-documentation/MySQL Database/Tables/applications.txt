@@ -1,0 +1,18 @@
+CREATE TABLE `applications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `job_id` int(11) NOT NULL,
+  `candidate_id` int(11) NOT NULL,
+  `referrer_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=165 DEFAULT CHARSET=utf8;
+
+This is the mapping between job and candidates, and each records
+also show the referrer id. 
+
+If the referrer wants to be candidate for a job, then I guess that candidate id 
+and referrer id are going to be identical. 
+
+

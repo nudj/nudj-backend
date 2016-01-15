@@ -1,0 +1,2 @@
+Note: When env is set to LOGGING we have the logging of the request and their answers. 
+(The ApiController fires up the corresponding events.)  

@@ -1,0 +1,9 @@
+CREATE TABLE `job_skill` (
+  `job_id` int(11) NOT NULL,
+  `skill_id` int(11) NOT NULL,
+  PRIMARY KEY (`job_id`,`skill_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+Simple matching of job_ids to skill_ids
+
+

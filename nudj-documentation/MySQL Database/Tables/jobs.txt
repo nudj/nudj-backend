@@ -1,0 +1,18 @@
+CREATE TABLE `jobs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text,
+  `location` varchar(128) DEFAULT NULL,
+  `company` varchar(64) DEFAULT NULL,
+  `salary` varchar(64) DEFAULT NULL,
+  `bonus` double(8,2) DEFAULT NULL,
+  `active` tinyint(1) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
+
+
+
