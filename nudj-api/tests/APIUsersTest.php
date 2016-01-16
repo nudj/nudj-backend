@@ -9,6 +9,9 @@ class APIUsersTest extends TestCase {
 	 */
 	public function test1()
 	{
+
+		// Testing retrieving the list of users.
+
 		$uri = 'api/v1/users';
 		$method = 'GET';
 		$parameters = [];
@@ -72,6 +75,9 @@ class APIUsersTest extends TestCase {
 	}
 	public function test2()
 	{
+
+		// Testing retriving a user by its identifier.
+
 		$uri = 'api/v1/users/1';
 		$method = 'GET';
 		$parameters = [];
@@ -98,5 +104,36 @@ class APIUsersTest extends TestCase {
 		$this->assertArrayHasKey('data', $xp1);
 		$this->assertArrayHasKey('id', $xp1['data']);
 		$this->assertArrayHasKey('name', $xp1['data']);
+	}
+	public function test3()
+	{
+
+		// Testing retriving a user by its identifier.
+
+		$uri = 'api/v1/users';
+		$method = 'POST';
+		$parameters = [
+			"phone" => "+447920549291",
+			"country_code" => "GB"
+		];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"timestamp": 1452975331.1362
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+
 	}
 }

@@ -17,14 +17,16 @@ Note: An example of answer will be given when this doesn't prevent understanding
 
 .
 
+
 - [GET     api/v1/users](xf1826)
 - [GET     api/v1/users/{userid}](xf1825)
-- [PUT     api/v1/users/verify](xf1827)
-
-.
-
 - [GET     api/v1/users/exists/{userid}](xf1841)
 - [GET     api/v1/users/{userid}/contacts](xf1844)
 - [GET     api/v1/users/{userid}/favourites](xf1848)
+- [POST    api/v1/users](xf1905)
+- [PUT     api/v1/users/verify](xf1827)
 - [PUT     api/v1/users/{userid}/favourite](xf1856)
+
+.
+
 - [GET     api/v1/contacts/mine](xf1901)
