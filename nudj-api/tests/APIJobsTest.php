@@ -114,6 +114,9 @@ class APIJobsTest extends TestCase {
 	}
 	public function test4()
 	{
+
+		// Get a job by identifier
+
 		$uri = 'api/v1/jobs/1';
 		$method = 'GET';
 		$parameters = [];
@@ -148,6 +151,9 @@ class APIJobsTest extends TestCase {
 	}
 	public function test5()
 	{
+
+		// Insert a job
+
 		$uri = 'api/v1/jobs';
 		$method = 'POST';
 		$parameters = [
@@ -183,6 +189,9 @@ class APIJobsTest extends TestCase {
 	}
 	public function test6()
 	{
+
+		// Update the job details
+
 		$uri = 'api/v1/jobs/127';
 		$method = 'PUT';
 		$parameters = [
@@ -210,5 +219,129 @@ class APIJobsTest extends TestCase {
 			}
 		*/
 		$this->assertArrayHasKey('status', $xp1);
+	}
+
+	public function test7()
+	{
+
+		// Delete a job identified by id
+
+		$uri = 'api/v1/jobs/127';
+		$method = 'DELETE';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"timestamp": 1452958734.212
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertTrue($xp1['status']);
+	}
+
+	public function test8()
+	{
+
+		// ---------------------------------------------
+		// Create a job
+		// Check that the job exist
+		// Delete the job
+
+		$title = md5(microtime());
+
+		// ---------------------------------------------
+		// Create a job
+		$uri = 'api/v1/jobs';
+		$method = 'POST';
+		$parameters = [
+			"title"       => $title,
+			"description" => 'description-x',
+			"bonus"       => 666,
+			"salary"      => "£999",
+			"skills"      => ["skill1","skill2"],
+		];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+
+		$job_identifier = $xp1['data']['id'];
+
+		// ---------------------------------------------
+		// Check that the job exist		
+
+		$uri = 'api/v1/jobs/'.$job_identifier;
+		$method = 'GET';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+
+		/*
+			{
+				"data": {
+					"id": "1",
+					"title": "Web Developer",
+					"user": {
+						"id": "2",
+						"name": "Lacho"
+					}
+				},
+				"timestamp": 1452710226.551
+			}
+		*/
+
+		$this->assertEquals($job_identifier, $xp1['data']['id']);			
+
+		// ---------------------------------------------
+		// Delete the job
+
+		$uri = 'api/v1/jobs/'.$job_identifier;
+		$method = 'DELETE';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"timestamp": 1452958734.212
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertTrue($xp1['status']);
+
 	}
 }
