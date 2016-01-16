@@ -38,4 +38,5 @@ class ModelJobTest extends TestCase {
 		$this->assertEquals($job->salary, "£ 999");
 
 	}
+
 }

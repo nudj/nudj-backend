@@ -6,14 +6,21 @@ Note: Unless otherwise specified, keys are mandatory (only optional keys will be
 
 Note: An example of answer will be given when this doesn't prevent understanding. Otherwise the full grammar will be given.
 
-- [GET api/v1/jobs/search/{term?}](xf1001)
-- [GET api/v1/users](xf1826)
-- [GET api/v1/users/{userid}](xf1825)
-- [PUT api/v1/users/verify](xf1827)
-- [GET api/v1/jobs/{filter}](xf1830)
-- [GET api/v1/jobs/{id}](xf1837)
-- [GET users/exists/{userid}](xf1841)
-- [GET users/{userid}/contacts](xf1844)
-- [GET users/{userid}/favourites](xf1848)
-- [PUT users/{userid}/favourite](xf1856)
-- [GET contacts/mine](xf1901)
+- [GET  api/v1/jobs/search/{term?}](xf1001)
+- [GET  api/v1/jobs/{filter}](xf1830)
+- [GET  api/v1/jobs/{id}](xf1837)
+- [POST api/v1/jobs](xf1306)
+
+.
+
+- [GET  api/v1/users](xf1826)
+- [GET  api/v1/users/{userid}](xf1825)
+- [PUT  api/v1/users/verify](xf1827)
+
+.
+
+- [GET  api/v1/users/exists/{userid}](xf1841)
+- [GET  api/v1/users/{userid}/contacts](xf1844)
+- [GET  api/v1/users/{userid}/favourites](xf1848)
+- [PUT  api/v1/users/{userid}/favourite](xf1856)
+- [GET  api/v1/contacts/mine](xf1901)

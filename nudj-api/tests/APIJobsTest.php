@@ -60,7 +60,6 @@ class APIJobsTest extends TestCase {
 		$xp1 = json_decode($response->getContent(),true);
 		$this->assertInternalType('array', $xp1);
 		/*
-			See documentation: d29d44fd-96ad-41ba-b28a-5417a80697cb
 			{
 				"data": [{
 					"id": "109",
@@ -101,7 +100,6 @@ class APIJobsTest extends TestCase {
 		$xp1 = json_decode($response->getContent(),true);
 		$this->assertInternalType('array', $xp1);
 		/*
-			See documentation: d29d44fd-96ad-41ba-b28a-5417a80697cb
 			{
 				"error": {
 					"message": "Invalid Endpoint",
@@ -131,7 +129,6 @@ class APIJobsTest extends TestCase {
 		$xp1 = json_decode($response->getContent(),true);
 		$this->assertInternalType('array', $xp1);
 		/*
-			See documentation: d29d44fd-96ad-41ba-b28a-5417a80697cb
 			{
 				"data": {
 					"id": "1",
@@ -148,5 +145,40 @@ class APIJobsTest extends TestCase {
 		$this->assertArrayHasKey('id', $xp1['data']);
 		$this->assertArrayHasKey('title', $xp1['data']);
 		$this->assertArrayHasKey('user', $xp1['data']);
+	}
+	public function test5()
+	{
+		$uri = 'api/v1/jobs';
+		$method = 'POST';
+		$parameters = [
+			"title"       => 'title-x',
+			"description" => 'description-x',
+			"bonus"       => 666,
+			"salary"      => "£999",
+			"skills"      => ["skill1","skill2"],
+		];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"data": {
+					"id": 127
+				},
+				"timestamp": 1452951012.2224
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertArrayHasKey('data', $xp1);
+		$this->assertArrayHasKey('id', $xp1['data']);
 	}
 }
