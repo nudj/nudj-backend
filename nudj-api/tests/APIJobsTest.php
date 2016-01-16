@@ -344,4 +344,88 @@ class APIJobsTest extends TestCase {
 		$this->assertTrue($xp1['status']);
 
 	}
+	public function test9()
+	{
+
+		// Like a job
+
+		$uri = 'api/v1/jobs/1/like';
+		$method = 'PUT';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"timestamp": 1452958734.212
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertTrue($xp1['status']);
+	}
+	public function test10()
+	{
+
+		// Like a job
+
+		$uri = 'api/v1/jobs/1/like';
+		$method = 'PUT';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"timestamp": 1452958734.212
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertTrue($xp1['status']);
+	}
+	public function test11()
+	{
+
+		// Unlike a job
+
+		$uri = 'api/v1/jobs/1/like';
+		$method = 'DELETE';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"timestamp": 1452958734.212
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertTrue($xp1['status']);
+	}
 }

@@ -12,6 +12,9 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [POST    api/v1/jobs](xf1306)
 - [PUT     api/v1/jobs/{id}](xf1528)
 - [DELETE  api/v1/jobs/{id}](xf1554)
+- [PUT     api/v1/jobs/{id}/like](xf1634)
+- [DELETE  api/v1/jobs/{id}/like](xf1649)
+
 .
 
 - [GET     api/v1/users](xf1826)

@@ -209,6 +209,9 @@ class Job extends ApiModel
     public static function like($id, $userId, $remove = false)
     {
 
+    	// Causes the current user to like/unlike the job.
+    	// Note: Why would anybody override that function ?
+
         $job = self::find($id);
 
         if (!$job)

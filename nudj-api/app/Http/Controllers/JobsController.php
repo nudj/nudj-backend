@@ -91,11 +91,13 @@ class JobsController extends ApiController
 
     public function like($id)
     {
+        // Causes the current user to like the job.
         return $this->respondWithStatus(Job::like($id, Shield::getUserId()));
     }
 
     public function unlike($id)
     {
+        // Causes the current user to unlike the job.
         return $this->respondWithStatus(Job::like($id, Shield::getUserId(), true));
     }
 
