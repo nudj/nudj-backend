@@ -181,4 +181,34 @@ class APIJobsTest extends TestCase {
 		$this->assertArrayHasKey('data', $xp1);
 		$this->assertArrayHasKey('id', $xp1['data']);
 	}
+	public function test6()
+	{
+		$uri = 'api/v1/jobs/127';
+		$method = 'PUT';
+		$parameters = [
+			"title"       => 'title-o',
+			"description" => 'description-o',
+			"bonus"       => 665,
+			"salary"      => "£998",
+			"skills"      => ["skill6","skill7"],
+		];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"timestamp": 1452958734.212
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+	}
 }

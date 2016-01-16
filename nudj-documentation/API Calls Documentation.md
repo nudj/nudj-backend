@@ -10,6 +10,7 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [GET  api/v1/jobs/{filter}](xf1830)
 - [GET  api/v1/jobs/{id}](xf1837)
 - [POST api/v1/jobs](xf1306)
+- [PUT  api/v1/jobs/{id}](xf1528)
 
 .
 
