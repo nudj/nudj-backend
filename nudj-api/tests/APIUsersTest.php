@@ -288,4 +288,79 @@ class APIUsersTest extends TestCase {
 
 	}
 
+	public function test9()
+	{
+
+		// Testing api/v1/users/2/contacts.
+
+		$uri = 'api/v1/users/2/contacts';
+		$method = 'GET';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"data": {
+					"A": [{
+						"id": "4",
+						"phone": "+445555228243",
+						"alias": "Anna Haro"
+					}, {
+						"id": "7",
+						"phone": "+447507765774",
+						"alias": "Antonio"
+					}],
+					"D": [{
+						"id": "2",
+						"phone": "+445554787672",
+						"alias": "Daniel Higgins Jr."
+					}, {
+						"id": "6",
+						"phone": "+445556106679",
+						"alias": "David Taylor"
+					}],
+					"H": [{
+						"id": "5",
+						"phone": "+445557664823",
+						"alias": "Hank M. Zakroff"
+					}],
+					"J": [{
+						"id": "3",
+						"phone": "+448885555512",
+						"alias": "John Appleseed"
+					}],
+					"K": [{
+						"id": "1",
+						"phone": "+445555648583",
+						"alias": "Kate Bell"
+					}],
+					"L": [{
+						"id": "8",
+						"phone": "+447946390510",
+						"alias": "Lacho UK"
+					}]
+				},
+				"pagination": {
+					"total": 8,
+					"count": 8,
+					"next": false,
+					"previous": false
+				},
+				"timestamp": 1452710733.5182
+			}
+		*/
+		$this->assertArrayHasKey('data', $xp1);
+		$this->assertArrayHasKey('pagination', $xp1);
+
+	}
+
 }
