@@ -31,4 +31,8 @@ Note: An example of answer will be given when this doesn't prevent understanding
 
 .
 
+- [PUT     api/v1/nudge](xf1251)
+- [PUT     api/v1/nudge/ask](xf1408)
+.
+
 - [GET     api/v1/contacts/mine](xf1901)

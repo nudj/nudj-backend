@@ -44,10 +44,8 @@ class Referral extends ApiModel
         $job = Job::with('user')->findOrFail($jobId);
         $contacts = Contact::findOrFail($contactList);
 
-
         if ($userId != $job->user_id)
             throw new ApiException(ApiExceptionType::$JOB_OWNER_MISMATCH);
-
 
         // prepare message
         $message = $message ?: Lang::get('messages.refer');
@@ -63,6 +61,7 @@ class Referral extends ApiModel
                 $referral->askUserToRefer($job, $contact, $message);
             else
                 $referral->askContactToRefer($job, $contact, $message);
+
         }
 
     }

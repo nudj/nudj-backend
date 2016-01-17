@@ -20,15 +20,25 @@ class NudgeController extends ApiController
 
     public function ask(AskForReferralsRequest $request)
     {
+        /*
+            requests:
+                job      : Integer
+                contacts : [Integer]
+                message  : String 
+        */
         Referral::askContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
-
         return $this->respondWithStatus(true);
     }
 
     public function nudge(NudgeRequest $request)
     {
+        /*
+            requests:
+                job      : Integer
+                contacts : [Integer]
+                message  : String 
+        */
         Nudge::nudgeContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
-
         return $this->respondWithStatus(true);
     }
 

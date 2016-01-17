@@ -51,25 +51,64 @@ class Nudge extends ApiModel
    ----------------------------------------------------- */
     public static function nudgeContacts($userId, $jobId, $contactList, $message)
     {
+
+        /*
+            $userId      : Integer   # contextual user
+                                     # will later on be called referrer
+            $jobId       : Integer   
+            $contactList : [Integer] 
+            $message     : String    
+        */
+
         $job = Job::with('user')->findOrFail($jobId);
         $contacts = Contact::findOrFail($contactList);
 
+        /*
+            Note: 
+                Eloquent findOrFail accept (int) identifiers or arrays of
+        */
+
+        /*
+            $job         # Instance of Job model
+            $contacts    # [ User ]    
+        */
+
         foreach ($contacts as $contact) {
+
+            /*
+                $job->id      : id of contextual job
+                $job->user_id : id of user who owns the job  
+                $userId       : contextual user id
+                $contact->id  : user recipient of the nudge id   
+            */
 
             $nudge = self::addNewNudge($job->id, $job->user_id, $userId, $contact->id);
 
             if (!$nudge)
                 continue;
 
-            $referrer = User::find($userId);
+            $referrer = User::find($userId); # contextual user
 
             if ($contact->isMobileUser()) {
                 $message  = $message ?: Lang::get('messages.nudge_chat');
+                /*
+                    $job      : Job
+                    $referrer : User 
+                    $contact  : Contact
+                    $message  : String   
+                */
                 $nudge->nudgeUser($job, $referrer, $contact, $message);
             } else {
                 $message  = $message ?: Lang::get('messages.nudge_sms');
+                /*
+                    $job      : Job
+                    $referrer : User 
+                    $contact  : Contact
+                    $message  : String   
+                */
                 $nudge->nudgeContact($job, $referrer, $contact, $message);
             }
+
         }
 
     }
@@ -106,6 +145,10 @@ class Nudge extends ApiModel
 
     private function nudgeContact($job, $referrer, $contact, $message)
     {
+
+        // https://mobileweb.nudj.co/jobpreview/98/v747uur2Ym (for production)
+        // https://mobileweb-dev.nudj.co/jobpreview/98/v747uur2Ym (for dev)        
+
         $message = Lang::get('sms.nudge', [
             'name' => $referrer->name,
             'message' => $message,
