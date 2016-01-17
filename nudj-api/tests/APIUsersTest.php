@@ -219,4 +219,43 @@ class APIUsersTest extends TestCase {
 		$this->assertTrue($xp1['data']['completed']);
 
 	}
+
+	public function test7()
+	{
+
+		// Testing users/2/favourites.
+
+		$uri = 'api/v1/users/2/favourites';
+		$method = 'GET';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"data": [],
+				"pagination": {
+					"total": 0,
+					"count": 0,
+					"next": false,
+					"previous": false
+				},
+				"timestamp": 1452711012.072
+			}
+		*/
+		$this->assertArrayHasKey('total', $xp1['pagination']);
+		$this->assertArrayHasKey('count', $xp1['pagination']);
+		$this->assertArrayHasKey('next', $xp1['pagination']);
+		$this->assertArrayHasKey('previous', $xp1['pagination']);
+
+	}
+
 }
