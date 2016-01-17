@@ -45,7 +45,12 @@ Note: An example of answer will be given when this doesn't prevent understanding
 
 .
 
-- [GET     api/v1/notifications](xf1536)
+- [GET     api/v1/config](xf1536)
 - [PUT     api/v1/notifications/{id}/read](xf1537)
+
+.
+
+- [GET     api/v1/config](xf1559)
+- [GET     api/v1/config/{key}](xf1606)
 
 .
