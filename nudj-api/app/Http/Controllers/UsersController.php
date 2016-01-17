@@ -123,8 +123,6 @@ class UsersController extends ApiController
         // No token required
         // -----------------------------------------
 
-    	// For the context of this function see: documentation 030030ce-d51b-4355-b50f-e021fb3b37b2
-
         $user = User::verify($request->all());
 
         if (!$user)

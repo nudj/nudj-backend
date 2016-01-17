@@ -178,4 +178,45 @@ class APIUsersTest extends TestCase {
 		// Left empty for the moment.
 	}
 
+	public function test6()
+	{
+
+		// Testing pin verification process.
+
+		$uri = 'api/v1/users/verify';
+		$method = 'PUT';
+		$parameters = [
+			"phone" => "07920549291",
+			"country_code" => "GB",
+			"verification" => "6803",
+		];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"data": {
+					"id": 212,
+					"token": "6IeDFXIW6ZZeeiah2Ovk6m2jMb8fiqjb7cQmPEIR7cW7PAzFhtdBtIKFCan6",
+					"completed": true
+				},
+				"timestamp": 1453028923.5545
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertArrayHasKey('id', $xp1['data']);
+		$this->assertArrayHasKey('token', $xp1['data']);
+		$this->assertArrayHasKey('completed', $xp1['data']);
+		$this->assertTrue($xp1['data']['completed']);
+
+	}
 }

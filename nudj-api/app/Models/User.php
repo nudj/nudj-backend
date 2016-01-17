@@ -119,7 +119,23 @@ class User extends ApiModel implements ShieldAuthServiceContract
     public static function verify($input)
     {
 
-    	// For the context of this function see: documentation 030030ce-d51b-4355-b50f-e021fb3b37b2
+        /*
+            This function performs the verification of a (phone, country code) pair
+            versus a 4 digits pin. As part of the process of verifying that 
+            the entity who declared ownership of that phone number actually has 
+            access to it. (The pin was sent by SMS to the phone number).
+        */
+
+        /*
+            $input is expected to have keys:
+                'phone'
+                'country_code'
+                'verification'
+        */
+
+        /*
+        	Function returns either a user if successful or false.
+        */
 
         $phoneData = Util::unifyPhoneNumber($input['phone'], $input['country_code']);
 
@@ -138,6 +154,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
         }
 
         return false;
+
     }
 
     public function edit($input)
