@@ -32,6 +32,7 @@ class UsersController extends ApiController
         // Note: This function is defined in ApiController and returns the id of the current user
         // The given parameter $id could be null of equal to 'me'
         // In either case, the current user id needs to be extracted by Shield::getUserId()
+        // See uuid: 641f86e1-5fd6-412e-92e3-38603cd8ceb0
 
         $item = User::api()->findOrFail($id);
         // Ok so at this point we have a user we are going to send it back to the client, but before
@@ -68,10 +69,18 @@ class UsersController extends ApiController
     public function update($id = null)
     {
 
-        if (is_int($id) && !Shield::hasRole('admin'))
+        if (is_int($id) && !Shield::hasRole('admin')){
+			// id is either: null, an int or 'me'
+			// We do not want regular users to update other users details, unless being an admin
+			// Therefore we throw an exception if the id is an int but the current user is not admin 
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
+        }
 
         $id = $this->getPreparedId($id);
+        // Note: This function is defined in ApiController and returns the id of the current user
+        // The given parameter $id could be null of equal to 'me'
+        // In either case, the current user id needs to be extracted by Shield::getUserId()
+        // See uuid: 641f86e1-5fd6-412e-92e3-38603cd8ceb0
 
         $user = User::find($id);
 
@@ -89,6 +98,10 @@ class UsersController extends ApiController
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
+        // Note: This function is defined in ApiController and returns the id of the current user
+        // The given parameter $id could be null of equal to 'me'
+        // In either case, the current user id needs to be extracted by Shield::getUserId()
+        // See uuid: 641f86e1-5fd6-412e-92e3-38603cd8ceb0
 
         $status = User::destroy($id);
 
@@ -129,6 +142,10 @@ class UsersController extends ApiController
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
+        // Note: This function is defined in ApiController and returns the id of the current user
+        // The given parameter $id could be null of equal to 'me'
+        // In either case, the current user id needs to be extracted by Shield::getUserId()
+        // See uuid: 641f86e1-5fd6-412e-92e3-38603cd8ceb0
 
         $user = User::min()->find($id);
 
@@ -145,6 +162,11 @@ class UsersController extends ApiController
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
 
         $id = $this->getPreparedId($id);
+        // Note: This function is defined in ApiController and returns the id of the current user
+        // The given parameter $id could be null of equal to 'me'
+        // In either case, the current user id needs to be extracted by Shield::getUserId()
+        // See uuid: 641f86e1-5fd6-412e-92e3-38603cd8ceb0
+
         $user = User::min()->findOrFail($id);
 
         $items = $user->favourites()->api()->paginate($this->limit);

@@ -53,15 +53,19 @@ class ApiController extends \Illuminate\Routing\Controller {
 		return $this;
 	}
 
-	/* Helpers
-	 * --------------------------------------------------------------------------- */
+	
+	// ---------------------------------------------------------------------------
+	// uuid: 641f86e1-5fd6-412e-92e3-38603cd8ceb0
+	// Note: This function returns the id of the current user.
+    // The given parameter $id could be null of equal to 'me'
+    // In either case, the current user id needs to be extracted by Shield::getUserId()
 	public function getPreparedId($id)
 	{
 		return (!$id || $id == 'me') ? Shield::getUserId() : $id;
 	}
 
-	/* Responses
-	 * --------------------------------------------------------------------------- */
+	
+	// ---------------------------------------------------------------------------
 
 	public function returnResponse($data, $headers = [])
 	{

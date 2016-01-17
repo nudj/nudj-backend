@@ -108,7 +108,7 @@ class APIUsersTest extends TestCase {
 	public function test3()
 	{
 
-		// Testing retriving a user by its identifier.
+		// Testing login/registering a user.
 
 		$uri = 'api/v1/users';
 		$method = 'POST';
@@ -136,4 +136,40 @@ class APIUsersTest extends TestCase {
 		$this->assertArrayHasKey('status', $xp1);
 
 	}
+
+	public function test4()
+	{
+
+		// Testing resetting the name of a user.
+
+		$newname = md5(microtime());
+
+		$uri = 'api/v1/users/me';
+		$method = 'PUT';
+		$parameters = [
+			"name" => $newname
+		];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"timestamp": 1452975331.1362
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+
+		// TODO: could expand by retrieving the user and compare the names
+
+	}
+
 }
