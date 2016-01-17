@@ -48,27 +48,7 @@ Route::group(['prefix' => 'html'], function () {
 
 // -------------------------------------------------------------------------------
 // API V1 routes
-/*
 
-	Note: All the controllers in the api/v1 group inherit from ApiController, which specifies that
-	the only "non token methods" are:
-
-		'App\Http\Controllers\UsersController@store',
-		'App\Http\Controllers\UsersController@verify',
-		'App\Http\Controllers\UsersController@exists',
-		'App\Http\Controllers\CountriesController@index',
-		'App\Http\Controllers\ServicesController@test',
-
-	They correspond to
-		Route::post('users', 'UsersController@store');
-		Route::put('users/verify', 'UsersController@verify');
-		Route::get('users/exists/{userid}', 'UsersController@exists');
-		Route::get('countries', 'CountriesController@index');
-		Route::get('services/test', 'ServicesController@test');
-
-	If a route is not "non token" then it must Shield::validate()
-
-*/
 Route::group(['prefix' => 'api/v1'], function () {
 
     // JOBS
@@ -84,11 +64,11 @@ Route::group(['prefix' => 'api/v1'], function () {
     // USERS
     Route::get('users', 'UsersController@index');
     Route::get('users/{userid}', 'UsersController@show');
-    Route::post('users', 'UsersController@store');
+    Route::post('users', 'UsersController@store');                           // no token required
     Route::put('users/{userid?}', 'UsersController@update');
     Route::delete('users/{userid}', 'UsersController@destroy');
-    Route::put('users/verify', 'UsersController@verify');
-    Route::get('users/exists/{userid}', 'UsersController@exists');
+    Route::put('users/verify', 'UsersController@verify');                    // no token required
+    Route::get('users/exists/{userid}', 'UsersController@exists');           // no token required
     Route::get('users/{userid}/contacts', 'UsersController@contacts');
     Route::get('users/{userid}/favourites', 'UsersController@favourites');
     Route::put('users/{userid}/favourite', 'UsersController@favourite');
@@ -137,7 +117,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('config/{key}', 'ConfigController@show');
 
     // MISC
-    Route::get('countries', 'CountriesController@index');
+    Route::get('countries', 'CountriesController@index');    // no token required
     Route::put('devices', 'DevicesController@register');
     Route::post('feedback', 'FeedbackController@send');
 
@@ -146,7 +126,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('cloud/empty', 'CloudController@emptyAllContainers');
 
     // SERVICE
-    Route::get('services/test', 'ServicesController@test');
+    Route::get('services/test', 'ServicesController@test');  // no token required
 	Route::get('services/message', 'ServicesController@message');
 
 });

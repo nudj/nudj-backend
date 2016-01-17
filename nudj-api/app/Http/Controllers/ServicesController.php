@@ -31,6 +31,11 @@ class ServicesController extends ApiController
 
     public function test()
     {
+
+        // -----------------------------------------
+        // No token required
+        // -----------------------------------------
+
 		$contact = Contact::findOrFail($_GET['id']);
 
 		var_dump($contact->isMobileUser());

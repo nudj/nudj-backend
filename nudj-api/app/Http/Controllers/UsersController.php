@@ -59,6 +59,10 @@ class UsersController extends ApiController
     public function store(CreateUserRequest $request)
     {
 
+        // -----------------------------------------
+        // No token required
+        // -----------------------------------------
+
         $user = User::login($request->all());
 
         Event::fire(new LoginUserEvent($user->phone, $user->country_code, $user->verification));
@@ -115,6 +119,10 @@ class UsersController extends ApiController
     public function verify(VerifyUserRequest $request)
     {
 
+        // -----------------------------------------
+        // No token required
+        // -----------------------------------------
+
     	// For the context of this function see: documentation 030030ce-d51b-4355-b50f-e021fb3b37b2
 
         $user = User::verify($request->all());
@@ -134,6 +142,10 @@ class UsersController extends ApiController
 
     public function exists($id = null)
     {
+
+        // -----------------------------------------
+        // No token required
+        // -----------------------------------------
 
         $item = User::min()->find($id);
 
