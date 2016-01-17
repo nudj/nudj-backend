@@ -172,4 +172,10 @@ class APIUsersTest extends TestCase {
 
 	}
 
+	public function test5()
+	{
+		// Testing deleting a user.
+		// Left empty for the moment.
+	}
+
 }

@@ -94,8 +94,12 @@ class UsersController extends ApiController
 
     public function destroy($id = null)
     {
-        if (is_int($id) && !Shield::hasRole('admin'))
+        if (is_int($id) && !Shield::hasRole('admin')){
+			// id is either: null, an int or 'me'
+			// We do not want regular users to delete other users, unless being an admin
+			// Therefore we throw an exception if the id is an int but the current user is not admin 
             throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
+        }
 
         $id = $this->getPreparedId($id);
         // Note: This function is defined in ApiController and returns the id of the current user
