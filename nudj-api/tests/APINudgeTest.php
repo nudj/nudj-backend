@@ -104,4 +104,65 @@ class APINudgeTest extends TestCase {
 		$this->assertTrue($xp1['status']);
 	}
 
+	public function test4()
+	{
+		$uri = 'api/v1/nudge/apply';
+		$method = 'PUT';
+		$parameters = [
+			"job_id"   => 105
+		];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			See documentation: d29d44fd-96ad-41ba-b28a-5417a80697cb
+			{
+				"status": true,
+				"timestamp": 1453041226.863
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertTrue($xp1['status']);
+	}
+
+	public function test5()
+	{
+		$uri = 'api/v1/nudge/chat';
+		$method = 'PUT';
+		$parameters = [
+			"job_id"          => 1,
+			"user_id"         => 108,
+			"message"         => "message-o",
+			"notification_id" => 12
+		];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			See documentation: d29d44fd-96ad-41ba-b28a-5417a80697cb
+			{
+				"status": true,
+				"timestamp": 1453041226.863
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertTrue($xp1['status']);
+	}
+
 }
