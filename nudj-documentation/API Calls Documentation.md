@@ -27,6 +27,7 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [PUT     api/v1/users/verify](xf1827)
 - [PUT     api/v1/users/{userid}/favourite](xf1856)
 - [DELETE  api/v1/users/{userid?}](xf0937)
+- [DELETE  api/v1/users/{userid}/favourite](xf1201)
 
 .
 
