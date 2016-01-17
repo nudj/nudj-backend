@@ -35,6 +35,17 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [PUT     api/v1/nudge/ask](xf1408)
 - [PUT     api/v1/nudge/apply](xf1428)
 - [PUT     api/v1/nudge/chat](xf1443)
+
 .
 
 - [GET     api/v1/contacts/mine](xf1901)
+- [PUT     api/v1/contacts/{id}](xf1902)
+- [DELETE  api/v1/contacts/{id}](xf1903)
+- [POST    api/v1/contacts/{id}/invite](xf1904)
+
+.
+
+- [GET     api/v1/notifications](xf1536)
+- [PUT     api/v1/notifications/{id}/read](xf1537)
+
+.

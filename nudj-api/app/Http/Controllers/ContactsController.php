@@ -40,7 +40,7 @@ class ContactsController extends ApiController
 
         if (!$contact)
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
-
+        
         $status = $contact->delete();
 
         return $this->respondWithStatus($status);
