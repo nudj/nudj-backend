@@ -58,3 +58,5 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [GET     api/v1/countries](xf1618)
 
 .
+
+- [GET     api/v1/skills/suggest/{term}](xf1629)
