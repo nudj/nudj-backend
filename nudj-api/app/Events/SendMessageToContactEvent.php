@@ -3,6 +3,8 @@
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Lang;
 
+use Log;
+
 class SendMessageToContactEvent extends Event {
 
 	use SerializesModels;

@@ -10,7 +10,7 @@ use Services_Twilio;
 
 use Log;
 
-class SendSms implements ShouldBeQueued
+class SendSms
 {
 
     public function send($event)
