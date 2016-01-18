@@ -26,25 +26,25 @@ class APICountriesTest extends TestCase {
 		$this->assertInternalType('array', $xp1);
 		/*
 			See documentation: d29d44fd-96ad-41ba-b28a-5417a80697cb
-			[
-				{
-					"id": 79,
-					"name": "United Kingdom",
-					"code": "44",
-					"iso2": "GB"
-				},
-				{
-					"id": 234,
-					"name": "United States",
-					"code": "1",
-					"iso2": "US"
-				}
-			]
+			[{
+			    "id": 79,
+			    "name": "United Kingdom",
+			    "code": "44",
+			    "iso2": "GB",
+			    "currency": "GBP"
+			}, {
+			    "id": 234,
+			    "name": "United States",
+			    "code": "1",
+			    "iso2": "US",
+			    "currency": "USD"
+			}]
 		*/
 		$this->assertArrayHasKey('id', $xp1[0]);
 		$this->assertArrayHasKey('name', $xp1[0]);
 		$this->assertArrayHasKey('code', $xp1[0]);
 		$this->assertArrayHasKey('iso2', $xp1[0]);
+		$this->assertArrayHasKey('currency', $xp1[0]);
 	}
 
 }

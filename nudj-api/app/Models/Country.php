@@ -7,6 +7,6 @@ class Country extends ApiModel
 
     public function scopeWeb($query)
     {
-        return $query->select(['id', 'name', 'code', 'iso2'])->where('active', '=', 1);
+        return $query->select(['id', 'name', 'code', 'iso2', 'currency'])->where('active', '=', 1);
     }
 }
