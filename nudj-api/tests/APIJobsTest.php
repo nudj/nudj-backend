@@ -193,10 +193,11 @@ class APIJobsTest extends TestCase {
 
 		$jobmodel = new App\Models\Job();
 		$jobs = $jobmodel->all();
-
 		$this->assertTrue(count($jobs)>0);
-
 		$job = $jobs[0];
+		$user = $job->user;
+		$usertokens = DB::select('select token from users where id = ?', [$user->id]);
+		$usertoken = $usertokens[0];
 
 		// Update the job details
 
@@ -214,7 +215,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
