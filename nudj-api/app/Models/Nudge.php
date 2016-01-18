@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Lang;
 
+use Log;
+
 class Nudge extends ApiModel
 {
 
@@ -154,6 +156,7 @@ class Nudge extends ApiModel
             'message' => $message,
             'link' => web_url('register/nudge/' . $this->hash)
         ]);
+
         Event::fire(new SendMessageToContactEvent($contact->phone, $contact->country_code, $message));
     }
 

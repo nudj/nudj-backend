@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Config;
 use League\Flysystem\Exception;
 use Services_Twilio;
 
+use Log;
+
 class SendSms implements ShouldBeQueued
 {
 
     public function send($event)
     {
-        $availablePhones =  config('phones');
+        $availablePhones = config('phones');
 
         if(!isset($availablePhones[$event->countryCode]))
             throw new ApiException(ApiExceptionType::$TWILIO_ERROR);

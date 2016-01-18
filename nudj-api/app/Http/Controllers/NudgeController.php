@@ -15,6 +15,8 @@ use App\Utility\Facades\Shield;
 use App\Utility\Snafu;
 use Illuminate\Support\Facades\Event;
 
+use Log;
+
 class NudgeController extends ApiController
 {
 
