@@ -190,16 +190,24 @@ class APIJobsTest extends TestCase {
 	public function test6()
 	{
 
+
+		$jobmodel = new App\Models\Job();
+		$jobs = $jobmodel->all();
+
+		$this->assertTrue(count($jobs)>0);
+
+		$job = $jobs[0];
+
 		// Update the job details
 
-		$uri = 'api/v1/jobs/127';
+		$uri = 'api/v1/jobs/'.$job->id;
 		$method = 'PUT';
 		$parameters = [
-			"title"       => 'title-o',
-			"description" => 'description-o',
-			"bonus"       => 665,
-			"salary"      => "£998",
-			"skills"      => ["skill6","skill7"],
+			"title"       => "title:".md5(microtime()),
+			"description" => "description:".md5(microtime()),
+			"bonus"       => rand(0,1000),
+			"salary"      => "£".rand(0,1000),
+			"skills"      => [md5(microtime()),md5(microtime())],
 		];
 		$cookies = [];
 		$files = [];
