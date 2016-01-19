@@ -38,8 +38,9 @@ class Application extends ApiModel
             ->where('job_id', '=', $jobId)
             ->count();
 
-        if ($application)
+        if ($application){
             return true;
+        }
 
         $job = Job::with('user')->findOrFail($jobId);
         $candidate = User::findoRFail($userId);
@@ -49,19 +50,20 @@ class Application extends ApiModel
         $application->job_id = $jobId;
         $application->candidate_id = $userId;
 
-        if ($referrerId)
+        if ($referrerId){
             $application->referrer_id = $referrerId;
+        }
 
         $application->save();
 
         // Create notification
         $meta = [
-            'job_id' => $job->id,
+            'job_id'    => $job->id,
             'job_title' => $job->title,
             'job_bonus' => $job->bonus,
-            'position' => $job->title,
+            'position'  => $job->title,
             'candidate' => $candidate->name,
-	        'phone' => $candidate->phone
+	        'phone'     => $candidate->phone
         ];
 
         $referrer = null;
@@ -69,10 +71,12 @@ class Application extends ApiModel
             $referrer = User::findoRFail($referrerId);
         }
 
-        if (!$web)
+        if (!$web){
             Notification::appApllication($job->user_id, $userId, $meta, $referrer);
-        else
+        }
+        else{
             Notification::webApllication($job->user_id, $userId, $meta, $referrer);
+        }
 
         return true;
     }
