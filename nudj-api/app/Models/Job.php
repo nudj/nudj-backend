@@ -18,9 +18,9 @@ class Job extends ApiModel
     use Indexable;
 
     protected $table = 'jobs';
-    protected $visible = ['id', 'title', 'description', 'salary', 'active', 'bonus', 'company', 'location', 'user_id', 'created_at'];
+    protected $visible = ['id', 'title', 'description', 'salary', 'salary2', 'salary2_currency', 'active', 'bonus', 'bonus_currency', 'company', 'location', 'user_id', 'created_at'];
 
-    protected $gettableFields = ['title', 'description', 'salary', 'active', 'bonus', 'company', 'location', 'skills', 'user', 'liked', 'applied', 'created'];
+    protected $gettableFields = ['title', 'description', 'salary', 'salary2', 'salary2_currency', 'active', 'bonus', 'bonus_currency', 'company', 'location', 'skills', 'user', 'liked', 'applied', 'created'];
     protected $defaultFields = ['title', 'user'];
 
     protected $prefix = 'job.';
@@ -119,11 +119,6 @@ class Job extends ApiModel
             $searchEngineUpdate['active'] = (int)$input['active'];
         }
 
-        if (isset($input['bonus'])) {
-            $this->bonus = (double)$input['bonus'];
-            $searchEngineUpdate['bonus'] = (double)$input['bonus'];
-        }
-
         if (isset($input['location'])) {
             $this->location = (string)$input['location'];
         }
@@ -132,8 +127,21 @@ class Job extends ApiModel
             $this->company = (string)$input['company'];
         }
 
-        if (isset($input['salary'])) {
-            $this->salary = (string)$input['salary'];
+        if (isset($input['salary2'])) {
+            $this->salary2 = (float)$input['salary2'];
+        }
+
+        if (isset($input['salary2_currency'])) {
+            $this->salary2_currency = (string)$input['salary2_currency'];
+        }
+
+        if (isset($input['bonus'])) {
+            $this->bonus = (double)$input['bonus'];
+            $searchEngineUpdate['bonus'] = (double)$input['bonus'];
+        }
+
+        if (isset($input['bonus_currency'])) {
+            $this->bonus_currency = (string)$input['bonus_currency'];
         }
 
         if (isset($input['skills'])) {
