@@ -92,7 +92,7 @@
         <div id="job-salary" class="container-fluids margins-top span-grey">
             <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Salary:
             <span class="span-green">
-                &pound; {{$job->salary}}
+                &pound; {{$job->salary2}}
             </span>
         </div>
     </div>

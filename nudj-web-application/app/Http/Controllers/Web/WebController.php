@@ -94,12 +94,12 @@ class WebController extends \Illuminate\Routing\Controller
             $type = self::TYPE_REFER;
 
         return view('web/page/job', [
-            'user' => $user,
-            'type' => $type,
-            'hash' => $hash,
-            'job' => $job,
-            'employer' => $job->company,
-            'skills' => $job->skills,
+            'user'      => $user,
+            'type'      => $type,
+            'hash'      => $hash,
+            'job'       => $job,
+            'employer'  => $job->company,
+            'skills'    => $job->skills,
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
@@ -113,10 +113,10 @@ class WebController extends \Illuminate\Routing\Controller
             return redirect('/');
 
         return view('web/page/jobpreview', [
-            'hash' => $hash,
-            'job' => $job,
-            'employer' => $job->company,
-            'skills' => $job->skills,
+            'hash'      => $hash,
+            'job'       => $job,
+            'employer'  => $job->company,
+            'skills'    => $job->skills,
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
         ]);
     }
