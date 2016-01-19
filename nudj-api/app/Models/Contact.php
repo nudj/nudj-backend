@@ -34,29 +34,24 @@ class Contact extends ApiModel
         return $this->belongsTo('App\Models\User', 'contact_of');
     }
 
-    /* Scopes
-    ----------------------------------------------------- */
-
-    /* CRUD
-    ----------------------------------------------------- */
+    // CRUD
 
     public function edit($input)
     {
-
-        if (isset($input['alias']))
+        if (isset($input['alias'])){
             $this->alias = (string)$input['alias'];
-
-        if (isset($input['favourite']))
+        }
+        if (isset($input['favourite'])){
             $this->favourite = (string)$input['favourite'];
-
-        if (isset($input['mute']))
+        }
+        if (isset($input['mute'])){
             $this->mute = (string)$input['mute'];
-
+        }
         return $this->save();
     }
 
-    /* Sync
-    ----------------------------------------------------- */
+    // Sync
+
     public static function syncContactOf($userId, $phone)
     {
         Contact::where('phone', '=', $phone)->update(['user_id' => $userId]);
@@ -70,9 +65,9 @@ class Contact extends ApiModel
 
             $record = (object)$record;
 
-            if (!isset($record->phone) || !isset($record->alias))
+            if (!isset($record->phone) || !isset($record->alias)){
                 throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
-
+            }
             $phoneData = Util::unifyPhoneNumber($record->phone, $userCountryCode);
             $contact = Contact::where(['contact_of' => $userId, 'phone' => $phoneData->number])->first();
 
@@ -85,8 +80,9 @@ class Contact extends ApiModel
                 $contact->country_code = $phoneData->code;
                 $contact->suspicious = $phoneData->suspicious;
 
-                if (isset($record->apple_id))
+                if (isset($record->apple_id)){
                     $contact->apple_id = $record->apple_id;
+                }
 
                 $contact->save();
 
@@ -104,24 +100,22 @@ class Contact extends ApiModel
         return $contactIds;
     }
 
-    /* Checks
-    ----------------------------------------------------- */
+    // Checks
+
     public function isMobileUser()
     {
-        if(!$this->user_id)
+        if(!$this->user_id){
             return false;
-
+        }
         return (bool) $this->user->mobile;
     }
 
     public static function findIfOwnedBy($contactId, $ownerId)
     {
-
         $contact = Contact::find($contactId);
-
-        if ($ownerId == $contact->contact_of)
+        if ($ownerId == $contact->contact_of){
             return $contact;
-
+        }
         return null;
     }
 
