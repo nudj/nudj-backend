@@ -10,11 +10,14 @@ class CreateJobRequest extends ApiRequest {
 	public function rules()
 	{
 		return [
-			'title' => 'required',
-			'description' => 'required',
-			'bonus' => 'required',
-			'salary' => 'required',
-			'skills' => 'required',
+			'title'           => 'required',
+			'description'     => 'required',
+			'bonus'           => 'required',
+			'salary_amount'   => 'required',
+			'salary_currency' => 'required',
+			'bonus'           => 'required',
+			'bonus_currency'  => 'required',
+			'skills'          => 'required',
 		];
 	}
 

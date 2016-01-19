@@ -127,12 +127,12 @@ class Job extends ApiModel
             $this->company = (string)$input['company'];
         }
 
-        if (isset($input['salary2'])) {
-            $this->salary2 = (float)$input['salary2'];
+        if (isset($input['salary_amount'])) {
+            $this->salary2 = (float)$input['salary_amount'];
         }
 
-        if (isset($input['salary2_currency'])) {
-            $this->salary2_currency = (string)$input['salary2_currency'];
+        if (isset($input['salary_currency'])) {
+            $this->salary2_currency = (string)$input['salary_currency'];
         }
 
         if (isset($input['bonus'])) {
@@ -175,11 +175,6 @@ class Job extends ApiModel
         $job->description = (string)$input['description'];
         $job->active = true;
 
-        if (isset($input['bonus'])) {
-            $job->bonus = (double)$input['bonus'];
-            $searchEngineUpdate['bonus'] = (double)$input['bonus'];
-        }
-
         if (isset($input['location'])) {
             $job->location = (string)$input['location'];
         }
@@ -188,8 +183,21 @@ class Job extends ApiModel
             $job->company = (string)$input['company'];
         }
 
-        if (isset($input['salary'])) {
-            $job->salary = (string)$input['salary'];
+        if (isset($input['salary_amount'])) {
+            $job->salary2 = (float)$input['salary_amount'];
+        }
+
+        if (isset($input['salary_currency'])) {
+            $job->salary2_currency = (string)$input['salary_currency'];
+        }
+
+        if (isset($input['bonus'])) {
+            $job->bonus = (double)$input['bonus'];
+            $searchEngineUpdate['bonus'] = (double)$input['bonus'];
+        }
+
+        if (isset($input['bonus_currency'])) {
+            $job->bonus_currency = (string)$input['bonus_currency'];
         }
 
         $saved = $job->save();
@@ -201,13 +209,13 @@ class Job extends ApiModel
 
         if ($saved) {
             $job->addToIndex('job', $job->id, [
-                'title' => $job->title,
+                'title'       => $job->title,
                 'description' => $job->description,
-                'bonus' => $job->bonus,
-                'skills' => array_column($job->skills->toArray(), 'name'),
-                'user_id' => $job->user_id,
-                'active' => 1,
-                'deleted' => 1,
+                'bonus'       => $job->bonus,
+                'skills'      => array_column($job->skills->toArray(), 'name'),
+                'user_id'     => $job->user_id,
+                'active'      => 1,
+                'deleted'     => 1,
             ]);
         }
 

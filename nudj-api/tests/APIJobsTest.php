@@ -157,11 +157,13 @@ class APIJobsTest extends TestCase {
 		$uri = 'api/v1/jobs';
 		$method = 'POST';
 		$parameters = [
-			"title"       => 'title-x',
-			"description" => 'description-x',
-			"bonus"       => 666,
-			"salary"      => "£999",
-			"skills"      => ["skill1","skill2"],
+			"title"           => 'title-x',
+			"description"     => 'description-x',
+			"salary_amount"   => 700,
+			"salary_currency" => 'GBP',
+			"bonus"           => 666,
+			"bonus_currency"  => 'GBP',
+			"skills"          => ["skill1","skill2"]
 		];
 		$cookies = [];
 		$files = [];
@@ -204,11 +206,13 @@ class APIJobsTest extends TestCase {
 		$uri = 'api/v1/jobs/'.$job->id;
 		$method = 'PUT';
 		$parameters = [
-			"title"       => "title:".md5(microtime()),
-			"description" => "description:".md5(microtime()),
-			"bonus"       => rand(0,1000),
-			"salary"      => "£".rand(0,1000),
-			"skills"      => [md5(microtime()),md5(microtime())],
+			"title"           => "title:".md5(microtime()),
+			"description"     => "description:".md5(microtime()),
+			"bonus"           => rand(0,1000),
+			"bonus_currency"  => 'GBP',
+			"salary_amount"   => rand(0,1000),
+			"salary_currency" => 'GBP',
+			"skills"          => [md5(microtime()),md5(microtime())],
 		];
 		$cookies = [];
 		$files = [];
@@ -274,11 +278,14 @@ class APIJobsTest extends TestCase {
 		$uri = 'api/v1/jobs';
 		$method = 'POST';
 		$parameters = [
-			"title"       => $title,
-			"description" => 'description-x',
-			"bonus"       => 666,
-			"salary"      => "£999",
-			"skills"      => ["skill1","skill2"],
+			"title"            => $title,
+			"description"      => 'description-x',
+			"bonus"            => 666,
+			"salary_amount"    => 999,
+			"salary_currency"  => 'GBP',
+			"bonus"            => 999,
+			"bonus_currency"   => 'GBP',
+			"skills"           => ["skill1","skill2"],
 		];
 		$cookies = [];
 		$files = [];
