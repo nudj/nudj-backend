@@ -6,17 +6,9 @@ $router->pattern('id', '([0-9]+)');
 $router->pattern('userid', '([0-9]+)|(me)');
 $router->pattern('filter', '([a-z]+)');
 
-
 // -------------------------------------------------------------------------------
 // Default view
 Route::get('/', 'Web\HomeController@index');
-
-
-// -------------------------------------------------------------------------------
-// Pascal
-Route::get('/pascal/hello', 'PascalController@hello');
-Route::get('/pascal/operation1', 'PascalController@operation1');
-
 
 // -------------------------------------------------------------------------------
 // Web view
@@ -36,7 +28,6 @@ Route::group(['prefix' => '/'], function () {
 
 });
 
-
 // -------------------------------------------------------------------------------
 // HTML sources accessed from the app
 Route::group(['prefix' => 'html'], function () {
@@ -44,7 +35,6 @@ Route::group(['prefix' => 'html'], function () {
     Route::get('privacy', 'HtmlController@privacy');
     Route::get('cookies', 'HtmlController@cookies');
 });
-
 
 // -------------------------------------------------------------------------------
 // API V1 routes
@@ -106,12 +96,6 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('connect/facebook', 'SocialController@facebook');
     Route::delete('connect/facebook', 'SocialController@disconnectFacebook');
 
-    // ---------------------------------------------------------------------
-    // TODO: The below is commented out waiting to be deleted
-    // Route::put('connect/linkedin', 'SocialController@linkedin');
-    // Route::delete('connect/linkedin', 'SocialController@disconnectLinkedIn');
-    // ---------------------------------------------------------------------
-
     // CONFIG
     Route::get('config', 'ConfigController@index');
     Route::get('config/{key}', 'ConfigController@show');
@@ -130,7 +114,6 @@ Route::group(['prefix' => 'api/v1'], function () {
 	Route::get('services/message', 'ServicesController@message');
 
 });
-
 
 // -------------------------------------------------------------------------------
 // Listen for some stuff

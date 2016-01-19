@@ -1,7 +1,6 @@
 <?php namespace App\Models;
 
 use App\Events\SendMessageToContactEvent;
-use App\Events\StartChatEvent;
 use App\Models\Traits\Hashable;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -87,7 +86,6 @@ class Referral extends ApiModel
     {
         // Start chat
         $chat = Chat::add($job->id, [$job->user_id, $contact->user_id]);
-        Event::fire(new StartChatEvent($chat->id, $job->user_id, $contact->user_id, $message));
 
         // Create notification
         Notification::askToRefer($contact->user_id, $job->user_id, [

@@ -7,61 +7,8 @@ $router->pattern('userid', '([0-9]+)|(me)');
 $router->pattern('filter', '([a-z]+)');
 
 // -------------------------------------------------------------------------------
-// Web view
-// This route is being superseded by the Admin section
-// 10 Jan 2016: Commenting out for later removal
-/*
-Route::group(['prefix' => '/'], function () {
-
-    Route::get('register/{type}/{hash}', 'Web\WebController@login');
-
-    Route::post('validate', 'Web\WebController@validate');
-    Route::get('job/{jobId}/{hash?}', 'Web\WebController@job');
-
-    Route::post('verify', 'Web\ActionsController@verify');
-    Route::post('apply', 'Web\ActionsController@apply');
-    Route::post('refer', 'Web\ActionsController@nudge');
-    Route::get('countries', 'Web\ActionsController@countries');
-
-    Route::get('download', 'Web\WebController@download');
-
-});
-*/
-
-// -------------------------------------------------------------------------------
-// HTML sources accessed from the app
-// 10 Jan 2016: Commenting out for later removal
-/*
-Route::group(['prefix' => 'html'], function () {
-    Route::get('terms', 'HtmlController@terms');
-    Route::get('privacy', 'HtmlController@privacy');
-    Route::get('cookies', 'HtmlController@cookies');
-});
-*/
-
-// -------------------------------------------------------------------------------
 // API V1 routes
-/*
 
-	Note: All the controllers in the api/v1 group inherit from ApiController, which specifies that
-	the only "non token methods" are:
-
-		'App\Http\Controllers\UsersController@store',
-		'App\Http\Controllers\UsersController@verify',
-		'App\Http\Controllers\UsersController@exists',
-		'App\Http\Controllers\CountriesController@index',
-		'App\Http\Controllers\ServicesController@test',
-
-	They correspond to
-		Route::post('users', 'UsersController@store');
-		Route::put('users/verify', 'UsersController@verify');
-		Route::get('users/exists/{userid}', 'UsersController@exists');
-		Route::get('countries', 'CountriesController@index');
-		Route::get('services/test', 'ServicesController@test');
-
-	If a route is not "non token" then it must Shield::validate()
-
-*/
 Route::group(['prefix' => 'api/v1'], function () {
 
     // JOBS
@@ -119,12 +66,6 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('connect/facebook', 'SocialController@facebook');
     Route::delete('connect/facebook', 'SocialController@disconnectFacebook');
 
-    // ---------------------------------------------------------------------
-    // TODO: The below is commented out waiting to be deleted
-    // Route::put('connect/linkedin', 'SocialController@linkedin');
-    // Route::delete('connect/linkedin', 'SocialController@disconnectLinkedIn');
-    // ---------------------------------------------------------------------
-
     // CONFIG
     Route::get('config', 'ConfigController@index');
     Route::get('config/{key}', 'ConfigController@show');
@@ -144,10 +85,10 @@ Route::group(['prefix' => 'api/v1'], function () {
 
 });
 
-
 // -------------------------------------------------------------------------------
 // ADMINISTRATION
-$adminRoutes = function() {
+
+Route::group(['prefix' => '/'], function() {
 
     // AUTHENTICATION
     Route::get('auth/login', 'Desk\Auth\AuthController@getLogin');
@@ -176,9 +117,7 @@ $adminRoutes = function() {
     // DATATABLES
     Route::get('/datatables/{who}', 'Desk\DeskController@tableData');
 
-};
-Route::group(['prefix' => '/'], $adminRoutes);
-
+});
 
 // -------------------------------------------------------------------------------
 // Listen for some stuff

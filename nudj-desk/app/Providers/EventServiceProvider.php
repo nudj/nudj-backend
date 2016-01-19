@@ -12,18 +12,7 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'App\Events\IncomingRequestEvent' => [
-			'App\Handlers\Events\LogRequest',
-		],
-		'App\Events\ReturnResponseEvent' => [
-			'App\Handlers\Events\LogResponse',
-		],
-		'App\Events\NotifyUserEvent' => [
-			'App\Handlers\Events\SendApn',
-		],
-		'App\Events\StartChatEvent' => [
-			'App\Handlers\Events\StartChat',
-		],
+
 	];
 
 	/**
@@ -35,8 +24,6 @@ class EventServiceProvider extends ServiceProvider {
 	public function boot(DispatcherContract $events)
 	{
 		parent::boot($events);
-
-		Event::subscribe('App\Handlers\Events\SendSms');
 	}
 
 }

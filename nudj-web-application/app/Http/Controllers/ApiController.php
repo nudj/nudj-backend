@@ -1,7 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use App\Events\IncomingRequestEvent;
-use App\Events\ReturnResponseEvent;
 use App\Utility\Facades\Shield;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Config;
@@ -28,17 +26,10 @@ class ApiController extends \Illuminate\Routing\Controller {
 
 	function __construct()
 	{
-
-		if(env('LOGGING')) {
-			Event::fire(new IncomingRequestEvent());
-		}
-
 		if(!in_array(Request::route()->getActionName(), $this->nonTokenMethods)) {
 			Shield::validate();
 		}
-
 		$this->limit = Request::get('limit') ?: $this->defaults['limit'];
-
 	}
 
 	public function getStatusCode()
@@ -65,14 +56,8 @@ class ApiController extends \Illuminate\Routing\Controller {
 
 	public function returnResponse($data, $headers = [])
 	{
-
-		if(env('LOGGING')) {
-			Event::fire(new ReturnResponseEvent($data));
-		}
-
 		if(Config::get('cfg.request_timestamp'))
 			$data['timestamp'] = Request::server('REQUEST_TIME_FLOAT');
-
 		return Response::json($data, $this->getStatusCode(), $headers);
 	}
 

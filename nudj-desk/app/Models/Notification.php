@@ -1,6 +1,5 @@
 <?php namespace App\Models;
 
-use App\Events\NotifyUserEvent;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Transformers\NotificationTransformer;
@@ -79,8 +78,6 @@ class Notification extends ApiModel
         $notification->read = false;
 
         $notification->save();
-
-        Event::fire(new NotifyUserEvent($recipientId, $notification->getMessage($meta)));
 
         return $notification;
     }
