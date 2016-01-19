@@ -39,9 +39,9 @@ Note: An example of answer will be given when this doesn't prevent understanding
 .
 
 - [GET     api/v1/contacts/mine](xf1901)
+- [POST    api/v1/contacts/{id}/invite](xf1904)
 - [PUT     api/v1/contacts/{id}](xf1902)
 - [DELETE  api/v1/contacts/{id}](xf1903)
-- [POST    api/v1/contacts/{id}/invite](xf1904)
 
 .
 

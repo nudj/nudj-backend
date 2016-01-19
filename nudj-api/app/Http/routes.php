@@ -72,9 +72,9 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     // CONTACTS
     Route::get('contacts/mine', 'ContactsController@index');
+    Route::post('contacts/{id}/invite', 'ContactsController@invite');
     Route::put('contacts/{id}', 'ContactsController@update');
     Route::delete('contacts/{id}', 'ContactsController@destroy');
-    Route::post('contacts/{id}/invite', 'ContactsController@invite');
 
     // CHAT
     Route::get('chat/{filter}', 'ChatController@index');
