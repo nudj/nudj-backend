@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
 use Jenssegers\Agent\Facades\Agent;
 
+use Log;
+
 class WebController extends \Illuminate\Routing\Controller
 {
 
