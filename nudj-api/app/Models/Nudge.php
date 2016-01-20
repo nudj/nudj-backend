@@ -157,7 +157,17 @@ class Nudge extends ApiModel
         // https://mobileweb.nudj.co/jobpreview/98/v747uur2Ym (for production)
         // https://mobileweb-dev.nudj.co/jobpreview/98/v747uur2Ym (for dev)        
 
-        $web_url = "https://mobileweb.nudj.co/jobpreview/".$job->id."/".$this->hash."";
+        $web_url = '';
+
+        if(env('APP_ENV')=='production'){
+            $web_url = "https://mobileweb.nudj.co/jobpreview/".$job->id."/".$this->hash."";
+        }
+        if(env('APP_ENV')=='staging'){
+            $web_url = "https://mobileweb-dev.nudj.co/jobpreview/".$job->id."/".$this->hash."";
+        }
+        if(env('APP_ENV')=='development'){
+            $web_url = "http://localhost:8000/jobpreview/".$job->id."/".$this->hash."";
+        }
 
         $message = Lang::get('sms.nudge', [
             'name'    => $referrer->name,
