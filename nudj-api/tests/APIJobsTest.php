@@ -192,7 +192,6 @@ class APIJobsTest extends TestCase {
 	public function test6()
 	{
 
-
 		$jobmodel = new App\Models\Job();
 		$jobs = $jobmodel->all();
 		$this->assertTrue(count($jobs)>0);
@@ -239,7 +238,19 @@ class APIJobsTest extends TestCase {
 
 		// Delete a job identified by id
 
-		$uri = 'api/v1/jobs/127';
+		// --------------------------------------------------------------------
+		// Selecting jobid
+		$jobid = null;
+		$dbresults = DB::select('select id from jobs where deleted_at is NULL');
+		foreach($dbresults as $dbresult){
+			$jobid = $dbresult->id;
+		}
+		if(is_null($jobid)){
+			return;
+		}
+		// --------------------------------------------------------------------
+
+		$uri = 'api/v1/jobs/'.$jobid;
 		$method = 'DELETE';
 		$parameters = [];
 		$cookies = [];
