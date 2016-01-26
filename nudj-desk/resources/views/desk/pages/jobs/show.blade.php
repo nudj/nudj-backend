@@ -2,12 +2,10 @@
 
 @section('styles')
 @parent
-
 @endsection
 
 @section('page')
 
-        <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Job Info</h1>
     <ol class="breadcrumb">
@@ -79,20 +77,18 @@
         <div class="col-md-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#settings" data-toggle="tab">Details</a></li>
+                    <li class="active"><a href="#job_details" data-toggle="tab">Details</a></li>
+                    <li><a href="#job_network" data-toggle="tab">Network</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="active tab-pane" id="settings">
 
+                    <!-- Details -->
+                    <div class="active tab-pane" id="job_details">
                         <form class="form-horizontal" method="POST" action="{{ url('/jobs') }}/{{$job->id}}" >
-
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                             <div class="box-body">
                                 <div class="col-md-12">
                                     <form role="form">
-                                        <!-- text input -->
-
                                         <div class="form-group">
                                             <label>Title</label>
                                             <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{$job->title or null}}">
@@ -117,9 +113,7 @@
                                             <label>Bonus</label>
                                             <input type="text" class="form-control" id="bonus" name="bonus" placeholder="Bonus" value="{{$job->bonus or null}}">
                                         </div>
-
                                     </form>
-
                                     <div class="form-group">
                                         <a href="{{ url('/jobs') }}">
                                             <button type="button" class="btn btn-default btn-flat"><i class="fa fa-list"></i>  List </button>
@@ -129,17 +123,18 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
 
-                    </div><!-- /.tab-pane -->
+                    <!-- Network -->
+                    <div class="active tab-pane" id="job_network">
+                        Place Holder
+                    </div>
 
-                </div><!-- /.tab-content -->
-            </div><!-- /.nav-tabs-custom -->
-        </div><!-- /.col -->
-    </div><!-- /.row -->
-
-</section><!-- /.content -->
-
-
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
 
 @section('scripts')
