@@ -1,1 +1,7 @@
-### Version 1.004 (2016-01-20)
+### Version 1.004.001 (2016-01-26)
+
+**How versioning works ?** 
+
+The third fragment of the version number is increased everytime code is pushed to the development server. This implies that if one wants to roll back to the previous released dev version, they just need to find the lastest commit with a third fragment number increase. 
+
+The second fragment is increased at each production release. 
