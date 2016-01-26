@@ -54,6 +54,6 @@
     </div>
     </div>
     <footer class="main-footer login-copyright">
-        <strong>Powered by E-Man Desk. &copy; Copyright 2014 E-Man.</strong> All Rights Reserved.
+        <strong>Made in London with love for desk.nudj.co.</strong>
     </footer>
 @endsection
