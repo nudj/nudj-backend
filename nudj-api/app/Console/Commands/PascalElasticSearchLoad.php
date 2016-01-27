@@ -9,14 +9,14 @@ use App\Models\Skill;
 use Elasticsearch\Client;
 use Illuminate\Support\Facades\Config;
 
-class LoadElasticSearch extends Command {
+class PascalElasticSearchLoad extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'elasticsearch:load';
+	protected $name = 'pascal:elasticsearchload';
 
 	/**
 	 * The console command description.
