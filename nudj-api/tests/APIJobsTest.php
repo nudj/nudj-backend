@@ -315,6 +315,41 @@ class APIJobsTest extends TestCase {
 	{
 
 		// ---------------------------------------------
+		// Create a job with minimum information
+
+		$title = md5(microtime());
+
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
+		// ---------------------------------------------
+		// Create a job
+		$uri = 'api/v1/jobs';
+		$method = 'POST';
+		$parameters = [
+			"title"            => $title,
+			"description"      => 'description-x',
+			"bonus"            => 999,
+			"bonus_currency"   => 'GBP',
+			"skills"           => ["php"],
+		];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token',$usertoken);
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+
+		$job_identifier = $xp1['data']['id'];
+
+
+		// ---------------------------------------------
 		// Create a job
 		// Check that the job exist
 		// Delete the job
@@ -336,7 +371,6 @@ class APIJobsTest extends TestCase {
 			"bonus"            => 666,
 			"salary_amount"    => 999,
 			"salary_currency"  => 'GBP',
-			"bonus"            => 999,
 			"bonus_currency"   => 'GBP',
 			"skills"           => ["skill1","skill2"],
 		];
