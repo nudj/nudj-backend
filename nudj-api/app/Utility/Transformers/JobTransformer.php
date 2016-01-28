@@ -26,6 +26,12 @@ class JobTransformer extends Transformer {
             case 'salary':
                 return (string) $item->salary;
 
+            case 'salary_amount':
+                return (float) $item->salary2;
+
+            case 'salary_currency':
+                return (float) $item->salary2_currency;
+
             case 'company':
                 return (string) $item->company;
 
@@ -37,6 +43,9 @@ class JobTransformer extends Transformer {
 
             case 'bonus':
                 return (double) $item->bonus;
+
+            case 'bonus_currency':
+                return (double) $item->bonus_currency;
 
             case 'created':
                 return (string) Carbon::createFromTimestamp(strtotime($item->created_at))->diffForHumans();

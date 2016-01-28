@@ -50,7 +50,7 @@ $cookies = [];
 $files = [];
 $content = null;
 $request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
 ```
 
 Then we can ask laravel to digest this request and give us the answer

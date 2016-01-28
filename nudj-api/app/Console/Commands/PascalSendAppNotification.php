@@ -52,7 +52,6 @@ class PascalSendAppNotification extends Command {
         $notifier->app('NudgeIOS')
             ->to($device_token)
             ->send($message, $options);
-
 	}
 
 	/**

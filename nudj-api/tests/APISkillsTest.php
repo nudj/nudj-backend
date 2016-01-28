@@ -10,6 +10,12 @@ class APISkillsTest extends TestCase {
 
 	public function test1()
 	{
+
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/skills/suggest/php';
 		$method = 'GET';
 		$parameters = [];
@@ -18,7 +24,7 @@ class APISkillsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());

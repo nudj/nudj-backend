@@ -127,6 +127,10 @@ class Job extends ApiModel
             $this->company = (string)$input['company'];
         }
 
+        if (isset($input['salary'])) {
+            $this->salary = (string)$input['salary'];
+        }
+
         if (isset($input['salary_amount'])) {
             $this->salary2 = (float)$input['salary_amount'];
         }
@@ -181,6 +185,10 @@ class Job extends ApiModel
 
         if (isset($input['company'])) {
             $job->company = (string)$input['company'];
+        }
+
+        if (isset($input['salary'])) {
+            $job->salary = (string)$input['salary'];
         }
 
         if (isset($input['salary_amount'])) {

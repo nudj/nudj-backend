@@ -9,6 +9,12 @@ class APIJobsTest extends TestCase {
 	 */
 	public function test1()
 	{
+
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/jobs/search/Casting+instructor';
 		$method = 'GET';
 		$parameters = [];
@@ -17,7 +23,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -45,6 +51,12 @@ class APIJobsTest extends TestCase {
 	}
 	public function test2()
 	{
+
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/jobs/mine';
 		$method = 'GET';
 		$parameters = [];
@@ -53,7 +65,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -79,12 +91,21 @@ class APIJobsTest extends TestCase {
 			}
 		*/
 		$this->assertArrayHasKey('data', $xp1);
-		$this->assertArrayHasKey('id', $xp1['data'][0]);
-		$this->assertArrayHasKey('title', $xp1['data'][0]);
-		$this->assertArrayHasKey('user', $xp1['data'][0]);
+		if(count($xp1['data'])>0){
+			$this->assertArrayHasKey('id', $xp1['data'][0]);
+			$this->assertArrayHasKey('title', $xp1['data'][0]);
+			$this->assertArrayHasKey('user', $xp1['data'][0]);			
+		}
+
 	}
 	public function test3()
 	{
+
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/jobs/alice';
 		$method = 'GET';
 		$parameters = [];
@@ -93,7 +114,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 		
 		$this->assertEquals(400, $response->getStatusCode());
@@ -115,6 +136,11 @@ class APIJobsTest extends TestCase {
 	public function test4()
 	{
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		// Get a job by identifier
 
 		$uri = 'api/v1/jobs/1';
@@ -125,7 +151,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -152,6 +178,11 @@ class APIJobsTest extends TestCase {
 	public function test5()
 	{
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		// Insert a job
 
 		$uri = 'api/v1/jobs';
@@ -159,7 +190,8 @@ class APIJobsTest extends TestCase {
 		$parameters = [
 			"title"           => 'title-x',
 			"description"     => 'description-x',
-			"salary_amount"   => 700,
+			"salary"          => "testing free form salary",
+			"salary_amount"   => 701,
 			"salary_currency" => 'GBP',
 			"bonus"           => 666,
 			"bonus_currency"  => 'GBP',
@@ -170,7 +202,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -250,6 +282,11 @@ class APIJobsTest extends TestCase {
 		}
 		// --------------------------------------------------------------------
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/jobs/'.$jobid;
 		$method = 'DELETE';
 		$parameters = [];
@@ -258,7 +295,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -284,6 +321,11 @@ class APIJobsTest extends TestCase {
 
 		$title = md5(microtime());
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		// ---------------------------------------------
 		// Create a job
 		$uri = 'api/v1/jobs';
@@ -303,7 +345,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -322,7 +364,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -355,7 +397,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -374,6 +416,11 @@ class APIJobsTest extends TestCase {
 	public function test9()
 	{
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		// Like a job
 
 		$uri = 'api/v1/jobs/1/like';
@@ -384,7 +431,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -402,6 +449,11 @@ class APIJobsTest extends TestCase {
 	public function test10()
 	{
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		// Like a job
 
 		$uri = 'api/v1/jobs/1/like';
@@ -412,7 +464,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -430,6 +482,11 @@ class APIJobsTest extends TestCase {
 	public function test11()
 	{
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		// Unlike a job
 
 		$uri = 'api/v1/jobs/1/like';
@@ -440,7 +497,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','JD7duPsAC1qgea4UD4otZpBG2wLKBxFIIhz32zFk1RdwWR4bsiCjeFwofWSz');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
