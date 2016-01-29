@@ -1,4 +1,4 @@
-### Version 1.005.001 (2016-01-28)
+### Version 1.005.002 (2016-01-29)
 
 **How versioning works ?** 
 
