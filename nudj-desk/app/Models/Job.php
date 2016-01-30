@@ -226,8 +226,7 @@ class Job extends ApiModel
         return parent::delete();
     }
 
-    /* Checks
-   ----------------------------------------------------- */
+    // Checks
 
     public static function findIfOwnedBy($jobId, $ownerId)
     {

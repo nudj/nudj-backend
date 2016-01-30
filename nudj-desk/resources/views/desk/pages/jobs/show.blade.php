@@ -71,9 +71,9 @@
                             <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user->name }}</span></a>
                         </li>
                     </ul>
-                </div><!-- /.box-body -->
-            </div><!-- /.box -->
-        </div><!-- /.col -->
+                </div>
+            </div>
+        </div>
         <div class="col-md-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
@@ -127,7 +127,30 @@
 
                     <!-- Network -->
                     <div class="active tab-pane" id="job_network">
-                        Place Holder
+
+	                    <ul class="list-group list-group-unbordered">
+	                        <li class="list-group-item">
+	                            <b>Active</b>
+	                            @if($job->active > 0)
+	                                <span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Active">Verified</span>
+	                            @else
+	                                <span data-toggle="tooltip" title="" class="badge bg-red pull-right" data-original-title="Inactive">Inactive</span>
+	                            @endif
+	                        </li>
+	                        <li class="list-group-item">
+	                            <b>User</b>
+	                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user->name }}</span></a>
+	                        </li>
+	                        <li class="list-group-item">
+	                            <b>Referral Bonus</b>
+	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $job->bonus }} {{ $job->bonus_currency }}</span>
+	                        </li>
+	                        <li class="list-group-item">
+	                            <b>Number of active referrers</b>
+	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $active_referrers_number }}</span>
+	                        </li>
+	                    </ul>
+
                     </div>
 
                 </div>
