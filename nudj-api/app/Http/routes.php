@@ -113,6 +113,10 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('services/test', 'ServicesController@test');  // no token required
 	Route::get('services/message', 'ServicesController@message');
 
+    // NSX300
+    Route::get('nsx300/app_notification_to_me', 'NSX300Controller@send_hello_world_notification_to_self'); // added for Richard's tests, but not in use
+
+
 });
 
 // -------------------------------------------------------------------------------

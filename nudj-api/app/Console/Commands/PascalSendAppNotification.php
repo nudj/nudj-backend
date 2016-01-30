@@ -1,5 +1,12 @@
 <?php namespace App\Console\Commands;
 
+/*
+
+	This came up when I was working on 
+		Route::get('nsx300/app_notification_to_me', 'NSX300Controller@send_hello_world_notification_to_self');
+	for Richard, but otherwise not in use.
+*/
+
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -7,6 +14,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Support\Facades\Config;
 
 use Davibennun\LaravelPushNotification\PushNotification;
+use App\Models\User;
 
 class PascalSendAppNotification extends Command {
 
@@ -42,16 +50,17 @@ class PascalSendAppNotification extends Command {
 	public function fire()
 	{
 
-        $options = [];
-        $options['badge'] = 2;
+        $robyn = User::api()->findOrFail(217);
+        $devices = $robyn->devices()->get();
 
-        $device_token = 'e130db42fe614feb07899521ffca1d1466f2f7cb1345cbe2f2c566a4c917d2c0';
-        $message = 'Hello World';
+        foreach($devices as $device){
+            $options['badge'] = 1;
+            $notifier = new PushNotification();
+            $notifier->app('NudgeIOS')
+                ->to($device->token)
+                ->send("Hello world", $options);         	
+        }
 
-        $notifier = new PushNotification();
-        $notifier->app('NudgeIOS')
-            ->to($device_token)
-            ->send($message, $options);
 	}
 
 	/**
