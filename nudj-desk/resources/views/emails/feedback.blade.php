@@ -1,5 +1,0 @@
-{{ $userName }}
-
-<br />
-
-{{ $feedback }}
