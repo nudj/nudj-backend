@@ -14,10 +14,10 @@ class JobsController extends DeskController
 
     public function show($id)
     {
-        $records = Job::findOrFail($id);
+        $job = Job::findOrFail($id);
         $details = [
-            "job" => $records,
-            "user" => \App\Models\User::find($records->user_id)
+            "job" => $job,
+            "user" => \App\Models\User::find($job->user_id)
         ];
 
         return view('desk/pages/jobs/show', $details);
