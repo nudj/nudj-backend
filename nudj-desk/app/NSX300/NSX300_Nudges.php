@@ -19,8 +19,8 @@ class NSX300_Nudges {
 		}
 	}
 
-	// \App\NSX300\NSX300_Nudges::number_of_distinct_referrals_contacting_candidates_for_job_id($id)
-	public static function number_of_distinct_referrals_contacting_candidates_for_job_id($id){
+	// \App\NSX300\NSX300_Nudges::number_of_distinct_referrers_contacting_candidates_for_job_id($id)
+	public static function number_of_distinct_referrers_contacting_candidates_for_job_id($id){
 		$dbresults = DB::select('select distinct referrer_id from nudges where job_id=?',[$id]);
 		return count($dbresults);
 	}

@@ -146,8 +146,16 @@
 	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $job->bonus }} {{ $job->bonus_currency }}</span>
 	                        </li>
 	                        <li class="list-group-item">
+	                            <b>Number of referral requests</b>
+	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $referral_requests_count }}</span>
+	                        </li>
+	                        <li class="list-group-item">
 	                            <b>Number of active referrers</b>
-	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $active_referrers_number }}</span>
+	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $active_referrers_count }}</span>
+	                        </li>
+	                        <li class="list-group-item">
+	                            <b>Number of application requests</b>
+	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $applications_requests_count }}</span>
 	                        </li>
 	                    </ul>
 
