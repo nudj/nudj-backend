@@ -201,7 +201,6 @@ class User extends ApiModel implements ShieldAuthServiceContract
 
         if (isset($input['image'])) {
             $images = $this->updateImage($input['image']);
-
             $this->image = json_encode($images);
         }
 
