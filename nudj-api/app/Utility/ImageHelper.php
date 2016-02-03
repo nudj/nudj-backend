@@ -20,7 +20,7 @@ class ImageHelper {
 
     public function saveSizes($source, $sizes = null)
     {
-        Image::configure(array('driver' => 'gd'));
+        Image::configure(array('driver' => 'imagick'));
 
         $this->filename = str_random(10);
 
@@ -75,7 +75,9 @@ class ImageHelper {
 
     public function createDir($path)
     {
-        is_dir($path) ?: mkdir($path, 0777, true);
+        if(!is_dir($path)){
+        	mkdir($path, 0777, true);
+        }
 
         return rtrim($path, '/') . '/';
     }
