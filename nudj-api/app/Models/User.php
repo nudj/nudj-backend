@@ -200,6 +200,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
             $this->settings = $this->syncSettings($input['settings']);
 
         if (isset($input['image'])) {
+        	// $input['image'] is base64_encoded picture binary data
             $images = $this->updateImage($input['image']);
             $this->image = json_encode($images);
         }
