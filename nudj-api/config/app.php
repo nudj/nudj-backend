@@ -110,6 +110,8 @@ return [
 
 	'providers' => [
 
+		'Davibennun\LaravelPushNotification\LaravelPushNotificationServiceProvider',
+
 		/*
 		 * Laravel Framework Service Providers...
 		 */
@@ -153,7 +155,6 @@ return [
 		'Jenssegers\Mongodb\MongodbServiceProvider',
 		'App\Utility\Providers\ShieldServiceProvider',
 		'yajra\Datatables\DatatablesServiceProvider',
-
 
 	],
 
@@ -204,10 +205,13 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 
-		'Image' 	=> 'Intervention\Image\Facades\Image',
-		'Shield' 	=> 'App\Utility\Authenticate\ShieldFacade',
-		'Agent' 	=> 'Jenssegers\Agent\Facades\Agent',
+		'Image'      => 'Intervention\Image\Facades\Image',
+		'Shield'     => 'App\Utility\Authenticate\ShieldFacade',
+		'Agent'      => 'Jenssegers\Agent\Facades\Agent',
 		'Datatables' => 'yajra\Datatables\Datatables',
+
+		'PushNotification' => 'Davibennun\LaravelPushNotification\Facades\PushNotification'
+
 	],
 
 ];

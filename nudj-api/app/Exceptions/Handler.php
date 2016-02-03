@@ -1,5 +1,6 @@
 <?php namespace App\Exceptions;
 
+use App\Exceptions\Input;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use Exception;
@@ -95,7 +96,7 @@ class Handler extends ExceptionHandler
 
         // Handles all other exceptions
 
-        if ( env('APP_ENV')!='production' && Input::get('debug') ) {
+        if ( env('APP_ENV')!='production' ) {
             $response['error'] = [
                 'message' => $e->getMessage(),
                 'code' => 10001
