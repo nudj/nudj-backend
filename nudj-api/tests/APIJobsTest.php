@@ -465,7 +465,7 @@ class APIJobsTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());

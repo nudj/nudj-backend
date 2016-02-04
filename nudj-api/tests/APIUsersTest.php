@@ -83,6 +83,11 @@ class APIUsersTest extends TestCase {
 
 		// Testing retriving a user by its identifier.
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/users/1';
 		$method = 'GET';
 		$parameters = [];
@@ -91,7 +96,7 @@ class APIUsersTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -115,6 +120,11 @@ class APIUsersTest extends TestCase {
 
 		// Testing login/registering a user.
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/users';
 		$method = 'POST';
 		$parameters = [
@@ -126,7 +136,7 @@ class APIUsersTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -147,6 +157,11 @@ class APIUsersTest extends TestCase {
 
 		// Testing resetting the name of a user.
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$newname = md5(microtime());
 
 		$uri = 'api/v1/users/me';
@@ -159,7 +174,7 @@ class APIUsersTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -205,6 +220,10 @@ class APIUsersTest extends TestCase {
 		}
 		// --------------------------------------------------------------------
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
 
 		$uri = 'api/v1/users/verify';
 		$method = 'PUT';
@@ -218,7 +237,7 @@ class APIUsersTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -246,6 +265,11 @@ class APIUsersTest extends TestCase {
 
 		// Testing users/2/favourites.
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/users/2/favourites';
 		$method = 'GET';
 		$parameters = [];
@@ -254,7 +278,7 @@ class APIUsersTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -284,6 +308,11 @@ class APIUsersTest extends TestCase {
 
 		// Testing users/exists/{userid}.
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/users/exists/1';
 		$method = 'GET';
 		$parameters = [];
@@ -292,7 +321,7 @@ class APIUsersTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -314,6 +343,11 @@ class APIUsersTest extends TestCase {
 
 		// Testing api/v1/users/2/contacts.
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/users/2/contacts';
 		$method = 'GET';
 		$parameters = [];
@@ -322,7 +356,7 @@ class APIUsersTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -389,6 +423,11 @@ class APIUsersTest extends TestCase {
 
 		// Testing GET api/v1/users/2/favourites.
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/users/2/favourites';
 		$method = 'GET';
 		$parameters = [];
@@ -397,7 +436,7 @@ class APIUsersTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
@@ -429,6 +468,11 @@ class APIUsersTest extends TestCase {
 
 		// Testing DELETE api/v1/users/205/favourite.
 
+		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;			
+		}
+
 		$uri = 'api/v1/users/205/favourite';
 		$method = 'DELETE';
 		$parameters = [];
@@ -437,7 +481,7 @@ class APIUsersTest extends TestCase {
 		$server = [];
 		$content = null;
 		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
-		$request->headers->set('token','Lm9v6xCNXfIoPhPWRBOYfEGfHqEzGyBlNcyOa0GAaxQGaQxtUGrHvvXznDTu');
+		$request->headers->set('token',$usertoken);
 		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
 
 		$this->assertEquals(200, $response->getStatusCode());
