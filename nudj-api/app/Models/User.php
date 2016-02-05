@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
+use Log;
+
 class User extends ApiModel implements ShieldAuthServiceContract
 {
 
@@ -193,8 +195,9 @@ class User extends ApiModel implements ShieldAuthServiceContract
         if (isset($input['skills']))
             $this->syncSkills($input['skills']);
 
-        if (isset($input['contacts']))
+        if (isset($input['contacts'])){
             $this->syncContacts($input['contacts']);
+        }
 
         if (isset($input['settings']))
             $this->settings = $this->syncSettings($input['settings']);

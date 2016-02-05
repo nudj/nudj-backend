@@ -7,6 +7,8 @@ use App\Utility\Util;
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumberUtil;
 
+use Log;
+
 class Contact extends ApiModel
 {
     public $timestamps = false;
@@ -69,6 +71,7 @@ class Contact extends ApiModel
                 throw new ApiException(ApiExceptionType::$MISSING_PROPERTY);
             }
             $phoneData = Util::unifyPhoneNumber($record->phone, $userCountryCode);
+
             $contact = Contact::where(['contact_of' => $userId, 'phone' => $phoneData->number])->first();
 
             if (!$contact) {
