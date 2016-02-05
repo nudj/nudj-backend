@@ -77,16 +77,16 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::delete('contacts/{id}', 'ContactsController@destroy');
 
     // CHAT
-    Route::get('chat/{filter}', 'ChatController@index');
-    Route::get('chat/{id}', 'ChatController@show');
-    Route::delete('chat/{id}', 'ChatController@destroy');
-    Route::put('chat/{id}/archive', 'ChatController@archive');
+    Route::get('chat/{filter}',        'ChatController@index');
+    Route::get('chat/{id}',            'ChatController@show');
+    Route::put('chat/{id}/archive',    'ChatController@archive');
+    Route::put('chat/{id}/mute',       'ChatController@mute');
+    Route::put('chat/notification',    'ChatController@notify');
+    Route::put('chat',                 'ChatController@spawn');
+    Route::delete('chat/{id}',         'ChatController@destroy');
     Route::delete('chat/{id}/archive', 'ChatController@restore');
-    Route::put('chat/{id}/mute', 'ChatController@mute');
-    Route::delete('chat/{id}/mute', 'ChatController@unmute');
-    Route::put('chat/notification', 'ChatController@notify');
-    Route::put('chat', 'ChatController@spawn');
-    Route::delete('chat/all', 'ChatController@deleteAllRooms');
+    Route::delete('chat/{id}/mute',    'ChatController@unmute');
+    Route::delete('chat/all',          'ChatController@deleteAllRooms');
 
     // NOTIFICATION
     Route::get('notifications', 'NotificationsController@index');
