@@ -54,14 +54,14 @@ Route::group(['prefix' => 'api/v1'], function () {
     // USERS
     Route::get('users', 'UsersController@index');
     Route::get('users/{userid}', 'UsersController@show');
-    Route::post('users', 'UsersController@store');                           // no token required
-    Route::put('users/{userid?}', 'UsersController@update');
-    Route::delete('users/{userid}', 'UsersController@destroy');
-    Route::put('users/verify', 'UsersController@verify');                    // no token required
     Route::get('users/exists/{userid}', 'UsersController@exists');           // no token required
     Route::get('users/{userid}/contacts', 'UsersController@contacts');
     Route::get('users/{userid}/favourites', 'UsersController@favourites');
+    Route::post('users', 'UsersController@store');                           // no token required
+    Route::put('users/verify', 'UsersController@verify');                    // no token required
+    Route::put('users/{userid?}', 'UsersController@update');
     Route::put('users/{userid}/favourite', 'UsersController@favourite');
+    Route::delete('users/{userid}', 'UsersController@destroy');
     Route::delete('users/{userid}/favourite', 'UsersController@unfavourite');
 
     // NUDGE
