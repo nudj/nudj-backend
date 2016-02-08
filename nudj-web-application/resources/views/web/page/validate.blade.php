@@ -38,7 +38,7 @@
 
 
     <div id="phone-code" class="container">
-        <div class="col-xs-12 col-centered col-max" >Please this code below</div>
+        <div class="col-xs-12 col-centered col-max" >Please put this code below</div>
         <div class="col-xs-12 col-centered col-max">
             <div id="mobile-holder">
                 <div class="mobile-box mobile-border-left">
