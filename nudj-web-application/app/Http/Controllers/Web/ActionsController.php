@@ -10,6 +10,8 @@ use App\Models\Nudge;
 use App\Models\User;
 use App\Utility\Facades\Shield;
 
+use Log;
+
 class ActionsController extends \Illuminate\Routing\Controller
 {
 
