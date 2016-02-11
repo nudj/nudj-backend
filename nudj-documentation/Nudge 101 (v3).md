@@ -1,6 +1,14 @@
+- Starting point
+
+```
+Robyn McGirl has messaged you via Nudj: 
+Testing1633 
+Take a look: https://mobileweb.nudj.co/jobpreview/1/Ezfldg4VLZ
+```
+
 - Running: the mobileweb app with `php artisan serve`.
 
-- Visiting: `http://localhost:8000/jobpreview/3/qMrOQlqBHI`. And see the job description. We ended up there because of an SMS that was sent to me [to be detailed]. Note that at this point the hash in the URL doesn't matter for the actual display, but matters as the hash is written in the HTML (JavaScript) source.
+- Visiting: `http://localhost:8000/jobpreview/3/qMrOQlqBHI`. And see the job description. We ended up there because of an SMS that was sent to me [previous point]. Note that at this point the hash in the URL doesn't matter for the actual display, but matters as the hash is written in the HTML (JavaScript) source.
 
 - Click on [Apply]
 

@@ -147,13 +147,7 @@ class Nudge extends ApiModel
 
     private function nudgeContact($job, $referrer, $contact, $message)
     {
-
-        //$message = Lang::get('sms.nudge', [
-        //    'name' => $referrer->name,
-        //    'message' => $message,
-        //    'link' => web_url('register/nudge/' . $this->hash)
-        //]);
-
+    	
         // https://mobileweb.nudj.co/jobpreview/98/v747uur2Ym (for production)
         // https://mobileweb-dev.nudj.co/jobpreview/98/v747uur2Ym (for dev)        
 
