@@ -49,7 +49,7 @@ class APIChatTest extends TestCase {
 			$usertoken = $dbresult->token;			
 		}
 
-		$uri = 'api/v1/chat/288';
+		$uri = 'api/v1/chat/1';
 		$method = 'GET';
 		$parameters = [];
 		$cookies = [];

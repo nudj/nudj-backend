@@ -45,9 +45,11 @@ class APIJobsTest extends TestCase {
 			}
 		*/
 		$this->assertArrayHasKey('data', $xp1);
-		$this->assertArrayHasKey('id', $xp1['data'][0]);
-		$this->assertArrayHasKey('title', $xp1['data'][0]);
-		$this->assertArrayHasKey('user', $xp1['data'][0]);
+		if(count($xp1['data'])>0){
+			$this->assertArrayHasKey('id', $xp1['data'][0]);
+			$this->assertArrayHasKey('title', $xp1['data'][0]);
+			$this->assertArrayHasKey('user', $xp1['data'][0]);			
+		}
 	}
 	public function test2()
 	{

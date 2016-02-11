@@ -67,3 +67,4 @@ Note: An example of answer will be given when this doesn't prevent understanding
 .
 
 - [GET     api/v1/nsx300/app\_notification\_to_me](xf2112)
+- - [GET     api/v1/nsx300/send-sms-notification-to-number](xf1257)

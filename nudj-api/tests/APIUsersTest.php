@@ -468,12 +468,13 @@ class APIUsersTest extends TestCase {
 
 		// Testing DELETE api/v1/users/205/favourite.
 
-		$dbresults = DB::select('select token from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		$dbresults = DB::select('select * from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
 		foreach($dbresults as $dbresult){
-			$usertoken = $dbresult->token;			
+			$usertoken = $dbresult->token;	
+			$userid = $dbresult->id;		
 		}
 
-		$uri = 'api/v1/users/205/favourite';
+		$uri = 'api/v1/users/'.$userid.'/favourite';
 		$method = 'DELETE';
 		$parameters = [];
 		$cookies = [];

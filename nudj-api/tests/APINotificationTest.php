@@ -59,7 +59,7 @@ class APINotificationTest extends TestCase {
 			$usertoken = $dbresult->token;			
 		}
 
-		$uri = 'api/v1/notifications/205/read';
+		$uri = 'api/v1/notifications/1/read';
 		$method = 'PUT';
 		$parameters = [];
 		$cookies = [];
