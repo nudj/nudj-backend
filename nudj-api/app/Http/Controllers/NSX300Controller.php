@@ -2,14 +2,18 @@
 
 use App\Utility\Facades\Shield;
 use App\Models\User;
-use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Config;
+
+use Davibennun\LaravelPushNotification\PushNotification;
+
+use Services_Twilio;
 
 use Log;
 
 class NSX300Controller extends ApiController
 {
-    public function send_hello_world_notification_to_self()
+    public function sendHelloWorldNotificationToSelf()
     {
         $id = Shield::getUserId();
         $me = User::api()->findOrFail($id);
@@ -31,5 +35,26 @@ class NSX300Controller extends ApiController
         return $this->returnResponse(['data' => true]); 
 
     }
+
+    public function sendSMSNotificationToNumber($number)
+    {
+        $id = Shield::getUserId();
+        Log::info($number);
+
+        try {
+            $client = new Services_Twilio(Config::get('cfg.twilio_sid'), Config::get('cfg.twilio_token'));
+            $client->account->messages->create(array(
+                'To'   => $number,
+                'From' => '+44 20 3322 3966',
+                'Body' => 'Hello World',
+            ));
+        } catch (Exception $e) {
+            throw new ApiException(ApiExceptionType::$TWILIO_ERROR);
+        }
+
+        return $this->returnResponse(['data' => true]); 
+
+    }
+
 }
 

@@ -3,7 +3,7 @@
 /*
 
 	This came up when I was working on 
-		Route::get('nsx300/app_notification_to_me', 'NSX300Controller@send_hello_world_notification_to_self');
+		Route::get('nsx300/app_notification_to_me', 'NSX300Controller@sendHelloWorldNotificationToSelf');
 	for Richard, but otherwise not in use.
 */
 
