@@ -24,6 +24,7 @@ class EventServiceProvider extends ServiceProvider {
 	public function boot(DispatcherContract $events)
 	{
 		parent::boot($events);
+		Event::subscribe('App\Handlers\Events\SendSms');
 	}
 
 }

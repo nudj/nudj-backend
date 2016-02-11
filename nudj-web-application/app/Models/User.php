@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
+use Log;
+
 class User extends ApiModel implements ShieldAuthServiceContract
 {
 
@@ -102,17 +104,37 @@ class User extends ApiModel implements ShieldAuthServiceContract
     public static function login($input, $mobile = true)
     {
 
+        /*
+            The following line turn the phone number string into a standard representation
+        */
         $phoneData = Util::unifyPhoneNumber($input['phone'], $input['country_code']);
 
+
+        /*
+            Selecting a user by its phone number.
+        */
         $user = User::where('phone', '=', $phoneData->number)->active()->first();
 
+
+        /*
+            So basically this function is selecting a user by their phone number
+        */
         if ($user)
             return $user;
+
+        /*
+            Here there was no user with that phone number so we create one.
+            The only two pieces of information we have about the user are phone and country code. 
+        */
 
         $input['phone'] = $phoneData->number;
         $input['country_code'] = $phoneData->code;
 
         return self::add($input, $mobile);
+
+        /*
+            We return the newly created user. 
+        */
 
     }
 

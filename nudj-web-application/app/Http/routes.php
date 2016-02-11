@@ -18,7 +18,7 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('jobpreview/{jobId}/{hash?}', 'Web\WebController@jobpreview');
     Route::get('register/{type}/{hash}', 'Web\WebController@login');
-    Route::post('validate', 'Web\WebController@validate');
+    Route::post('validate', 'Web\WebController@validate'); # The page after submitting your phone number and where you need to put the pin 
     Route::get('job/{jobId}/{hash?}', 'Web\WebController@job');
     Route::post('verify', 'Web\ActionsController@verify');
     Route::post('apply', 'Web\ActionsController@apply');

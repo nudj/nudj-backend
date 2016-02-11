@@ -59,17 +59,37 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function validate(WebLoginRequest $request)
     {
+
+    	/*
+
+			The following function is called 'login' but in fact it just retrieve a user by 
+			a phone number and a country code.
+
+			If that user didn't exist, it creates it, of course no more than the phone and 
+			the country code are saved in the database
+
+    	*/
+
         $user = User::login([
-            'phone' => $request->phone,
+            'phone'        => $request->phone,
             'country_code' => $request->country_code,
-            'name' => $request->name
+            'name'         => $request->name
         ], false);
+
+        /*
+            So we fire an event. 
+            I presume this was set up to avoid latency.
+        */
 
         Event::fire(new LoginUserEvent($user->phone, $user->country_code, $user->verification));
 
+        /*
+            Generating the HTML page.
+        */
+
         return view('web/page/validate', [
             'user' => $user,
-            'job' => Request::get('job_id'),
+            'job'  => Request::get('job_id'),
             'hash' => Request::get('hash')
         ]);
     }
