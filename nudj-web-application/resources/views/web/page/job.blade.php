@@ -69,6 +69,17 @@
             <div id="job-tags" class="container-fluids margins-top">
                 {{$job->description}}
             </div>
+            <div id="job-skills" class="container-fluids margins-top">
+                <style>
+                    .label-success {
+                        background-color: white;
+                        border:1px solid #00A187;
+                    }
+                </style>
+                @foreach ($skills as $skill)
+                    <span class="badge label-success label-as-badge span-green">{{$skill->name}}</span>
+                @endforeach
+            </div>
             <div id="job-employer" class="container-fluids margins-top">
             </div>
             <img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/>

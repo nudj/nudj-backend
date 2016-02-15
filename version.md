@@ -2,6 +2,10 @@
 
 The third fragment of the version number is increased everytime code is pushed to the development server. The second fragment is increased at each production release. 
 
+**Version 1.009.000 (2016-02-15)**
+
+- Update in job skills display on mobile web.
+
 **Version 1.008.000 (2016-02-11)**
 
 - Enabled SMS sending from nudj-web-application (was missing).
