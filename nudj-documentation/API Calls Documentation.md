@@ -8,7 +8,6 @@ Note: An example of answer will be given when this doesn't prevent understanding
 
 - [GET     api/v1/chat/all](xf1258)
 - [GET     api/v1/chat/319](xf1259)
-
 - [GET     api/v1/jobs/search/{term?}](xf1001)
 - [GET     api/v1/jobs/{filter}](xf1830)
 - [GET     api/v1/jobs/{id}](xf1837)
