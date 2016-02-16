@@ -7,7 +7,7 @@ use App\Utility\Snafu;
 use Davibennun\LaravelPushNotification\PushNotification;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
-class SendApn implements ShouldBeQueued
+class SendApn
 {
 
     public function handle(NotifyUserEvent $event)
