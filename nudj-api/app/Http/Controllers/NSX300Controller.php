@@ -5,8 +5,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
 
-use Davibennun\LaravelPushNotification\PushNotification;
-
 use Sly\NotificationPusher\PushManager,
     Sly\NotificationPusher\Adapter\Apns as ApnsAdapter,
     Sly\NotificationPusher\Collection\DeviceCollection,
@@ -23,6 +21,11 @@ class NSX300Controller extends ApiController
 {
     public function sendHelloWorldNotificationToSelf_version1()
     {
+
+        return $this->returnResponse(['data' => true]); 
+
+        // The code below is decommissioned but kept for historical interest. 
+
         $id = Shield::getUserId();
         $me = User::api()->findOrFail($id);
         $devices = $me->devices()->get();
@@ -47,13 +50,22 @@ class NSX300Controller extends ApiController
     public function sendHelloWorldNotificationToSelf_version2()
     {
 
-        Log::info('sendHelloWorldNotificationToSelf_version2()');
+        // Log::info('sendHelloWorldNotificationToSelf_version2()');
 
-        // following the instructions at https://github.com/Ph3nol/NotificationPusher/blob/master/doc/getting-started.md
+        // Following the instructions at https://github.com/Ph3nol/NotificationPusher/blob/master/doc/getting-started.md
 
         // First, instantiate the manager and declare an adapter.
+
         $pushManager = new PushManager(PushManager::ENVIRONMENT_DEV);
 
+        $id = Shield::getUserId();
+        $me = User::api()->findOrFail($id);
+        $devices = $me->devices()->get();
+
+        $arrayOfDs = array();
+        foreach($devices as $device){
+            $arrayOfDs[] = new Device($device->token);
+        }
 
         $apnsAdapter = new ApnsAdapter(array(
             'certificate' => base_path('resources/certificates/production.pem'),
@@ -61,14 +73,12 @@ class NSX300Controller extends ApiController
         ));
 
         // Set the device(s) to push the notification to.
-        $devices = new DeviceCollection(array(
-            new Device('75bc705799589b7ad3c20aa05027d58e1438c989bfd6b51125180b81075384f8')
-        ));
 
-        $message = new Message('Hello world from Pascal', array(
+        $devices = new DeviceCollection($arrayOfDs);
+
+        $message = new Message('Hello world from Nudj', array(
             'badge' => 1,
-            'sound' => 'example.aiff',
-            // ...
+            'sound' => 'example.aiff'
         ));
 
         // Finally, create and add the push to the manager, and push it!
