@@ -4,8 +4,14 @@ use App\Events\NotifyUserEvent;
 use App\Models\Notification;
 use App\Models\User;
 use App\Utility\Snafu;
-use Davibennun\LaravelPushNotification\PushNotification;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
+
+use Sly\NotificationPusher\PushManager,
+    Sly\NotificationPusher\Adapter\Apns as ApnsAdapter,
+    Sly\NotificationPusher\Collection\DeviceCollection,
+    Sly\NotificationPusher\Model\Device,
+    Sly\NotificationPusher\Model\Message,
+    Sly\NotificationPusher\Model\Push
+;
 
 class SendApn
 {
