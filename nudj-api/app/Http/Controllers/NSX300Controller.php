@@ -57,21 +57,22 @@ class NSX300Controller extends ApiController
 
         $apnsAdapter = new ApnsAdapter(array(
             'certificate' => base_path('resources/certificates/production.pem'),
+            'passPhrase' => 'turned4437.handwritings'
         ));
 
         // Set the device(s) to push the notification to.
-        $devices = new Sly\NotificationPusher\Collection\DeviceCollection(array(
-            new Sly\NotificationPusher\Model\Device('75bc705799589b7ad3c20aa05027d58e1438c989bfd6b51125180b81075384f8')
+        $devices = new DeviceCollection(array(
+            new Device('75bc705799589b7ad3c20aa05027d58e1438c989bfd6b51125180b81075384f8')
         ));
 
-        $message = new Sly\NotificationPusher\Model\Message('Hello world from Pascal', array(
+        $message = new Message('Hello world from Pascal', array(
             'badge' => 1,
             'sound' => 'example.aiff',
             // ...
         ));
 
         // Finally, create and add the push to the manager, and push it!
-        $push = new Sly\NotificationPusher\Model\Push($apnsAdapter, $devices, $message);
+        $push = new Push($apnsAdapter, $devices, $message);
         $pushManager->add($push);
         $pushManager->push();
 
