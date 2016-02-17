@@ -115,7 +115,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     // NSX300
     // Suite of Internal test related points
-    Route::get('nsx300/app_notification_to_me', 'NSX300Controller@sendHelloWorldNotificationToSelf'); // added for Richard's tests, otherwise not in use
+    Route::get('nsx300/app_notification_to_me', 'NSX300Controller@sendHelloWorldNotificationToSelf_version2'); // added for Richard's tests, otherwise not in use
     Route::get('nsx300/send-sms-notification-to-number/{number}', 'NSX300Controller@sendSMSNotificationToNumber'); //
 
 

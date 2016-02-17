@@ -7,13 +7,21 @@ use Illuminate\Support\Facades\Config;
 
 use Davibennun\LaravelPushNotification\PushNotification;
 
+use Sly\NotificationPusher\PushManager,
+    Sly\NotificationPusher\Adapter\Apns as ApnsAdapter,
+    Sly\NotificationPusher\Collection\DeviceCollection,
+    Sly\NotificationPusher\Model\Device,
+    Sly\NotificationPusher\Model\Message,
+    Sly\NotificationPusher\Model\Push
+;
+
 use Services_Twilio;
 
 use Log;
 
 class NSX300Controller extends ApiController
 {
-    public function sendHelloWorldNotificationToSelf()
+    public function sendHelloWorldNotificationToSelf_version1()
     {
         $id = Shield::getUserId();
         $me = User::api()->findOrFail($id);
@@ -31,6 +39,41 @@ class NSX300Controller extends ApiController
                 ->to($device->token)
                 ->send("Hello world", $options);
         }
+
+        return $this->returnResponse(['data' => true]); 
+
+    }
+
+    public function sendHelloWorldNotificationToSelf_version2()
+    {
+
+        Log::info('sendHelloWorldNotificationToSelf_version2()');
+
+        // following the instructions at https://github.com/Ph3nol/NotificationPusher/blob/master/doc/getting-started.md
+
+        // First, instantiate the manager and declare an adapter.
+        $pushManager = new PushManager(PushManager::ENVIRONMENT_DEV);
+
+
+        $apnsAdapter = new ApnsAdapter(array(
+            'certificate' => base_path('resources/certificates/production.pem'),
+        ));
+
+        // Set the device(s) to push the notification to.
+        $devices = new Sly\NotificationPusher\Collection\DeviceCollection(array(
+            new Sly\NotificationPusher\Model\Device('75bc705799589b7ad3c20aa05027d58e1438c989bfd6b51125180b81075384f8')
+        ));
+
+        $message = new Sly\NotificationPusher\Model\Message('Hello world from Pascal', array(
+            'badge' => 1,
+            'sound' => 'example.aiff',
+            // ...
+        ));
+
+        // Finally, create and add the push to the manager, and push it!
+        $push = new Sly\NotificationPusher\Model\Push($apnsAdapter, $devices, $message);
+        $pushManager->add($push);
+        $pushManager->push();
 
         return $this->returnResponse(['data' => true]); 
 
