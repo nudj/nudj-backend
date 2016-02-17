@@ -48,6 +48,7 @@ Note: An example of answer will be given when this doesn't prevent understanding
 .
 
 - [GET     api/v1/config](xf1536)
+- [GET     api/v1/notifications/test](xf2112)
 - [PUT     api/v1/notifications/{id}/read](xf1537)
 
 .
@@ -65,5 +66,4 @@ Note: An example of answer will be given when this doesn't prevent understanding
 
 .
 
-- [GET     api/v1/nsx300/app\_notification\_to_me](xf2112)
-- - [GET     api/v1/nsx300/send-sms-notification-to-number](xf1257)
+- [GET     api/v1/nsx300/send-sms-notification-to-number](xf1257)
