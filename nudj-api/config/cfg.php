@@ -19,7 +19,7 @@ return [
     // Exceptions
     'email_system'        => 'no-reply@nudj.co',
     'email_notifications' => 'pascal@nudj.co',
-    'email_feedback'      => 'pascal@nudj.co',
+    'email_feedback'      => 'support@nudj.co',
 
     // Rackspace
     'rackspace' => [

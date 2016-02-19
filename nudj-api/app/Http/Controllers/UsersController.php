@@ -198,4 +198,11 @@ class UsersController extends ApiController
         return $this->respondWithStatus(User::favourite($id, Shield::getUserId(), true));
     }
 
+    public function blockuser($blockeduserid)
+    {
+    	$me = Shield::getUserId();
+    	// Todo
+    	return $this->respondWithStatus(true);
+    }
+
 }

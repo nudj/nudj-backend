@@ -101,4 +101,12 @@ class JobsController extends ApiController
         return $this->respondWithStatus(Job::like($id, Shield::getUserId(), true));
     }
 
+    public function reportjob($reportedjobid)
+    {
+    	$me = Shield::getUserId();
+    	// Todo
+    	return $this->respondWithStatus(true);
+    }
+
+
 }
