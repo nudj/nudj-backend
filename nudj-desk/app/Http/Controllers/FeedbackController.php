@@ -19,7 +19,7 @@ class FeedbackController extends ApiController
             'feedback' => (string) Request::get('feedback')
         ];
 
-        Mail::queue('emails.feedback', $data, function($message)
+        Mail::send('emails.feedback', $data, function($message)
         {
             $message->from(Config::get('cfg.email_system'));
             $message->to(Config::get('cfg.email_feedback'));
