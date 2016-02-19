@@ -46,7 +46,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('jobs/{filter}', 'JobsController@index');
     Route::get('jobs/{id}', 'JobsController@show');
     Route::post('jobs', 'JobsController@store');
-    Route::post('jobs/reportjob/{id}', 'JobsController@reportjob');
+    Route::post('jobs/{id}/report', 'JobsController@reportjob');
     Route::put('jobs/{id}', 'JobsController@update');
     Route::put('jobs/{id}/like', 'JobsController@like');
     Route::delete('jobs/{id}', 'JobsController@destroy');
@@ -59,7 +59,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('users/{userid}/contacts', 'UsersController@contacts');
     Route::get('users/{userid}/favourites', 'UsersController@favourites');
     Route::post('users', 'UsersController@store');                           // no token required
-    Route::post('users/blockuser/{id}', 'UsersController@blockuser');
+    Route::post('users/{id}/block', 'UsersController@blockuser');
     Route::put('users/verify', 'UsersController@verify');                    // no token required
     Route::put('users/{userid?}', 'UsersController@update');
     Route::put('users/{userid}/favourite', 'UsersController@favourite');

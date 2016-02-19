@@ -508,7 +508,7 @@ class APIUsersTest extends TestCase {
 			$userid = $dbresult->id;		
 		}
 
-		$uri = 'api/v1/users/blockuser/2';
+		$uri = 'api/v1/users/2/block';
 		$method = 'POST';
 		$parameters = [];
 		$cookies = [];

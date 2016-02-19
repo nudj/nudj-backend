@@ -558,7 +558,7 @@ class APIJobsTest extends TestCase {
 			$userid = $dbresult->id;		
 		}
 
-		$uri = 'api/v1/jobs/reportjob/1';
+		$uri = 'api/v1/jobs/1/report';
 		$method = 'POST';
 		$parameters = [];
 		$cookies = [];
