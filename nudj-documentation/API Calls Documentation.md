@@ -7,12 +7,20 @@ Note: Unless otherwise specified, keys are mandatory (only optional keys will be
 Note: An example of answer will be given when this doesn't prevent understanding. Otherwise the full grammar will be given.
 
 - [GET     api/v1/chat/all](xf1258)
+- [GET     api/v1/chat/active]
+- [GET     api/v1/chat/archived]
 - [GET     api/v1/chat/319](xf1259)
+- [PUT     api/v1/chat/notification]
+- [PUT     api/v1/chat/{id}/archive]
+- [DELETE  api/v1/chat/{id}/archive]
+
+.
+
 - [GET     api/v1/jobs/search/{term?}](xf1001)
 - [GET     api/v1/jobs/{filter}](xf1830)
 - [GET     api/v1/jobs/{id}](xf1837)
 - [POST    api/v1/jobs](xf1306)
-- [POST    api/v1/jobs/reportjob/{id}](xf1434) 
+- [POST    api/v1/jobs/{id}/report](xf1434) 
 - [PUT     api/v1/jobs/{id}](xf1528)
 - [PUT     api/v1/jobs/{id}/like](xf1634)
 - [DELETE  api/v1/jobs/{id}](xf1554)
@@ -26,7 +34,8 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [GET     api/v1/users/{userid}/contacts](xf1844)
 - [GET     api/v1/users/{userid}/favourites](xf1848)
 - [POST    api/v1/users](xf1905)
-- [POST    api/v1/users/blockuser/{id}](xf1441)
+- [POST    api/v1/users/{id}/block](xf1441)
+- [POST    api/v1/users/{id}/report](xf1615)
 - [PUT     api/v1/users/{userid?}](xf2250)
 - [PUT     api/v1/users/verify](xf1827)
 - [PUT     api/v1/users/{userid}/favourite](xf1856)

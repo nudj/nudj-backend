@@ -532,4 +532,38 @@ class APIUsersTest extends TestCase {
 		$this->assertTrue($xp1['status']);
 
 	}
+
+	public function test13()
+	{
+
+		$dbresults = DB::select('select * from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;	
+			$userid = $dbresult->id;		
+		}
+
+		$uri = 'api/v1/users/2/report';
+		$method = 'POST';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token',$usertoken);
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$xp1 = json_decode($response->getContent(),true);
+		$this->assertInternalType('array', $xp1);
+		/*
+			{
+				"status": true,
+				"timestamp": 1453032189.9975
+			}
+		*/
+		$this->assertArrayHasKey('status', $xp1);
+		$this->assertTrue($xp1['status']);
+
+	}
 }

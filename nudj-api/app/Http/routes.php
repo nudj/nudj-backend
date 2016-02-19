@@ -60,6 +60,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('users/{userid}/favourites', 'UsersController@favourites');
     Route::post('users', 'UsersController@store');                           // no token required
     Route::post('users/{id}/block', 'UsersController@blockuser');
+    Route::post('users/{id}/report', 'UsersController@reportuser');
     Route::put('users/verify', 'UsersController@verify');                    // no token required
     Route::put('users/{userid?}', 'UsersController@update');
     Route::put('users/{userid}/favourite', 'UsersController@favourite');
