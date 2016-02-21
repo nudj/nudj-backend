@@ -10,6 +10,7 @@ use App\Models\Contact;
 use App\Models\User;
 use App\Models\BlockUser;
 use App\Models\ReportUser;
+use App\Models\UnsafeUsers;
 
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -22,13 +23,16 @@ use App\Utility\Transformers\UserTransformer;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
 
+use DB;
+
 class UsersController extends ApiController
 {
 
     public function index()
     {
-        $items = User::api()->paginate($this->limit);
-
+    	$me = Shield::getUserId();
+        $items = User::whereNotIn('id', UnsafeUsers::unsafe_userids_for_primary_user($me))
+        	->paginate($this->limit);
         return $this->respondWithPagination($items, new UserTransformer());
     }
 

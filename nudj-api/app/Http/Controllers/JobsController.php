@@ -26,15 +26,28 @@ class JobsController extends ApiController
 
         switch ($filter) {
             case 'mine' :
-                $items = Job::mine($me)->active()->api()->desc()->paginate($this->limit);
+                $items = Job::mine($me)
+                    ->whereNotIn('id', BlockJob::get_blocked_jobids_for_primary_user($me))
+                    ->active()
+                    ->api()
+                    ->desc()
+                    ->paginate($this->limit);
                 break;
             case 'liked' :
-                $items = Job::liked($me)->active()->api()->desc()->paginate($this->limit);
-                $items = JobsController::select_user_s_subset_of_unblocked_jobs_from_the_given_jobs($me,$items);
+                $items = Job::liked($me)
+                    ->whereNotIn('id', BlockJob::get_blocked_jobids_for_primary_user($me))
+                    ->active()
+                    ->api()
+                    ->desc()
+                    ->paginate($this->limit);
                 break;
             case 'available' :
-                $items = Job::available($me)->active()->api()->desc()->paginate($this->limit);
-                $items = JobsController::select_user_s_subset_of_unblocked_jobs_from_the_given_jobs($me,$items);
+                $items = Job::available($me)
+                    ->whereNotIn('id', BlockJob::get_blocked_jobids_for_primary_user($me))
+                    ->active()
+                    ->api()
+                    ->desc()
+                    ->paginate($this->limit);
                 break;
             default:
                 throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
@@ -81,7 +94,7 @@ class JobsController extends ApiController
         $items = $job->search($term);
 
         $me = Shield::getUserId(); // id of the current user
-        $items = JobsController::select_user_s_subset_of_unblocked_jobs_from_the_given_jobs($me,$items);
+        $items = JobsController::select_user_s_subset_of_non_blocked_jobs_return_array($me,$items);
 
         return $this->respondWithItems($items, new JobTransformer());
     }
@@ -117,7 +130,7 @@ class JobsController extends ApiController
     	return $this->respondWithStatus(true);
     }
 
-    public static function select_user_s_subset_of_unblocked_jobs_from_the_given_jobs($primary_userid,$jobs){
+    public static function select_user_s_subset_of_non_blocked_jobs_return_array($primary_userid,$jobs){
 
         /*
             This function was introduced because the patterns of filtering some jobs out from a collection would be used a lot

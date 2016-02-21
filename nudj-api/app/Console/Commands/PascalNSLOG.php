@@ -52,7 +52,9 @@ class PascalNSLOG extends Command {
 		// $this->info('nslog');
 
 		// BlockUser::block_user(13,14);
+		$this->info( serialize(BlockJob::get_blocked_jobids_for_primary_user(1)) );
 		$this->info( serialize(BlockUser::get_blocked_userids_for_primary_user(1)) );
+		$this->info( serialize(ReportUser::get_reported_userids_for_primary_user(1)) );
 
 	}
 
