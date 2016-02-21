@@ -198,7 +198,11 @@ class UsersController extends ApiController
 
         $user = User::min()->findOrFail($id);
 
-        $items = $user->favourites()->api()->paginate($this->limit);
+        $me = Shield::getUserId();
+        $items = $user->favourites()
+            ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
+            ->api()
+            ->paginate($this->limit);
 
         return $this->respondWithPagination($items, new UserSortedTransformer());
     }
