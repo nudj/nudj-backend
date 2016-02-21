@@ -30,9 +30,9 @@ class UsersController extends ApiController
 
     public function index()
     {
-    	$me = Shield::getUserId();
+        $me = Shield::getUserId();
         $items = User::whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
-        	->paginate($this->limit);
+            ->paginate($this->limit);
         return $this->respondWithPagination($items, new UserTransformer());
     }
 
@@ -176,8 +176,13 @@ class UsersController extends ApiController
         if (!$user)
             throw new ApiException(ApiExceptionType::$USER_MISSING);
 
-        $items = $user->contacts()->api()->paginate($this->limit);
+        $me = Shield::getUserId();
+        $items = $user->contacts()
+            ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
+            ->api()
+            ->paginate($this->limit);
         return $this->respondWithPagination($items, new ContactTransformer());
+
     }
 
     public function favourites($id = null)
