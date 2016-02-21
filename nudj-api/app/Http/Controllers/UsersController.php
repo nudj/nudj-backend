@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Models\Contact;
 use App\Models\User;
 use App\Models\BlockUser;
+use App\Models\ReportUser;
 
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -206,7 +207,7 @@ class UsersController extends ApiController
     public function reportuser($reporteduserid)
     {
     	$me = Shield::getUserId();
-    	// Todo
+		ReportUser::report_user($me,$reporteduserid);
     	return $this->respondWithStatus(true);
     }
 
