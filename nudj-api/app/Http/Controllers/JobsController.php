@@ -1,13 +1,17 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateJobRequest;
-use App\Models\Job;
 use App\Http\Requests;
+
+use App\Models\Job;
+use App\Models\ReportJob;
+
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
 use App\Utility\Snafu;
 use App\Utility\Transformers\JobTransformer;
+
 use Illuminate\Support\Facades\Input;
 
 use Log;
@@ -104,7 +108,7 @@ class JobsController extends ApiController
     public function reportjob($reportedjobid)
     {
     	$me = Shield::getUserId();
-    	// Todo
+    	ReportJob::report_job($me,$reportedjobid);
     	return $this->respondWithStatus(true);
     }
 
