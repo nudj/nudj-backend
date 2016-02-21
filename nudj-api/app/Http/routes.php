@@ -105,7 +105,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('config/{key}', 'ConfigController@show');
 
     // MISC
-    Route::get('countries', 'CountriesController@index');    // no token required
+    Route::get('countries', 'CountriesController@index');  // no token required
     Route::post('feedback', 'FeedbackController@send');
     Route::put('devices',   'DevicesController@register');
 
