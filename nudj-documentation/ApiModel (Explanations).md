@@ -1,0 +1,1 @@
+I put information about the API model in the source code: nudj-backend/nudj-api/app/Models/ApiModel.php
