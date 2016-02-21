@@ -220,6 +220,11 @@ class UsersController extends ApiController
     public function reportuser($reporteduserid)
     {
     	$me = Shield::getUserId();
+
+        if($reporteduserid==$me){
+            throw new ApiException(ApiExceptionType::$BAD_REQUEST);
+        }
+
 		UsersReported::report_user($me,$reporteduserid);
     	return $this->respondWithStatus(true);
     }
@@ -227,6 +232,11 @@ class UsersController extends ApiController
     public function blockuser($blockeduserid)
     {
     	$me = Shield::getUserId();
+
+        if($blockeduserid==$me){
+            throw new ApiException(ApiExceptionType::$BAD_REQUEST);
+        }
+
 		UsersBlocked::block_user($me,$blockeduserid);
     	return $this->respondWithStatus(true);
     }

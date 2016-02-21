@@ -558,7 +558,7 @@ class APIJobsTest extends TestCase {
 			$userid = $dbresult->id;		
 		}
 
-		$uri = 'api/v1/jobs/1/block';
+		$uri = 'api/v1/jobs/4/block';
 		$method = 'POST';
 		$parameters = [];
 		$cookies = [];
@@ -580,6 +580,30 @@ class APIJobsTest extends TestCase {
 		*/
 		$this->assertArrayHasKey('status', $xp1);
 		$this->assertTrue($xp1['status']);
+
+	}
+
+	public function test13()
+	{
+
+		$dbresults = DB::select('select * from users where email=? and deleted_at is NULL',['robyn@nudj.co']);
+		foreach($dbresults as $dbresult){
+			$usertoken = $dbresult->token;	
+			$userid = $dbresult->id;		
+		}
+
+		$uri = 'api/v1/jobs/2/block';
+		$method = 'POST';
+		$parameters = [];
+		$cookies = [];
+		$files = [];
+		$server = [];
+		$content = null;
+		$request = Request::create($uri, $method, $parameters, $cookies, $files, $server, $content);
+		$request->headers->set('token',$usertoken);
+		$response = $this->app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
+
+		$this->assertEquals(400, $response->getStatusCode());
 
 	}
 

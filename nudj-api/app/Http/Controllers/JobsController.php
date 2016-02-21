@@ -5,6 +5,7 @@ use App\Http\Requests;
 
 use App\Models\Job;
 use App\Models\JobsBlocked;
+use App\Models\User;
 
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -126,6 +127,16 @@ class JobsController extends ApiController
     public function blockjob($reportedjobid)
     {
     	$me = Shield::getUserId();
+    	$myself = User::min()->findOrFail($me);
+    	$myjobids = [];
+    	foreach($myself->jobs()->get() as $job){
+    		$myjobids[] = $job->id;
+    	}
+
+        if(in_array($reportedjobid,$myjobids)){
+            throw new ApiException(ApiExceptionType::$BAD_REQUEST);
+        }    	
+
     	JobsBlocked::block_job($me,$reportedjobid);
     	return $this->respondWithStatus(true);
     }
