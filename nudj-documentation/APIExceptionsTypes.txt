@@ -1,0 +1,10 @@
+
+Making the list of API exception types observed in the code:
+	throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
+	throw new ApiException(ApiExceptionType::$NOT_FOUND);
+	throw new ApiException(ApiExceptionType::$UNAUTHORIZED);
+	throw new ApiException(ApiExceptionType::$USER_MISSING);
+	throw new ApiException(ApiExceptionType::$VERIFICATION_ERROR);
+
+
+

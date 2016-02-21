@@ -1,17 +1,9 @@
-**How versioning works ?** 
+**Which Laravel version are we runing ?**  Laravel Framework version 5.0.34.
 
-The third fragment of the version number is increased everytime code is pushed to the development server. The second fragment is increased at each production release. 
+**How versioning works ?** The minor fragment is increased at each production release. 
 
-**Version 1.009.000 (2016-02-15)**
-
-- Update in job skills display on mobile web.
-
-**Version 1.008.000 (2016-02-11)**
-
-- Enabled SMS sending from nudj-web-application (was missing).
-
-**Version 1.007.000 (2016-02-09)**
-
-- Initial Live Release
+- Version 1.009 (2016-02-15)
+- Version 1.008 (2016-02-11)
+- Version 1.007 (2016-02-09)
 
 
