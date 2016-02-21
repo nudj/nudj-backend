@@ -46,7 +46,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('jobs/{filter}',       'JobsController@index');
     Route::get('jobs/{id}',           'JobsController@show');
     Route::post('jobs',               'JobsController@store');
-    Route::post('jobs/{id}/block',   'JobsController@blockjob');
+    Route::post('jobs/{id}/block',    'JobsController@blockjob');
     Route::put('jobs/{id}',           'JobsController@update');
     Route::put('jobs/{id}/like',      'JobsController@like');
     Route::delete('jobs/{id}',        'JobsController@destroy');

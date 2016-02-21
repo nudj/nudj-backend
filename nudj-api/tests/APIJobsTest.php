@@ -583,5 +583,4 @@ class APIJobsTest extends TestCase {
 
 	}
 
-
 }
