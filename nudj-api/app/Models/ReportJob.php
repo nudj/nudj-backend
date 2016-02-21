@@ -12,7 +12,7 @@ CREATE TABLE `report_job` (
 
 use DB;
 
-class ReportJob extends ApiModel
+class ReportJob
 {
     public static function report_job($reporter_user_id,$job_id){
         DB::select('insert into report_job (uuid,reporter_user_id,job_id) values (?,?,?)',[uniqid(),$reporter_user_id,$job_id]);	

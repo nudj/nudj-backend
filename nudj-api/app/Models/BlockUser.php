@@ -12,7 +12,7 @@
 
 use DB;
 
-class BlockUser extends ApiModel
+class BlockUser
 {
     public static function block_user($blocker_user_id,$blocked_user_id){
         DB::select('insert into block_user (uuid,blocker_user_id,blocked_user_id) values (?,?,?)',[uniqid(),$blocker_user_id,$blocked_user_id]);	
