@@ -30,9 +30,11 @@ class JobsController extends ApiController
                 break;
             case 'liked' :
                 $items = Job::liked($me)->active()->api()->desc()->paginate($this->limit);
+                $items = JobsController::select_user_s_subset_of_unblocked_jobs_from_the_given_jobs($me,$items);
                 break;
             case 'available' :
                 $items = Job::available($me)->active()->api()->desc()->paginate($this->limit);
+                $items = JobsController::select_user_s_subset_of_unblocked_jobs_from_the_given_jobs($me,$items);
                 break;
             default:
                 throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
