@@ -1,10 +1,14 @@
 <?php namespace App\Console\Commands;
 
+/*
+	This command exists to allow running Model functions from the command line.
+*/
+
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-use App\Models\Job;
+use App\Models\BlockUser;
 
 class PascalNSLOG extends Command {
 
@@ -45,6 +49,7 @@ class PascalNSLOG extends Command {
         */
 
 		$this->info('nslog');	
+		BlockUser::block_user(13,14);
 
 	}
 

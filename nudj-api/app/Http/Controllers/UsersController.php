@@ -1,11 +1,15 @@
 <?php namespace App\Http\Controllers;
 
 use App\Events\LoginUserEvent;
+
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\VerifyUserRequest;
+use App\Http\Requests;
+
 use App\Models\Contact;
 use App\Models\User;
-use App\Http\Requests;
+use App\Models\BlockUser;
+
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
@@ -13,6 +17,7 @@ use App\Utility\Transformers\ContactTransformer;
 use App\Utility\Transformers\JobTransformer;
 use App\Utility\Transformers\UserSortedTransformer;
 use App\Utility\Transformers\UserTransformer;
+
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
 
@@ -208,7 +213,7 @@ class UsersController extends ApiController
     public function blockuser($blockeduserid)
     {
     	$me = Shield::getUserId();
-    	// Todo
+		BlockUser::block_user($me,$blockeduserid);
     	return $this->respondWithStatus(true);
     }
 
