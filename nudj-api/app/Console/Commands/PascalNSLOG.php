@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 use App\Models\BlockUser;
 use App\Models\ReportUser;
-use App\Models\ReportJob;
+use App\Models\BlockJob;
 
 class PascalNSLOG extends Command {
 

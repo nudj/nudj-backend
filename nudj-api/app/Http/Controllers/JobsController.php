@@ -4,7 +4,7 @@ use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests;
 
 use App\Models\Job;
-use App\Models\ReportJob;
+use App\Models\BlockJob;
 
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -105,10 +105,10 @@ class JobsController extends ApiController
         return $this->respondWithStatus(Job::like($id, Shield::getUserId(), true));
     }
 
-    public function reportjob($reportedjobid)
+    public function blockjob($reportedjobid)
     {
     	$me = Shield::getUserId();
-    	ReportJob::report_job($me,$reportedjobid);
+    	BlockJob::block_job($me,$reportedjobid);
     	return $this->respondWithStatus(true);
     }
 

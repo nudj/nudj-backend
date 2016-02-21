@@ -1,7 +1,7 @@
 <?php namespace App\Models;
 
 /*
-CREATE TABLE `report_job` (
+CREATE TABLE `block_job` (
   `uuid` varchar(64) NOT NULL DEFAULT '',
   `reporter_user_id` int(11) NOT NULL,
   `job_id` int(11) NOT NULL,
@@ -12,14 +12,14 @@ CREATE TABLE `report_job` (
 
 use DB;
 
-class ReportJob
+class BlockJob
 {
-    public static function report_job($reporter_user_id,$job_id){
-        DB::select('insert into report_job (uuid,reporter_user_id,job_id) values (?,?,?)',[uniqid(),$reporter_user_id,$job_id]);	
+    public static function block_job($reporter_user_id,$job_id){
+        DB::select('insert into block_job (uuid,reporter_user_id,job_id) values (?,?,?)',[uniqid(),$reporter_user_id,$job_id]);	
     }
-    public static function get_reported_jobids_for_primary_user($primary_user_id){
+    public static function get_blocked_jobids_for_primary_user($primary_user_id){
         $answer = [];
-        $dbresults = DB::select('select job_id from report_job where reporter_user_id=?',[$primary_user_id]);
+        $dbresults = DB::select('select job_id from block_job where reporter_user_id=?',[$primary_user_id]);
         foreach($dbresults as $dbresult){
             $answer[] = $dbresult->job_id;
         }

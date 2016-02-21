@@ -20,7 +20,7 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [GET     api/v1/jobs/{filter}](xf1830)
 - [GET     api/v1/jobs/{id}](xf1837)
 - [POST    api/v1/jobs](xf1306)
-- [POST    api/v1/jobs/{id}/report](xf1434) 
+- [POST    api/v1/jobs/{id}/block](xf1434) 
 - [PUT     api/v1/jobs/{id}](xf1528)
 - [PUT     api/v1/jobs/{id}/like](xf1634)
 - [DELETE  api/v1/jobs/{id}](xf1554)
