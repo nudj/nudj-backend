@@ -1,15 +1,21 @@
 <?php namespace App\Http\Controllers;
 
 use App\Events\SendMessageToContactEvent;
+
 use App\Models\Contact;
+use App\Models\UsersUnsafe;
+
 use App\Http\Requests;
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
 use App\Utility\Transformers\ContactTransformer;
+
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
+
+
 
 class ContactsController extends ApiController
 {
@@ -17,7 +23,11 @@ class ContactsController extends ApiController
     public function index()
     {
         $me = Shield::getUserId();
-        $items =  Contact::where('contact_of', '=', $me)->api()->orderBy('alias', 'asc')->get();
+        $items = Contact::where('contact_of', '=', $me)
+	        ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
+        	->api()
+        	->orderBy('alias', 'asc')
+        	->get();
 
         return $this->respondWithItems($items, new ContactTransformer());
     }
