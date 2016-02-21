@@ -12,13 +12,13 @@ CREATE TABLE `report_user` (
 
 use DB;
 
-class ReportUser
+class UsersReported
 {
     public static function report_user($reporter_user_id,$reported_user_id){
         DB::select('insert into users_reported (uuid,reporter_user_id,reported_user_id) values (?,?,?)',[uniqid(),$reporter_user_id,$reported_user_id]);	
     }
 
-    // ReportUser::get_reported_userids_for_primary_user($primary_user_id)
+    // UsersReported::get_reported_userids_for_primary_user($primary_user_id)
     public static function get_reported_userids_for_primary_user($primary_user_id){
         $answer = [];
         $dbresults = DB::select('select reported_user_id from users_reported where reporter_user_id=?',[$primary_user_id]);

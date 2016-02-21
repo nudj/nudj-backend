@@ -4,7 +4,7 @@ use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests;
 
 use App\Models\Job;
-use App\Models\BlockJob;
+use App\Models\JobsBlocked;
 
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -27,7 +27,7 @@ class JobsController extends ApiController
         switch ($filter) {
             case 'mine' :
                 $items = Job::mine($me)
-                    ->whereNotIn('id', BlockJob::get_blocked_jobids_for_primary_user($me))
+                    ->whereNotIn('id', JobsBlocked::get_blocked_jobids_for_primary_user($me))
                     ->active()
                     ->api()
                     ->desc()
@@ -35,7 +35,7 @@ class JobsController extends ApiController
                 break;
             case 'liked' :
                 $items = Job::liked($me)
-                    ->whereNotIn('id', BlockJob::get_blocked_jobids_for_primary_user($me))
+                    ->whereNotIn('id', JobsBlocked::get_blocked_jobids_for_primary_user($me))
                     ->active()
                     ->api()
                     ->desc()
@@ -43,7 +43,7 @@ class JobsController extends ApiController
                 break;
             case 'available' :
                 $items = Job::available($me)
-                    ->whereNotIn('id', BlockJob::get_blocked_jobids_for_primary_user($me))
+                    ->whereNotIn('id', JobsBlocked::get_blocked_jobids_for_primary_user($me))
                     ->active()
                     ->api()
                     ->desc()
@@ -126,7 +126,7 @@ class JobsController extends ApiController
     public function blockjob($reportedjobid)
     {
     	$me = Shield::getUserId();
-    	BlockJob::block_job($me,$reportedjobid);
+    	JobsBlocked::block_job($me,$reportedjobid);
     	return $this->respondWithStatus(true);
     }
 
@@ -140,7 +140,7 @@ class JobsController extends ApiController
 
         // Unfortunately PHP doesn't have an array select function 
 
-        $jobids = BlockJob::get_blocked_jobids_for_primary_user($primary_userid);
+        $jobids = JobsBlocked::get_blocked_jobids_for_primary_user($primary_userid);
         $newjobs = [];
         foreach($jobs as $job){
             if(!in_array($job->id,$jobids)){

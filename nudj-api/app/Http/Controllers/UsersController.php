@@ -8,9 +8,9 @@ use App\Http\Requests;
 
 use App\Models\Contact;
 use App\Models\User;
-use App\Models\BlockUser;
-use App\Models\ReportUser;
-use App\Models\UnsafeUsers;
+use App\Models\UsersBlocked;
+use App\Models\UsersReported;
+use App\Models\UsersUnsafe;
 
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
@@ -31,7 +31,7 @@ class UsersController extends ApiController
     public function index()
     {
     	$me = Shield::getUserId();
-        $items = User::whereNotIn('id', UnsafeUsers::unsafe_userids_for_primary_user($me))
+        $items = User::whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
         	->paginate($this->limit);
         return $this->respondWithPagination($items, new UserTransformer());
     }
@@ -211,14 +211,14 @@ class UsersController extends ApiController
     public function reportuser($reporteduserid)
     {
     	$me = Shield::getUserId();
-		ReportUser::report_user($me,$reporteduserid);
+		UsersReported::report_user($me,$reporteduserid);
     	return $this->respondWithStatus(true);
     }
 
     public function blockuser($blockeduserid)
     {
     	$me = Shield::getUserId();
-		BlockUser::block_user($me,$blockeduserid);
+		UsersBlocked::block_user($me,$blockeduserid);
     	return $this->respondWithStatus(true);
     }
 

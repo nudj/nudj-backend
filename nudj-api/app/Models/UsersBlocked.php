@@ -12,13 +12,13 @@
 
 use DB;
 
-class BlockUser
+class UsersBlocked
 {
     public static function block_user($blocker_user_id,$blocked_user_id){
         DB::select('insert into users_blocked (uuid,blocker_user_id,blocked_user_id) values (?,?,?)',[uniqid(),$blocker_user_id,$blocked_user_id]);	
     }
 
-    // BlockUser::get_blocked_userids_for_primary_user($primary_user_id)
+    // UsersBlocked::get_blocked_userids_for_primary_user($primary_user_id)
     public static function get_blocked_userids_for_primary_user($primary_user_id){
         $answer = [];
         $dbresults = DB::select('select blocked_user_id from users_blocked where blocker_user_id=?',[$primary_user_id]);

@@ -8,9 +8,9 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-use App\Models\BlockUser;
-use App\Models\ReportUser;
-use App\Models\BlockJob;
+use App\Models\UsersBlocked;
+use App\Models\UsersReported;
+use App\Models\JobsBlocked;
 
 class PascalNSLOG extends Command {
 
@@ -51,10 +51,10 @@ class PascalNSLOG extends Command {
         */
 		// $this->info('nslog');
 
-		// BlockUser::block_user(13,14);
-		$this->info( serialize(BlockJob::get_blocked_jobids_for_primary_user(1)) );
-		$this->info( serialize(BlockUser::get_blocked_userids_for_primary_user(1)) );
-		$this->info( serialize(ReportUser::get_reported_userids_for_primary_user(1)) );
+		// UsersBlocked::block_user(13,14);
+		$this->info( serialize(JobsBlocked::get_blocked_jobids_for_primary_user(1)) );
+		$this->info( serialize(UsersBlocked::get_blocked_userids_for_primary_user(1)) );
+		$this->info( serialize(UsersReported::get_reported_userids_for_primary_user(1)) );
 
 	}
 
