@@ -2,16 +2,21 @@
 
 use App\Events\NotifyUserEvent;
 use App\Events\StartChatEvent;
-use App\Http\Requests;
 
+use App\Http\Requests;
 use App\Http\Requests\NotifyOfflineUserRequest;
+
 use App\Models\Chat;
 use App\Models\NotificationType;
+use App\Models\UsersUnsafe;
+
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
 use App\Utility\Transformers\ChatTransformer;
+
 use GameNet\Jabber\RpcClient;
+
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 
@@ -24,13 +29,30 @@ class ChatController extends ApiController
 
         switch ($filter) {
             case 'active' :
-                $items = Chat::api()->mine($me)->live($me)->active()->desc()->paginate($this->limit);
+                $items = Chat::api()
+                    ->mine($me)
+                    ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
+                    ->live($me)
+                    ->active()
+                    ->desc()
+                    ->paginate($this->limit);
                 break;
             case 'archived' :
-                $items = Chat::api()->mine($me)->archive($me)->active()->desc()->paginate($this->limit);
+                $items = Chat::api()
+                    ->mine($me)
+                    ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
+                    ->archive($me)
+                    ->active()
+                    ->desc()
+                    ->paginate($this->limit);
                 break;
             case 'all' :
-                $items = Chat::api()->mine($me)->active()->desc()->paginate($this->limit);
+                $items = Chat::api()
+                    ->mine($me)
+                    ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
+                    ->active()
+                    ->desc()
+                    ->paginate($this->limit);
                 break;
             default:
                 throw new ApiException(ApiExceptionType::$INVALID_ENDPOINT);
