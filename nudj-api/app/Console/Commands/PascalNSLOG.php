@@ -9,6 +9,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
 use App\Models\BlockUser;
+use App\Models\ReportUser;
+use App\Models\ReportJob;
 
 class PascalNSLOG extends Command {
 
@@ -47,9 +49,10 @@ class PascalNSLOG extends Command {
         /* 
 			To print something to the console: $this->info('nslog');
         */
+		// $this->info('nslog');
 
-		$this->info('nslog');	
-		BlockUser::block_user(13,14);
+		// BlockUser::block_user(13,14);
+		$this->info( serialize(BlockUser::get_blocked_userids_for_primary_user(1)) );
 
 	}
 

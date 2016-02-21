@@ -17,6 +17,14 @@ class BlockUser
     public static function block_user($blocker_user_id,$blocked_user_id){
         DB::select('insert into block_user (uuid,blocker_user_id,blocked_user_id) values (?,?,?)',[uniqid(),$blocker_user_id,$blocked_user_id]);	
     }
+    public static function get_blocked_userids_for_primary_user($primary_user_id){
+        $answer = [];
+        $dbresults = DB::select('select blocked_user_id from block_user where blocker_user_id=?',[$primary_user_id]);
+        foreach($dbresults as $dbresult){
+            $answer[] = $dbresult->blocked_user_id;
+        }
+        return $answer;
+    }
 }
 
 
