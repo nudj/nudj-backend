@@ -78,6 +78,21 @@ class JobsController extends ApiController
         $job = new Job();
         $items = $job->search($term);
 
+        // ------------------------------------------------------------------
+        // We need to filter away the jobs that are in the users's block list
+        // This mark: 5758e0e7-fb80-4114-93b4-fbb809dbf6ba , corresponds to everywhere the same pattern has been used
+        // Unfortunately PHP doesn't have an array select function 
+        $me = Shield::getUserId(); // id of the current user
+        $jobids = BlockJob::get_blocked_jobids_for_primary_user($me);
+        $newitems = [];
+        foreach($items as $item){
+        	if(!in_array($item->id,$jobids)){
+        		$newitems[] = $item;
+        	}
+        }
+        $items = $newitems;
+        // ------------------------------------------------------------------
+
         return $this->respondWithItems($items, new JobTransformer());
     }
 
