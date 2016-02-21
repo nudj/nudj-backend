@@ -78,20 +78,8 @@ class JobsController extends ApiController
         $job = new Job();
         $items = $job->search($term);
 
-        // ------------------------------------------------------------------
-        // We need to filter away the jobs that are in the users's block list
-        // This mark: 5758e0e7-fb80-4114-93b4-fbb809dbf6ba , corresponds to everywhere the same pattern has been used
-        // Unfortunately PHP doesn't have an array select function 
         $me = Shield::getUserId(); // id of the current user
-        $jobids = BlockJob::get_blocked_jobids_for_primary_user($me);
-        $newitems = [];
-        foreach($items as $item){
-        	if(!in_array($item->id,$jobids)){
-        		$newitems[] = $item;
-        	}
-        }
-        $items = $newitems;
-        // ------------------------------------------------------------------
+        $items = JobsController::select_user_s_subset_of_unblocked_jobs_from_the_given_jobs($me,$items);
 
         return $this->respondWithItems($items, new JobTransformer());
     }
@@ -127,5 +115,26 @@ class JobsController extends ApiController
     	return $this->respondWithStatus(true);
     }
 
+    public static function select_user_s_subset_of_unblocked_jobs_from_the_given_jobs($primary_userid,$jobs){
+
+        /*
+            This function was introduced because the patterns of filtering some jobs out from a collection would be used a lot
+            ( Side effect of, introducing Job blocking )
+            Written as a static function of the class, because we might have to move it somewhere else at some point. 
+        */
+
+        // Unfortunately PHP doesn't have an array select function 
+
+        $jobids = BlockJob::get_blocked_jobids_for_primary_user($primary_userid);
+        $newjobs = [];
+        foreach($jobs as $job){
+            if(!in_array($job->id,$jobids)){
+                $newjobs[] = $job;
+            }
+        }
+
+        return $newjobs;
+
+    }
 
 }
