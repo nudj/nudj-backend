@@ -15,7 +15,7 @@ use DB;
 class UsersReported
 {
     public static function report_user($reporter_user_id,$reported_user_id){
-        DB::select('insert into users_reported (uuid,reporter_user_id,reported_user_id) values (?,?,?)',[uniqid(),$reporter_user_id,$reported_user_id]);	
+        DB::insert('insert into users_reported (uuid,reporter_user_id,reported_user_id) values (?,?,?)',[uniqid(),$reporter_user_id,$reported_user_id]);	
     }
 
     // UsersReported::get_reported_userids_for_primary_user($primary_user_id)

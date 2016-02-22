@@ -33,11 +33,11 @@ class NSX300Controller extends ApiController
 
     }
     public function release_user_from_all_blockings_and_all_reportings($userid){
-    	DB::select('delete from users_blocked where blocked_user_id=?',[$userid]);	
-    	DB::select('delete from users_reported where reported_user_id=?',[$userid]);
+    	DB::delete('delete from users_blocked where blocked_user_id=?',[$userid]);	
+    	DB::delete('delete from users_reported where reported_user_id=?',[$userid]);
     }
     public function release_job_from_all_blockings($jobid){
-    	DB::select('delete from jobs_blocked where job_id=?',[$jobid]);    	
+    	DB::delete('delete from jobs_blocked where job_id=?',[$jobid]);    	
     }
 
 }

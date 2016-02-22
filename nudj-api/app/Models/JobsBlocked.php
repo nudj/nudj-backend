@@ -15,7 +15,7 @@ use DB;
 class JobsBlocked
 {
     public static function block_job($reporter_user_id,$job_id){
-        DB::select('insert into jobs_blocked (uuid,reporter_user_id,job_id) values (?,?,?)',[uniqid(),$reporter_user_id,$job_id]);	
+        DB::insert('insert into jobs_blocked (uuid,reporter_user_id,job_id) values (?,?,?)',[uniqid(),$reporter_user_id,$job_id]);	
     }
 
     // JobsBlocked::get_blocked_jobids_for_primary_user($primary_user_id)
