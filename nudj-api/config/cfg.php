@@ -20,6 +20,7 @@ return [
     'email_system'        => 'no-reply@nudj.co',
     'email_notifications' => 'pascal@nudj.co',
     'email_feedback'      => 'support@nudj.co',
+    'email_abuse'         => 'abuse@nudj.co.uk',
 
     // Rackspace
     'rackspace' => [

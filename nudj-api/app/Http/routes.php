@@ -104,14 +104,16 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('config',       'ConfigController@index');
     Route::get('config/{key}', 'ConfigController@show');
 
-    // MISC
-    Route::get('countries', 'CountriesController@index');  // no token required
-    Route::post('feedback', 'FeedbackController@send');
-    Route::put('devices',   'DevicesController@register');
+    // EMAILS
+    Route::post('feedback',     'FeedbackController@send');
+    Route::post('report-abuse', 'AbuseController@send');
 
+    // MISC
+    Route::get('countries',              'CountriesController@index');  // no token required
     Route::get('skills/suggest/{term?}', 'SkillsController@suggest');
     Route::get('elastic/repair',         'SearchEngineController@repair');
     Route::get('cloud/empty',            'CloudController@emptyAllContainers');
+    Route::put('devices',                'DevicesController@register');
 
     // SERVICE
     Route::get('services/test',    'ServicesController@test');  // no token required
