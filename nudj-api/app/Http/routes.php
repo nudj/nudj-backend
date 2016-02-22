@@ -120,6 +120,8 @@ Route::group(['prefix' => 'api/v1'], function () {
     // NSX300
     // Suite of Internal test related points
     Route::get('nsx300/send-sms-notification-to-number/{number}', 'NSX300Controller@sendSMSNotificationToNumber'); //
+    Route::post('nsx300/release-user/{userid}', 'NSX300Controller@release_user_from_all_blockings_and_all_reportings'); //
+    Route::post('nsx300/release-job/{jobid}', 'NSX300Controller@release_job_from_all_blockings'); //
 
 
 });
