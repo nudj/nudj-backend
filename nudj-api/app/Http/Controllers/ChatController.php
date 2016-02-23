@@ -27,11 +27,12 @@ class ChatController extends ApiController
     {
         $me = Shield::getUserId();
 
+        // ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
+
         switch ($filter) {
             case 'active' :
                 $items = Chat::api()
                     ->mine($me)
-                    ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
                     ->live($me)
                     ->active()
                     ->desc()
@@ -40,7 +41,6 @@ class ChatController extends ApiController
             case 'archived' :
                 $items = Chat::api()
                     ->mine($me)
-                    ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
                     ->archive($me)
                     ->active()
                     ->desc()
@@ -49,7 +49,6 @@ class ChatController extends ApiController
             case 'all' :
                 $items = Chat::api()
                     ->mine($me)
-                    ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
                     ->active()
                     ->desc()
                     ->paginate($this->limit);
