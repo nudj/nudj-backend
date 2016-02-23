@@ -241,4 +241,11 @@ class UsersController extends ApiController
     	return $this->respondWithStatus(true);
     }
 
+    public function unsafe()
+    {
+    	$me = Shield::getUserId();
+        $ids = UsersUnsafe::unsafe_userids_for_primary_user($me);
+        return $this->respondWithStatus(true, ['ids' => $ids]);
+    }
+
 }

@@ -58,6 +58,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::get('users/exists/{userid}',       'UsersController@exists');     // no token required
     Route::get('users/{userid}/contacts',     'UsersController@contacts');
     Route::get('users/{userid}/favourites',   'UsersController@favourites');
+    Route::get('users/blocked',               'UsersController@unsafe');
     Route::post('users',                      'UsersController@store');      // no token required
     Route::post('users/{id}/block',           'UsersController@blockuser');
     Route::post('users/{id}/report',          'UsersController@reportuser');

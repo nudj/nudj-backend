@@ -33,6 +33,7 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [GET     api/v1/users/exists/{userid}](xf1841)
 - [GET     api/v1/users/{userid}/contacts](xf1844)
 - [GET     api/v1/users/{userid}/favourites](xf1848)
+- [GET     api/v1/users/unsafe](xf1125)
 - [POST    api/v1/users](xf1905)
 - [POST    api/v1/users/{id}/block](xf1441)
 - [POST    api/v1/users/{id}/report](xf1615)
