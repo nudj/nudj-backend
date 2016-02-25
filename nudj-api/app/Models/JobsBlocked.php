@@ -18,6 +18,10 @@ class JobsBlocked
         DB::insert('insert into jobs_blocked (uuid,reporter_user_id,job_id) values (?,?,?)',[uniqid(),$reporter_user_id,$job_id]);	
     }
 
+    public static function unblock_job($reporter_user_id,$job_id){
+        DB::delete('delete from jobs_blocked where reporter_user_id=? and job_id=?',[$reporter_user_id,$job_id]);	
+    }
+
     // JobsBlocked::get_blocked_jobids_for_primary_user($primary_user_id)
     public static function get_blocked_jobids_for_primary_user($primary_user_id){
         $answer = [];

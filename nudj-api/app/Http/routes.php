@@ -51,6 +51,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('jobs/{id}/like',      'JobsController@like');
     Route::delete('jobs/{id}',        'JobsController@destroy');
     Route::delete('jobs/{id}/like',   'JobsController@unlike');
+    Route::delete('jobs/{id}/block',  'JobsController@unblockjob');
 
     // USERS
     Route::get('users',                       'UsersController@index');
@@ -67,6 +68,7 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::put('users/{userid}/favourite',    'UsersController@favourite');
     Route::delete('users/{userid}',           'UsersController@destroy');
     Route::delete('users/{userid}/favourite', 'UsersController@unfavourite');
+    Route::delete('users/{id}/block',         'UsersController@unblockuser');
 
     // NUDGE
     Route::put('nudge',       'NudgeController@nudge');

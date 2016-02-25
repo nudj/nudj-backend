@@ -25,6 +25,7 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [PUT     api/v1/jobs/{id}/like](xf1634)
 - [DELETE  api/v1/jobs/{id}](xf1554)
 - [DELETE  api/v1/jobs/{id}/like](xf1649)
+- [DELETE  api/v1/jobs/{id}/block](xf1157) 
 
 .
 
@@ -42,6 +43,7 @@ Note: An example of answer will be given when this doesn't prevent understanding
 - [PUT     api/v1/users/{userid}/favourite](xf1856)
 - [DELETE  api/v1/users/{userid?}](xf0937)
 - [DELETE  api/v1/users/{userid}/favourite](xf1201)
+- [DELETE  users/{id}/block](xf1156)
 
 .
 

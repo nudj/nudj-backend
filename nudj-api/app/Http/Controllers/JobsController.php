@@ -126,19 +126,26 @@ class JobsController extends ApiController
 
     public function blockjob($reportedjobid)
     {
-    	$me = Shield::getUserId();
-    	$myself = User::min()->findOrFail($me);
-    	$myjobids = [];
-    	foreach($myself->jobs()->get() as $job){
-    		$myjobids[] = $job->id;
-    	}
+        $me = Shield::getUserId();
+        $myself = User::min()->findOrFail($me);
+        $myjobids = [];
+        foreach($myself->jobs()->get() as $job){
+            $myjobids[] = $job->id;
+        }
 
         if(in_array($reportedjobid,$myjobids)){
             throw new ApiException(ApiExceptionType::$BAD_REQUEST);
-        }    	
+        }       
 
-    	JobsBlocked::block_job($me,$reportedjobid);
-    	return $this->respondWithStatus(true);
+        JobsBlocked::block_job($me,$reportedjobid);
+        return $this->respondWithStatus(true);
+    }
+
+    public function unblockjob($reportedjobid)
+    {
+        $me = Shield::getUserId();
+        JobsBlocked::unblock_job($me,$reportedjobid);
+        return $this->respondWithStatus(true);
     }
 
     public static function select_user_s_subset_of_non_blocked_jobs_return_array($primary_userid,$jobs){

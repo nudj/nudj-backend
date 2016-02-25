@@ -231,14 +231,21 @@ class UsersController extends ApiController
 
     public function blockuser($blockeduserid)
     {
-    	$me = Shield::getUserId();
+        $me = Shield::getUserId();
 
         if($blockeduserid==$me){
             throw new ApiException(ApiExceptionType::$BAD_REQUEST);
         }
 
-		UsersBlocked::block_user($me,$blockeduserid);
-    	return $this->respondWithStatus(true);
+        UsersBlocked::block_user($me,$blockeduserid);
+        return $this->respondWithStatus(true);
+    }
+
+    public function unblockuser($blockeduserid)
+    {
+        $me = Shield::getUserId();
+        UsersBlocked::unblock_user($me,$blockeduserid);
+        return $this->respondWithStatus(true);
     }
 
     public function unsafe()
