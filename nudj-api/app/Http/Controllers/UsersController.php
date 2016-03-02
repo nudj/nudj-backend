@@ -234,7 +234,7 @@ class UsersController extends ApiController
         $me = Shield::getUserId();
 
         if($blockeduserid==$me){
-            throw new ApiException(ApiExceptionType::$BAD_REQUEST);
+            throw new ApiException(ApiExceptionType::$BAD_REQUEST); // Preventing a user to block themselves
         }
 
         UsersBlocked::block_user($me,$blockeduserid);

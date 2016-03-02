@@ -1,7 +1,0 @@
-The list can be found at nudj-api/app/Utility/ApiExceptionType.php
-
-
-
-
-
-
