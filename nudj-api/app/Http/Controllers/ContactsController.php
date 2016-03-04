@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
 
 
-
 class ContactsController extends ApiController
 {
 
