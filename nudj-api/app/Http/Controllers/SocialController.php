@@ -53,37 +53,4 @@ class SocialController extends ApiController
         return $this->respondWithStatus(true);
     }
 
-    // ---------------------------------------------------------------------
-    // TODO: The below is commented out waiting to be deleted
-    /*
-    public function linkedin()
-    {
-        $networkToken = Request::get('token');
-
-        if(!$networkToken)
-            throw new ApiException(ApiExceptionType::$INVALID_INPUT);
-
-        $linkedin = new LinkedInHelper($networkToken);
-        $data = $linkedin->getUser();
-
-        $user = Shield::getUserModel();
-        $user->importFromLinkedIn($data);
-
-        $user->linkedin_token = $networkToken;
-        $user->save();
-
-        return $this->respondWithStatus(true);
-    }
-
-    public function disconnectLinkedin()
-    {
-        $user = User::find(Shield::getUserId());
-        $user->linkedin_token = null;
-        $user->save();
-
-        return $this->respondWithStatus(true);
-    }
-    */
-    // ---------------------------------------------------------------------
-
 }

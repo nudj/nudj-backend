@@ -22,7 +22,7 @@ class User extends ApiModel implements ShieldAuthServiceContract
     use Social;
 
     protected $table = 'users';
-    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'verified', 'status', 'about', 'settings', 'company', 'created_at', 'facebook_token', 'linkedin_token'];
+    protected $visible = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'verified', 'status', 'about', 'settings', 'company', 'created_at', 'facebook_token'];
 
     protected $gettableFields = ['id', 'phone', 'email', 'name', 'image', 'address', 'position', 'completed', 'about', 'settings', 'company',
         'facebook', 'linkedin', 'status', 'skills', 'contacts', 'favourite', 'contact', 'counters'];

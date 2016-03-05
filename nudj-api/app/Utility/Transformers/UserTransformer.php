@@ -13,8 +13,7 @@ class UserTransformer extends Transformer
     ];
 
     public static $dependencies = [
-        'facebook' => 'facebook_token',
-        'linkedin' => 'linkedin_token',
+        'facebook' => 'facebook_token'
     ];
 
     public function transformMap($item, $column)
@@ -53,9 +52,6 @@ class UserTransformer extends Transformer
 
             case 'facebook':
                 return (bool)$item->facebook_token;
-
-            case 'linkedin':
-                return (bool)$item->linkedin_token;
 
             case 'favourite':
                 return (bool) $item->isFavouritedBy(Shield::getUserId());

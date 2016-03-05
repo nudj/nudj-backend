@@ -22,7 +22,6 @@ CREATE TABLE `users` (
   `roles` text,
   `mobile` tinyint(1) DEFAULT '0',
   `facebook_token` varchar(512) DEFAULT NULL,
-  `linkedin_token` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=utf8;
 
