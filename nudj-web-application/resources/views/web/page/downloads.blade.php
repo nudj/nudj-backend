@@ -30,7 +30,7 @@
 
     <div class="container">
         <div class="img-holder">
-            <a href="https://itunes.apple.com/app/id1027993202" target="_self" ><img class="img-resp-app" src="{{ asset('assets/web/img/app-store.png') }}"></a>
+            <a href="https://geo.itunes.apple.com/gb/app/nudj-the-talent-referral-app/id1081609782?mt=8" target="_self" ><img class="img-resp-app" src="{{ asset('assets/web/img/app-store.png') }}"></a>
         </div>
     </div>
 
