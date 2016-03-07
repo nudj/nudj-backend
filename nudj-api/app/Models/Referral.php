@@ -92,13 +92,43 @@ class Referral extends ApiModel
 
     private function askContactToRefer($job, $contact, $message)
     {
+
         $employer = User::findOrFail($job->user_id);
-        $message = Lang::get('sms.refer', [
+
+    	// ----------------------------------------------------------------------------
+
+        // $message = Lang::get('sms.refer', [
+        //    'name'    => $employer->name,
+        //    'message' => $message,
+        //    'link'    => web_url('register/refer/' . $this->hash)
+        // ]);
+        // Event::fire(new SendMessageToContactEvent($contact->phone, $contact->country_code, $message));
+
+    	// ----------------------------------------------------------------------------
+
+        // https://mobileweb.nudj.co/jobpreview/98/v747uur2Ym (for production)
+        // https://mobileweb-dev.nudj.co/jobpreview/98/v747uur2Ym (for dev)        
+
+        $web_url = '';
+
+        if(env('APP_ENV')=='production'){
+            $web_url = "https://mobileweb.nudj.co/jobpreview/".$job->id."/".$this->hash."";
+        }
+        if(env('APP_ENV')=='staging'){
+            $web_url = "https://mobileweb-dev.nudj.co/jobpreview/".$job->id."/".$this->hash."";
+        }
+        if(env('APP_ENV')=='development'){
+            $web_url = "http://localhost:8000/jobpreview/".$job->id."/".$this->hash."";
+        }
+
+        $message = Lang::get('sms.nudge', [
             'name'    => $employer->name,
             'message' => $message,
-            'link'    => web_url('register/refer/' . $this->hash)
+            'link'    => $web_url
         ]);
+
         Event::fire(new SendMessageToContactEvent($contact->phone, $contact->country_code, $message));
+
     }
 
 }
