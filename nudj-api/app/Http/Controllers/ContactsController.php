@@ -3,6 +3,7 @@
 use App\Events\SendMessageToContactEvent;
 
 use App\Models\Contact;
+use App\Models\RobynMcGirl;
 use App\Models\UsersUnsafe;
 
 use App\Http\Requests;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
 
+use Log;
 
 class ContactsController extends ApiController
 {
@@ -22,13 +24,23 @@ class ContactsController extends ApiController
     public function index()
     {
         $me = Shield::getUserId();
+
+        // ----------------------------------------------------------------
+        // Marker: 5c9e67aa-8009-41e0-9f15-d49190d87a7a
+
+        RobynMcGirl::add_robyn_as_contact_of_this_user_if_not_already($me);
+
+        // ----------------------------------------------------------------
+
         $items = Contact::where('contact_of', '=', $me)
 	        ->whereNotIn('id', UsersUnsafe::unsafe_userids_for_primary_user($me))
         	->api()
         	->orderBy('alias', 'asc')
         	->get();
 
-        return $this->respondWithItems($items, new ContactTransformer());
+        $answer = $this->respondWithItems($items, new ContactTransformer());
+
+        return $answer;
     }
 
     public function update($id = null)

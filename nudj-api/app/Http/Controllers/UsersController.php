@@ -121,6 +121,21 @@ class UsersController extends ApiController
         // In either case, the current user id needs to be extracted by Shield::getUserId()
         // See uuid: 641f86e1-5fd6-412e-92e3-38603cd8ceb0
 
+
+        // ------------------------------------------------------
+        // 15th March 2016
+
+        // Marker: 58810d88-1ba3-48e4-9a78-5e4ccf8abca4
+
+        // This was added to prevent the deletion of Robyn's user account, which was originally user 1.
+        // The other part of this hack is the introduction today of the RobynMcGirl model class.
+
+        if($id==1){
+        	return $this->respondWithStatus(true);
+        }
+
+        // ------------------------------------------------------
+
         $status = User::destroy($id);
 
         return $this->respondWithStatus($status);
