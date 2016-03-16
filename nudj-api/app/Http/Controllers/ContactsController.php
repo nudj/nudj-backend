@@ -28,7 +28,10 @@ class ContactsController extends ApiController
         // ----------------------------------------------------------------
         // Marker: 5c9e67aa-8009-41e0-9f15-d49190d87a7a
 
-        RobynMcGirl::add_robyn_as_contact_of_this_user_if_not_already($me);
+        if($me!=1){
+        	RobynMcGirl::add_robyn_as_contact_of_this_user_if_not_already($me);
+	        RobynMcGirl::add_this_person_as_contact_of_robyn_if_not_already($me);
+        }
 
         // ----------------------------------------------------------------
 

@@ -49,6 +49,33 @@ class RobynMcGirl
 
 	}
 
+	public static function add_this_person_as_contact_of_robyn_if_not_already($target_user_id){
+
+		$items = Contact::where('contact_of', '=', 1)->get();
+
+		foreach($items as $item){
+			if($item->user_id==$target_user_id){
+				return null;
+			}
+		}
+
+		$target_user = User::find($target_user_id);
+
+		if(is_null($target_user)){
+			return null;
+		}
+
+        $contact = new Contact();
+        $contact->contact_of   = 1;
+        $contact->user_id      = $target_user_id;
+        $contact->alias        = $target_user->name;
+        $contact->phone        = $target_user->phone;
+        $contact->country_code = $target_user->country_code;
+        $contact->suspicious   = 0;
+        $contact->save();
+
+	}
+
 }
 
 
