@@ -1,0 +1,15 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "A5R558S6UR.co.nudj.ios-app.nudj",
+                "paths": [ "/jobpreview/*", "/job/*"]
+            },
+            {
+                "appID": "A5R558S6UR.co.nudj.ios-app.nudj.beta",
+                "paths": [ "/jobpreview/*", "/job/*"]
+            }
+        ]
+    }
+}
