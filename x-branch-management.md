@@ -1,6 +1,6 @@
 Rule 1: The `production` branch, in all circumstances should reflect exactly what is in production.
 
-Rule 2: The test servers usually show what the `master` branch shows, but at occasions it can show what the `pascal` branch shows. 
+Rule 2: The test servers usually show what the `master` branch shows, but at occasions they can show what the `pascal` branch (or feature specific branches) shows. 
 
 Rule 3: In normal circumstances development is done on the `pascal` branch (and/or other experimental branches) and then commited to `master` when ready, and then commited to `production` at production releases. The last commit to `master` before a production release should be a version update.
 

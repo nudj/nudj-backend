@@ -131,8 +131,9 @@ class WebController extends \Illuminate\Routing\Controller
 
         $job = Job::findorFail($jobId);
 
-        if(!$job)
+        if(!$job){
             return redirect('/');
+        }
 
         return view('web/page/jobpreview', [
             'hash'      => $hash,
@@ -140,6 +141,7 @@ class WebController extends \Illuminate\Routing\Controller
             'employer'  => $job->company,
             'skills'    => $job->skills,
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
+            'hostname'  => env('SERVER_HOSTNAME', 'mobileweb.nudj.co')
         ]);
     }
 

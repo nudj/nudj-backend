@@ -1,6 +1,5 @@
 @extends('web.app')
 
-
 @section('title')
     <title>Job</title>
 @endsection
@@ -64,7 +63,6 @@
                 Posted from: {{$employer}}
             </div>
             <div id="job-description" class="container-fluids margins-top">
-
             </div>
             <div id="job-tags" class="container-fluids margins-top">
                 {{$job->description}}
@@ -80,35 +78,34 @@
                     <span class="badge label-success label-as-badge span-green">{{$skill->name}}</span>
                 @endforeach
             </div>
-            <div id="job-employer" class="container-fluids margins-top">
-            </div>
-            <img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/>
+            <div id="job-employer" class="container-fluids margins-top"></div>
+                <img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/>
                 <span class="span-grey">
                     Employer:
                 </span>
                 <span>
                     <span class="span-green">{{$employer}}</span>
                 </span>
-        </div>
-        <div id="job-location" class="container-fluids margins-top">
-            <div style="float: left;">
-                <img class="status-check" src="{{ asset('assets/web/img/pin.png') }}"/>
-                <span class="span-grey">
-                    Location:
-                </span>
-                <span>
-                    <span class="span-green">London</span>
+            </div>
+            <div id="job-location" class="container-fluids margins-top">
+                <div style="float: left;">
+                    <img class="status-check" src="{{ asset('assets/web/img/pin.png') }}"/>
+                    <span class="span-grey">
+                        Location:
+                    </span>
+                    <span>
+                        <span class="span-green">London</span>
+                    </span>
+                </div>
+                <div class="span-green-map">View map</div>
+            </div>
+            <div id="job-salary" class="container-fluids margins-top span-grey">
+                <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Salary:
+                <span class="span-green">
+                    &pound; {{$job->salary2}}
                 </span>
             </div>
-            <div class="span-green-map">View map</div>
         </div>
-        <div id="job-salary" class="container-fluids margins-top span-grey">
-            <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Salary:
-                   <span class="span-green">
-                        &pound; {{$job->salary2}}
-                    </span>
-        </div>
-    </div>
     </div>
 
     <div id="status" class="container-fluid no-padding">
@@ -126,34 +123,35 @@
         </div>
     </div>
     @if($job->active)
-    @if($type === 'refer')
-        <div id="status" class="container-fluid">
-            <div class="col-xs-12 col-centered col-max" style="font-size: 20px; padding: 30px;">
-                Referral Bonus: <span style="color: #1293BD;">&pound;{{$job->bonus}}</span>
-            </div>
-        </div>
-            @else
-                <div id="push" class="container from-top">
-                    @endif
-                    <div class="col-xs-12 col-centered col-max best-alg">
-                        <div id="submit-area" class="div-apply">
-                            <div id="btn-apply" data-type="{{$type}}" onclick="resApply();">
-                                APPLY
-                            </div>
-                        </div>
-                        @if($type === 'refer')
-                            <div id="btn-refer" data-type="{{$type}}" onclick="refResult();">
-                                REFER
-                            </div>
-                        @endif
-                    </div>
+	    @if($type === 'refer')
+	        <div id="status" class="container-fluid">
+	            <div class="col-xs-12 col-centered col-max" style="font-size: 20px; padding: 30px;">
+	                Referral Bonus: <span style="color: #1293BD;">&pound;{{$job->bonus}}</span>
+	            </div>
+	        </div>
+	    @else
+	        <div id="push" class="container from-top"></div>
+	    @endif
+        <div class="col-xs-12 col-centered col-max best-alg">
+            <div id="submit-area" class="div-apply">
+                <div id="btn-apply" data-type="{{$type}}" onclick="resApply();">
+                    APPLY
                 </div>
+            </div>
+            @if($type === 'refer')
+                <div id="btn-refer" data-type="{{$type}}" onclick="refResult();">
+                    REFER
+                </div>
+            @endif
+        </div>
     @endif
-                @endsection
 
-            @section('scripts')
-                @parent
-                @if($job->active)
-                <script src="{{ asset('assets/web/js/job_script.js') }}"></script>
-                @endif
 @endsection
+
+@section('scripts')
+    @parent
+    @if($job->active)
+        <script src="{{ asset('assets/web/js/job_script.js') }}"></script>
+    @endif
+@endsection
+
