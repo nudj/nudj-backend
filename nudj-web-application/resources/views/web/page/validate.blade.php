@@ -27,15 +27,13 @@
 
     <div id="paragraph" class="container">
         <div class="col-xs-12 col-centered col-max">
-                    <p class="lead">A 4 digit verification code has been sent to <span class="tel-span" id="phone">{{$user->phone}}</span></p>
-                    <input type="hidden" name="job_id" id="job_id" value="{{$job}}"/>
-                    <input type="hidden" name="country_code" id="country_code" value="{{$user->country_code}}"/>
-                    <input type="hidden" name="phone_num" id="phone_num" value="{{$user->phone}}"/>
-                    <input type="hidden" name="hash" id="hash" value="{{$hash}}"/>
+            <p class="lead">A 4 digit verification code has been sent to <span class="tel-span" id="phone">{{$user->phone}}</span></p>
+            <input type="hidden" name="job_id" id="job_id" value="{{$job}}"/>
+            <input type="hidden" name="country_code" id="country_code" value="{{$user->country_code}}"/>
+            <input type="hidden" name="phone_num" id="phone_num" value="{{$user->phone}}"/>
+            <input type="hidden" name="hash" id="hash" value="{{$hash}}"/>
         </div>
     </div>
-
-
 
     <div id="phone-code" class="container">
         <div class="col-xs-12 col-centered col-max" >Please put this code below</div>
@@ -56,7 +54,6 @@
             </div>
         </div>
     </div>
-
 
     <div id="push" class="container">
         <div class="col-xs-12 col-centered col-max">
@@ -80,6 +77,7 @@
             <p class="text-muted">Copyright Nudj 2015</p>
         </div>
     </footer>
+
 @endsection
 
 @section('scripts')

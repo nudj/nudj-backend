@@ -4,16 +4,15 @@
 <head>
     <!-- Title -->
     @section('title')
-        <title>Default Title</title>
-        @show
+    <title>Default Title</title>
+    @show
 
-                <!-- Meta -->
-        <meta charset="utf-8">
-        <meta name="description" content="Description">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-
-        <!-- Styles -->
+    <!-- Styles -->
     @section('styles')
         <link href="{{ asset('assets/web/css/bootstrap.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/web/css/select/bootstrap-select.css') }}" rel="stylesheet">
@@ -45,7 +44,6 @@
 @show
 
 @yield('page')
-
 
 <!-- JS -->
 @section('scripts')

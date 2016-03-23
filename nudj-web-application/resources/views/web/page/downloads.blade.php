@@ -9,10 +9,7 @@
     <link href="{{ asset('assets/web/css/theme_download.css') }}" rel="stylesheet">
 @endsection
 
-
-
 @section('page')
-
     <nav class="navbar navbar-inverse coloredhead">
         <div class="container">
             <div class="logo">
