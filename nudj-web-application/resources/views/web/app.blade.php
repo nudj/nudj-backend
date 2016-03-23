@@ -12,6 +12,11 @@
     <meta name="description" content="Description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
+    <!-- Apple -->
+    @section('apple')
+        <meta name="apple-itunes-app" content="app-id=1081609782">
+    @show
+
     <!-- Styles -->
     @section('styles')
         <link href="{{ asset('assets/web/css/bootstrap.css') }}" rel="stylesheet">
