@@ -2,6 +2,7 @@
 
 **How versioning works ?** The minor fragment is increased at each production release. 
 
+- Version 1.016 (2016-03-23)
 - Version 1.015 (2016-03-23)
 - Version 1.014 (2016-03-21)
 - Version 1.013 (2016-03-07)
