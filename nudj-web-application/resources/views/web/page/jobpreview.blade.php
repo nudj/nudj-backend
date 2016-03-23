@@ -5,7 +5,7 @@
 @endsection
 
 @section('apple')
-    <meta name="apple-itunes-app" content="app-id=1081609782, app-argument=https://mobileweb.nudj.co/jobpreview/{{$job->id}}/{{$hash}}">
+    <meta name="apple-itunes-app" content="app-id=1081609782, app-argument=https://{{hostname}}/jobpreview/{{$job->id}}/{{$hash}}">
 @endsection
 
 @section('styles')
