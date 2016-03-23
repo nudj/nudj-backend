@@ -4,6 +4,10 @@
     <title>Job</title>
 @endsection
 
+@section('apple')
+    <meta name="apple-itunes-app" content="app-id=1081609782, app-argument=https://{{$hostname}}/jobpreview/{{$job->id}}/{{$hash}}">
+@endsection
+
 @section('styles')
     @parent
     <link href="{{ asset('assets/web/css/theme_job.css') }}" rel="stylesheet">
