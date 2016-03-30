@@ -46,13 +46,20 @@
 
 @section('page')
 
-    <nav class="navbar navbar-inverse coloredhead">
+    <nav class="navbar navbar-inverse coloredhead" style="position:relative;margin-bottom:0px;">
+
         <img class="head-logo" src="{{ asset('assets/web/img/nudj_logo_small.png') }}"/>
+        
         <div class="container head-container">
             <div class="col-xs-12 col-centered col-max head-text">
                 Job Details
             </div>
         </div>
+
+        <div style="padding:5px;background-color:#F3F3F3;color:black;">
+            Nudj is a new way to find your dream job or help your friends find theirs. Tap <b>apply</b> and you are just a few clicks away from an informal chat with the hiring manager or tap <b>refer</b> to send it to a friend. If they get hired, you get rewarded. 
+        </div>
+
     </nav>
 
     <div id="name" class="container-fluid no-padding" style="text-align: left;">
