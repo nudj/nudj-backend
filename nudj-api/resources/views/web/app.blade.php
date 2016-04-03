@@ -21,7 +21,7 @@
     @show
 
     @section('scriptses')
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="{{ asset('assets/web/js/jquery-2.2.2.min.js') }}"></script>
         <script>var base_path = '{{web_url()}}'</script>
     @show
 </head>
@@ -49,7 +49,6 @@
 
 <!-- JS -->
 @section('scripts')
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/web/js/select/bootstrap-select.min.js') }}"></script>
 @show
