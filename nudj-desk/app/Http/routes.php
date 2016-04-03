@@ -28,6 +28,11 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/jobs', 'Desk\JobsController@index');
     Route::get('/jobs/{id}', 'Desk\JobsController@show');
 
+    // STATIC CONTENTS
+    Route::get('/staticcontents', 'Desk\StaticContentsController@index');
+    Route::get('/staticcontentselement/{reference}', 'Desk\StaticContentsController@showelement');
+    Route::post('/staticcontentselement/{reference}', 'Desk\StaticContentsController@updateelement');
+
     // ADMINS
     Route::get('/admins', 'Desk\AdminsController@index');
     Route::get('/admins/create', 'Desk\AdminsController@create');

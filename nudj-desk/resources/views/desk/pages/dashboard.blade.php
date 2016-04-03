@@ -2,7 +2,7 @@
 
 @section('page')
 
-        <!-- Content Header (Page header) -->
+<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
         Dashboard
@@ -24,8 +24,8 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Users</span>
                     <span class="info-box-number">{{$users or 0}}</span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
+                </div>
+            </div>
         </div>
 
         <div class="col-md-3 col-sm-6 col-xs-12">
@@ -34,13 +34,12 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Jobs</span>
                     <span class="info-box-number">{{$jobs or 0}}</span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
+                </div>
+            </div>
         </div>
 
     </div>
 
 </section>
-<!-- /.content -->
 
 @endsection

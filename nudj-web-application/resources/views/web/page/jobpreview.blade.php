@@ -57,7 +57,7 @@
         </div>
 
         <div style="padding:5px;background-color:#F3F3F3;color:black;">
-            Nudj is a new way to find your dream job or help your friends find theirs. Tap <b>apply</b> and you are just a few clicks away from an informal chat with the hiring manager or tap <b>refer</b> to send it to a friend. If they get hired, you get rewarded. 
+            {!! $top_explanation_975fb67e !!}
         </div>
 
     </nav>

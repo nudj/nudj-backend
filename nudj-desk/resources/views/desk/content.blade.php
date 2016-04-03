@@ -1,6 +1,5 @@
 @extends('desk.layout')
 
-
 @section('content')
 
     <div class="hold-transition skin-purple sidebar-mini">

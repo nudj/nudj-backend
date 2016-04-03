@@ -2,16 +2,22 @@
 
 use App\Events\LoginUserEvent;
 use App\Http\Requests\Web\WebloginRequest;
+
 use App\Models\Country;
 use App\Models\Job;
 use App\Models\Nudge;
 use App\Models\Referral;
 use App\Models\User;
+use App\Models\Text1;
+
 use App\Utility\ApiException;
 use App\Utility\Facades\Shield;
+
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
+
 use Jenssegers\Agent\Facades\Agent;
+
 
 use Log;
 
@@ -123,7 +129,8 @@ class WebController extends \Illuminate\Routing\Controller
             'employer'  => $job->company,
             'skills'    => $job->skills,
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
-            'hostname'  => env('SERVER_HOSTNAME', 'mobileweb.nudj.co')
+            'hostname'  => env('SERVER_HOSTNAME', 'mobileweb.nudj.co'),
+            'top_explanation_975fb67e' => Text1::get_text_by_reference_or_empty_string('160dc2c7-0e4e-4ed0-86e9-8ba780e71b2a')
         ]);
     }
 
@@ -142,7 +149,8 @@ class WebController extends \Illuminate\Routing\Controller
             'employer'  => $job->company,
             'skills'    => $job->skills,
             'countries' => Country::web()->orderBy('name', 'asc')->get(),
-            'hostname'  => env('SERVER_HOSTNAME', 'mobileweb.nudj.co')
+            'hostname'  => env('SERVER_HOSTNAME', 'mobileweb.nudj.co'),
+            'top_explanation_975fb67e' => Text1::get_text_by_reference_or_empty_string('160dc2c7-0e4e-4ed0-86e9-8ba780e71b2a')
         ]);
     }
 
