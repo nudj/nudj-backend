@@ -159,6 +159,29 @@
 	                        </li>
 	                    </ul>
 
+                        <hr />
+
+                        <ul>
+                            <li>
+                                <b>Referrals</b>
+                                <ul>
+                                    {!! $html1 !!}
+                                </ul>
+                            </li>
+                            <li>
+                                <b>Nudges</b>
+                                <ul>
+                                    {!! $html2 !!}                                    
+                                </ul>
+                            </li>
+                            <li>
+                                <b>Applications</b>
+                                <ul>
+                                    {!! $html3 !!}                                     
+                                </ul>
+                            </li>
+                        </ul>
+
                     </div>
 
                 </div>

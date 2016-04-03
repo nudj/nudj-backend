@@ -11,6 +11,27 @@ class NSX300_Nudges {
 		return "pong";
 	}
 
+    // \App\NSX300\NSX300_Nudges::nudge_requests_for_job_identifier($identifier)
+    public static function nudge_requests_for_job_identifier($identifier){
+        $dbresults = DB::select('select * from nudges where job_id=?',[$identifier]);
+        return array_map(function($dbresult){
+            return (array)$dbresult;
+        },$dbresults);
+        /*
+            [
+               "id"           => 10,
+               "employer_id"  => 1,
+               "referrer_id"  => 1,
+               "candidate_id" => 21,
+               "job_id"       => 12,
+               "hash"         => "txQioDwjNa",
+               "created_at"   => "2016-02-17 09:44:53",
+               "updated_at"   => "2016-02-17 09:44:53",
+               "deleted_at"   => null
+            ]
+        */
+    }
+
 	// \App\NSX300\NSX300_Nudges::total_number_of_nudges_for_job_id($id)
 	public static function total_number_of_nudges_for_job_id($id){
 		$dbresults = DB::select('select count(*) as xcount from nudges where job_id=?',[$id]);
