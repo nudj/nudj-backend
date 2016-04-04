@@ -22,7 +22,8 @@ class NSX300_NudgesHTML {
             ]
         */
         $referrer_id = $nudge_request['referrer_id'];
-        $referrer_name = \App\NSX300\NSX300_Referrals::referral_id_to_name($referrer_id);
+        $referrer_record = \App\NSX300\NSX300_Users::get_user_record_by_identifier_or_null($referrer_id);
+        $referrer_name = $referrer_record['name'];
         $candidate_id = $nudge_request['candidate_id'];
         $candidate_record = \App\NSX300\NSX300_Contacts::get_contact_record_by_identifier_or_null($candidate_id);
         /*
