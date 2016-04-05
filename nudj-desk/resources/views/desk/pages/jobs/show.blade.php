@@ -115,9 +115,6 @@
                                         </div>
                                     </form>
                                     <div class="form-group">
-                                        <a href="{{ url('/jobs') }}">
-                                            <button type="button" class="btn btn-default btn-flat"><i class="fa fa-list"></i>  List </button>
-                                        </a>
                                         <button type="submit" class="btn btn-danger tmp-hidden" >Update</button>
                                     </div>
                                 </div>
