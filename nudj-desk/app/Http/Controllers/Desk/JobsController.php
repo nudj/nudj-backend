@@ -33,6 +33,7 @@ class JobsController extends DeskController
         $data = [
             "job"  => $job,
             "user" => $user,
+            "user_reference" => ( strlen(trim($user->name))>0 ? $user->name : "" )." ".$user->email,
             "active_referrers_count"      => $active_referrers_count,
             "referral_requests_count"     => $referral_requests_count,
             "applications_requests_count" => $applications_requests_count,

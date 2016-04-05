@@ -68,7 +68,7 @@
                         </li>
                         <li class="list-group-item">
                             <b>User</b>
-                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user->name }}</span></a>
+                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user_reference }}</span></a>
                         </li>
                     </ul>
                 </div>
@@ -136,7 +136,7 @@
 	                        </li>
 	                        <li class="list-group-item">
 	                            <b>User</b>
-	                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user->name }}</span></a>
+	                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user_reference }}</span></a>
 	                        </li>
 	                        <li class="list-group-item">
 	                            <b>Referral Bonus</b>
