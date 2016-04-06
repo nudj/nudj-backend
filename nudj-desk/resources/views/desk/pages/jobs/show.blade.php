@@ -123,7 +123,7 @@
                     </div>
 
                     <!-- Network -->
-                    <div class="active tab-pane" id="job_network">
+                    <div class="tab-pane" id="job_network">
 
 	                    <ul class="list-group list-group-unbordered">
 	                        <li class="list-group-item">
