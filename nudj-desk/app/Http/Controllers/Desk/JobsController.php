@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Desk;
 
 use App\Models\Job;
+use App\NSX300\NSX300_JobSkills as NSX300_JobSkills;
 
 class JobsController extends DeskController
 {
 
-    public function index()
-    {
+    public function index(){
         return view('desk/pages/jobs/list');
     }
 
-    public function show($id)
-    {
+    public function show($id){
         $job = Job::findOrFail($id);
 
         $user = \App\Models\User::find($job->user_id);
@@ -31,15 +30,16 @@ class JobsController extends DeskController
         $html3 = \App\NSX300\NSX300_ApplicationsHTML::array_of_application_requests_as_html_lis($application_requests);
 
         $data = [
-            "job"  => $job,
-            "user" => $user,
-            "user_reference" => ( strlen(trim($user->name))>0 ? $user->name : "" )." ".$user->email,
+            "job"    => $job,
+            "user"   => $user,
+            "user_reference"              => ( strlen(trim($user->name))>0 ? $user->name : "" )." ".$user->email,
             "active_referrers_count"      => $active_referrers_count,
             "referral_requests_count"     => $referral_requests_count,
             "applications_requests_count" => $applications_requests_count,
-            "html1" => $html1,
-            "html2" => $html2,
-            "html3" => $html3,
+            "html1"  => $html1,
+            "html2"  => $html2,
+            "html3"  => $html3,
+            "skills" => implode(', ',NSX300_JobSkills::job_skills_as_descriptions_for_job_identifier($job->id))
         ];
 
         return view('desk/pages/jobs/show', $data);

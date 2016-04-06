@@ -113,6 +113,10 @@
                                             <label>Bonus</label>
                                             <input type="text" class="form-control" id="bonus" name="bonus" placeholder="Bonus" value="{{$job->bonus or null}}">
                                         </div>
+                                        <div class="form-group">
+                                            <label>Skills</label>
+                                            <input type="text" class="form-control" id="bonus" name="bonus" placeholder="Bonus" value="{{$skills}}">
+                                        </div>
                                     </form>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-danger tmp-hidden" >Update</button>
