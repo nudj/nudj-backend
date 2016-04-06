@@ -98,7 +98,7 @@
 
                     <div class="active tab-pane" id="settings">
 
-                        <form class="form-horizontal" method="POST" action="{{ url('/user') }}/{{$user->id}}" >
+                        <form id="e9f0cc48b" class="form-horizontal">
 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -131,15 +131,8 @@
                                             <label>About</label>
                                             <textarea class="form-control" id="about" name="about" placeholder="About">{{$user->about or null}}</textarea>
                                         </div>
-
                                     </form>
-
-                                    <div class="form-group">
-                                        <a href="{{ url('/users') }}">
-                                            <button type="button" class="btn btn-default btn-flat"><i class="fa fa-list"></i>  List </button>
-                                        </a>
-                                        <button type="submit" class="btn btn-danger tmp-hidden" >Update</button>
-                                    </div>
+                                    <input id="a7156db6" type="button" value="update" />
                                 </div>
                             </div>
                         </form>
@@ -210,4 +203,21 @@
 
 @section('runnable')
     @parent
+    <script>
+        // error: 9920-34bd674f103f
+        $(document).delegate('#a7156db6', 'click', function(e){
+            var data = $('#e9f0cc48b').serialize()
+            $.ajax({
+                type: "PUT",
+                url: '/deskapi/ajax_update_user/{{$user->id}}',
+                data: data,
+                success: function(data){
+                    location.reload();
+                },
+                error: function(){
+                    alert('error: 9920-34bd674f103f');
+                }
+            }); 
+        });
+    </script>
 @endsection

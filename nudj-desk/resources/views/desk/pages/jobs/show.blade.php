@@ -118,9 +118,6 @@
                                             <input type="text" class="form-control" id="bonus" name="skills" placeholder="skills" value="{{$skills}}">
                                         </div>
                                     </form>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-danger tmp-hidden" >Update</button>
-                                    </div>
                                 </div>
                             </div>
                             <input id="bc734f6e" type="button" value="update" />

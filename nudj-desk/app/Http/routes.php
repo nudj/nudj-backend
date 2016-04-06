@@ -51,7 +51,8 @@ Route::group(['prefix' => '/'], function() {
 Route::group(['prefix' => 'deskapi'], function () {
 
     // JOBS
-    Route::put('ajax_update_job/{id}', 'Desk\JobsController@ajax_update_job');
+    Route::put('ajax_update_job/{id}',  'Desk\JobsController@ajax_update_job');
+    Route::put('ajax_update_user/{id}', 'Desk\UsersController@ajax_update_user');
 
 });
 
