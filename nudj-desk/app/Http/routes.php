@@ -27,6 +27,7 @@ Route::group(['prefix' => '/'], function() {
     // JOBS
     Route::get('/jobs', 'Desk\JobsController@index');
     Route::get('/jobs/{id}', 'Desk\JobsController@show');
+    Route::get('/jobs/create', 'Desk\JobsController@createpage');
 
     // STATIC CONTENTS
     Route::get('/staticcontents', 'Desk\StaticContentsController@index');
@@ -51,8 +52,11 @@ Route::group(['prefix' => '/'], function() {
 Route::group(['prefix' => 'deskapi'], function () {
 
     // JOBS
-    Route::put('ajax_update_job/{id}',  'Desk\JobsController@ajax_update_job');
-    Route::put('ajax_update_user/{id}', 'Desk\UsersController@ajax_update_user');
+    Route::post('ajax_update_job/{id}',  'Desk\JobsController@ajax_update_job');
+    Route::post('ajax_create_job',       'Desk\JobsController@ajax_create_job');
+
+    // USERS
+    Route::post('ajax_update_user/{id}', 'Desk\UsersController@ajax_update_user');
 
 });
 

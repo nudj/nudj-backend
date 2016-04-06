@@ -208,7 +208,7 @@
         $(document).delegate('#a7156db6', 'click', function(e){
             var data = $('#e9f0cc48b').serialize()
             $.ajax({
-                type: "PUT",
+                type: "POST",
                 url: '/deskapi/ajax_update_user/{{$user->id}}',
                 data: data,
                 success: function(data){

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Input;
 use App\Models\Job;
 use App\NSX300\NSX300_JobSkills as NSX300_JobSkills;
 
+use Log;
+
 class JobsController extends \Illuminate\Routing\Controller
 {
 
@@ -46,6 +48,59 @@ class JobsController extends \Illuminate\Routing\Controller
         ];
 
         return view('desk/pages/jobs/show', $data);
+    }
+
+    public function createpage(){
+        $data = [
+
+        ];
+        return view('desk/pages/jobs/create_new_job', $data);
+    }
+
+    public function ajax_create_job(){
+        $job = new Job;
+
+        $job->user_id = 1;
+        $job->active  = 1;
+
+        $input = Input::all();
+
+        if (isset($input['title'])) {
+            $job->title = (string)$input['title'];
+        }
+
+        if (isset($input['description'])) {
+            $job->description = (string)$input['description'];
+        }
+
+        if (isset($input['active'])) {
+            $job->active = (bool)$input['active'];
+        }
+
+        if (isset($input['bonus'])) {
+            $job->bonus = (double)$input['bonus'];
+        }
+
+        if (isset($input['location'])) {
+            $job->location = (string)$input['location'];
+        }
+
+        if (isset($input['company'])) {
+            $job->company = (string)$input['company'];
+        }
+
+        if (isset($input['salary'])) {
+            $job->salary = (string)$input['salary'];
+        }
+
+        $job->save();
+
+        $return = array();
+        $return['jobid'] = $job->id;
+
+        log::info($return);
+
+        return json_encode($return);        
     }
 
     public function ajax_update_job($id){

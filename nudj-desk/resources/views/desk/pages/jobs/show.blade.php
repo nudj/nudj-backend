@@ -210,7 +210,7 @@
         $(document).delegate('#bc734f6e', 'click', function(e){
             var data = $('#e328f35e').serialize()
             $.ajax({
-                type: "PUT",
+                type: "POST",
                 url: '/deskapi/ajax_update_job/{{$job->id}}',
                 data: data,
                 success: function(data){
