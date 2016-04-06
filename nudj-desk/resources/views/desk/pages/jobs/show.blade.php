@@ -84,7 +84,7 @@
 
                     <!-- Details -->
                     <div class="active tab-pane" id="job_details">
-                        <form class="form-horizontal" method="POST" action="{{ url('/jobs') }}/{{$job->id}}" >
+                        <form id="e328f35e" class="form-horizontal">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="box-body">
                                 <div class="col-md-12">
@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea data-autoresize rows="10" class="form-control" id="message" name="message" placeholder="Description">{!! $job->description or null !!}</textarea>
+                                            <textarea data-autoresize rows="10" class="form-control" id="description" name="Description" placeholder="Description">{!! $job->description or null !!}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Location</label>
@@ -114,8 +114,8 @@
                                             <input type="text" class="form-control" id="bonus" name="bonus" placeholder="Bonus" value="{{$job->bonus or null}}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Skills</label>
-                                            <input type="text" class="form-control" id="bonus" name="bonus" placeholder="Bonus" value="{{$skills}}">
+                                            <label>Skills (not editable)</label>
+                                            <input type="text" class="form-control" id="bonus" name="skills" placeholder="skills" value="{{$skills}}">
                                         </div>
                                     </form>
                                     <div class="form-group">
@@ -123,6 +123,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <input id="bc734f6e" type="button" value="update" />
                         </form>
                     </div>
 
@@ -201,11 +202,28 @@
     <script>
         jQuery.each(jQuery('textarea[data-autoresize]'), function() {
             var offset = this.offsetHeight - this.clientHeight;
-
             var resizeTextarea = function(el) {
                 jQuery(el).css('height', 'auto').css('height', el.scrollHeight + offset);
             };
             jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
         });
     </script>
+    <script>
+        // error: 85de-2e91e845ddf9
+        $(document).delegate('#bc734f6e', 'click', function(e){
+            var data = $('#e328f35e').serialize()
+            $.ajax({
+                type: "PUT",
+                url: '/deskapi/ajax_update_job/{{$job->id}}',
+                data: data,
+                success: function(data){
+                    location.reload();
+                },
+                error: function(){
+                    alert('error: 85de-2e91e845ddf9');
+                }
+            }); 
+        });
+    </script>
 @endsection
+

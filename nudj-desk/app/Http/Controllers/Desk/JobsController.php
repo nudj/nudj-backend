@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Desk;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+
 use App\Models\Job;
 use App\NSX300\NSX300_JobSkills as NSX300_JobSkills;
 
-class JobsController extends DeskController
+class JobsController extends \Illuminate\Routing\Controller
 {
 
     public function index(){
@@ -43,6 +46,47 @@ class JobsController extends DeskController
         ];
 
         return view('desk/pages/jobs/show', $data);
+    }
+
+    public function ajax_update_job($id){
+        $job = Job::find($id);
+        if (!$job){
+            return '[false]';
+        }
+
+        $input = Input::all();
+
+        if (isset($input['title'])) {
+            $job->title = (string)$input['title'];
+        }
+
+        if (isset($input['description'])) {
+            $job->description = (string)$input['description'];
+        }
+
+        if (isset($input['active'])) {
+            $job->active = (bool)$input['active'];
+        }
+
+        if (isset($input['bonus'])) {
+            $job->bonus = (double)$input['bonus'];
+        }
+
+        if (isset($input['location'])) {
+            $job->location = (string)$input['location'];
+        }
+
+        if (isset($input['company'])) {
+            $job->company = (string)$input['company'];
+        }
+
+        if (isset($input['salary'])) {
+            $job->salary = (string)$input['salary'];
+        }
+
+        $saved = $job->save();
+
+        return '[true]';
     }
 
 }

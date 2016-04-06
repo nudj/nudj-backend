@@ -46,6 +46,16 @@ Route::group(['prefix' => '/'], function() {
 });
 
 // -------------------------------------------------------------------------------
+// API V1 routes
+
+Route::group(['prefix' => 'deskapi'], function () {
+
+    // JOBS
+    Route::put('ajax_update_job/{id}', 'Desk\JobsController@ajax_update_job');
+
+});
+
+// -------------------------------------------------------------------------------
 // Listen for some stuff
 if (env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {
     Event::listen('illuminate.query', function ($query) {

@@ -13,8 +13,8 @@
 
     @section('styles')
         <link rel="stylesheet" href="{{ asset('assets/web/js/bootstrap.min.js') }}">
-        <link rel="stylesheet" href="{{ asset('assets/web/css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/web/css/ionicons.min.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <link rel="stylesheet" href="{{ asset('assets/admin/css/AdminLTE.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/admin/css/skins/skin-purple.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/admin/css/overwrite.css') }}">

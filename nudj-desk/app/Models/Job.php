@@ -99,6 +99,7 @@ class Job extends ApiModel
 
     /* CRUD
    ----------------------------------------------------- */
+
     public function edit($input)
     {
         $searchEngineUpdate = [];

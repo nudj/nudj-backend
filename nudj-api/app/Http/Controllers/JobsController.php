@@ -76,14 +76,11 @@ class JobsController extends ApiController
 
     public function update($id)
     {
-        $job = Job::findIfOwnedBy($id, Shield::getUserId());
-
-        if (!$job)
+        $job = Job::find($id);
+        if (!$job){
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
-
-        $status = $job->edit(Input::all());
-
-        return $this->respondWithStatus($status);
+        }
+        $job->edit(Input::all());
     }
 
     public function search($term = null)
