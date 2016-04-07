@@ -113,14 +113,23 @@
                                             <label>Bonus</label>
                                             <input type="text" class="form-control" id="bonus" name="bonus" placeholder="Bonus" value="{{$job->bonus or null}}">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Skills (not editable)</label>
-                                            <input type="text" class="form-control" id="bonus" name="skills" placeholder="skills" value="{{$skills}}">
-                                        </div>
                                     </form>
                                 </div>
+                                <input id="bc734f6e" type="button" value="update job details" />
+                                <hr />
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Skills</label>
+                                        <input type="text" class="form-control" id="bonus" name="skills" placeholder="skills" value="{{$skills}}">
+                                    </div>
+                                </div>
+                                <div id="x6E503345"><!-- Envelop for skills edition -->
+                                    <input id="b5388a06b" type="button" value="edit skills" />
+                                    <br />
+                                    <div id="x9b41deee"></div>
+                                </div>
+                                
                             </div>
-                            <input id="bc734f6e" type="button" value="update" />
                         </form>
                     </div>
 
@@ -222,5 +231,79 @@
             }); 
         });
     </script>
+    <script>
+        JavaScriptUIElementsX35877E45.suite1.attachClickBehaviorToElement({
+            targetDiv : 'b5388a06b',
+            fn : function(){
+
+                JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_DropDown({
+                    targetDiv: 'x9b41deee',
+                    announce: 'Which operation do you want to perform ?',
+                    options: [
+                        {
+                            description: 'Add a new skill',
+                            fn: function(){}
+                        },
+                        {
+                            description: 'Remove a skill',
+                            fn: function(){ cycle_skills_and_display_for_disactivation_b80e5f64(); }
+                        }
+                    ],
+                });
+
+            }
+        });
+        function cycle_skills_and_display_for_disactivation_b80e5f64(){
+            $.ajax({
+                type: "GET",
+                url: '/deskapi/job_skills_DataTypeB7B00162/{{$job->id}}',
+                data: null,
+                dataType: 'json',
+                success: function(data){
+
+                    /*
+                        Item = {
+                            'skill_identifier'  : Integer
+                            'skill_description' : String
+                        }
+                        [Item]
+                    */
+
+                    var options = $.map(data,function(item){
+                        return {
+                           description: item.skill_description,
+                           fn: function(){
+                                disactivate_job_skill({{$job->id}},item.skill_identifier);
+                            }      
+                        };
+                    });
+                    JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_OneButtonPerLine({
+                        targetDiv: 'x9b41deee',
+                        announce: 'Click on a skill to remove it',
+                        options: options
+                    });
+
+                },
+                error: function(){
+                    alert('error: 754a0e70-f1a8');
+                }
+            });
+        }
+        function disactivate_job_skill(jobid,skillid){
+            $.ajax({
+                type: "DELETE",
+                url: '/deskapi/remove_skill_from_job/'+jobid+'/'+skillid,
+                data: null,
+                dataType: 'json',
+                success: function(data){
+                    cycle_skills_and_display_for_disactivation_b80e5f64();
+                },
+                error: function(){
+                    alert('error: 14fef1eb-f1a8');
+                }
+            });
+            
+        }
+    </script>    
 @endsection
 

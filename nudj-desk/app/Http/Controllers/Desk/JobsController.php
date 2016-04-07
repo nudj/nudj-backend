@@ -144,4 +144,13 @@ class JobsController extends \Illuminate\Routing\Controller
         return '[true]';
     }
 
+    public function ajax_get_job_skills_DataTypeB7B00162($jobidentifier){
+        return json_encode(NSX300_JobSkills::job_skills_as_DataTypeB7B00162($jobidentifier));
+    }
+
+    public function ajax_remove_skill_from_job($job_identifier,$skill_id){
+        NSX300_JobSkills::remove_skill_from_job($job_identifier,$skill_id);
+        return json_encode(array(true));
+    }
+
 }

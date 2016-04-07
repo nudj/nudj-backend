@@ -55,6 +55,10 @@ Route::group(['prefix' => 'deskapi'], function () {
     Route::post('ajax_update_job/{id}',  'Desk\JobsController@ajax_update_job');
     Route::post('ajax_create_job',       'Desk\JobsController@ajax_create_job');
 
+    // SKILLS
+    Route::get('job_skills_DataTypeB7B00162/{id}', 'Desk\JobsController@ajax_get_job_skills_DataTypeB7B00162');
+    Route::delete('remove_skill_from_job/{id1}/{id2}',  'Desk\JobsController@ajax_remove_skill_from_job');
+
     // USERS
     Route::post('ajax_update_user/{id}', 'Desk\UsersController@ajax_update_user');
 

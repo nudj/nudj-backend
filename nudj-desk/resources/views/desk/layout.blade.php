@@ -28,6 +28,7 @@
 
 @section('scripts')
     <script src="{{ asset('assets/web/js/jquery-2.2.2.min.js') }}"></script>
+    <script src="{{ asset('assets/web/js/JavaScriptUIElementsX35877E45.js') }}"></script>
     <script src="{{ asset('assets/web/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/app.min.js') }}"></script>
 @show

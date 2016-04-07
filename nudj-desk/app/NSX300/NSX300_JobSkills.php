@@ -37,4 +37,26 @@ class NSX300_JobSkills {
         return $descriptions;
     }
 
+    public static function job_skills_as_DataTypeB7B00162($job_identifier){
+        $skills_ids = self::job_skills_as_integers_for_job_identifier($job_identifier);
+        $answer = array_map(function($skillidentifier){
+            return array(
+                    'skill_identifier'  => $skillidentifier,
+                    'skill_description' => self::skill_identifier_to_description_or_null($skillidentifier)
+                );
+        },$skills_ids); 
+        return $answer;   
+        /*
+            Item = {
+                'skill_identifier'  : Integer
+                'skill_description' : String
+            }
+            [Item]
+        */    
+    }
+
+    public static function remove_skill_from_job($job_identifier,$skill_id){
+        DB::select('delete from job_skill where job_id=? and skill_id=?',[$job_identifier,$skill_id]);
+    }
+
 }
