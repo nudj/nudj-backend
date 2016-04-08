@@ -59,4 +59,8 @@ class NSX300_JobSkills {
         DB::select('delete from job_skill where job_id=? and skill_id=?',[$job_identifier,$skill_id]);
     }
 
+    public static function add_skill_to_job($job_identifier,$skill_id){
+        DB::insert('insert into job_skill (job_id,skill_id) values (?,?)',[$job_identifier,$skill_id]);
+    }
+
 }

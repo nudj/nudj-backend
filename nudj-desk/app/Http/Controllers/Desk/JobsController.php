@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 
 use App\Models\Job;
 use App\NSX300\NSX300_JobSkills as NSX300_JobSkills;
+use App\NSX300\NSX300_Skills    as NSX300_Skills;
 
 use Log;
 
@@ -151,6 +152,33 @@ class JobsController extends \Illuminate\Routing\Controller
     public function ajax_remove_skill_from_job($job_identifier,$skill_id){
         NSX300_JobSkills::remove_skill_from_job($job_identifier,$skill_id);
         return json_encode(array(true));
+    }
+
+    public function ajax_add_skill_to_job(){
+
+        $input = Input::all();
+
+        $job_identifier = $input['jobid'];
+        $skill = $input['skill'];
+
+        // First we check if the skill exists and if it doesn't exist we create it. 
+        $record = NSX300_Skills::get_skill_record_by_description_possibly_create_new($skill);
+        /*
+            Item = {
+                'skill_identifier'  : Integer
+                'skill_description' : String
+            }
+            [Item]
+        */
+
+        // Second we add that skill to the job, if the job didn't already have it.
+        $skill_id = $record['id'];
+        if(in_array($skill_id,NSX300_JobSkills::job_skills_as_integers_for_job_identifier($job_identifier))){
+            return json_encode(array(true));
+        }
+
+        NSX300_JobSkills::add_skill_to_job($job_identifier,$skill_id);
+        return json_encode(array(true));        
     }
 
 }

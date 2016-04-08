@@ -128,7 +128,6 @@
                                     <br />
                                     <div id="x9b41deee"></div>
                                 </div>
-                                
                             </div>
                         </form>
                     </div>
@@ -232,25 +231,52 @@
         });
     </script>
     <script>
+        function install_choice_maker_fb9ae519(){
+            JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_DropDown({
+                targetDiv: 'x9b41deee',
+                announce: 'Which operation do you want to perform ?',
+                options: [
+                    {
+                        description: 'Add a new skill',
+                        fn: function(){
+
+                            $('#x9b41deee').html('<div>White down a skill and click on [Update]</div><div id="x06dfad71"></div>')        
+
+                            JavaScriptUIElementsX35877E45.suite2.textInputWithSubmitButton({
+                                targetDiv : 'x06dfad71',
+                                valueHandler : function(inputtext){
+                                    var skill = inputtext.trim();
+                                    $.ajax({
+                                        type: "POST",
+                                        url: '/deskapi/add_skill_to_job',
+                                        data: {
+                                            jobid: {{$job->id}},
+                                            skill: skill
+                                        },
+                                        dataType: 'json',
+                                        success: function(data){
+                                            location.reload();
+                                        },
+                                        error: function(){
+                                            alert('error: 74AB8E3C');
+                                        }
+                                    });
+                                }
+                            });                                
+
+                        }
+                    },
+                    {
+                        description: 'Remove a skill',
+                        fn: function(){ cycle_skills_and_display_for_disactivation_b80e5f64(); }
+                    }
+                ],
+            });            
+        }
         JavaScriptUIElementsX35877E45.suite1.attachClickBehaviorToElement({
             targetDiv : 'b5388a06b',
             fn : function(){
-
-                JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_DropDown({
-                    targetDiv: 'x9b41deee',
-                    announce: 'Which operation do you want to perform ?',
-                    options: [
-                        {
-                            description: 'Add a new skill',
-                            fn: function(){}
-                        },
-                        {
-                            description: 'Remove a skill',
-                            fn: function(){ cycle_skills_and_display_for_disactivation_b80e5f64(); }
-                        }
-                    ],
-                });
-
+                install_choice_maker_fb9ae519()
             }
         });
         function cycle_skills_and_display_for_disactivation_b80e5f64(){
@@ -296,7 +322,7 @@
                 data: null,
                 dataType: 'json',
                 success: function(data){
-                    cycle_skills_and_display_for_disactivation_b80e5f64();
+                    location.reload();
                 },
                 error: function(){
                     alert('error: 14fef1eb-f1a8');
