@@ -325,7 +325,7 @@
                     location.reload();
                 },
                 error: function(){
-                    alert('error: 14fef1eb-f1a8');
+                    location.reload();
                 }
             });
             
