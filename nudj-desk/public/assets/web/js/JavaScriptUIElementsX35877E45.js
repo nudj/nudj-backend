@@ -47,6 +47,27 @@ JavaScriptUIElementsX35877E45.suite1.attachClickBehaviorToElement = function(inp
 
 JavaScriptUIElementsX35877E45.suite2 = {}
 
+JavaScriptUIElementsX35877E45.suite2.Button = function(input_parameters){
+    var parameters = {
+        targetDiv: null, // mandatory
+        fn: null,        // mandatory
+        value: null 
+    }
+    /*
+        fn: function of arity 0 (is fired up by the button)
+    */
+    $.extend( parameters, input_parameters );
+    if(!parameters.targetDiv) return false;
+    var uuid1 = JavaScriptUIElementsX35877E45.core.ridentifier();
+    var html1 = '';
+    html1 += '<input id="'+uuid1+'" type="button" value="'+parameters.value+'">';
+    $('#'+parameters.targetDiv).html(html1);
+    $(document).delegate('#'+uuid1, 'click', function(e){
+        parameters.fn();
+    });
+    return true;
+}
+
 JavaScriptUIElementsX35877E45.suite2.textInputWithSubmitButton = function(input_parameters){
     var parameters = {
         targetDiv: null,    // mandatory

@@ -60,9 +60,10 @@ Route::group(['prefix' => 'deskapi'], function () {
     Route::delete('remove_skill_from_job/{id1}/{id2}',  'Desk\JobsController@ajax_remove_skill_from_job');
     Route::post('add_skill_to_job',    'Desk\JobsController@ajax_add_skill_to_job');
 
-
     // USERS
     Route::post('ajax_update_user/{id}', 'Desk\UsersController@ajax_update_user');
+    Route::post('admin_block_user/{id}', 'Desk\UsersController@admin_block_user');
+    Route::post('admin_unblock_user/{id}', 'Desk\UsersController@admin_unblock_user');
 
 });
 

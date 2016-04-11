@@ -98,12 +98,19 @@
 
                     <div class="active tab-pane" id="settings">
 
+                        <div>
+                            <b>Database Identifier</b>: {{$user->id}}
+                        </div>
+
+                        {!! $userBlockedDisplay !!}
+
                         <form id="e9f0cc48b" class="form-horizontal">
 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            <div class="box-body">
+                            <div class="box-body" style="border:1px dotted grey;">
                                 <div class="col-md-12">
+
                                     <form role="form">
                                         <!-- text input -->
 
@@ -132,10 +139,11 @@
                                             <textarea class="form-control" id="about" name="about" placeholder="About">{{$user->about or null}}</textarea>
                                         </div>
                                     </form>
-                                    <input id="a7156db6" type="button" value="update" />
                                 </div>
+                                <input id="a7156db6" type="button" value="update user's details" />
                             </div>
                         </form>
+                        <div id="E131DDB7" style="border:1px dotted grey; padding: 10px;margin-top: 20px;"></div>
 
                     </div><!-- /.tab-pane -->
 
@@ -219,5 +227,46 @@
                 }
             }); 
         });
+    </script>
+    <script>
+        var true_if_user_is_blocked = {{$true_if_user_is_blocked}};
+        if(true_if_user_is_blocked){
+            JavaScriptUIElementsX35877E45.suite2.Button({
+                targetDiv : 'E131DDB7',
+                fn : function(){
+                    $.ajax({
+                        type: "POST",
+                        url: '/deskapi/admin_unblock_user/{{$user->id}}',
+                        data: null,
+                        success: function(data){
+                            location.reload();
+                        },
+                        error: function(){
+                            alert('error: a66867fe-32fd');
+                        }
+                    });
+                },
+                value: "Unblock User"
+            });
+        }else{
+            JavaScriptUIElementsX35877E45.suite2.Button({
+                targetDiv : 'E131DDB7',
+                fn : function(){
+                    $.ajax({
+                        type: "POST",
+                        url: '/deskapi/admin_block_user/{{$user->id}}',
+                        data: null,
+                        success: function(data){
+                            location.reload();
+                        },
+                        error: function(){
+                            alert('error: 2d11e904-d2d1');
+                        }
+                    });
+                },
+                value: "Block User"
+            });            
+        }
+
     </script>
 @endsection
