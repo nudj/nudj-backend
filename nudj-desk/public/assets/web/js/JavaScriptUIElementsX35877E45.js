@@ -63,7 +63,7 @@ JavaScriptUIElementsX35877E45.suite2.textInputWithSubmitButton = function(input_
     html1 += '<div>';
     html1 += '    <input id="'+uuid1+'" type="text">';
     html1 += '    <input id="'+uuid2+'" type="button" value="Done">';
-    html1 += '<div>';
+    html1 += '</div>';
     $('#'+parameters.targetDiv).html(html1);
     $(document).delegate('#'+uuid2, 'click', function(e){
         e.preventDefault();
