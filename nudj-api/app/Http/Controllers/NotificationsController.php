@@ -68,7 +68,7 @@ class NotificationsController extends ApiController
         $push = new Push($apnsAdapter, $devices, $message);
         $pushManager->add($push);
         $collectionx = $pushManager->push();
-        Log::info(serialize($collectionx));
+        Log::info(serialize((array)$collectionx));
 
         return $this->returnResponse(['data' => true]); 
 
