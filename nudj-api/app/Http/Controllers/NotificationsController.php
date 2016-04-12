@@ -67,7 +67,8 @@ class NotificationsController extends ApiController
         // Finally, create and add the push to the manager, and push it!
         $push = new Push($apnsAdapter, $devices, $message);
         $pushManager->add($push);
-        $pushManager->push();
+        $collectionx = $pushManager->push();
+        Log::info(serialize($collectionx));
 
         return $this->returnResponse(['data' => true]); 
 
