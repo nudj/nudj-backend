@@ -13,6 +13,8 @@ use Sly\NotificationPusher\PushManager,
     Sly\NotificationPusher\Model\Push
 ;
 
+use Log;
+
 class SendApn
 {
 
@@ -63,7 +65,8 @@ class SendApn
 
         $push = new Push($apnsAdapter, $devices, $message);
         $pushManager->add($push);
-        $pushManager->push();
+        $collectionx = $pushManager->push();
+        Log::info(serialize($collectionx));
 
     }
 
