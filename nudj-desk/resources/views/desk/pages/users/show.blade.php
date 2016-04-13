@@ -24,20 +24,20 @@
         <div class="span-12">
             <div class="col-sm-12">
                 @if (session()->has('status'))
-                        <div class="alert alert-success">
-                            Profile for has been updated!
-                        </div>
+                    <div class="alert alert-success">
+                        Profile for has been updated!
+                    </div>
                 @elseif(session()->has('errors'))
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{$error}}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
             </div>
-            </div>
+        </div>
         <div class="col-md-3">
 
             <!-- Profile Image -->
@@ -45,7 +45,7 @@
                 <div class="box-body box-profile">
                     @if(isset($user->image))
                         <?php $img = json_decode($user->image); ?>
-                    <img class="profile-user-img img-responsive img-circle" src="{{ Config::get('models.users.imageUrl') }}{{ $user->id }}/profile/{{ $img->profile }}" alt="Profile picture">
+                        <img class="profile-user-img img-responsive img-circle" src="{{ Config::get('models.users.imageUrl') }}{{ $user->id }}/profile/{{ $img->profile }}" alt="Profile picture">
                     @else
                        <div class="profile-user-img img-circle text-center correct-circle">
                          <i class="fa fa-user fa-5x"></i>
@@ -84,9 +84,9 @@
                             @endif
                         </li>
                     </ul>
-                </div><!-- /.box-body -->
-            </div><!-- /.box -->
-        </div><!-- /.col -->
+                </div>
+            </div>
+        </div>
         <div class="col-md-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">

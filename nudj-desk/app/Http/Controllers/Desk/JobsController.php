@@ -38,7 +38,8 @@ class JobsController extends \Illuminate\Routing\Controller
         $data = [
             "job"    => $job,
             "user"   => $user,
-            "user_reference"              => ( strlen(trim($user->name))>0 ? $user->name : "" )." ".$user->email,
+            "user_name"                   => strlen(trim($user->name))>0 ? $user->name : "",
+            "user_email"                  => $user->email,
             "active_referrers_count"      => $active_referrers_count,
             "referral_requests_count"     => $referral_requests_count,
             "applications_requests_count" => $applications_requests_count,
@@ -179,6 +180,21 @@ class JobsController extends \Illuminate\Routing\Controller
 
         NSX300_JobSkills::add_skill_to_job($job_identifier,$skill_id);
         return json_encode(array(true));        
+    }
+
+    public function ajax_set_job_owner($job_identifier,$user_identifier){
+        $job = Job::find($job_identifier);
+        if (!$job){
+            return '[false]';
+        }
+        $user = \App\Models\User::find($user_identifier);
+        if (!$user){
+            return '[false]';
+        }
+        $user_identifier = (int)$user_identifier;
+        $job->user_id = $user_identifier;
+        $saved = $job->save();
+        return '[true]';
     }
 
 }

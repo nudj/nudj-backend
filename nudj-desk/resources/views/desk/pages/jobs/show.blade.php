@@ -36,30 +36,16 @@
                 @endif
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
 
             <!-- Image -->
             <div class="box box-success">
                 <div class="box-body box-profile">
-                    <h3 class="profile-username text-center">Job</h3>
-                    <div class="container-fluid">
-                        <div class="row row-centered">
-                            <div class="col-xs-4 col-centered">
-                                <span class="info-box-icon bg-green">
-                                   <i class="ion ion-ios-briefcase"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-muted text-center"></p>
-                    <p class="text-muted text-center">Id : <span class="label label-success">{{ $job->id }}</span></p>
-                    <p class="text-muted text-center">Creation date : <span class="label label-success">{{ date('Y-m-d', strtotime($job->created_at)) }}</span></p>
-
-                    <p class="text-muted text-center"></p>
-
+                    <p class="text-muted">Id : <span class="label label-success pull-right">{{ $job->id }}</span></p>
+                    <p class="text-muted">Creation date : <span class="label label-success pull-right">{{ date('Y-m-d', strtotime($job->created_at)) }}</span></p>
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
-                            <b>Active</b>
+                            <b>Status:</b>
                             @if($job->active > 0)
                                 <span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Active">Verified</span>
                             @else
@@ -67,14 +53,22 @@
                             @endif
                         </li>
                         <li class="list-group-item">
-                            <b>User</b>
-                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user_reference }}</span></a>
+                            <b>Username:</b>
+                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user_name }}</span></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Email:</b>
+                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user_email }}</span></a>
                         </li>
                     </ul>
+                    <div id="x22d1435b">
+                        <input id="x643237cb" type="button" value="Change User" />
+                    </div>
                 </div>
             </div>
+
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#job_details" data-toggle="tab">Details</a></li>
@@ -137,7 +131,7 @@
 
 	                    <ul class="list-group list-group-unbordered">
 	                        <li class="list-group-item">
-	                            <b>Active</b>
+	                            <b>Status:</b>
 	                            @if($job->active > 0)
 	                                <span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Active">Verified</span>
 	                            @else
@@ -145,23 +139,27 @@
 	                            @endif
 	                        </li>
 	                        <li class="list-group-item">
-	                            <b>User</b>
-	                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user_reference }}</span></a>
+	                            <b>Username:</b>
+	                            <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user_name }}</span></a>
 	                        </li>
+                            <li class="list-group-item">
+                                <b>Email:</b>
+                                <a href="{{ url('/users') }}/{{ $user->id }}"><span data-toggle="tooltip" title="" class="badge bg-green pull-right" data-original-title="Link to User">{{ $user_email }}</span></a>
+                            </li>
 	                        <li class="list-group-item">
-	                            <b>Referral Bonus</b>
+	                            <b>Referral Bonus:</b>
 	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $job->bonus }} {{ $job->bonus_currency }}</span>
 	                        </li>
 	                        <li class="list-group-item">
-	                            <b>Number of referral requests</b>
+	                            <b>Number of referral requests:</b>
 	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $referral_requests_count }}</span>
 	                        </li>
 	                        <li class="list-group-item">
-	                            <b>Number of active referrers</b>
+	                            <b>Number of active referrers:</b>
 	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $active_referrers_count }}</span>
 	                        </li>
 	                        <li class="list-group-item">
-	                            <b>Number of application requests</b>
+	                            <b>Number of application requests:</b>
 	                            <span data-toggle="tooltip" title="" class="badge bg-green pull-right">{{ $applications_requests_count }}</span>
 	                        </li>
 	                    </ul>
@@ -330,6 +328,39 @@
             });
             
         }
-    </script>    
+    </script>   
+    <script>
+        // Edit job owner
+        JavaScriptUIElementsX35877E45.suite1.attachClickBehaviorToElement({
+            targetDiv : 'x643237cb',
+            fn : function(){
+                change_job_owner_step_2();
+            }
+        });
+        function change_job_owner_step_2(){
+            // Here we display the invite for the user identifier
+            var html1 = '<div>user id of the new job owner: </div><div id="dfbbfc74"></div>';
+            $('#x22d1435b').html(html1);
+            JavaScriptUIElementsX35877E45.suite2.textInputWithSubmitButton({
+                targetDiv: 'dfbbfc74', 
+                valueHandler: function(value){
+                    var identifier = value;
+                    // We now need to override the owner of this job with the given identifier and reload the page
+                    $.ajax({
+                        type: "POST",
+                        url: '/deskapi/ajax_set_job_owner/{{$job->id}}/'+identifier,
+                        data: null,
+                        dataType: 'json',
+                        success: function(data){
+                            location.reload();
+                        },
+                        error: function(){
+                            location.reload();
+                        }
+                    });
+                } 
+            });
+        }
+    </script>     
 @endsection
 
