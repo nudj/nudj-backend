@@ -81,6 +81,10 @@ class JobsController extends ApiController
             throw new ApiException(ApiExceptionType::$NOT_FOUND);
         }
         $job->edit(Input::all());
+
+        $status = $job->edit(Input::all());
+        return $this->respondWithStatus($status);
+
     }
 
     public function search($term = null)
