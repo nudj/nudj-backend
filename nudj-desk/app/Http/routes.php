@@ -56,16 +56,18 @@ Route::group(['prefix' => 'deskapi'], function () {
     Route::post('ajax_create_job',                'Desk\JobsController@ajax_create_job');
     Route::post('ajax_set_job_owner/{id1}/{id2}', 'Desk\JobsController@ajax_set_job_owner');
 
-
     // SKILLS
-    Route::get('job_skills_DataTypeB7B00162/{id}',      'Desk\JobsController@ajax_get_job_skills_DataTypeB7B00162');
-    Route::delete('remove_skill_from_job/{id1}/{id2}',  'Desk\JobsController@ajax_remove_skill_from_job');
-    Route::post('add_skill_to_job',    'Desk\JobsController@ajax_add_skill_to_job');
+    Route::get('job_skills_DataTypeB7B00162/{id}',     'Desk\JobsController@ajax_get_job_skills_DataTypeB7B00162');
+    Route::delete('remove_skill_from_job/{id1}/{id2}', 'Desk\JobsController@ajax_remove_skill_from_job');
+    Route::post('add_skill_to_job',                    'Desk\JobsController@ajax_add_skill_to_job');
 
     // USERS
-    Route::post('ajax_update_user/{id}', 'Desk\UsersController@ajax_update_user');
-    Route::post('admin_block_user/{id}', 'Desk\UsersController@admin_block_user');
+    Route::post('ajax_update_user/{id}',   'Desk\UsersController@ajax_update_user');
+    Route::post('admin_block_user/{id}',   'Desk\UsersController@admin_block_user');
     Route::post('admin_unblock_user/{id}', 'Desk\UsersController@admin_unblock_user');
+
+    Route::post('admin_enable_special_access/{id}',  'Desk\UsersController@admin_enable_special_access');
+    Route::post('admin_disable_special_access/{id}', 'Desk\UsersController@admin_disable_special_access');
 
 });
 

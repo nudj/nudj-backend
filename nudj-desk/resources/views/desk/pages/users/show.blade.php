@@ -104,6 +104,8 @@
 
                         {!! $userBlockedDisplay !!}
 
+                        {!! $userSpecialAccessDisplay !!}
+
                         <form id="e9f0cc48b" class="form-horizontal">
 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -144,8 +146,8 @@
                             </div>
                         </form>
                         <div id="E131DDB7" style="border:1px dotted grey; padding: 10px;margin-top: 20px;"></div>
-
-                    </div><!-- /.tab-pane -->
+                        <div id="c53bbae4" style="border:1px dotted grey; padding: 10px;margin-top: 20px;"></div>
+                    </div>
 
                     <div class="tab-pane" id="jobs">
                         <div class="box-body">
@@ -195,7 +197,7 @@
                         </div>
                     </div>
 
-                </div><!-- /.tab-content -->
+                </div>
             </div><!-- /.nav-tabs-custom -->
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -229,7 +231,9 @@
         });
     </script>
     <script>
+
         var true_if_user_is_blocked = {{$true_if_user_is_blocked}};
+
         if(true_if_user_is_blocked){
             JavaScriptUIElementsX35877E45.suite2.Button({
                 targetDiv : 'E131DDB7',
@@ -265,6 +269,46 @@
                     });
                 },
                 value: "Block User"
+            });            
+        }
+
+        var true_if_user_is_special_access_1 = {{$true_if_user_is_special_access_1}};
+
+        if(true_if_user_is_special_access_1){
+            JavaScriptUIElementsX35877E45.suite2.Button({
+                targetDiv : 'c53bbae4',
+                fn : function(){
+                    $.ajax({
+                        type: "POST",
+                        url: '/deskapi/admin_disable_special_access/{{$user->id}}',
+                        data: null,
+                        success: function(data){
+                            location.reload();
+                        },
+                        error: function(){
+                            alert('error: a036d5d6-a98e');
+                        }
+                    });
+                },
+                value: "Disable Special Access"
+            });
+        }else{
+            JavaScriptUIElementsX35877E45.suite2.Button({
+                targetDiv : 'c53bbae4',
+                fn : function(){
+                    $.ajax({
+                        type: "POST",
+                        url: '/deskapi/admin_enable_special_access/{{$user->id}}',
+                        data: null,
+                        success: function(data){
+                            location.reload();
+                        },
+                        error: function(){
+                            alert('error: 39d325c7-ac17');
+                        }
+                    });
+                },
+                value: "Enable Special Access"
             });            
         }
 
