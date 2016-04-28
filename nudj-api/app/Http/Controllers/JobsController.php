@@ -7,6 +7,8 @@ use App\Models\Job;
 use App\Models\JobsBlocked;
 use App\Models\User;
 
+use App\NSX300\NSX300_AdminUserOperations_v1;
+
 use App\Utility\ApiException;
 use App\Utility\ApiExceptionType;
 use App\Utility\Facades\Shield;
@@ -24,6 +26,21 @@ class JobsController extends ApiController
     {
 
         $me = Shield::getUserId();
+
+        // -----------------------------------------------------------------------------------
+        /*
+            This section was introduced on 28th April to enable "special access (1)" users to see every job in the system
+            It comes together with the recently added Desk features to be able to activate and disactivate "special access (1)" users.
+        */
+        if($filter=='available' and NSX300_AdminUserOperations_v1::true_if_user_identified_by_id_is_currently_a_special_access_1_user($me)){
+            $items = Job::active()
+                ->whereNotIn('id', JobsBlocked::get_blocked_jobids_for_primary_user($me))
+                ->api()
+                ->desc()
+                ->paginate($this->limit);
+            return $this->respondWithPagination($items, new JobTransformer());
+        }
+        // ------------------------------------------------------------------------------------
 
         switch ($filter) {
             case 'mine' :
