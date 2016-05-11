@@ -58,7 +58,7 @@ class SendApn
         // ------------------------------------------------
         // Building the message objects
 
-        $message = new Message('This is a test notification from Nudj', $notification_options);
+        $message = new Message($event->message, $notification_options);
 
         // ------------------------------------------------
         // Pushing
@@ -66,7 +66,7 @@ class SendApn
         $push = new Push($apnsAdapter, $devices, $message);
         $pushManager->add($push);
         $collectionx = $pushManager->push();
-        Log::info(serialize($collectionx));
+        // Log::info(serialize($collectionx));
 
     }
 
