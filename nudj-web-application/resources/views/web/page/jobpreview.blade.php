@@ -106,7 +106,7 @@
                     Location:
                 </span>
                 <span>
-                    <span class="span-green">London</span>
+                    <span class="span-green">{{$job->location}}</span>
                 </span>
             </div>
             <div class="span-green-map">View map</div>
@@ -114,7 +114,7 @@
         <div id="job-salary" class="container-fluids margins-top span-grey">
             <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Salary:
             <span class="span-green">
-                &pound; {{$job->salary2}}
+                &pound; {{$job->salary}}
             </span>
         </div>
     </div>
