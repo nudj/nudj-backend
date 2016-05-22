@@ -10,8 +10,7 @@ class AskForReferralsRequest extends ApiRequest {
 	public function rules()
 	{
 		return [
-			'job' => 'required',
-			'contacts' => 'required',
+			'job' => 'required'
 		];
 	}
 
