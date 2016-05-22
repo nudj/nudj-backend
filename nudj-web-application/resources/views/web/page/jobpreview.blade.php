@@ -117,6 +117,14 @@
                 &pound; {{$job->salary}}
             </span>
         </div>
+        @if($job->bonus>0)
+        <div id="job-salary" class="container-fluids margins-top span-grey">
+            <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Bonus:
+            <span class="span-green">
+                &pound; {{$job->bonus}}
+            </span>
+        </div>
+        @endif
     </div>
 
     <div id="status" class="container-fluid no-padding">
