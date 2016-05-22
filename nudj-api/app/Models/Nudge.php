@@ -115,6 +115,46 @@ class Nudge extends ApiModel
 
     }
 
+    public static function nudgeContacts2($userId, $jobId, $contactList, $message)
+    {
+
+        /*
+            $userId      : Integer   # contextual user
+                                     # will later on be called referrer
+            $jobId       : Integer   
+            $contactList : [Integer] 
+            $message     : String    
+        */
+
+        $job = Job::with('user')->findOrFail($jobId);
+        $contacts = Contact::findOrFail($contactList);
+
+        /*
+            Note: 
+                Eloquent findOrFail accept (int) identifiers or arrays of
+        */
+
+        /*
+            $job         # Instance of Job model
+            $contacts    # [ User ]    
+        */
+
+        foreach ($contacts as $contact) {
+
+            /*
+                $job->id      : id of contextual job
+                $job->user_id : id of user who owns the job  
+                $userId       : contextual user id
+                $contact->id  : user recipient of the nudge id   
+            */
+
+            $nudge = self::addNewNudge($job->id, $job->user_id, $userId, $contact->id);
+
+        }
+
+    }
+
+
     /* Private Methods
     ----------------------------------------------------- */
     private static function addNewNudge($jobId, $employerId, $referrerId, $candidateId)

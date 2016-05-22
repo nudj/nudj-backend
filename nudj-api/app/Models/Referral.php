@@ -62,6 +62,22 @@ class Referral extends ApiModel
         }
     }
 
+    public static function askContacts2($userId, $jobId, $contactList, $message)
+    {
+        $job = Job::with('user')->findOrFail($jobId);
+        $contacts = Contact::findOrFail($contactList);
+        if ($userId != $job->user_id){
+            throw new ApiException(ApiExceptionType::$JOB_OWNER_MISMATCH);
+        }
+        $message = $message ?: Lang::get('messages.refer');
+        foreach ($contacts as $contact) {
+            $referral = self::addNewReferral($job->id, $contact->id);
+            if (!$referral){
+                continue;
+            }
+        }
+    }
+
     private static function addNewReferral($jobId, $referrerId)
     {
         $referral = Referral::where(['job_id' => $jobId, 'referrer_id' => $referrerId])->first();

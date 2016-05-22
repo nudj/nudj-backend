@@ -20,27 +20,41 @@ use Log;
 class NudgeController extends ApiController
 {
 
-    public function ask(AskForReferralsRequest $request)
-    {
-        /*
-            requests:
-                job      : Integer
-                contacts : [Integer]
-                message  : String 
-        */
-        Referral::askContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
-        return $this->respondWithStatus(true);
-    }
-
     public function nudge(NudgeRequest $request)
     {
         /*
             requests:
                 job      : Integer
-                contacts : [Integer]
+                contacts : [Integer] # optional
                 message  : String 
         */
+        if(empty($request->contacts)){
+            return $this->respondWithStatus(true);
+        }
+        if(@$request->client_will_send=='true'){
+            Nudge::nudgeContacts2(Shield::getUserId(), $request->job, $request->contacts, $request->message);
+            return $this->respondWithStatus(true);
+        }
         Nudge::nudgeContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
+        return $this->respondWithStatus(true);
+    }
+
+    public function ask(AskForReferralsRequest $request)
+    {
+        /*
+            requests:
+                job      : Integer
+                contacts : [Integer] # optional
+                message  : String 
+        */
+        if(empty($request->contacts)){
+            return $this->respondWithStatus(true);
+        }
+        if(@$request->client_will_send=='true'){
+            Referral::askContacts2(Shield::getUserId(), $request->job, $request->contacts, $request->message);
+            return $this->respondWithStatus(true);
+        }
+        Referral::askContacts(Shield::getUserId(), $request->job, $request->contacts, $request->message);
         return $this->respondWithStatus(true);
     }
 
