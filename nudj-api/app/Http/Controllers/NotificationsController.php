@@ -37,34 +37,63 @@ class NotificationsController extends ApiController
 
         // Following the instructions at https://github.com/Ph3nol/NotificationPusher/blob/master/doc/getting-started.md
 
-        // First, instantiate the manager and declare an adapter.
+        // ------------------------------------------------
+        // Instanciating a PushManager
 
         $pushManager = new PushManager(PushManager::ENVIRONMENT_DEV);
 
+        Log::info('Instanciating a PushManager (2)');
+
         $id = Shield::getUserId();
         $me = User::api()->findOrFail($id);
-        $devices = $me->devices()->get();
 
+        // ------------------------------------------------
+        // Building the DeviceCollection
+
+        Log::info('Building the DeviceCollection (2)');
+
+        $devices = $me->devices()->get();
         $arrayOfDs = array();
         foreach($devices as $device){
             $arrayOfDs[] = new Device($device->token);
         }
+        $devices = new DeviceCollection($arrayOfDs);
+
+        // ------------------------------------------------
+        // Setting up the APNS Adapter
+
+        Log::info('Setting up the APNS Adapter (2)');
 
         $apnsAdapter = new ApnsAdapter(array(
             'certificate' => base_path('resources/certificates/production.pem'),
             'passPhrase' => 'turned4437.handwritings'
         ));
 
-        // Set the device(s) to push the notification to.
+        // ------------------------------------------------
+        // Making the Notification Options
 
-        $devices = new DeviceCollection($arrayOfDs);
+        Log::info('Making the Notification Options (2)');
+
+        $notification_options = array(
+            'badge' => 1,
+            'sound' => 'default'
+        );
+
+        // ------------------------------------------------
+        // Building the message object
+
+        Log::info('Building the message objects (2)');
 
         $message = new Message('This is a test notification from Nudj', array(
             'badge' => 1,
             'sound' => 'default'
         ));
 
-        // Finally, create and add the push to the manager, and push it!
+        // ------------------------------------------------
+        // Pushing
+
+        Log::info('Pushing notification to Apple (2)');
+
         $push = new Push($apnsAdapter, $devices, $message);
         $pushManager->add($push);
         $pushManager->push();
