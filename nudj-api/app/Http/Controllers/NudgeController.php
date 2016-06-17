@@ -28,7 +28,7 @@ class NudgeController extends ApiController
                 contacts : [Integer] # optional
                 message  : String 
         */
-        if(empty($request->contacts)){
+        if(count($request->contacts)==0){
             return $this->respondWithStatus(true);
         }
         if(@$request->client_will_send=='true'){
@@ -47,7 +47,7 @@ class NudgeController extends ApiController
                 contacts : [Integer] # optional
                 message  : String 
         */
-        if(empty($request->contacts)){
+        if(count($request->contacts)==0){
             return $this->respondWithStatus(true);
         }
         if(@$request->client_will_send=='true'){
