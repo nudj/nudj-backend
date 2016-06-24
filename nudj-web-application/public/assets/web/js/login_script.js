@@ -1,6 +1,3 @@
-/**
- * Created by viperS on 22-06-2015 г..
- */
 
 $(window).load(function(){
     var picker = $('.selectpicker');

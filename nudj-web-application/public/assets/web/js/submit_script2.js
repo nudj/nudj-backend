@@ -27,9 +27,9 @@ $("#btn-submit").click(function(e){
             .done(function( data ) {
                 if(data.success){
                     if($("#reqfrom").val() == "refer")
-                         window.location.href = base_path +"/job/"+$("#job_id").val()+"/"+$("#hash").val();
+                         window.location.href = base_path +"/job/"+$("#job_id").val();
                     else
-                         window.location.href = base_path +"/job/"+$("#job_id").val()+"/"+$("#hash").val();
+                         window.location.href = base_path +"/job/"+$("#job_id").val();
                 }
                 else{
                     failMessage();
@@ -41,7 +41,6 @@ $("#btn-submit").click(function(e){
     }
 
 });
-
 
 $("#nudjModal").on('hidden.bs.modal', function(){
     closeFailed()

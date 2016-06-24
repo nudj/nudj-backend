@@ -16,10 +16,14 @@ Route::group(['prefix' => '/'], function () {
 
 	// Relevant Information: 2c4e861f-be97-49a2-ad53-2d9c2f6a7f74
 
-    Route::get('jobpreview/{jobId}/{hash?}', 'Web\WebController@jobpreview');
+    //Route::get('jobpreview/{jobId}/{hash?}', 'Web\WebController@jobpreview');
+    Route::get('jobpreview/{jobId}/{hash?}', 'Web\WebController@jobpreview2');
 
-    Route::get('register/{type}/{hash}', 'Web\WebController@login');
-    Route::post('validate', 'Web\WebController@validate'); # The page after submitting your phone number and where you need to put the pin 
+    //Route::get('register/{type}/{hash}', 'Web\WebController@login');
+    Route::get('register/{jobId}', 'Web\WebController@login2');
+
+    Route::post('validate', 'Web\WebController@validate2'); # The page after submitting your phone number and where you need to put the pin 
+
     Route::post('verify', 'Web\ActionsController@verify'); # This is a AJAX call to validate the 4 letter digit validation code. 
 
     Route::get('job/{jobId}/{hash?}', 'Web\WebController@job');

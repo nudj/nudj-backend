@@ -1,6 +1,4 @@
-/**
- * Created by viperS on 24-06-2015 г..
- */
+
 var title = $("#titleModal");
 var body = $("#bodyModal");
 var modal = $("#nudjModal");
