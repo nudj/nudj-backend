@@ -138,10 +138,10 @@ class WebController extends \Illuminate\Routing\Controller
 
         /*
             So we fire an event. 
-            I presume this was set up to avoid latency.
+            Which is going to send the SMS
         */
 
-        // Event::fire(new LoginUserEvent($user->phone, $user->country_code, $user->verification));
+        Event::fire(new LoginUserEvent($user->phone, $user->country_code, $user->verification));
 
         /*
             Generating the HTML page.
