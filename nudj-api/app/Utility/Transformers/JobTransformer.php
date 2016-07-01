@@ -45,7 +45,7 @@ class JobTransformer extends Transformer {
                 return (double) $item->bonus;
 
             case 'bonus_currency':
-                return (double) $item->bonus_currency;
+                return (string) $item->bonus_currency;
 
             case 'created':
                 return (string) Carbon::createFromTimestamp(strtotime($item->created_at))->diffForHumans();
