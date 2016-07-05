@@ -121,7 +121,7 @@
         <div id="job-salary" class="container-fluids margins-top span-grey">
             <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Bonus:
             <span class="span-green">
-                &pound; {{$job->bonus}}
+                {{$job->bonus_currency}} {{$job->bonus}}
             </span>
         </div>
         @endif
