@@ -62,6 +62,10 @@ Note: An example of answer will be given when this doesn't prevent understanding
 .
 
 - [GET     api/v1/config](xf1536)
+
+.
+
+- [GET     api/v1/notifications](xf2216)
 - [GET     api/v1/notifications/test](xf2112)
 - [PUT     api/v1/notifications/{id}/read](xf1537)
 

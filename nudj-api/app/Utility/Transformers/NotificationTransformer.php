@@ -1,5 +1,8 @@
 <?php namespace App\Utility\Transformers;
 
+use Log;
+use App\NSX300\NSX300_Jobs;
+
 class NotificationTransformer extends Transformer
 {
 
@@ -22,7 +25,10 @@ class NotificationTransformer extends Transformer
                 return (int)$item->type_id;
 
             case 'meta':
-                return json_decode($item->meta);
+                $meta = json_decode($item->meta,true);
+                $jobid = $meta["job_id"];
+                $meta['job_bonus_currency'] = NSX300_Jobs::get_currency_bonus_for_job($jobid);
+                return $meta;
 
             case 'read':
                 return (bool)$item->read;
