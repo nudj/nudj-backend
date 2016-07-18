@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea data-autoresize rows="10" class="form-control" id="message" name="message" placeholder="Description">{!! $job->description or null !!}</textarea>
+                                            <textarea data-autoresize rows="10" class="form-control" id="description" name="description" placeholder="Description">{!! $job->description or null !!}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Location</label>
