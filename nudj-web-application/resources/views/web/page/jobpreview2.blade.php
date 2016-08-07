@@ -11,6 +11,7 @@
 @section('styles')
     @parent
     <link href="{{ asset('assets/web/css/theme_job.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/web/css/job-page-4e2960ca.css') }}" rel="stylesheet">
 @endsection
 
 @section('modal')
@@ -46,21 +47,30 @@
 
 @section('page')
 
-    <nav class="navbar navbar-inverse coloredhead" style="position:relative;margin-bottom:0px;">
+    <nav class="navbar navbar-inverse class-f07830e9-header">
 
-        <img class="head-logo" src="{{ asset('assets/web/img/nudj_logo_small.png') }}"/>
-        
-        <div class="container head-container">
-            <div class="col-xs-12 col-centered col-max head-text">
-                Job Details
+        <div class="row">
+            <div class="col-md-3">
+                <div class="class-87505d1c">
+                    <div>
+                        <img class="job-page-v021f9cb6-head-logo" src="{{ asset('assets/web/img/nudj_logo_small.png') }}"/>
+                    </div>
+                    <div class="class-3bb9423b-head-logo-text">
+                        The Talent Referral App
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="class-b7f4518a">
+                    <div>Find your dream job or help your friends find theirs.</div>
+                    <div>Download the app to see who's hiring.</div>
+                </div>                
             </div>
         </div>
 
-        <div style="padding:5px;background-color:#F3F3F3;color:black;">
-            {!! $top_explanation_975fb67e !!}
-        </div>
-
     </nav>
+
+    <!-- {!! $top_explanation_975fb67e !!} -->
 
     <div id="name" class="container-fluid no-padding" style="text-align: left;">
         <div class="row-fluid no-padding" style="text-align: left;">
