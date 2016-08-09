@@ -15,8 +15,13 @@
 }
 
     .class-87505d1c {
+        float:left;
         padding-top:20px;
         padding-left:20px;
+        z-index:2;
+        position:absolute;
+        top:0px;
+        left:0px;
     }
 
         .job-page-v021f9cb6-head-logo {

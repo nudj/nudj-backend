@@ -49,23 +49,18 @@
 
     <nav class="navbar navbar-inverse class-f07830e9-header">
 
-        <div class="row">
-            <div class="col-md-3">
-                <div class="class-87505d1c">
-                    <div>
-                        <img class="job-page-v021f9cb6-head-logo" src="{{ asset('assets/web/img/nudj_logo_small.png') }}"/>
-                    </div>
-                    <div class="class-3bb9423b-head-logo-text">
-                        The Talent Referral App
-                    </div>
-                </div>
+        <div class="class-87505d1c">
+            <div>
+                <img class="job-page-v021f9cb6-head-logo" src="{{ asset('assets/web/img/nudj_logo_small.png') }}"/>
             </div>
-            <div class="col-md-9">
-                <div class="class-b7f4518a">
-                    <div>Find your dream job or help your friends find theirs.</div>
-                    <div>Download the app to see who's hiring.</div>
-                </div>                
+            <div class="class-3bb9423b-head-logo-text">
+                The Talent Referral App
             </div>
+        </div>
+
+        <div class="class-b7f4518a">
+            <div>Find your dream job or help your friends find theirs.</div>
+            <div>Download the app to see who's hiring.</div>
         </div>
 
     </nav>
