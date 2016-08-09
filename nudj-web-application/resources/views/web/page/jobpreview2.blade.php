@@ -123,7 +123,7 @@
     <div style="clear:both;"></div>
 
     <div class="class-f300f3dd-bottom-link">
-        <a href="#">What is Nudj? Learn more</a>
+        <a href="http://nudj.co">What is Nudj? Learn more</a>
     </div>
 
 <script>
