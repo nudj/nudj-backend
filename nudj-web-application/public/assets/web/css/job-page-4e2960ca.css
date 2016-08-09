@@ -1,4 +1,13 @@
 
+.badge-64e0cc7a {
+    border-radius: 21px;
+    background-color: #ffffff;
+    border: solid 1.5px #00a187;
+    text-align: center;
+    color: #00a187;
+    padding:5px;
+}
+
 .class-f07830e9-header {
     padding:20px;
     background-color: #00A187;
@@ -34,5 +43,109 @@
         color: #ffffff;
     }
 
+.class-e854176f {
+    width:520px;  
+    border-radius: 20px;
+    background-color: #f2faf9;  
+    padding:20px;   
+    margin:auto;
+    margin-bottom:20px; 
+}
 
+.class-715a5d51-job-card {
+    width:520px;
+    margin:auto;
+    border-radius: 9px;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.5);
+    padding:20px;
+}
+    .class-715a5d51-job-card .title {
+        color: #00a187;
+        font-weight: bold;
+        text-align:center;
+        font-size:170%;
+    }
+    .class-715a5d51-job-card .company {
+        margin-top:10px;
+        text-align:center;
+    }
+        .class-715a5d51-job-card .company-name {
+            color: #00a187;
+        }
+    .class-715a5d51-job-card .location {
+        margin-top:10px;
+        text-align:center;
+    }
+        .class-715a5d51-job-card .location-name {
+            color: #00a187;
+        }
+    .class-715a5d51-job-card .posted {
+        margin-top:10px;
+    }
+        .class-715a5d51-job-card .posted-time {
+            color: #00a187;
+        }
+    .class-715a5d51-job-card .salary {
+        margin-top:10px;
+    }
+        .class-715a5d51-job-card .salary-inner {
+            color: #00a187;
+        }
+    .class-715a5d51-job-card .bonus {
+        margin-top:10px;
+    }
+        .class-715a5d51-job-card .bonus-inner {
+            color: #00a187;
+        }
+    .job-description {
+        margin-top:10px;
+    }
+    .class-715a5d51-job-card .tags {
+        margin-top:20px;
+        text-align:center;
+    }
+    .class-715a5d51-job-card .bottom-logo {
+        text-align:center;
+    }
 
+.class-076e42fe-user-interaction {
+    width:450px;
+    margin:auto; 
+    padding:20px;
+    height:50px;
+}
+    .f5e9a67c {
+        color: #4a4a4a;
+        border-radius: 3px;
+        text-align:center;
+        width:180px;
+        float:left;
+        height:40px;
+        border-radius: 9px;
+        -webkit-backdrop-filter: blur(22px);
+        backdrop-filter: blur(22px);
+        background-color: #ffffff;
+        border: solid 1px #00a187; 
+        padding-top:9px;    
+    }
+    .f87ac018 {
+        color: #FFFFFF;
+        background-color: #1293BD;
+        border-radius: 5px;
+        text-align:center;
+        width:180px;
+        float:right;
+        height:40px;
+        border-radius: 9px;
+        -webkit-backdrop-filter: blur(22px);
+        backdrop-filter: blur(22px);
+        background-color: #00a187;
+        margin: auto;
+        padding-top:9px;
+    }
+
+.class-f300f3dd-bottom-link {
+    margin:20px;
+    text-align:center;
+}

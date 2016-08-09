@@ -72,102 +72,64 @@
 
     <!-- {!! $top_explanation_975fb67e !!} -->
 
-    <div id="name" class="container-fluid no-padding" style="text-align: left;">
-        <div class="row-fluid no-padding" style="text-align: left;">
-            <div id="job-title" class="container-fluids">
-                <span class="span-title">{{$job->title}}</span>
-                <input type="hidden" id="job_id" name="job_id" value="{{$job->id}}" />
-            </div>
-            <div id="job-from" class="container-fluids margins-top-small span-grey">
-                Posted from: {{$employer}}
-            </div>
-            <div id="job-description" class="container-fluids margins-top">
+    <div class="class-e854176f">Hey! We're using Nudj to help us hire but need some help. Do you know anyone who might be interested in this job ?</div>    
 
-            </div>
-            <div id="job-tags" class="container-fluids margins-top">
-                {{$job->description}}
-            </div>
-            <div id="job-skills" class="container-fluids margins-top">
-                <style>
-                    .label-success {
-                        background-color: white;
-                        border:1px solid #00A187;
-                    }
-                </style>
-                @foreach ($skills as $skill)
-                    <span class="badge label-success label-as-badge span-green">{{$skill->name}}</span>
-                @endforeach
-            </div>
-            <div id="job-employer" class="container-fluids margins-top">
-            </div>
-            <img class="status-check" src="{{ asset('assets/web/img/employer.png') }}"/>
-            <span class="span-grey">
-                Employer:
-            </span>
-            <span>
-                <span class="span-green">{{$employer}}</span>
-            </span>
+    <div class="class-715a5d51-job-card">
+        <div class="title">
+            {{$job->title}}
         </div>
-        <div id="job-location" class="container-fluids margins-top">
-            <div style="float: left;">
-                <img class="status-check" src="{{ asset('assets/web/img/pin.png') }}"/>
-                <span class="span-grey">
-                    Location:
-                </span>
-                <span>
-                    <span class="span-green">{{$job->location}}</span>
-                </span>
-            </div>
-            <div class="span-green-map">View map</div>
+        <div class="company">
+            <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 
+            <span class="company-name">{{$employer}}</span>
         </div>
-        <div id="job-salary" class="container-fluids margins-top span-grey">
-            <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Salary:
-            <span class="span-green">
-                {{$job->salary}}
-            </span>
+        <div class="location">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> 
+            <span class="location-name">{{$job->location}}</span>
+        </div>
+        <div class="posted">
+            Posted: <span class="posted-time">Today</span>
+        </div>
+        <div class="salary">
+            Salary: <span class="salary-inner">{{$job->salary}}</span>
         </div>
         @if($job->bonus>0)
-        <div id="job-salary" class="container-fluids margins-top span-grey">
-            <img class="status-check" src="{{ asset('assets/web/img/salary.png') }}"/> Bonus:
-            <span class="span-green">
-                {{$job->bonus_currency}} {{$job->bonus}}
-            </span>
+        <div class="bonus">
+            Referral bonus: <span class="bonus-inner">{{$job->bonus_currency}} {{$job->bonus}}</span>
         </div>
         @endif
-    </div>
-
-    <div id="status" class="container-fluid no-padding">
-        <div class="in-status">
-            <div id="left-cell">
-                <img class="status-check" src="{{ asset('assets/web/img/suitcase.png') }}"/>Job Status
-            </div>
-            <div id="right-cell">
-                @if($job->active)
-                    <img class="status-check" src="{{ asset('assets/web/img/check.png') }}"/><span style="color: #00A187;">Active</span>
-                @else
-                    <span style="color: #60697D;">Inactive</span>
-                @endif
-            </div>
+        <div class="job-description">
+            {{$job->description}}
+        </div>
+        <div class="tags">
+            @foreach ($skills as $skill)
+                <span class="badge-64e0cc7a">{{$skill->name}}</span>
+            @endforeach
+        </div>
+        <hr />
+        <div class="bottom-logo">
+            <img src="{{ asset('assets/web/img/logo-4084e55d.png') }}" />
         </div>
     </div>
 
-    <div id="push" class="container from-top">
-        <div class="col-xs-12 col-centered col-max best-alg">
-            <div id="submit-area" class="div-apply">
-                <div id="btn-apply" data-type="" onclick="navigate_1407();">
-                    APPLY
-                </div>
-            </div>
-            <div id="btn-refer" data-type="" onclick="navigate_1407();">
-                REFER
-            </div>
+    <div class="class-076e42fe-user-interaction">
+        <div class="f5e9a67c" onclick="navigate_1407();">
+            <div style="margin: auto;">I'll Apply</div>
         </div>
+        <div class="f87ac018" onclick="navigate_1407();">
+            <div style="margin: auto;">Nudj a friend</div>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    <div class="class-f300f3dd-bottom-link">
+        <a href="#">What is Nudj? Learn more</a>
     </div>
 
 <script>
-	function navigate_1407(){
-		location.href = '/register/{{$job->id}}'
-	}
+    function navigate_1407(){
+        location.href = '/register/{{$job->id}}'
+    }
 </script>
 
 @endsection
