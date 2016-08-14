@@ -197,4 +197,13 @@ class JobsController extends \Illuminate\Routing\Controller
         return '[true]';
     }
 
+    public function ajax_delete_job($job_identifier){
+        $job = Job::find($job_identifier);
+        if (!$job){
+            return '[false]';
+        }
+        \App\NSX300\NSX300_Jobs::delete_job($job_identifier);
+        return '[true]';
+    }
+
 }

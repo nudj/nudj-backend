@@ -64,6 +64,9 @@
                     <div id="x22d1435b">
                         <input id="x643237cb" type="button" value="Change User" />
                     </div>
+                    <div id="xacd781b3" style="margin-top:10px;">
+                        <input id="xe5d75d39" type="button" value="Delete Job" />
+                    </div>
                 </div>
             </div>
 
@@ -224,6 +227,21 @@
                 },
                 error: function(){
                     alert('error: 85de-2e91e845ddf9');
+                }
+            }); 
+        });
+    </script>
+    <script>
+        $(document).delegate('#xe5d75d39', 'click', function(e){
+            $.ajax({
+                type: "POST",
+                url: '/deskapi/ajax_delete_job/{{$job->id}}',
+                data: null,
+                success: function(data){
+                    location.href = "/jobs";
+                },
+                error: function(){
+                    alert('error: 6bd57d75-ff00-4394-8450-88178a9ae58c');
                 }
             }); 
         });

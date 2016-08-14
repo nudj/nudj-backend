@@ -15,4 +15,10 @@ class NSX300_Jobs {
 		return null;
 	}
 
+    // \App\NSX300\NSX300_Jobs::delete_job($id)
+    public static function delete_job($id){
+        DB::delete('delete from jobs where id=?',[$id]);
+        return null;
+    }
+
 }
