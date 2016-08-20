@@ -64,7 +64,7 @@
     <div class="center">
       <h5>Know someone great for this job?</h5>
       <div class="whiteframe">
-        <h5>Copywriter (Berlin)</h5>
+        <h5>{{$job->title}} ({{$job->location}})</h5>
         <div class="plane-wrapper">
           <img src="/assets/web-dc8ab01d/images/plane.png" alt="plane" />
         </div>

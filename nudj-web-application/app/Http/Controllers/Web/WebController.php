@@ -189,10 +189,20 @@ class WebController extends \Illuminate\Routing\Controller
             return redirect('/');
         }
         return view('web/page/screen1-jobview', [
-            'job'       => $job,
-            'skills'    => $job->skills,
+            'job'    => $job,
+            'skills' => $job->skills,
         ]);
     }    
+
+    public function nudjAFriend($jobId = null){
+        $job = Job::findorFail($jobId);
+        if(!$job){
+            return redirect('/');
+        }
+        return view('web/page/2a1-nudj-a-friend', [
+            'job' => $job
+        ]);
+    }
 
 }
 

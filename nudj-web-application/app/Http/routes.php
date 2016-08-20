@@ -35,7 +35,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('jobpreview/{jobId}', 'Web\WebController@jobview');
     Route::get('applying/{jobId}', 'Web\WebController@applying');    
     Route::get('appdownloads', 'Web\WebController@appdownloads'); 
-    
+    Route::get('nudj-a-friend/{jobId}', 'Web\WebController@nudjAFriend'); 
+
 
 });
 
