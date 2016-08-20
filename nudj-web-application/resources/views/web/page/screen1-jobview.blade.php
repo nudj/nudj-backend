@@ -74,27 +74,29 @@
 </div>
 
 <div class="whiteframe listing center">
-  <h5 class="brand">Copywriter</h5>
-  <h6 class="brand"><i class="fa fa-home"></i>Blue Goose Design</h6>
-  <h6 class="brand"><i class="fa fa-map-marker" aria-hidden="true"></i>Berlin</h6>
+  <h5 class="brand">{{$job->title}}</h5>
+  <h6 class="brand"><i class="fa fa-home"></i>{{$job->company}}</h6>
+  <h6 class="brand"><i class="fa fa-map-marker" aria-hidden="true"></i>{{$job->location}}</h6>
   <div class="listing-spec">
     <label>Posted:</label> <p>Today</p> <br>
-    <label>Salary:</label> <p>€100 per day</p> <br>
-    <label>Referral bonus:</label><p>€75</p> <br>
+    <label>Salary:</label> <p>{{$job->salary}}</p> <br>
+    @if($job->bonus>0)
+    <label>Referral bonus:</label><p>{{$job->bonus_currency}} {{$job->bonus}}</p> <br>
+    @endif
   </div>
-<span class="more ten columns offset-by-one"> We are a small marketing agency looking for a copywriter to join our team in Berlin. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+  <span class="more ten columns offset-by-one">{{$job->description}}</span>
   <section class="tag-wrapper">
-    <button id="send-link" class="tag">Copywriter</button>
-    <button id="send-link" class="tag">Freelance</button>
-    <button id="send-link" class="tag">Marketing</button>
+    @foreach ($skills as $skill)
+        <button id="send-link" class="tag">{{$skill->name}}</button>
+    @endforeach
   </section>
   <hr>
   <img src="/assets/web-dc8ab01d/images/banner.png" alt="nudj"/>
 </div>
 
 <section class="listing-buttons">
-  <a href="2b1.html" class="button custom-button alt-button left">I'll apply</a>
-  <a href="2a1.html" class="button custom-button right">Nudj a friend</a>
+  <a href="/applying/{{$job->id}}" class="button custom-button alt-button left">I'll apply</a>
+  <a href="#" class="button custom-button right">Nudj a friend</a>
 </section>
 
   </div>

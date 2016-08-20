@@ -171,6 +171,9 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
+    // -------------------------------------------------------------------
+    // New implementation
+
     public function applying($jobId = null) {
         return view('web/page/2b1-applying', []);
     }
@@ -178,6 +181,18 @@ class WebController extends \Illuminate\Routing\Controller
     public function appdownloads($jobId = null) {
         return view('web/page/2b3-appdownloads', []);
     }
+
+    public function jobview($jobId = null)
+    {
+        $job = Job::findorFail($jobId);
+        if(!$job){
+            return redirect('/');
+        }
+        return view('web/page/screen1-jobview', [
+            'job'       => $job,
+            'skills'    => $job->skills,
+        ]);
+    }    
 
 }
 
