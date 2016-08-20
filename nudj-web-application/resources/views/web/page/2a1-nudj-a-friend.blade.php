@@ -76,7 +76,11 @@
 
       <section class="options">
         <button data-remodal-target="share-modal" class="custom-button left">Share</button>
+        <!-- 
+            We are not going to use the original behavior of that button
         <button data-remodal-target="appstore-modal" class="custom-button right">Download Nudj</button>
+        -->
+        <button id="app-store-download-59054016" class="custom-button right">Download Nudj</button>
       </section>
       <br>
   </div>
@@ -109,5 +113,16 @@
 <script type="text/javascript" src="/assets/web-dc8ab01d/js/jquery-3.1.0.min.js"></script>
 <script src="/assets/web-dc8ab01d/js/remodal.min.js"></script>
 <script src="/assets/web-dc8ab01d/js/app.js"></script>
+
+<!-- Page-specific Javascript
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<script>
+$(document).delegate( "#app-store-download-59054016", "click", function() {
+    location.href = 'https://geo.itunes.apple.com/gb/app/nudj-the-talent-referral-app/id1081609782?mt=8'
+});    
+</script>
+
+
 </body>
 </html>
