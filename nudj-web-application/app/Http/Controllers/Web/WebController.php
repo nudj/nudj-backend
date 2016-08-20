@@ -32,37 +32,6 @@ class WebController extends \Illuminate\Routing\Controller
         return view('web/page/downloads');
     }
 
-    public function login($type = null, $hash = null)
-    {
-        if(Agent::is('iPhone'))
-            return redirect('download');
-            //return redirect('https://itunes.apple.com/app/id1027993202');
-
-        switch ($type) {
-            case self::TYPE_NUDGE :
-                $action = Nudge::findByHash($hash);
-                $user = $action->candidate;
-                break;
-            case self::TYPE_REFER :
-                $action = Referral::findByHash($hash);
-                $user = $action->referrer;
-                break;
-            default :
-                $action = false;
-        }
-   
-        if (!$action  || !$action->job || !$action->referrer)
-            return redirect('/');
-
-        return view('web/page/register', [
-            'type' => $type,
-            'hash' => $hash,
-            'job'  => $action->job,
-            'user' => $user,
-            'countries' => Country::web()->orderBy('name', 'asc')->get(),
-        ]);
-    }
-
     public function login2($jobidentifier)
     {
         if(Agent::is('iPhone'))
@@ -177,26 +146,6 @@ class WebController extends \Illuminate\Routing\Controller
         return view('web/page/job', [
             'user'      => $user,
             'type'      => $type,
-            'hash'      => $hash,
-            'job'       => $job,
-            'employer'  => $job->company,
-            'skills'    => $job->skills,
-            'countries' => Country::web()->orderBy('name', 'asc')->get(),
-            'hostname'  => env('SERVER_HOSTNAME', 'mobileweb.nudj.co'),
-            'top_explanation_975fb67e' => Text1::get_text_by_reference_or_empty_string('160dc2c7-0e4e-4ed0-86e9-8ba780e71b2a')
-        ]);
-    }
-
-    public function jobpreview($jobId = null , $hash = null)
-    {
-
-        $job = Job::findorFail($jobId);
-
-        if(!$job){
-            return redirect('/');
-        }
-
-        return view('web/page/jobpreview', [
             'hash'      => $hash,
             'job'       => $job,
             'employer'  => $job->company,
