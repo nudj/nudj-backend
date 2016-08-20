@@ -78,7 +78,7 @@
   <h6 class="brand"><i class="fa fa-home"></i>{{$job->company}}</h6>
   <h6 class="brand"><i class="fa fa-map-marker" aria-hidden="true"></i>{{$job->location}}</h6>
   <div class="listing-spec">
-    <label>Posted:</label> <p>Today</p> <br>
+    <label>Posted:</label> <p>{{$posted_at}}</p> <br>
     <label>Salary:</label> <p>{{$job->salary}}</p> <br>
     @if($job->bonus>0)
     <label>Referral bonus:</label><p>{{$job->bonus_currency}} {{$job->bonus}}</p> <br>

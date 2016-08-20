@@ -172,9 +172,13 @@ class WebController extends \Illuminate\Routing\Controller
         if(!$job){
             return redirect('/');
         }
+        $job_creation_unixtime = strtotime($job->created_at);
+        $job_age_in_days = (time()-$job_creation_unixtime)/86400;
+        $job_age_in_days_integer = (int)$job_age_in_days;
         return view('web/page/screen1-jobview', [
-            'job'    => $job,
-            'skills' => $job->skills,
+            'job'       => $job,
+            'skills'    => $job->skills,
+            'posted_at' => $job_age_in_days <= 1 ? 'Today' : "".($job_age_in_days_integer)." day". ( $job_age_in_days<=2 ? '' : 's' ) ." ago" 
         ]);
     }    
 
