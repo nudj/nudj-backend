@@ -33,6 +33,9 @@ Route::group(['prefix' => '/'], function () {
     // Reimplementation 
 
     Route::get('jobpreview/{jobId}', 'Web\WebController@jobpreview2');
+    Route::get('applying/{jobId}', 'Web\WebController@applying');    
+    Route::get('appdownloads', 'Web\WebController@appdownloads'); 
+    
 
 });
 

@@ -1,0 +1,464 @@
+//colors
+$color-1: #00a187;
+$color-2: #ffffff;
+
+//fonts
+$primary-font: 'Roboto', sans-serif;
+$secondary-font: 'Raleway', sans-serif;
+
+//breakpoints
+
+$XS:    350px;
+$S:     540px;
+$M:     768px;
+$L:     1200px;
+
+//media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == XS {
+   @media only screen and (min-width: $XS) { @content; }
+  }
+  @if $canvas == S {
+   @media only screen and (min-width: $S) { @content; }
+  }
+  @else if $canvas == M {
+   @media only screen and (min-width: $M) { @content; }
+  }
+  @else if $canvas == L {
+   @media only screen and (min-width: $L) { @content; }
+  }
+}
+
+/* --------------------------------
+Primary style
+-------------------------------- */
+
+html {
+text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+min-width: 320px;
+}
+
+.main {
+  margin-top: 7vh;
+}
+
+.center {
+  text-align: center;
+}
+
+p {
+margin-bottom: 0.5em;
+}
+
+.brand {
+  margin: 0px;
+  color: $color-1;
+  font-weight: bolder;
+}
+
+.space {
+  margin-bottom: 20px;
+}
+
+/* --------------------------------
+Header
+-------------------------------- */
+
+header {
+  font-family: $secondary-font;
+  background-color: $color-1;
+  padding: 2px 0px;
+  text-align: center;
+  color: $color-2;
+  letter-spacing: 0.4px;
+
+  .container {
+    padding: 10px 0px;
+  }
+
+.logo {
+  float: left;
+  font-size: 14px;
+
+  img {
+    margin-top: 8px;
+    margin-left: -4px;
+    width: 65px;
+    @include MQ(XS) {
+        margin-top: 3px;
+        width: 95px;
+    }
+    @include MQ(S) {
+        width: 127px;
+    }
+  }
+
+  p {
+    line-height: normal;
+    font-size: 14px;
+    display: none;
+  }
+  @include MQ(M) {
+    padding-left: 5px;
+    p {
+    display: block;
+    }
+  }
+}
+
+.intro {
+  min-width: 280px;
+  margin-top: 12px;
+  font-size: 10px;
+  line-height: 12px;
+  p {
+    margin: 0px;
+
+  }
+  @include MQ(S) {
+    min-width: 400px;
+    line-height: 21px;
+    font-size: 14px;
+  }
+  @include MQ(M) {
+      font-size: 14px;
+      margin-top: 22px;
+  }
+}
+}
+
+/* --------------------------------
+Screen 2a1
+-------------------------------- */
+
+.whiteframe {
+  width: 100%;
+  margin: 0px auto 30px auto;
+  background-color: white;
+  border: 2px solid rgba(136,136,136,0.3);
+  box-shadow: 1px 1px rgba(136,136,136,0.6);
+  border-radius: 8px;
+  h5{
+    line-height: 50px;
+    margin-top: 17px;
+  }
+}
+
+.plane-wrapper {
+  background-color: $color-1;
+  width: 100%;
+  padding-right: 4px;
+  margin-left: -2px;
+  margin-bottom: 62px;
+  img {
+    width: 290px;
+  }
+}
+
+.custom-button, input.custom-button  {
+  display: inline-block;
+  min-width: 100px;
+  margin: 5px auto;
+  font-size: 12px;
+  line-height: 50px;
+  height: 50px;
+  font-weight: 300;
+  text-transform: none;
+  background-color: $color-1;
+  color: $color-2;
+  border-radius: 8px;
+  @include MQ(M) {
+    font-size: 14px;
+    min-width: 160px;
+  }
+}
+
+/* --------------------------------
+Screen 1
+-------------------------------- */
+.bubble {
+    margin-left: 20px !important;
+  @include MQ(M){
+      margin-left: 80px !important;
+  }
+  @include MQ(L){
+    margin-left: 110px !important;
+  }
+}
+
+.alt-logo-wrapper {
+  display: inline-block;
+  float: left;
+  min-width: 42px;
+  margin-top: 10px;
+  background-color: $color-1;
+  border: 3px solid $color-1;
+  border-radius: 50%;
+  img {
+    width: 50px;
+    margin: 0px 10px 2px 0px;
+  }
+  @include MQ(L) {
+    img {
+      width: 50px;
+      }
+    }
+}
+
+.rectangle {
+  width: 55%;
+  position: relative;
+  border-radius: 20px;
+  background-color: #eaf6f7;
+  margin: 5px 0px 0px 85px;
+  padding: 16px;
+
+  p {
+    font-size: 0.75em;
+    line-height: 16px;
+  }
+
+  @include MQ(S) {
+    min-width: 365px;
+    padding-left: 35px;
+      p {
+        font-size: 0.9em;
+      }
+  }
+
+  @include MQ(M) {
+      width: 450px;
+  }
+}
+
+.triangle {
+  position: absolute;
+  top:44px;
+  left:-15px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-right: 26px solid #eaf6f7;
+}
+
+.listing-buttons {
+  margin:0px auto 30px auto;
+  text-align: center;
+
+.custom-button {
+    margin: 5px;
+    padding: 0px;
+  @include MQ(S) {
+      margin: 20px 10px 0px 10px;
+  }
+}
+}
+
+.listing {
+  margin: 115px 0px 10px 0px;
+  height: inherit;
+
+i {
+  margin-right: 10px;
+  color: black;
+}
+
+img {
+  width: 160px;
+}
+
+hr {
+  margin: 0px;
+}
+
+.listing-spec {
+
+  text-align: left;
+  width: 85%;
+  margin: 20px auto;
+  line-height: 30px;
+}
+
+label {
+  display: inline;
+  margin-right: 5px;
+}
+
+p {
+  display: inline;
+  color: $color-1;
+  font-weight: bold;
+}
+
+.tag-wrapper {
+  margin: 10px auto 30px;
+
+.tag {
+  height: 27px;
+  line-height: 27px;
+  padding: 0px 3px;
+  display: inline-block;
+  background-color: $color-2;
+  color: $color-1;
+  border-radius: 20px;
+  text-transform: none;
+
+@include MQ(M) {
+  padding: 0px 20px;
+    }
+  }
+}
+}
+
+.more {
+  font-size: 12px;
+  padding: 0px 2px;
+  @include MQ(M) {
+    font-size: 14px;
+  }
+}
+
+.morecontent span {
+    display: none;
+
+}
+.morelink {
+    display: block;
+
+}
+
+/* --------------------------------
+Screen 2B1
+-------------------------------- */
+
+.connect-form {
+
+  h6 {
+    font-size: 14px;
+    @include MQ(M) {
+      font-size: 16px;
+    }
+  }
+
+  label {
+    font-weight: normal;
+  }
+  .input-field {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .custom-button {
+    width: 50%;
+  }
+}
+
+.small-print {
+  width: 350px;
+  margin: 0px auto;
+  font-size: 12px;
+  color: grey;
+  opacity: 0.7;
+}
+
+#contact-email {
+  width: 80%;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+
+/* --------------------------------
+Modal style
+-------------------------------- */
+
+.remodal {
+  min-width: 190px;
+  .custom-button {
+    display: block;
+  }
+}
+
+.remodal-close {
+   right: 0px;
+   left: inherit;
+ }
+
+ /* --------------------------------
+ Modal for sharing
+ -------------------------------- */
+
+.share {
+  width: 80%;
+  margin-top: 15px;
+}
+
+.line-around {
+  text-align:center;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #000;
+  line-height:0.1em;
+  margin:45px 0px;
+
+span {
+  background:#fff;
+  padding:0 10px;
+}
+}
+
+.options {
+  width: 90%;
+  margin: 0px auto;
+}
+
+#messenger {
+  background-color: #0c7bc6;
+}
+#facebook {
+  background-color: #3b5998;
+}
+#twitter {
+  background-color: #1da1f2;
+}
+
+/* --------------------------------
+Screen 2b3
+-------------------------------- */
+
+.iphone {
+    width: 300px;
+    display: block;
+    margin: 0px auto 20px auto;
+}
+
+.link {
+  min-width: 135px;
+  padding: 0px;
+  height: 42px;
+  line-height: 40px;
+  margin: 0px 10px 0px -5px;
+  display: inline-block;
+  background-color: $color-2;
+  color: $color-1;
+  border: 2px solid $color-1;
+  vertical-align: top;
+  text-transform: none;
+  font-size: 12px;
+}
+
+/* --------------------------------
+Modal for appstore
+-------------------------------- */
+
+  .alt-button {
+    display: inline-block;
+    background-color: $color-2;
+    color: $color-1;
+    border: 2px solid $color-1;
+    margin: 20px auto;
+  }

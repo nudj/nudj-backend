@@ -124,7 +124,6 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function job($jobId = null , $hash = null)
     {
-
         try {
             Shield::validate('session');
         } catch (ApiException $e) {
@@ -158,13 +157,10 @@ class WebController extends \Illuminate\Routing\Controller
 
     public function jobpreview2($jobId = null)
     {
-
         $job = Job::findorFail($jobId);
-
         if(!$job){
             return redirect('/');
         }
-
         return view('web/page/jobpreview2', [
             'job'       => $job,
             'employer'  => $job->company,
@@ -173,6 +169,14 @@ class WebController extends \Illuminate\Routing\Controller
             'hostname'  => env('SERVER_HOSTNAME', 'mobileweb.nudj.co'),
             'top_explanation_975fb67e' => Text1::get_text_by_reference_or_empty_string('160dc2c7-0e4e-4ed0-86e9-8ba780e71b2a')
         ]);
+    }
+
+    public function applying($jobId = null) {
+        return view('web/page/2b1-applying', []);
+    }
+
+    public function appdownloads($jobId = null) {
+        return view('web/page/2b3-appdownloads', []);
     }
 
 }

@@ -1,0 +1,339 @@
+/* --------------------------------
+Primary style
+-------------------------------- */
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 320px; }
+
+.main {
+  margin-top: 7vh; }
+
+.center {
+  text-align: center; }
+
+p {
+  margin-bottom: 0.5em; }
+
+.brand {
+  margin: 0px;
+  color: #00a187;
+  font-weight: bolder; }
+
+.space {
+  margin-bottom: 20px; }
+
+/* --------------------------------
+Header
+-------------------------------- */
+header {
+  font-family: "Raleway", sans-serif;
+  background-color: #00a187;
+  padding: 2px 0px;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 0.4px; }
+  header .container {
+    padding: 10px 0px; }
+  header .logo {
+    float: left;
+    font-size: 14px; }
+    header .logo img {
+      margin-top: 8px;
+      margin-left: -4px;
+      width: 65px; }
+      @media only screen and (min-width: 350px) {
+        header .logo img {
+          margin-top: 3px;
+          width: 95px; } }
+      @media only screen and (min-width: 540px) {
+        header .logo img {
+          width: 127px; } }
+    header .logo p {
+      line-height: normal;
+      font-size: 14px;
+      display: none; }
+    @media only screen and (min-width: 768px) {
+      header .logo {
+        padding-left: 5px; }
+        header .logo p {
+          display: block; } }
+  header .intro {
+    min-width: 280px;
+    margin-top: 12px;
+    font-size: 10px;
+    line-height: 12px; }
+    header .intro p {
+      margin: 0px; }
+    @media only screen and (min-width: 540px) {
+      header .intro {
+        min-width: 400px;
+        line-height: 21px;
+        font-size: 14px; } }
+    @media only screen and (min-width: 768px) {
+      header .intro {
+        font-size: 14px;
+        margin-top: 22px; } }
+
+/* --------------------------------
+Screen 2a1
+-------------------------------- */
+.whiteframe {
+  width: 100%;
+  margin: 0px auto 30px auto;
+  background-color: white;
+  border: 2px solid rgba(136, 136, 136, 0.3);
+  box-shadow: 1px 1px rgba(136, 136, 136, 0.6);
+  border-radius: 8px; }
+  .whiteframe h5 {
+    line-height: 50px;
+    margin-top: 17px; }
+
+.plane-wrapper {
+  background-color: #00a187;
+  width: 100%;
+  padding-right: 4px;
+  margin-left: -2px;
+  margin-bottom: 62px; }
+  .plane-wrapper img {
+    width: 290px; }
+
+.custom-button, input.custom-button {
+  display: inline-block;
+  min-width: 100px;
+  margin: 5px auto;
+  font-size: 12px;
+  line-height: 50px;
+  height: 50px;
+  font-weight: 300;
+  text-transform: none;
+  background-color: #00a187;
+  color: #ffffff;
+  border-radius: 8px; }
+  @media only screen and (min-width: 768px) {
+    .custom-button, input.custom-button {
+      font-size: 14px;
+      min-width: 160px; } }
+
+/* --------------------------------
+Screen 1
+-------------------------------- */
+.bubble {
+  margin-left: 20px !important; }
+  @media only screen and (min-width: 768px) {
+    .bubble {
+      margin-left: 80px !important; } }
+  @media only screen and (min-width: 1200px) {
+    .bubble {
+      margin-left: 110px !important; } }
+
+.alt-logo-wrapper {
+  display: inline-block;
+  float: left;
+  min-width: 42px;
+  margin-top: 10px;
+  background-color: #00a187;
+  border: 3px solid #00a187;
+  border-radius: 50%; }
+  .alt-logo-wrapper img {
+    width: 50px;
+    margin: 0px 10px 2px 0px; }
+  @media only screen and (min-width: 1200px) {
+    .alt-logo-wrapper img {
+      width: 50px; } }
+
+.rectangle {
+  width: 55%;
+  position: relative;
+  border-radius: 20px;
+  background-color: #eaf6f7;
+  margin: 5px 0px 0px 85px;
+  padding: 16px; }
+  .rectangle p {
+    font-size: 0.75em;
+    line-height: 16px; }
+  @media only screen and (min-width: 540px) {
+    .rectangle {
+      min-width: 365px;
+      padding-left: 35px; }
+      .rectangle p {
+        font-size: 0.9em; } }
+  @media only screen and (min-width: 768px) {
+    .rectangle {
+      width: 450px; } }
+
+.triangle {
+  position: absolute;
+  top: 44px;
+  left: -15px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-right: 26px solid #eaf6f7; }
+
+.listing-buttons {
+  margin: 0px auto 30px auto;
+  text-align: center; }
+  .listing-buttons .custom-button {
+    margin: 5px;
+    padding: 0px; }
+    @media only screen and (min-width: 540px) {
+      .listing-buttons .custom-button {
+        margin: 20px 10px 0px 10px; } }
+
+.listing {
+  margin: 115px 0px 10px 0px;
+  height: inherit; }
+  .listing i {
+    margin-right: 10px;
+    color: black; }
+  .listing img {
+    width: 160px; }
+  .listing hr {
+    margin: 0px; }
+  .listing .listing-spec {
+    text-align: left;
+    width: 85%;
+    margin: 20px auto;
+    line-height: 30px; }
+  .listing label {
+    display: inline;
+    margin-right: 5px; }
+  .listing p {
+    display: inline;
+    color: #00a187;
+    font-weight: bold; }
+  .listing .tag-wrapper {
+    margin: 10px auto 30px; }
+    .listing .tag-wrapper .tag {
+      height: 27px;
+      line-height: 27px;
+      padding: 0px 3px;
+      display: inline-block;
+      background-color: #ffffff;
+      color: #00a187;
+      border-radius: 20px;
+      text-transform: none; }
+      @media only screen and (min-width: 768px) {
+        .listing .tag-wrapper .tag {
+          padding: 0px 20px; } }
+
+.more {
+  font-size: 12px;
+  padding: 0px 2px; }
+  @media only screen and (min-width: 768px) {
+    .more {
+      font-size: 14px; } }
+
+.morecontent span {
+  display: none; }
+
+.morelink {
+  display: block; }
+
+/* --------------------------------
+Screen 2B1
+-------------------------------- */
+.connect-form h6 {
+  font-size: 14px; }
+  @media only screen and (min-width: 768px) {
+    .connect-form h6 {
+      font-size: 16px; } }
+.connect-form label {
+  font-weight: normal; }
+.connect-form .input-field {
+  margin-bottom: 20px;
+  width: 100%; }
+.connect-form .custom-button {
+  width: 50%; }
+
+.small-print {
+  width: 350px;
+  margin: 0px auto;
+  font-size: 12px;
+  color: grey;
+  opacity: 0.7; }
+
+#contact-email {
+  width: 80%;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 5px; }
+
+/* --------------------------------
+Modal style
+-------------------------------- */
+.remodal {
+  min-width: 190px; }
+  .remodal .custom-button {
+    display: block; }
+
+.remodal-close {
+  right: 0px;
+  left: inherit; }
+
+/* --------------------------------
+Modal for sharing
+-------------------------------- */
+.share {
+  width: 80%;
+  margin-top: 15px; }
+
+.line-around {
+  text-align: center;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 45px 0px; }
+  .line-around span {
+    background: #fff;
+    padding: 0 10px; }
+
+.options {
+  width: 90%;
+  margin: 0px auto; }
+
+#messenger {
+  background-color: #0c7bc6; }
+
+#facebook {
+  background-color: #3b5998; }
+
+#twitter {
+  background-color: #1da1f2; }
+
+/* --------------------------------
+Screen 2b3
+-------------------------------- */
+.iphone {
+  width: 300px;
+  display: block;
+  margin: 0px auto 20px auto; }
+
+.link {
+  min-width: 135px;
+  padding: 0px;
+  height: 42px;
+  line-height: 40px;
+  margin: 0px 10px 0px -5px;
+  display: inline-block;
+  background-color: #ffffff;
+  color: #00a187;
+  border: 2px solid #00a187;
+  vertical-align: top;
+  text-transform: none;
+  font-size: 12px; }
+
+/* --------------------------------
+Modal for appstore
+-------------------------------- */
+.alt-button {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #00a187;
+  border: 2px solid #00a187;
+  margin: 20px auto; }
+
+/*# sourceMappingURL=style.css.map */

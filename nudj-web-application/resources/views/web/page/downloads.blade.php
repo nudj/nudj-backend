@@ -34,7 +34,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="text-muted">Copyright Nudj 2015</p>
+            <p class="text-muted">Copyright Nudj 2016</p>
         </div>
     </footer>
 @endsection

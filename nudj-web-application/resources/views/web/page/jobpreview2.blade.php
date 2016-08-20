@@ -107,10 +107,10 @@
     </div>
 
     <div class="class-076e42fe-user-interaction">
-        <div class="f5e9a67c" onclick="navigate_1407();">
+        <div class="f5e9a67c" onclick="navigate_to_applying_2f0b93a2();">
             <div style="margin: auto;">I'll Apply</div>
         </div>
-        <div class="f87ac018" onclick="navigate_1407();">
+        <div class="f87ac018" onclick="navigate_to_nudj_a_friend_1e72f178();">
             <div style="margin: auto;">Nudj a friend</div>
         </div>
     </div>
@@ -122,8 +122,11 @@
     </div>
 
 <script>
-    function navigate_1407(){
+    function navigate_to_nudj_a_friend_1e72f178(){
         location.href = '/register/{{$job->id}}'
+    }
+    function navigate_to_applying_2f0b93a2(){
+        location.href = '/applying/{{$job->id}}'
     }
 </script>
 
