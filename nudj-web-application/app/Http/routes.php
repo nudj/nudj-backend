@@ -38,6 +38,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('appdownloads', 'Web\WebController@appdownloads'); 
     Route::get('nudj-a-friend/{jobId}', 'Web\WebController@nudjAFriend'); 
 
+    Route::post('applicationdetails', 'Web\ActionsController@applicationDetails'); 
+
 });
 
 // -------------------------------------------------------------------------------

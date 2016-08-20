@@ -60,23 +60,26 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container main remodal-bg">
     <div class="row ">
-        <form class="eight columns connect-form offset-by-two">
+        <form id="form-f6799cbb" class="eight columns connect-form offset-by-two">
             <div class="center">
                 <h6>Please enter your details so we can connect you to the hirer:</h6>
                 <br>
             </div>
             <div class="ten columns offset-by-one">
                 <label for="exampleEmailInput">Your name</label>
-                <input class="input-field" type="text" placeholder="Enter your name" id="nameInput">
+                <input class="input-field" type="text" placeholder="Enter your name" id="nameInput" name="nameInput">
                 <label for="exampleEmailInput">Your email</label>
-                <input class="input-field" type="email" placeholder="Enter your email" id="emailInput">
+                <input class="input-field" type="email" placeholder="Enter your email" id="emailInput" name="emailInput">
                 <label for="linkInput">Link to portfolio or Linkedin</label>
-                <input class="input-field" type="text" placeholder="Enter link" id="linkInput">
+                <input class="input-field" type="text" placeholder="Enter link" id="linkInput" name="linkInput">
                 <label for="referrerInput">Name of referrer</label>
-                <input class="input-field" type="text" placeholder="Enter referrer" id="referrerInput">
+                <input class="input-field" type="text" placeholder="Enter referrer" id="referrerInput" name="referrerInput">
                 <div class="center">
                     <br>
-                    <input data-remodal-target="confirmation-modal" class="button custom-button" type="submit" value="Confirm">
+                    <!-- 
+                    <input id="submit-button-1ac6056d" data-remodal-target="confirmation-modal" class="button custom-button" type="submit" value="Confirm">
+                    -->
+                    <input id="submit-button-1ac6056d" class="button custom-button" type="button" value="Confirm">
                 </div>
             </div>
         </form>
@@ -103,6 +106,17 @@
 <script>
 $(document).delegate( "#send-link", "click", function() {
     location.href = '/appdownloads'
+});    
+$(document).delegate( "#submit-button-1ac6056d", "click", function() {
+    $.ajax({
+        url: '/applicationdetails',
+        type: 'post',
+        dataType: 'json',
+        data: $('#form-f6799cbb').serialize(),
+        success: function(data) {
+            console.log(data);
+        }
+    });
 });    
 </script>
 
