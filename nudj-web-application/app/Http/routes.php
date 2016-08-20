@@ -16,8 +16,6 @@ Route::group(['prefix' => '/'], function () {
 
 	// Relevant Information: 2c4e861f-be97-49a2-ad53-2d9c2f6a7f74
 
-    Route::get('jobpreview/{jobId}/{hash?}', 'Web\WebController@jobpreview2');
-
     Route::get('register/{jobId}', 'Web\WebController@login2');
 
     Route::post('validate', 'Web\WebController@validate2'); # The page after submitting your phone number and where you need to put the pin 
@@ -30,6 +28,11 @@ Route::group(['prefix' => '/'], function () {
     Route::post('refer', 'Web\ActionsController@nudge');
     Route::get('countries', 'Web\ActionsController@countries');
     Route::get('download', 'Web\WebController@download');
+
+    // ---------------------------
+    // Reimplementation 
+
+    Route::get('jobpreview/{jobId}', 'Web\WebController@jobpreview2');
 
 });
 

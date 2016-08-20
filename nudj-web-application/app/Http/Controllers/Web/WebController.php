@@ -156,7 +156,7 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
-    public function jobpreview2($jobId = null , $hash = null)
+    public function jobpreview2($jobId = null)
     {
 
         $job = Job::findorFail($jobId);
