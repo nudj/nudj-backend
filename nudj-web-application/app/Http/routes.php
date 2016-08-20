@@ -14,7 +14,8 @@ Route::get('/', 'Web\HomeController@index');
 // Web view
 Route::group(['prefix' => '/'], function () {
 
-	// Relevant Information: 2c4e861f-be97-49a2-ad53-2d9c2f6a7f74
+    // ---------------------------
+    // Reimplementation 
 
     Route::get('register/{jobId}', 'Web\WebController@login2');
     Route::post('validate', 'Web\WebController@validate2'); # The page after submitting your phone number and where you need to put the pin 
@@ -22,8 +23,12 @@ Route::group(['prefix' => '/'], function () {
     Route::get('job/{jobId}/{hash?}', 'Web\WebController@job');
     Route::post('apply', 'Web\ActionsController@apply');
     Route::post('refer', 'Web\ActionsController@nudge');
-    Route::get('countries', 'Web\ActionsController@countries');
     Route::get('download', 'Web\WebController@download');
+
+    // ---------------------------
+    // Reimplementation 
+
+    Route::get('countries', 'Web\ActionsController@countries');
 
     // ---------------------------
     // Reimplementation 
