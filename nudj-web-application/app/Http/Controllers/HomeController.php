@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Web;
+<?php namespace App\Http\Controllers;
 
 class HomeController extends \Illuminate\Routing\Controller {
 

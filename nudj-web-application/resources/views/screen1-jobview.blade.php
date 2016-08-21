@@ -16,6 +16,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link href='https://fonts.googleapis.com/css?family=Raleway:500,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
   <!-- MODAL
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -43,7 +44,7 @@
   <div class="container">
 
       <div class="logo">
-        <a href="screen1.html"><img src="/assets/web-dc8ab01d/images/main-logo.jpg" alt="nudj"/></a>
+        <a href="/"><img src="/assets/web-dc8ab01d/images/main-logo.jpg" alt="nudj"/></a>
         <p>The Talent Referral App</p>
       </div>
 
@@ -58,20 +59,46 @@
 <!-- Page-specific content
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container main">
-  <div class="row ">
-    <div class="six columns connect-form offset-by-three">
-      <div class="center">
-        <h4>Your referral has been shared!</h4>
-        <p>If your referral is succesful, you will get the referral bonus.</p>
-        <p>Enter your e-mail below so we can contact you:</p>
-        <br>
-        <input type="email" placeholder="enter your email here" id="contact-email">
-        <p class="small-print space">We will not send you unsolicitated e-mail or share your details with anyone</p>
-        <br>
-        <input class="custom-button" type="submit" value="Confirm">
-        <br>
-        <a href="#">Share again?</a>
+  <div class="row">
+  <div class="ten columns offset-by-one">
+
+<div class="eight columns bubble">
+  <div class="alt-logo-wrapper">
+    <img class="alt-logo" src="/assets/web-dc8ab01d/images/alt-logo2.png" alt="logo"/>
+  </div>
+  <div class="rectangle">
+    <p>Hey! We’re using nudj to help us hire but need some help. <br> Do you know anyone who might be interested in this job? </p>
+    <div class="triangle">
     </div>
+  </div>
+</div>
+
+<div class="whiteframe listing center">
+  <h5 class="brand">{{$job->title}}</h5>
+  <h6 class="brand"><i class="fa fa-home"></i>{{$job->company}}</h6>
+  <h6 class="brand"><i class="fa fa-map-marker" aria-hidden="true"></i>{{$job->location}}</h6>
+  <div class="listing-spec">
+    <label>Posted:</label> <p>{{$posted_at}}</p> <br>
+    <label>Salary:</label> <p>{{$job->salary}}</p> <br>
+    @if($job->bonus>0)
+    <label>Referral bonus:</label><p>{{$job->bonus_currency}} {{$job->bonus}}</p> <br>
+    @endif
+  </div>
+  <span class="more ten columns offset-by-one">{{$job->description}}</span>
+  <section class="tag-wrapper">
+    @foreach ($skills as $skill)
+        <button id="send-link" class="tag">{{$skill->name}}</button>
+    @endforeach
+  </section>
+  <hr>
+  <img src="/assets/web-dc8ab01d/images/banner.png" alt="nudj"/>
+</div>
+
+<section class="listing-buttons">
+  <a href="/apply/{{$job->id}}" class="button custom-button alt-button left">I'll apply</a>
+  <a href="/nudj-a-friend/{{$job->id}}" class="button custom-button right">Nudj a friend</a>
+</section>
+
   </div>
   </div>
 </div>

@@ -16,6 +16,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link href='https://fonts.googleapis.com/css?family=Raleway:500,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
   <!-- MODAL
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -43,7 +44,7 @@
   <div class="container">
 
       <div class="logo">
-        <a href="screen1.html"><img src="/assets/web-dc8ab01d/images/main-logo.jpg" alt="nudj"/></a>
+        <a href="/"><img src="/assets/web-dc8ab01d/images/main-logo.jpg" alt="nudj"/></a>
         <p>The Talent Referral App</p>
       </div>
 
@@ -57,55 +58,40 @@
 
 <!-- Page-specific content
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<div class="container main">
-  <div class="row ">
-
-  <div class="eight columns connect-form offset-by-two">
-    <div class="center">
-      <h5>Know someone great for this job?</h5>
-      <div class="whiteframe">
-        <h5>{{$job->title}} ({{$job->location}})</h5>
-        <div class="plane-wrapper">
-          <img src="/assets/web-dc8ab01d/images/plane.png" alt="plane" />
-        </div>
-      </div>
-      <p>If you have an iPhone, you can get our free app to Nudj them.</p>
-      <p>You get rewarded if they get hired.</p>
-      <br>
-      <p class="space">Don’t have an iPhone? You can still share a link with them.</p>
-
-      <section class="options">
-        <button data-remodal-target="share-modal" class="custom-button left">Share</button>
-        <!-- 
-            We are not going to use the original behavior of that button
-        <button data-remodal-target="appstore-modal" class="custom-button right">Download Nudj</button>
-        -->
-        <button id="app-store-download-59054016" class="custom-button right">Download Nudj</button>
-      </section>
-      <br>
-  </div>
-  </div>
-</div>
-</div>
-
-<div class="remodal" data-remodal-id="share-modal" data-remodal-options="hashTracking: false">
-  <button data-remodal-action="close" class="remodal-close right"></button>
-  <h5>Share via</h5>
-  <button id="link" class="custom-button share">Copy Link</button>
-  <button id="email" class="custom-button share">E-mail</button>
-  <button id="messenger" class="custom-button share">Facebook Messenger</button>
-  <button id="facebook" class="custom-button share">Facebook</button>
-  <button id="twitter" class="custom-button share">Twitter</button>
-</div>
-
-<div class="remodal" data-remodal-id="appstore-modal" data-remodal-options="hashTracking: false">
-  <button data-remodal-action="close" class="remodal-close right"></button>
-  <p class="space">You will be redirected to the app store.</p>
-  <button id="download" class="custom-button">Download now</button>
-  <p class="line-around"> <span><strong>Not on a mac?</strong></span></p>
-  <p>Enter your email and we'll send you a link</p>
-  <input type="email" placeholder="enter your email here" id="contact-email">
-  <button id="send-link" class="custom-button alt-button">Send me a link</button>
+<div class="container main remodal-bg">
+    <div class="row ">
+        <form id="form-f6799cbb" class="eight columns connect-form offset-by-two">
+            <div class="center">
+                <h6>Please enter your details so we can connect you to the hirer:</h6>
+                <br>
+            </div>
+            <div class="ten columns offset-by-one">
+                <label for="exampleEmailInput">Your name</label>
+                <input class="input-field" type="text" placeholder="Enter your name" id="nameInput" name="nameInput">
+                <label for="exampleEmailInput">Your email</label>
+                <input class="input-field" type="email" placeholder="Enter your email" id="emailInput" name="emailInput">
+                <label for="linkInput">Link to portfolio or Linkedin</label>
+                <input class="input-field" type="text" placeholder="Enter link" id="linkInput" name="linkInput">
+                <label for="referrerInput">Name of referrer</label>
+                <input class="input-field" type="text" placeholder="Enter referrer" id="referrerInput" name="referrerInput">
+                <div class="center">
+                    <br>
+                    <!-- 
+                    <input id="submit-button-1ac6056d" data-remodal-target="confirmation-modal" class="button custom-button" type="submit" value="Confirm">
+                    -->
+                    <input id="submit-button-1ac6056d" class="button custom-button" type="button" value="Confirm">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="remodal" data-remodal-id="confirmation-modal" data-remodal-options="hashTracking: false">
+        <h5 class="brand">Application successful</h5>
+        <br>
+        <p>We have sent your details to the hirer.</p>
+        <p>Good luck!</p>
+        <br>
+        <button id="send-link" class="custom-button"  data-remodal-action="close">Ok, thank you</button>
+    </div>
 </div>
 
 <!-- End of page-specific content
@@ -118,11 +104,21 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 <script>
-$(document).delegate( "#app-store-download-59054016", "click", function() {
-    location.href = 'https://geo.itunes.apple.com/gb/app/nudj-the-talent-referral-app/id1081609782?mt=8'
+$(document).delegate( "#send-link", "click", function() {
+    location.href = '/appdownloads'
+});    
+$(document).delegate( "#submit-button-1ac6056d", "click", function() {
+    $.ajax({
+        url: '/applicationdetails',
+        type: 'post',
+        dataType: 'json',
+        data: $('#form-f6799cbb').serialize(),
+        success: function(data) {
+            console.log(data);
+        }
+    });
 });    
 </script>
-
 
 </body>
 </html>

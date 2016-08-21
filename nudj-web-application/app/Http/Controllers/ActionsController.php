@@ -1,16 +1,7 @@
-<?php namespace App\Http\Controllers\Web;
+<?php namespace App\Http\Controllers;
 
+use App\Http\Requests\ApiRequest;
 use App\Http\Requests\ApplyRequest;
-use App\Http\Requests\Web\NudgeRequest;
-use App\Http\Requests\Web\VerifyUserRequest;
-use App\Http\Requests\ApplicationRequest;
-use App\Models\Application;
-use App\Models\Contact;
-use App\Models\Country;
-use App\Models\Nudge;
-use App\Models\User;
-use App\Utility\Facades\Shield;
-
 use App\NSX300\NSX300_ApplicationsX1;
 
 use Log;
@@ -21,7 +12,7 @@ class ActionsController extends \Illuminate\Routing\Controller
     // -------------------------------------------------------------------
     // New implementation
 
-    public function applicationDetails(ApplicationRequest $request) {
+    public function applicationDetails(ApplyRequest $request) {
         //Log::info("nameInput    : ".$request->nameInput);
         //Log::info("emailInput   : ".$request->emailInput);
         //Log::info("linkInput    : ".$request->linkInput);
@@ -35,6 +26,5 @@ class ActionsController extends \Illuminate\Routing\Controller
             'success' => $request->all()
         ]);
     }
-
 }
 

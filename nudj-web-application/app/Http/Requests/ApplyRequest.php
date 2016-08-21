@@ -10,7 +10,10 @@ class ApplyRequest extends ApiRequest {
 	public function rules()
 	{
 		return [
-			'job_id' => 'required',
+            'nameInput'     => 'required',
+            'emailInput'    => 'required',
+            'linkInput'     => 'required',
+            'referrerInput' => 'required'
 		];
 	}
 

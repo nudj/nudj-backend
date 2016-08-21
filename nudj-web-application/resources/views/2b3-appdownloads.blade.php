@@ -43,7 +43,7 @@
   <div class="container">
 
       <div class="logo">
-        <a href="screen1.html"><img src="/assets/web-dc8ab01d/images/main-logo.jpg" alt="nudj"/></a>
+        <a href="/"><img src="/assets/web-dc8ab01d/images/main-logo.jpg" alt="nudj"/></a>
         <p>The Talent Referral App</p>
       </div>
 
