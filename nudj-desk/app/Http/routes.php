@@ -12,34 +12,34 @@ $router->pattern('filter', '([a-z]+)');
 Route::group(['prefix' => '/'], function() {
 
     // AUTHENTICATION
-    Route::get('auth/login', 'Desk\Auth\AuthController@getLogin');
+    Route::get('auth/login',  'Desk\Auth\AuthController@getLogin');
     Route::post('auth/login', 'Desk\Auth\AuthController@postLogin');
     Route::get('auth/logout', 'Desk\Auth\AuthController@getLogout');
 
     // DASHBOARD
-    Route::get('/', 'Desk\DashboardController@index');
+    Route::get('/',         'Desk\DashboardController@index');
     Route::get('dashboard', 'Desk\DashboardController@index');
 
     // USERS
-    Route::get('/users', 'Desk\UsersController@index');
+    Route::get('/users',      'Desk\UsersController@index');
     Route::get('/users/{id}', 'Desk\UsersController@show');
 
     // JOBS
-    Route::get('/jobs', 'Desk\JobsController@index');
-    Route::get('/jobs/{id}', 'Desk\JobsController@show');
+    Route::get('/jobs',        'Desk\JobsController@index');
+    Route::get('/jobs/{id}',   'Desk\JobsController@show');
     Route::get('/jobs/create', 'Desk\JobsController@createpage');
 
     // STATIC CONTENTS
-    Route::get('/staticcontents', 'Desk\StaticContentsController@index');
-    Route::get('/staticcontentselement/{reference}', 'Desk\StaticContentsController@showelement');
+    Route::get('/staticcontents',                     'Desk\StaticContentsController@index');
+    Route::get('/staticcontentselement/{reference}',  'Desk\StaticContentsController@showelement');
     Route::post('/staticcontentselement/{reference}', 'Desk\StaticContentsController@updateelement');
 
     // ADMINS
-    Route::get('/admins', 'Desk\AdminsController@index');
+    Route::get('/admins',        'Desk\AdminsController@index');
     Route::get('/admins/create', 'Desk\AdminsController@create');
-    Route::post('/admins', 'Desk\AdminsController@store');
-    Route::get('/admins/{id}', 'Desk\AdminsController@show');
-    Route::post('/admins/{id}', 'Desk\AdminsController@update');
+    Route::post('/admins',       'Desk\AdminsController@store');
+    Route::get('/admins/{id}',   'Desk\AdminsController@show');
+    Route::post('/admins/{id}',  'Desk\AdminsController@update');
 
     // DATATABLES
     Route::get('/datatables/{who}', 'Desk\DeskController@tableData');
