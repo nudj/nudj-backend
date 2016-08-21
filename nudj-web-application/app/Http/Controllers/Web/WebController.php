@@ -158,8 +158,8 @@ class WebController extends \Illuminate\Routing\Controller
     // -------------------------------------------------------------------
     // New implementation
 
-    public function applying($jobId = null) {
-        return view('web/page/2b1-applying', []);
+    public function apply($jobId = null) {
+        return view('web/page/2b1-apply', []);
     }
 
     public function appdownloads($jobId = null) {

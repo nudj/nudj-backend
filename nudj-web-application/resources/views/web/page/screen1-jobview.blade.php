@@ -95,7 +95,7 @@
 </div>
 
 <section class="listing-buttons">
-  <a href="/applying/{{$job->id}}" class="button custom-button alt-button left">I'll apply</a>
+  <a href="/apply/{{$job->id}}" class="button custom-button alt-button left">I'll apply</a>
   <a href="/nudj-a-friend/{{$job->id}}" class="button custom-button right">Nudj a friend</a>
 </section>
 
