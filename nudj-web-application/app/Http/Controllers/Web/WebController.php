@@ -24,9 +24,6 @@ use Log;
 class WebController extends \Illuminate\Routing\Controller
 {
 
-    const TYPE_NUDGE = 'nudge';
-    const TYPE_REFER = 'refer';
-
     // -------------------------------------------------------------------
     // New implementation
 
