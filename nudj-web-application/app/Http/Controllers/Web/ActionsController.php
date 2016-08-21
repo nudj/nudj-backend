@@ -33,24 +33,6 @@ class ActionsController extends \Illuminate\Routing\Controller
         ]);
     }
 
-    public function apply(ApplyRequest $request)
-    {
-        if(!Shield::validate('session'))
-            return response()->json(['success' => false]);
-
-        $referrerId = null;
-        if($request->hash) {
-            $nudge = Nudge::findByHash($request->hash);
-
-            if($nudge)
-                $referrerId = $nudge->referrer_id;
-        }
-
-        Application::applyForJob(Shield::getUserId(), $request->job_id, $referrerId, true);
-
-        return response()->json(['success' => true]);
-    }
-
     // -------------------------------------------------------------------
     // New implementation
 
