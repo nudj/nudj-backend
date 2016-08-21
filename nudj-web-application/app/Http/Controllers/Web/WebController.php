@@ -27,23 +27,6 @@ class WebController extends \Illuminate\Routing\Controller
     const TYPE_NUDGE = 'nudge';
     const TYPE_REFER = 'refer';
 
-    public function login2($jobidentifier)
-    {
-        if(Agent::is('iPhone'))
-            return redirect('download');
-            //return redirect('https://itunes.apple.com/app/id1027993202');
-
-        $job = Job::find($jobidentifier);
-        $user = User::find(13);
-
-        return view('web/page/register2', [
-            'type' => self::TYPE_NUDGE,
-            'job'  => $job,
-            'user' => $user,
-            'countries' => Country::web()->orderBy('name', 'asc')->get(),
-        ]);
-    }
-
     // -------------------------------------------------------------------
     // New implementation
 
