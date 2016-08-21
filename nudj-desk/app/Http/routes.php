@@ -74,10 +74,3 @@ Route::group(['prefix' => 'deskapi'], function () {
 
 });
 
-// -------------------------------------------------------------------------------
-// Listen for some stuff
-if (env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {
-    Event::listen('illuminate.query', function ($query) {
-        echo($query . "\r\n");
-    });
-}
