@@ -16,7 +16,13 @@ class WebController extends \Illuminate\Routing\Controller
     // New implementation
 
     public function apply($jobId = null) {
-        return view('2b1-apply', []);
+        $job = Job::findorFail($jobId);
+        if(!$job){
+            return redirect('/');
+        }
+        return view('2b1-apply', [
+            'job' => $job,
+        ]);
     }
 
     public function appdownloads($jobId = null) {

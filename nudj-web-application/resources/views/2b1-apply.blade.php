@@ -66,6 +66,7 @@
                 <br>
             </div>
             <div class="ten columns offset-by-one">
+                <input type="hidden" name="jobIdentifier" value="{{$job->id}}">
                 <label for="exampleEmailInput">Your name</label>
                 <input class="input-field" type="text" placeholder="Enter your name" id="nameInput" name="nameInput">
                 <label for="exampleEmailInput">Your email</label>
