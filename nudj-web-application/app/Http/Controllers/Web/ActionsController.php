@@ -18,21 +18,6 @@ use Log;
 class ActionsController extends \Illuminate\Routing\Controller
 {
 
-    public function verify(VerifyUserRequest $request)
-    {
-
-        $user = User::verify($request->all());
-
-        if ($user) {
-            Contact::syncContactOf($user->id, $user->phone);
-            Shield::createSession($user->token);
-        }
-
-        return response()->json([
-            'success' => (bool) $user
-        ]);
-    }
-
     // -------------------------------------------------------------------
     // New implementation
 
