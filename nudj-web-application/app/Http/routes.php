@@ -27,11 +27,6 @@ Route::group(['prefix' => '/'], function () {
     // ---------------------------
     // Reimplementation 
 
-    Route::get('countries', 'Web\ActionsController@countries');
-
-    // ---------------------------
-    // Reimplementation 
-
     Route::get('jobpreview/{jobId}',    'Web\WebController@jobview');
     Route::get('job/{jobId}',           'Web\WebController@jobview');
 
