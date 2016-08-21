@@ -44,14 +44,6 @@ Route::group(['prefix' => '/'], function () {
 });
 
 // -------------------------------------------------------------------------------
-// HTML sources accessed from the app
-Route::group(['prefix' => 'html'], function () {
-    Route::get('terms', 'HtmlController@terms');
-    Route::get('privacy', 'HtmlController@privacy');
-    Route::get('cookies', 'HtmlController@cookies');
-});
-
-// -------------------------------------------------------------------------------
 // Listen for some stuff
 if (env('APP_ENV') != 'production' && Input::get('debug') == 'sql') {
     Event::listen('illuminate.query', function ($query) {
