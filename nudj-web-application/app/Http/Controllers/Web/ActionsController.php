@@ -33,24 +33,6 @@ class ActionsController extends \Illuminate\Routing\Controller
         ]);
     }
 
-    public function nudge(NudgeRequest $request)
-    {
-
-        if(!Shield::validate('session'))
-            return response()->json(['success' => false]);
-
-        $userId = Shield::getUserId();
-
-        // Add the recommended person as a contact
-        $contact = ['phone' => $request->phone, 'alias' => $request->name];
-        $contactIds = Contact::addMissing($userId, [$contact], config('default.country_code'));
-
-        // Create new Nudge
-        Nudge::nudgeContacts($userId, $request->job_id, $contactIds, $request->message);
-
-        return response()->json(['success' => true]);
-    }
-
     public function apply(ApplyRequest $request)
     {
         if(!Shield::validate('session'))
