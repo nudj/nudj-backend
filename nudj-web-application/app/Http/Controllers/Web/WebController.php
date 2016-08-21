@@ -122,39 +122,6 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
-    public function job($jobId = null , $hash = null)
-    {
-        try {
-            Shield::validate('session');
-        } catch (ApiException $e) {
-            return redirect('/');
-        }
-
-        $job = Job::findorFail($jobId);
-
-        $user = User::find(Shield::getUserId());
-
-        if(!$user || !$job)
-            return redirect('/');
-
-        if ($user->isNudged($job->id))
-            $type = self::TYPE_NUDGE;
-        else
-            $type = self::TYPE_REFER;
-
-        return view('web/page/job', [
-            'user'      => $user,
-            'type'      => $type,
-            'hash'      => $hash,
-            'job'       => $job,
-            'employer'  => $job->company,
-            'skills'    => $job->skills,
-            'countries' => Country::web()->orderBy('name', 'asc')->get(),
-            'hostname'  => env('SERVER_HOSTNAME', 'mobileweb.nudj.co'),
-            'top_explanation_975fb67e' => Text1::get_text_by_reference_or_empty_string('160dc2c7-0e4e-4ed0-86e9-8ba780e71b2a')
-        ]);
-    }
-
     // -------------------------------------------------------------------
     // New implementation
 
