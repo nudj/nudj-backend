@@ -116,7 +116,7 @@
                 columnDefs: [ {
                     "aTargets": -1,
                     "data": null,
-                    "defaultContent": '<a id="show" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Show</a>  <a id="remove" class="btn btn-xs btn-danger"><i class="fa fa-times"></i> Remove</a>'
+                    "defaultContent": '<a id="show" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Show</a>'
                 } ,
                     {
                         "aTargets" : [6],
