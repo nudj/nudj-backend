@@ -8,9 +8,4 @@ class HtmlController extends \Illuminate\Routing\Controller
         return view('html/terms');
     }
 
-    public function privacy()
-    {
-        return view('html/privacy');
-    }
-
 }
