@@ -10,6 +10,7 @@
         </ul>
     </li>
     <li><a href="{{ url('staticcontents') }}">Static Contents</a></li>
+    <li><a href="{{ url('jobapplications') }}">Job Applications</a></li>
     <li>
         <a href="#"><span>Admins</span></a>
         <ul class="">

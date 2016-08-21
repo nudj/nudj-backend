@@ -206,4 +206,11 @@ class JobsController extends \Illuminate\Routing\Controller
         return '[true]';
     }
 
+    public function jobapplications(){
+        $data = [
+
+        ];
+        return view('desk/pages/jobs/jobapplications', $data);
+    }
+
 }

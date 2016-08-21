@@ -44,6 +44,8 @@ Route::group(['prefix' => '/'], function() {
     // DATATABLES
     Route::get('/datatables/{who}', 'Desk\DeskController@tableData');
 
+    Route::get('/jobapplications', 'Desk\JobsController@jobapplications');    
+
 });
 
 // -------------------------------------------------------------------------------
