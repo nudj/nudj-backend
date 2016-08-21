@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 use App\Models\Job;
-use App\NSX300\NSX300_JobSkills as NSX300_JobSkills;
-use App\NSX300\NSX300_Skills    as NSX300_Skills;
+use App\NSX300\NSX300_JobSkills         as NSX300_JobSkills;
+use App\NSX300\NSX300_Skills            as NSX300_Skills;
+use App\NSX300\NSX300_ApplicationsX1    as NSX300_ApplicationsX1;
 
 use Log;
 
@@ -208,7 +209,7 @@ class JobsController extends \Illuminate\Routing\Controller
 
     public function jobapplications(){
         $data = [
-
+            "applications" => NSX300_ApplicationsX1::get_records()
         ];
         return view('desk/pages/jobs/jobapplications', $data);
     }
