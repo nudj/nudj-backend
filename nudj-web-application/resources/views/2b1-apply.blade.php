@@ -97,6 +97,8 @@
 <!-- End of page-specific content
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script type="text/javascript" src="/assets/web-dc8ab01d/js/jquery-3.1.0.min.js"></script>
+
+<!-- https://github.com/VodkaBears/Remodal -->
 <script src="/assets/web-dc8ab01d/js/remodal.min.js"></script>
 <script src="/assets/web-dc8ab01d/js/app.js"></script>
 
@@ -115,6 +117,8 @@ $(document).delegate( "#submit-button-1ac6056d", "click", function() {
         data: $('#form-f6799cbb').serialize(),
         success: function(data) {
             console.log(data);
+            var inst = $('[data-remodal-id=confirmation-modal]').remodal();
+            inst.open();
         }
     });
 });    

@@ -21,7 +21,7 @@ class ActionsController extends \Illuminate\Routing\Controller
         $email    = $request->emailInput;
         $link     = $request->linkInput;
         $referrer = $request->referrerInput;
-        NSX300_ApplicationsX1::insertRecord($name,$email,$link,$referrer);
+        NSX300_ApplicationsX1::insertRecord($name,$email,$link,$referrer,$request->ip());
         return response()->json([
             'success' => $request->all()
         ]);
