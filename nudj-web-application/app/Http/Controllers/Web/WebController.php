@@ -27,11 +27,6 @@ class WebController extends \Illuminate\Routing\Controller
     const TYPE_NUDGE = 'nudge';
     const TYPE_REFER = 'refer';
 
-    public function download()
-    {
-        return view('web/page/downloads');
-    }
-
     public function login2($jobidentifier)
     {
         if(Agent::is('iPhone'))
