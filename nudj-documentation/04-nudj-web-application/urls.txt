@@ -1,0 +1,6 @@
+https://mobileweb-dev.nudj.co/ (redirects to the nudj site)
+https://mobileweb-dev.nudj.co/job/5
+https://mobileweb-dev.nudj.co/jobpreview/5 (same as above)
+https://mobileweb-dev.nudj.co/apply/5
+https://mobileweb-dev.nudj.co/nudj-a-friend/5
+
