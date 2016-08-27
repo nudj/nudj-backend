@@ -3,6 +3,7 @@
 use App\Http\Requests\ApiRequest;
 use App\Http\Requests\ApplyRequest;
 use App\NSX300\NSX300_ApplicationsX1;
+use App\NSX300\NSX300_Configuration;
 use Illuminate\Support\Facades\Mail;
 
 use Log;
@@ -35,7 +36,8 @@ class ActionsController extends \Illuminate\Routing\Controller
         $jobId = $application['jobid'];
         $name = $application['name'];
         $emailAddress = $application['email'];
-        Mail::send('emails.welcome', ['link' => 'https://mobileweb-dev.nudj.co/job/'.$jobId.''], function($message){
+        $urlToJobPage = NSX300_Configuration::getApplicationURL().'/job/'.$jobId;
+        Mail::send('emails.welcome', ['link' => $urlToJobPage], function($message){
             $message->to('pascal@alseyn.net', '');
             $message->from('no-reply@nudj.co', 'no-reply@nudj.co');
             $message->subject('Nudj job application');
