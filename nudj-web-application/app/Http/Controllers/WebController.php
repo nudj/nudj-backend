@@ -25,8 +25,10 @@ class WebController extends \Illuminate\Routing\Controller
         ]);
     }
 
-    public function appdownloads($jobId = null) {
-        return view('2b3-appdownloads', []);
+    public function appdownloads($applicationuuid) {
+        return view('2b3-appdownloads', [
+            'applicationuuid' => $applicationuuid
+        ]);
     }
 
     public function jobview($jobId = null)

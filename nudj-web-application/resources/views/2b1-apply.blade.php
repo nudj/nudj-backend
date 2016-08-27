@@ -91,7 +91,7 @@
         <p>We have sent your details to the hirer.</p>
         <p>Good luck!</p>
         <br>
-        <button id="send-link" class="custom-button"  data-remodal-action="close">Ok, thank you</button>
+        <button id="final-button-0a1f8e2b" class="custom-button"  data-remodal-action="close">Ok, thank you</button>
     </div>
 </div>
 
@@ -107,8 +107,9 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 <script>
-$(document).delegate( "#send-link", "click", function() {
-    location.href = '/appdownloads'
+var applicationuuid = null;
+$(document).delegate( "#final-button-0a1f8e2b", "click", function() {
+    location.href = '/appdownloads/'+applicationuuid
 });    
 $(document).delegate( "#submit-button-1ac6056d", "click", function() {
     $.ajax({
@@ -118,6 +119,7 @@ $(document).delegate( "#submit-button-1ac6056d", "click", function() {
         data: $('#form-f6799cbb').serialize(),
         success: function(data) {
             console.log(data);
+            applicationuuid = data['application-uuid'];
             var inst = $('[data-remodal-id=confirmation-modal]').remodal();
             inst.open();
         }

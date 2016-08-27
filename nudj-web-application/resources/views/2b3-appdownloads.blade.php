@@ -67,13 +67,21 @@
     <img class="iphone" src="/assets/web-dc8ab01d/images/iphone.png" alt="phone" />
 
     <section class="listing-buttons">
-      <button data-remodal-target="share-modal" class="link">Send me a link</button>
-          <img id="app-store-download-8cbab945" src="/assets/web-dc8ab01d/images/appstore.svg" alt="appstore" />
+        <button id="1f71033c-9370" class="link">Send me a link</button>
+        <img id="app-store-download-8cbab945" src="/assets/web-dc8ab01d/images/appstore.svg" alt="appstore" />
     </section>
   <br>
   </div>
 </div>
 </div>
+</div>
+
+<div class="remodal" data-remodal-id="email-has-been-sent-a1456508" data-remodal-options="hashTracking: false">
+    <h5 class="brand">Email sent</h5>
+    <br>
+    <p>An email has been sent to you.</p>
+    <br>
+    <button id="final-button-0a1f8e2b" class="custom-button"  data-remodal-action="close">Ok, thank you</button>
 </div>
 
 <!-- End of page-specific content
@@ -95,6 +103,19 @@
 </style>
 
 <script>
+$(document).delegate( "#1f71033c-9370", "click", function() {
+    $.ajax({
+        url: '/send-link-to-candidate-1a345374/{{$applicationuuid}}',
+        type: 'post',
+        dataType: 'json',
+        data: null,
+        success: function(data) {
+            console.log("An email have been sent to you")
+            var inst = $('[data-remodal-id=email-has-been-sent-a1456508]').remodal();
+            inst.open();
+        }
+    });    
+}); 
 $(document).delegate( "#app-store-download-8cbab945", "click", function() {
     location.href = 'https://geo.itunes.apple.com/gb/app/nudj-the-talent-referral-app/id1081609782?mt=8'
 });    

@@ -14,17 +14,15 @@ Route::get('/', 'HomeController@index');
 // Web view
 Route::group(['prefix' => '/'], function () {
 
-    // ---------------------------
-    // Reimplementation 
-
     Route::get('jobpreview/{jobId}',    'WebController@jobview');
     Route::get('job/{jobId}',           'WebController@jobview');
 
-    Route::get('apply/{jobId}',         'WebController@apply');    
-    Route::get('appdownloads',          'WebController@appdownloads'); 
-    Route::get('nudj-a-friend/{jobId}', 'WebController@nudjAFriend'); 
+    Route::get('apply/{jobId}',                   'WebController@apply');    
+    Route::get('appdownloads/{applicationuuid}',  'WebController@appdownloads'); 
+    Route::get('nudj-a-friend/{jobId}',           'WebController@nudjAFriend');
 
-    Route::post('applicationdetails',   'ActionsController@applicationDetails'); 
+    Route::post('applicationdetails', 'ActionsController@applicationDetails'); 
+    Route::post('send-link-to-candidate-1a345374/{applicationuuid}', 'ActionsController@sendLinkToCandidate');
 
 });
 

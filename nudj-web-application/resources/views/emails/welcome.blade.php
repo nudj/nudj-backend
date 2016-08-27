@@ -1,0 +1,1 @@
+The Nudj job application link that you requested is: {{$link}} 
