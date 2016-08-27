@@ -4,8 +4,13 @@ use App\Models\Job;
 
 use App\Utility\ApiException;
 
+use Illuminate\Http\RedirectResponse;
+
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Request;
+
+use Jenssegers\Agent\Agent as Agent;
+
 
 use Log;
 
@@ -20,9 +25,17 @@ class WebController extends \Illuminate\Routing\Controller
         if(!$job){
             return redirect('/');
         }
-        return view('2b1-apply', [
-            'job' => $job,
-        ]);
+
+        //https://github.com/jenssegers/agent
+        $agent = new Agent();
+        
+        if($agent->is('iPhone')){
+            return redirect('https://geo.itunes.apple.com/gb/app/nudj-the-talent-referral-app/id1081609782?mt=8');
+        }else{
+            return view('2b1-apply', [
+                'job' => $job,
+            ]);
+        }
     }
 
     public function appdownloads($applicationuuid) {
