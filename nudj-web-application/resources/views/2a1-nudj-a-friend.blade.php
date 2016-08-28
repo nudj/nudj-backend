@@ -131,6 +131,10 @@ $(document).delegate( "#facebook-7f460374", "click", function() {
     var message = encodeURIComponent("Job posting at Nudj");
     location.href = 'http://www.facebook.com/sharer/sharer.php?u='+urlToShare+'&t='+message+''
 });   
+$(document).delegate( "#twitter-b77828aa", "click", function() {
+    var message = encodeURIComponent("Job posting at Nudj: {{$websiteurl}}/job/{{$job->id}}");
+    location.href = 'https://twitter.com/intent/tweet?text='+message+''
+});   
 </script>
 
 
