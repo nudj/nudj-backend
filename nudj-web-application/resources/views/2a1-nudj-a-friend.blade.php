@@ -122,7 +122,10 @@
 <script>
 $(document).delegate( "#app-store-download-59054016", "click", function() {
     location.href = 'https://geo.itunes.apple.com/gb/app/nudj-the-talent-referral-app/id1081609782?mt=8'
-});    
+});
+$(document).delegate( "#link-8af20612", "click", function() {
+    location.href = '/job/{{$job->id}}'
+});   
 </script>
 
 
