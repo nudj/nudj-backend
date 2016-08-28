@@ -91,11 +91,11 @@
 <div class="remodal" data-remodal-id="share-modal" data-remodal-options="hashTracking: false">
   <button data-remodal-action="close" class="remodal-close right"></button>
   <h5>Share via</h5>
-  <button id="link" class="custom-button share">Copy Link</button>
-  <button id="email" class="custom-button share">E-mail</button>
-  <button id="messenger" class="custom-button share">Facebook Messenger</button>
-  <button id="facebook" class="custom-button share">Facebook</button>
-  <button id="twitter" class="custom-button share">Twitter</button>
+  <button id="link-8af20612" class="custom-button share">Copy Link</button>
+  <!-- <button id="email-00bfead8" class="custom-button share">E-mail</button> -->
+  <!-- <button id="messenger-db5a6e1e" class="custom-button share">Facebook Messenger</button> -->
+  <button id="facebook-7f460374" class="custom-button share">Facebook</button>
+  <button id="twitter-b77828aa" class="custom-button share">Twitter</button>
 </div>
 
 <div class="remodal" data-remodal-id="appstore-modal" data-remodal-options="hashTracking: false">
