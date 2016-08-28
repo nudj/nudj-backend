@@ -1,5 +1,17 @@
 
-https://api.nudj.co
+# -----------------------------------------------------------------
+LOCAL
+
+http://localhost:8000/ (redirects to the nudj site)
+http://localhost:8000/job/5
+http://localhost:8000/jobpreview/5 (same as above)
+http://localhost:8000/apply/5
+http://localhost:8000/nudj-a-friend/5
+
+
+# -----------------------------------------------------------------
+DEV
+
 https://dev.nudj.co
 
 https://mobileweb-dev.nudj.co/ (redirects to the nudj site)
@@ -8,10 +20,17 @@ https://mobileweb-dev.nudj.co/jobpreview/5 (same as above)
 https://mobileweb-dev.nudj.co/apply/5
 https://mobileweb-dev.nudj.co/nudj-a-friend/5
 
-http://localhost:8000/ (redirects to the nudj site)
-http://localhost:8000/job/5
-http://localhost:8000/jobpreview/5 (same as above)
-http://localhost:8000/apply/5
-http://localhost:8000/nudj-a-friend/5
+https://desk-dev.nudj.co
+
+
+# -----------------------------------------------------------------
+PRODUCTION
+
+https://api.nudj.co
+
+https://desk.nudj.co
+
+
+
 
 
