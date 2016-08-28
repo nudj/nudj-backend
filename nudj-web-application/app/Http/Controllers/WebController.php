@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Request;
 
 use Jenssegers\Agent\Agent as Agent;
 
+use App\NSX300\NSX300_Configuration;
 
 use Log;
 
@@ -66,7 +67,8 @@ class WebController extends \Illuminate\Routing\Controller
             return redirect('/');
         }
         return view('2a1-nudj-a-friend', [
-            'job' => $job
+            'job' => $job,
+            'websiteurl' => NSX300_Configuration::getApplicationURL()
         ]);
     }
 

@@ -126,6 +126,11 @@ $(document).delegate( "#app-store-download-59054016", "click", function() {
 $(document).delegate( "#link-8af20612", "click", function() {
     location.href = '/job/{{$job->id}}'
 });   
+$(document).delegate( "#facebook-7f460374", "click", function() {
+    var urlToShare = encodeURIComponent("{{$websiteurl}}/job/{{$job->id}}");
+    var message = encodeURIComponent("Job posting at Nudj");
+    location.href = 'http://www.facebook.com/sharer/sharer.php?u='+urlToShare+'&t='+message+''
+});   
 </script>
 
 
