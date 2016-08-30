@@ -84,7 +84,8 @@
     <label>Referral bonus:</label><p>{{$job->bonus_currency}} {{$job->bonus}}</p> <br>
     @endif
   </div>
-  <span class="more ten columns offset-by-one">{{$job->description}}</span>
+  <span class="more ten columns offset-by-one" style="margin-bottom:20px;">{{$job->description}}</span>
+  <div style="clear:both;">
   <section class="tag-wrapper">
     @foreach ($skills as $skill)
         <button id="send-link" class="tag">{{$skill->name}}</button>
