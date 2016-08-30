@@ -38,7 +38,7 @@ class ActionsController extends \Illuminate\Routing\Controller
         $emailAddress = $application['email'];
         $urlToJobPage = NSX300_Configuration::getApplicationURL().'/job/'.$jobId;
         Mail::send('emails.welcome', ['link' => $urlToJobPage], function($message){
-            $message->to('pascal@alseyn.net', '');
+            $message->to($emailAddress, '');
             $message->from('no-reply@nudj.co', 'no-reply@nudj.co');
             $message->subject('Nudj job application');
         });
