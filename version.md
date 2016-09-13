@@ -2,6 +2,7 @@
 
 **How versioning works ?** The minor fragment is increased at each production release. 
 
+- Hotfix - Version 1.026.1 (2016-09-13)
 - Version 1.026 (2016-06-25)
 - Version 1.025 (2016-06-24)
 - Version 1.024 (2016-05-26)
