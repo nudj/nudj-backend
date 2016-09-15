@@ -25,7 +25,8 @@
 	  	"jenssegers/agent": "2.2.1",
 
 	  	"yajra/laravel-datatables-oracle": "~5.11",
-		"sly/notification-pusher": "^2.2"
+		"sly/notification-pusher": "^2.2",
+		"doctrine/dbal": "^2.5"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
