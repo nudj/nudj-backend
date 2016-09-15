@@ -35,6 +35,9 @@ class JobTransformer extends Transformer {
             case 'company':
                 return (string) $item->company;
 
+            case 'website':
+                return (string) $item->website;
+
             case 'location':
                 return (string) $item->location;
 
@@ -49,6 +52,9 @@ class JobTransformer extends Transformer {
 
             case 'created':
                 return (string) Carbon::createFromTimestamp(strtotime($item->created_at))->diffForHumans();
+
+			case 'createdAt':
+				return (string) Carbon::createFromTimestamp(strtotime($item->created_at))->diffForHumans();
 
             case 'liked':
                 return  (bool) $item->likes->contains(Shield::getUserId());

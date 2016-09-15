@@ -18,9 +18,9 @@ class Job extends ApiModel
     use Indexable;
 
     protected $table = 'jobs';
-    protected $visible = ['id', 'title', 'description', 'salary', 'salary2', 'salary2_currency', 'active', 'bonus', 'bonus_currency', 'company', 'location', 'user_id', 'created_at'];
+    protected $visible = ['id', 'title', 'description', 'salary', 'salary2', 'salary2_currency', 'active', 'bonus', 'bonus_currency', 'company', 'website', 'location', 'user_id', 'created_at'];
 
-    protected $gettableFields = ['title', 'description', 'salary', 'salary2', 'salary2_currency', 'active', 'bonus', 'bonus_currency', 'company', 'location', 'skills', 'user', 'liked', 'applied', 'created'];
+    protected $gettableFields = ['title', 'description', 'salary', 'salary2', 'salary2_currency', 'active', 'bonus', 'bonus_currency', 'company', 'website', 'location', 'skills', 'user', 'liked', 'applied', 'created', 'createdAt'];
     protected $defaultFields = ['title', 'user'];
 
     protected $prefix = 'job.';
@@ -125,6 +125,10 @@ class Job extends ApiModel
 
         if (isset($input['company'])) {
             $this->company = (string)$input['company'];
+        }
+
+        if (isset($input['website'])) {
+            $this->website = (string)$input['website'];
         }
 
         if (isset($input['salary'])) {
