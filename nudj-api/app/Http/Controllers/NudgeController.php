@@ -5,8 +5,10 @@ use App\Http\Requests\ApplyRequest;
 use App\Http\Requests\AskForReferralsRequest;
 use App\Http\Requests\NudgeRequest;
 use App\Http\Requests\StartChatRequest;
+use App\Events\NotifyUserEvent;
 use App\Models\Application;
 use App\Models\Chat;
+use App\Models\NotificationType;
 use App\Models\Contact;
 use App\Models\Notification;
 use App\Models\Nudge;
@@ -104,6 +106,12 @@ class NudgeController extends ApiController
             'chat_id' => $chat->id
         ]);
         Event::fire(new StartChatEvent($chat->id, Shield::getUserId(), $request->user_id, $request->message));
+		$meta = [
+			'chat_id' => $chat->id,
+			'type_id' => NotificationType::$CHAT_MESSAGE
+		];
+		Log::info('Firing NotifyUserEvent');
+        Event::fire(new NotifyUserEvent($request->user_id, $request->message, $meta));
         return $this->respondWithStatus(true);
     }
 
