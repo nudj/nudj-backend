@@ -38,6 +38,9 @@ class UserTransformer extends Transformer
             case 'about':
                 return (string)$item->about;
 
+            case 'findMe':
+                return (string)$item->findme;
+
             case 'address':
                 return (string)$item->address;
 
