@@ -188,7 +188,7 @@ class Job extends ApiModel
         }
 
         if (isset($input['website'])) {
-            $job->company = (string)$input['website'];
+            $job->website = (string)$input['website'];
         }
 
         if (isset($input['salary'])) {
